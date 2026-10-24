@@ -1,0 +1,24 @@
+{
+  "period": {
+    "mode": "monthly"
+  },
+  "excel": {
+    "path": "data/동향_모니터링_누적.xlsx",
+    "sheet": "누적데이터",
+    "template": "data/_양식_동향_모니터링.xlsx",
+    "skip_duplicate_url": true
+  },
+  "history": {
+    "path": "history/history.jsonl"
+  },
+  "output_dir": "output",
+  "log_dir": "logs",
+  "reports": {
+    "security": {
+      "enabled": true
+    },
+    "ethics": {
+      "enabled": true
+    }
+  }
+}

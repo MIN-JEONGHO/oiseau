@@ -1,0 +1,56 @@
+{
+  "llm": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro",
+    "api_key": "여기에-API-키-입력",
+    "timeout_sec": 900,
+    "max_output_tokens": 20000,
+    "temperature": 0.2,
+    "enable_web_search": true
+  },
+  "smtp": {
+    "provider": "gmail",
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "security": "starttls",
+    "user": "myaccount@gmail.com",
+    "password": "앱-비밀번호-16자리",
+    "sender_name": "KISTEP 연구보안·연구윤리 모니터링",
+    "sender_email": ""
+  },
+  "excel": {
+    "path": "data/동향_모니터링_누적.xlsx",
+    "sheet": "누적데이터",
+    "template": "data/_양식_동향_모니터링.xlsx",
+    "skip_duplicate_url": true
+  },
+  "output_dir": "output",
+  "log_dir": "logs",
+  "reports": {
+    "security": {
+      "enabled": true,
+      "recipients": [
+        "min@kistep.re.kr",
+        "jhsuh@kistep.re.kr",
+        "mk@kistep.re.kr",
+        "iyhwang@kistep.re.kr",
+        "yunjung125@kistep.re.kr",
+        "myidsora@kistep.re.kr"
+      ],
+      "cc": [],
+      "bcc": []
+    },
+    "ethics": {
+      "enabled": true,
+      "recipients": [
+        "min@kistep.re.kr",
+        "mk@kistep.re.kr",
+        "hurky3219@kistep.re.kr",
+        "confusion@kistep.re.kr",
+        "jhsuh@kistep.re.kr"
+      ],
+      "cc": [],
+      "bcc": []
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "period_label": "2026년 7월호",
+  "executive_summary": [
+    "**미국**은 2026-07-08 연방 연구기관 대상 외국 자금 신고 의무를 확대하는 지침을 발표했다(예시 데이터).",
+    "**EU**는 2026-07-15 연구협력 위험평가 공통 프레임워크 초안을 공개했다(예시 데이터).",
+    "**일본**은 2026-07-22 경제안보 중요기술 지정 목록을 개정했다(예시 데이터)."
+  ],
+  "issues": [
+    {
+      "country": "US",
+      "title_kr": "연방 연구자금 외국 자금 신고 의무 확대 지침 발표",
+      "title_original": "Guidance on Disclosure of Foreign Support for Federally Funded Research",
+      "org": "OSTP",
+      "date": "2026-07-08",
+      "category": "법률/규제 변화",
+      "content": "미국 과학기술정책실은 연방 연구자금 수혜자의 외국 자금·직위 신고 범위를 확대하는 지침을 발표했다. 시행일은 2027년 1월 1일이며 대학과 국립연구소가 적용 대상이다. 이는 예시용 샘플 데이터다.",
+      "source_url": "https://www.whitehouse.gov/ostp/",
+      "sub_url": "https://www.nature.com/",
+      "sub_label": "Nature",
+      "status": ""
+    },
+    {
+      "country": "EU",
+      "title_kr": "국제 연구협력 위험평가 공통 프레임워크 초안 공개",
+      "title_original": "Draft Common Framework for Risk Assessment in International Research Cooperation",
+      "org": "European Commission",
+      "date": "2026-07-15",
+      "category": "국제 연구협력 가이드라인",
+      "content": "유럽집행위원회는 회원국이 공통으로 활용할 수 있는 국제 연구협력 위험평가 프레임워크 초안을 공개하고 의견수렴에 착수했다. 의견수렴 기한은 2026년 9월 30일이다. 이는 예시용 샘플 데이터다.",
+      "source_url": "https://research-and-innovation.ec.europa.eu/",
+      "sub_url": "",
+      "sub_label": "",
+      "status": ""
+    },
+    {
+      "country": "KR",
+      "title_kr": "국가연구개발사업 연구보안 관리 지침 개정",
+      "title_original": "",
+      "org": "과학기술정보통신부",
+      "date": "2026-07-21",
+      "category": "연구기관 보안 강화",
+      "content": "과학기술정보통신부는 국가연구개발사업 보안과제 분류 기준과 연구기관 보안심사 절차를 정비하는 지침 개정안을 행정예고했다. 이는 예시용 샘플 데이터다.",
+      "source_url": "https://www.msit.go.kr/",
+      "sub_url": "",
+      "sub_label": "",
+      "status": ""
+    }
+  ],
+  "no_issue_countries": {
+    "FR": "이번 달 특이사항 없음 (신규 1차 발표 미확인)",
+    "IT": "이번 달 특이사항 없음 (신규 1차 발표 미확인)"
+  },
+  "kr_other_trend": {
+    "text": "KISTEP은 연구보안 실태조사 결과보고서를 공개했다(예시).",
+    "url": "https://www.kistep.re.kr/"
+  },
+  "analysis": {
+    "trend": "이번 달은 자금 출처 신고 의무 강화와 위험평가 표준화가 공통 흐름으로 확인되었다(예시).",
+    "country_comparison": "미국은 규제 집행 중심, EU는 공통 기준 마련 중심으로 접근이 갈렸다(예시).",
+    "korea_implication": "국내 지침 개정 시 신고 항목의 국제 정합성을 함께 검토할 필요가 있다(예시).",
+    "monitoring_points": "EU 프레임워크 최종본 확정 시점과 미국 지침 시행 세부규칙을 지속 확인해야 한다(예시)."
+  },
+  "source_compliance_note": "프랑스·이탈리아는 이번 기간 중 검증 가능한 1차 발표가 확인되지 않았다. 본 데이터는 프로그램 점검용 예시다."
+}

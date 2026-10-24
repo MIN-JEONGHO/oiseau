@@ -1,0 +1,622 @@
+{
+  "review_kind": "source-coverage-and-conservative-normalization",
+  "source_page_counts": {
+    "advanced": 2,
+    "core": 3,
+    "dual-use": 614,
+    "military": 48
+  },
+  "family_clause_counts": {
+    "advanced": 20,
+    "core": 80,
+    "dual_use": 408,
+    "military": 63
+  },
+  "designated_technology_counts": {
+    "advanced": 19,
+    "core": 79
+  },
+  "control_root_counts": {
+    "dual_use": 387,
+    "military": 22
+  },
+  "independent_control_audit": {
+    "dual_use": {
+      "root_code_count": 387,
+      "code_position_count": 2601,
+      "missing_from_normalized": [],
+      "unexpected_normalized": [],
+      "checked_boundaries": 387,
+      "boundary_failures": [],
+      "checked_category_transitions": 110,
+      "category_assignment_failures": []
+    },
+    "military": {
+      "root_code_count": 22,
+      "code_position_count": 22,
+      "missing_from_normalized": [],
+      "unexpected_normalized": [],
+      "checked_boundaries": 22,
+      "boundary_failures": [],
+      "checked_category_transitions": 0,
+      "category_assignment_failures": []
+    }
+  },
+  "designated_field_counts": {
+    "advanced": {
+      "반도체": 8,
+      "디스플레이": 4,
+      "이차전지": 3,
+      "바이오": 2,
+      "로봇": 1,
+      "방산": 1
+    },
+    "core": {
+      "반도체": 11,
+      "디스플레이": 2,
+      "전기전자": 5,
+      "자동차ㆍ철도": 10,
+      "금속": 10,
+      "조선": 8,
+      "원자력": 4,
+      "정보통신": 7,
+      "우주": 5,
+      "생명공학": 4,
+      "기계": 8,
+      "로봇": 3,
+      "수소": 2
+    }
+  },
+  "code_position_counts": {
+    "dual_use": 2601,
+    "military": 22
+  },
+  "structured_source_counts": {
+    "dual_use": {
+      "paragraph_count": 17058,
+      "original_equation_count": 28,
+      "nested_table_count": 2,
+      "xml_paragraph_partition": {
+        "document": 4,
+        "outer_table_cell": 37822,
+        "nested_table_cell": 702
+      }
+    },
+    "military": {
+      "paragraph_count": 2283,
+      "original_equation_count": 0,
+      "nested_table_count": 0,
+      "xml_paragraph_partition": {
+        "document": 6,
+        "header_footer": 2,
+        "outer_table_cell": 3386,
+        "floating_shape": 108
+      }
+    }
+  },
+  "source_expression_difference_counts": {
+    "dual_use": {
+      "equation_script_rendering": 19,
+      "nested_table_cell_flow": 2,
+      "private_use_symbol_rendering": 4
+    },
+    "military": {
+      "floating_military_code_overlay": 22
+    }
+  },
+  "reviewed_supplemental_ranges": {
+    "dual_use": [
+      {
+        "owner": "dual_use:control:2E003",
+        "language": "ko",
+        "first_paragraph": "dual_use:t1:r5:c2:p1160",
+        "last_paragraph": "dual_use:t1:r5:c2:p1277",
+        "source_anchor": "raw/dual-use-annex.hwpx#Contents/section0.xml&table=1&row=5&cell=2&paragraph=1160",
+        "reason": "2E003.f explicitly places its table and technical notes after 2E503.g"
+      },
+      {
+        "owner": "dual_use:control:2E003",
+        "language": "en",
+        "first_paragraph": "dual_use:t1:r5:c3:p1001",
+        "last_paragraph": "dual_use:t1:r5:c3:p1096",
+        "source_anchor": "raw/dual-use-annex.hwpx#Contents/section0.xml&table=1&row=5&cell=3&paragraph=1001",
+        "reason": "2E003.f explicitly places its table and technical notes after 2E503.g"
+      }
+    ],
+    "military": []
+  },
+  "preserved_notes": "일반/기술/소프트웨어 해설, 핵기술 해설, 민감/초민감 부록 및 양 별표 용어집 전체. 원문 로컬 주·예외는 해당 통제번호 본문에 포함.",
+  "limitations": [
+    "원문 전체 범위 보존은 법률 전문가 판정 또는 모든 조건의 완전한 기계 해석을 뜻하지 않음.",
+    "복잡한 수치·정성·예외·타 조항 참조 조건은 unsupported로 보존하며 정보 부족으로 취급해야 함.",
+    "별표 2·3 본문은 확정 원본 HWPX의 완결 문단·셀·수식 스크립트를 보존한다. PDF는 독립 번호와 위치 대조에 사용한다. 수식·표·기호 등 표시 차이는 별도 검수기록에 남긴다.",
+    "2E003.f의 명시적 위치 안내에 따라 2E503.g 뒤에 배치된 코팅공정 표·주·기술해설은 2E003 소속으로 보존한다.",
+    "YESTRADE 38차 공지의 '전략물자수출입고시_최종.hwpx'는 실제로 제2026-496호 행정예고 초안이어서 실행 기준에서 제외. 법제처 제2026-101호 통합 별표로 대체.",
+    "상황허가·국가별 제재·수출허가 최종 판단은 범위에서 제외."
+  ],
+  "selected_checks": [
+    "첨단19개/핵심79개를 표의 분야별 건수 및 원본 행 좌표와 대조",
+    "이중용도 부록의 축약 반복코드를 본표의 독립 통제 항목으로 중복 추가하지 않음",
+    "군용 ML1~ML22와 42~48쪽 용어집 구분; ML22 주2의 공개정보/기초과학연구 예외 원문 보존",
+    "첨단 제4조의 각 기술 특화 및 양산 목적 개발/사용 범위 조건 보존"
+  ],
+  "numeric_examples": [
+    {
+      "clause_id": "advanced:item:001",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=2&item=1",
+      "literal": "16나노 이하급",
+      "operator": "le",
+      "threshold": "16",
+      "unit": "nm"
+    },
+    {
+      "clause_id": "advanced:item:002",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=3&item=1",
+      "literal": "16나노 이하급",
+      "operator": "le",
+      "threshold": "16",
+      "unit": "nm"
+    },
+    {
+      "clause_id": "advanced:item:003",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=4&item=1",
+      "literal": "128단 이상",
+      "operator": "ge",
+      "threshold": "128",
+      "unit": "단"
+    },
+    {
+      "clause_id": "advanced:item:004",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=5&item=1",
+      "literal": "128단 이상",
+      "operator": "ge",
+      "threshold": "128",
+      "unit": "단"
+    },
+    {
+      "clause_id": "advanced:item:005",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=6&item=1",
+      "literal": "0.8㎛ 이하",
+      "operator": "le",
+      "threshold": "0.8",
+      "unit": "um"
+    },
+    {
+      "clause_id": "advanced:item:007",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=8&item=1",
+      "literal": "14나노급 이하",
+      "operator": "le",
+      "threshold": "14",
+      "unit": "nm"
+    },
+    {
+      "clause_id": "advanced:item:014",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=15&item=1",
+      "literal": "80% 초과",
+      "operator": "gt",
+      "threshold": "80",
+      "unit": "%"
+    },
+    {
+      "clause_id": "core:item:001",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=2&item=1",
+      "literal": "30나노 이하급",
+      "operator": "le",
+      "threshold": "30",
+      "unit": "nm"
+    },
+    {
+      "clause_id": "core:item:003",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=2&item=3",
+      "literal": "64단 이상",
+      "operator": "ge",
+      "threshold": "64",
+      "unit": "단"
+    },
+    {
+      "clause_id": "core:item:008",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=2&item=8",
+      "literal": "300mm 이상",
+      "operator": "ge",
+      "threshold": "300",
+      "unit": "mm"
+    },
+    {
+      "clause_id": "core:item:009",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=2&item=9",
+      "literal": "1㎛ 이하",
+      "operator": "le",
+      "threshold": "1",
+      "unit": "um"
+    },
+    {
+      "clause_id": "advanced:item:010",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=11&item=1",
+      "literal": "40nm 이하",
+      "operator": "le",
+      "threshold": "40",
+      "unit": "nm"
+    },
+    {
+      "clause_id": "advanced:item:010",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=11&item=1",
+      "literal": "90% 이상",
+      "operator": "ge",
+      "threshold": "90",
+      "unit": "%"
+    },
+    {
+      "clause_id": "advanced:item:012",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=13&item=1",
+      "literal": "1㎛ 이하",
+      "operator": "le",
+      "threshold": "1",
+      "unit": "um"
+    },
+    {
+      "clause_id": "advanced:item:013",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=14&item=1",
+      "literal": "280Wh/kg 이상인 파우치형",
+      "operator": "ge",
+      "threshold": "280",
+      "unit": "Wh/kg"
+    },
+    {
+      "clause_id": "advanced:item:013",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=14&item=1",
+      "literal": "252Wh/kg 이상인 각형",
+      "operator": "ge",
+      "threshold": "252",
+      "unit": "Wh/kg"
+    },
+    {
+      "clause_id": "advanced:item:013",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=14&item=1",
+      "literal": "21mm",
+      "operator": "le",
+      "threshold": "21",
+      "unit": "mm"
+    },
+    {
+      "clause_id": "advanced:item:013",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=14&item=1",
+      "literal": "280Wh/kg",
+      "operator": "ge",
+      "threshold": "280",
+      "unit": "Wh/kg"
+    },
+    {
+      "clause_id": "advanced:item:013",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=14&item=1",
+      "literal": "21mm",
+      "operator": "gt",
+      "threshold": "21",
+      "unit": "mm"
+    },
+    {
+      "clause_id": "advanced:item:013",
+      "source_anchor": "raw/advanced-annex.pdf#page=1&table=1&row=14&item=1",
+      "literal": "260Wh/kg",
+      "operator": "ge",
+      "threshold": "260",
+      "unit": "Wh/kg"
+    },
+    {
+      "clause_id": "advanced:item:016",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=2&item=1",
+      "literal": "1만리터 이상",
+      "operator": "ge",
+      "threshold": "10000",
+      "unit": "L"
+    },
+    {
+      "clause_id": "advanced:item:017",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=3&item=1",
+      "literal": "100",
+      "operator": "ge",
+      "threshold": "100",
+      "unit": "dose/lot"
+    },
+    {
+      "clause_id": "advanced:item:017",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=3&item=1",
+      "literal": "80% 이상",
+      "operator": "ge",
+      "threshold": "80",
+      "unit": "%"
+    },
+    {
+      "clause_id": "advanced:item:017",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=3&item=1",
+      "literal": "80% 이상",
+      "operator": "ge",
+      "threshold": "80",
+      "unit": "%"
+    },
+    {
+      "clause_id": "advanced:item:018",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=4&item=1",
+      "literal": "3.3m/s 이상",
+      "operator": "ge",
+      "threshold": "3.3",
+      "unit": "m/s"
+    },
+    {
+      "clause_id": "advanced:item:018",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=4&item=1",
+      "literal": "20kg 이상",
+      "operator": "ge",
+      "threshold": "20",
+      "unit": "kg"
+    },
+    {
+      "clause_id": "advanced:item:019",
+      "source_anchor": "raw/advanced-annex.pdf#page=2&table=1&row=5&item=1",
+      "literal": "15,000lbf급 이상",
+      "operator": "ge",
+      "threshold": "15000",
+      "unit": "lbf"
+    },
+    {
+      "clause_id": "core:item:005",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=2&item=5",
+      "literal": "30나노급 이하",
+      "operator": "le",
+      "threshold": "30",
+      "unit": "nm"
+    },
+    {
+      "clause_id": "core:item:015",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=4&item=2",
+      "literal": "80% 초과",
+      "operator": "gt",
+      "threshold": "80",
+      "unit": "%"
+    },
+    {
+      "clause_id": "core:item:016",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=4&item=3",
+      "literal": "500kV급 이상",
+      "operator": "ge",
+      "threshold": "500",
+      "unit": "kV"
+    },
+    {
+      "clause_id": "core:item:018",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=4&item=5",
+      "literal": "21uF/mm3이상",
+      "operator": "ge",
+      "threshold": "21",
+      "unit": "uF/mm3"
+    },
+    {
+      "clause_id": "core:item:024",
+      "source_anchor": "raw/core-annex.pdf#page=1&table=1&row=5&item=6",
+      "literal": "양산 후 2년 이내",
+      "operator": "le",
+      "threshold": "2",
+      "unit": "년"
+    },
+    {
+      "clause_id": "core:item:028",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=2&item=1",
+      "literal": "상용화 3년 이내",
+      "operator": "le",
+      "threshold": "3",
+      "unit": "년"
+    },
+    {
+      "clause_id": "core:item:031",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=3&item=3",
+      "literal": "10wt.% Mn 이상",
+      "operator": "ge",
+      "threshold": "10",
+      "unit": "wt.%"
+    },
+    {
+      "clause_id": "core:item:032",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=3&item=4",
+      "literal": "4wt.%이하",
+      "operator": "le",
+      "threshold": "4",
+      "unit": "wt.%"
+    },
+    {
+      "clause_id": "core:item:033",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=3&item=5",
+      "literal": "100톤이상급",
+      "operator": "ge",
+      "threshold": "100",
+      "unit": "톤"
+    },
+    {
+      "clause_id": "core:item:034",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=3&item=6",
+      "literal": "3wt.% Ni이하",
+      "operator": "le",
+      "threshold": "3",
+      "unit": "wt.%"
+    },
+    {
+      "clause_id": "core:item:034",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=3&item=6",
+      "literal": "0.4wt.% N이상",
+      "operator": "ge",
+      "threshold": "0.4",
+      "unit": "wt.%"
+    },
+    {
+      "clause_id": "core:item:037",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=3&item=9",
+      "literal": "600MPa 이상",
+      "operator": "ge",
+      "threshold": "600",
+      "unit": "MPa"
+    },
+    {
+      "clause_id": "core:item:041",
+      "source_anchor": "raw/core-annex.pdf#page=2&table=1&row=4&item=3",
+      "literal": "3천톤 이상",
+      "operator": "ge",
+      "threshold": "3000",
+      "unit": "톤"
+    },
+    {
+      "clause_id": "core:item:060",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=3&item=3",
+      "literal": "500Km기준",
+      "operator": "eq",
+      "threshold": "500",
+      "unit": "km"
+    },
+    {
+      "clause_id": "core:item:060",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=3&item=3",
+      "literal": "50cm이하급",
+      "operator": "le",
+      "threshold": "50",
+      "unit": "cm"
+    },
+    {
+      "clause_id": "core:item:061",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=3&item=4",
+      "literal": "1m이상",
+      "operator": "ge",
+      "threshold": "1",
+      "unit": "m"
+    },
+    {
+      "clause_id": "core:item:062",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=3&item=5",
+      "literal": "1m이하",
+      "operator": "le",
+      "threshold": "1",
+      "unit": "m"
+    },
+    {
+      "clause_id": "core:item:063",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=4&item=1",
+      "literal": "1만 리터급 이상",
+      "operator": "ge",
+      "threshold": "10000",
+      "unit": "L"
+    },
+    {
+      "clause_id": "core:item:066",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=4&item=4",
+      "literal": "3종 이상",
+      "operator": "ge",
+      "threshold": "3",
+      "unit": "종"
+    },
+    {
+      "clause_id": "core:item:066",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=4&item=4",
+      "literal": "95% 이상",
+      "operator": "ge",
+      "threshold": "95",
+      "unit": "%"
+    },
+    {
+      "clause_id": "core:item:066",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=4&item=4",
+      "literal": "95% 이상",
+      "operator": "ge",
+      "threshold": "95",
+      "unit": "%"
+    },
+    {
+      "clause_id": "core:item:068",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=5&item=2",
+      "literal": "5축",
+      "operator": "eq",
+      "threshold": "5",
+      "unit": "축"
+    },
+    {
+      "clause_id": "core:item:069",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=5&item=3",
+      "literal": "20톤급 이상",
+      "operator": "ge",
+      "threshold": "20",
+      "unit": "톤"
+    },
+    {
+      "clause_id": "core:item:078",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=7&item=1",
+      "literal": "1.0A/cm2 이상",
+      "operator": "ge",
+      "threshold": "1.0",
+      "unit": "A/cm2"
+    },
+    {
+      "clause_id": "core:item:078",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=7&item=1",
+      "literal": "4시간 이상",
+      "operator": "ge",
+      "threshold": "4",
+      "unit": "시간"
+    },
+    {
+      "clause_id": "core:item:078",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=7&item=1",
+      "literal": "10kW급 이상",
+      "operator": "ge",
+      "threshold": "10",
+      "unit": "kW"
+    },
+    {
+      "clause_id": "core:item:079",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=7&item=2",
+      "literal": "35% 이상",
+      "operator": "ge",
+      "threshold": "35",
+      "unit": "%"
+    },
+    {
+      "clause_id": "core:item:079",
+      "source_anchor": "raw/core-annex.pdf#page=3&table=1&row=7&item=2",
+      "literal": "4만 시간 이상",
+      "operator": "ge",
+      "threshold": "40000",
+      "unit": "시간"
+    },
+    {
+      "clause_id": "dual_use:control:1A003",
+      "source_anchor": "raw/dual-use-annex.hwpx#Contents/section0.xml&paragraphs=dual_use:t1:r3:c1:p59,dual_use:t1:r3:c1:p60,dual_use:t1:r3:c1:p61,dual_use:t1:r3:c1:p63,dual_use:t1:r3:c2:p48,dual_use:t1:r3:c2:p49,dual_use:t1:r3:c2:p51,dual_use:t1:r3:c2:p53,dual_use:t1:r3:c2:p56,dual_use:t1:r3:c3:p47,dual_use:t1:r3:c3:p48,dual_use:t1:r3:c3:p50,dual_use:t1:r3:c3:p52,dual_use:t1:r3:c3:p54;raw/dual-use-annex.pdf#pages=6-6",
+      "literal": "0.254 mm 를 초과",
+      "operator": "gt",
+      "threshold": "0.254",
+      "unit": "mm"
+    },
+    {
+      "clause_id": "dual_use:control:3A102",
+      "source_anchor": "raw/dual-use-annex.hwpx#Contents/section0.xml&paragraphs=dual_use:t1:r6:c1:p1239,dual_use:t1:r6:c1:p1240,dual_use:t1:r6:c2:p759,dual_use:t1:r6:c2:p761,dual_use:t1:r6:c2:p762,dual_use:t1:r6:c2:p763,dual_use:t1:r6:c3:p668,dual_use:t1:r6:c3:p670,dual_use:t1:r6:c3:p671,dual_use:t1:r6:c3:p672;raw/dual-use-annex.pdf#pages=220-220",
+      "literal": "300km초과",
+      "operator": "gt",
+      "threshold": "300",
+      "unit": "km"
+    }
+  ],
+  "condition_node_counts": {
+    "all": 55,
+    "numeric": 57,
+    "qualitative": 131,
+    "unsupported": 481,
+    "not": 8,
+    "any": 6
+  },
+  "support_counts": {
+    "designation_or_control_items": 507,
+    "complete_numeric_and_qualitative_ast": 41,
+    "complete_qualitative_ast": 49,
+    "partially_structured_with_unsupported": 3,
+    "uninterpreted_original": 414
+  },
+  "excluded_draft": {
+    "official_url": "https://www.yestrade.go.kr/api/user/boards/69/posts/23257/files/3167282",
+    "sha256": "7ac7c95621584be46c02b422e8f8c1ec481bf76382754d9ce24fda13019538bb",
+    "actual_content": "산업통상부 공고 제2026-496호(2026-07-13), 일부개정(안) 행정예고",
+    "reason": "첨부 파일명 최종과 달리 확정 고시가 아니므로 실행 기준본에서 제외"
+  }
+}

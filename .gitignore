@@ -1,0 +1,57 @@
+# API 키가 평문으로 들어 있는 파일 — 커밋하지 않는다.
+# (회의록 자동정리 프로그램: exe 빌드 시 이 파일의 키가 그대로 묶인다)
+embedded_key.py
+
+# 연구보안·연구윤리 리포트: 내장 Anthropic 키(v3부터)와 설정 파일
+# (v1·v2의 config.json에는 API 키와 SMTP 비밀번호가 평문으로 들어 있다)
+**/rmonitor/_secrets.py
+dev/연구보안연구윤리 월간메일링/**/config.json
+.env
+
+# 보안등급분류 시뮬레이터의 과거 Claude 변형 — 키 형태 문자열이 들어 있다
+dev/보안등급분류 시뮬레이터/security_grade_classifier_v10_claude.py
+dev/보안등급분류 시뮬레이터/security_grade_classifier_v12_claude.py
+
+# 도구 작업 폴더·로컬 설정
+.dryforge/
+.bkit/
+**/.claude/settings.local.json
+.venv/
+
+# 자체 git 저장소가 있는 폴더 — 각자 자기 저장소에서만 커밋한다
+dev/회의록 자동정리 프로그램/회의록정리v3.1/
+dev/테트리스 프로그램/테트리스v1/
+dev/dev test/
+
+# 빌드 결과물 — exe 안에는 내장 키가 함께 묶인다
+build/
+dist/
+dist-v15/
+*.exe
+*.zip
+__pycache__/
+*.py[cod]
+
+# 실행 산출물 — 연구자·제재 대상·회의 내용 같은 업무 자료가 들어간다
+통계분석결과_*.xlsx
+국외지원사항_등록보고현황_*.hwpx
+연구수행기준_*
+처분연도기준_*
+제재처분집계_*
+참조데이터_양식_*.xlsx
+공공데이터_사전검토_*.xlsx
+*_수정.csv
+*_수정.tsv
+*_수정.txt
+*_수정.xlsx
+*_수정.xlsm
+*_수정.json
+*_회의록.hwpx
+*_전사문.txt
+*세션.json
+_selftest_*
+dev/연구보안연구윤리 월간메일링/**/output/
+dev/연구보안연구윤리 월간메일링/**/logs/
+dev/연구보안연구윤리 월간메일링/**/history/
+동향_모니터링_누적.xlsx
+분류_감사로그.jsonl

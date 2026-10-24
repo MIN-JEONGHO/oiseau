@@ -1,0 +1,458 @@
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f6f8; padding:16px 8px;">
+<tr><td align="center">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:900px; width:100%; background-color:#ffffff; font-family:'맑은 고딕','Malgun Gothic','Noto Sans KR',Arial,sans-serif; color:#222222; line-height:1.6;">
+
+<!-- ===== 헤더 ===== -->
+<tr><td style="padding:28px 28px 18px 28px; border-bottom:4px solid #6a3d9a;">
+<div style="font-size:26px; color:#6a3d9a; font-weight:bold; line-height:1.35;">글로벌 연구윤리·연구진실성 월간 이슈 리포트</div>
+<div style="font-size:14px; color:#555555; margin-top:8px;">Global Research Ethics &amp; Research Integrity Monthly Issue Report | {{REPORT_MONTH}}</div>
+</td></tr>
+
+<!-- ===== 리포트 정보 ===== -->
+<tr><td style="padding:22px 28px 0 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f1ecf8; border-left:5px solid #6a3d9a;">
+<tr><td style="padding:16px 20px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size:13.5px; line-height:1.7;">
+<tr><td width="120" valign="top" style="color:#6a3d9a; font-weight:bold; padding:3px 8px 3px 0;">수집 기간</td><td valign="top" style="color:#333333; padding:3px 0;">{{START_DATE}} ~ {{END_DATE}} (KST)</td></tr>
+<tr><td valign="top" style="color:#6a3d9a; font-weight:bold; padding:3px 8px 3px 0;">발행일</td><td valign="top" style="color:#333333; padding:3px 0;">{{REPORT_DATE}}</td></tr>
+<tr><td valign="top" style="color:#6a3d9a; font-weight:bold; padding:3px 8px 3px 0;">수집 범위</td><td valign="top" style="color:#333333; padding:3px 0;">G7 주요국, EU, 대한민국 및 주요 국제기관의 연구윤리·연구진실성 관련 정책, 제도, 조사·제재, 출판윤리, 논문 철회, AI 연구윤리 및 책임 있는 연구수행 동향</td></tr>
+<tr><td valign="top" style="color:#6a3d9a; font-weight:bold; padding:3px 8px 3px 0;">주요 참고 기관</td><td valign="top" style="color:#333333; padding:3px 0;">정부·공공기관, 연구지원기관, 대학·연구기관, 출판사·학회, COPE, WCRI, Retraction Watch, ICMJE, OECD GSF, UNESCO 등</td></tr>
+<tr><td valign="top" style="color:#6a3d9a; font-weight:bold; padding:3px 8px 3px 0;">작성 기준</td><td valign="top" style="color:#333333; padding:3px 0;">검증 가능한 원문 URL이 확인된 공식 발표, 기관 자료, 학술 출판 공지 및 신뢰 가능한 언론 보도 기반</td></tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 1. 핵심 요약 ===== -->
+<tr><td style="padding:30px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px; margin-bottom:14px;">1. 이달의 핵심 요약</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fff8e5; border:1px solid #f1d27a;">
+<tr><td style="padding:16px 20px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size:14px; line-height:1.7; color:#333333;">
+<tr><td valign="top" width="20" style="padding:0 0 8px 0; color:#6a3d9a; font-weight:bold;">·</td><td style="padding:0 0 8px 0;">{{EXECUTIVE_SUMMARY_1}}</td></tr>
+<tr><td valign="top" style="padding:0 0 8px 0; color:#6a3d9a; font-weight:bold;">·</td><td style="padding:0 0 8px 0;">{{EXECUTIVE_SUMMARY_2}}</td></tr>
+<tr><td valign="top" style="padding:0 0 8px 0; color:#6a3d9a; font-weight:bold;">·</td><td style="padding:0 0 8px 0;">{{EXECUTIVE_SUMMARY_3}}</td></tr>
+<tr><td valign="top" style="padding:0 0 8px 0; color:#6a3d9a; font-weight:bold;">·</td><td style="padding:0 0 8px 0;">{{EXECUTIVE_SUMMARY_4}}</td></tr>
+<tr><td valign="top" style="padding:0; color:#6a3d9a; font-weight:bold;">·</td><td style="padding:0;">{{EXECUTIVE_SUMMARY_5}}</td></tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 2. G7 및 EU ===== -->
+<tr><td style="padding:32px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px;">2. G7 주요국 및 EU 연구윤리·연구진실성 이슈</div>
+</td></tr>
+
+<!-- ▼▼ 2.1 미국 ▼▼ -->
+<tr><td style="padding:24px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.1 미국</div>
+</td></tr>
+
+<!-- [이슈 카드] 이슈 수만큼 이 <tr> 전체를 복제하고 번호(_1_ → _2_)를 올릴 것 / 이슈 없으면 <tr> 삭제 -->
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{US_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; font-weight:normal; color:#555555; margin-top:4px;">원문: {{US_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0 10px 0; line-height:1.7;">
+<b>국가/기관:</b> {{US_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{US_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{US_ISSUE_1_CATEGORY}}
+</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{US_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{US_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{US_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{US_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{US_ISSUE_2_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{US_ISSUE_2_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{US_ISSUE_2_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{US_ISSUE_2_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{US_ISSUE_2_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{US_ISSUE_2_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{US_ISSUE_2_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{US_ISSUE_2_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{US_ISSUE_2_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{US_ISSUE_3_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{US_ISSUE_3_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{US_ISSUE_3_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{US_ISSUE_3_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{US_ISSUE_3_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{US_ISSUE_3_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{US_ISSUE_3_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{US_ISSUE_3_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{US_ISSUE_3_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<!-- [기타 동향 / 이슈 없음] 블록 : 불필요하면 <tr> 삭제 -->
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{US_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.2 영국 ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.2 영국</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{UK_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{UK_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{UK_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{UK_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{UK_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{UK_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{UK_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{UK_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{UK_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{UK_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.3 프랑스 ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.3 프랑스</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{FR_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{FR_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{FR_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{FR_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{FR_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{FR_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{FR_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{FR_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{FR_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{FR_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.4 독일 ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.4 독일</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{DE_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{DE_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{DE_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{DE_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{DE_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{DE_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{DE_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{DE_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{DE_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{DE_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.5 이탈리아 ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.5 이탈리아</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{IT_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{IT_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{IT_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{IT_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{IT_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{IT_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{IT_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{IT_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{IT_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{IT_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.6 캐나다 ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.6 캐나다</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{CA_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{CA_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{CA_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{CA_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{CA_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{CA_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{CA_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{CA_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{CA_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{CA_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.7 일본 ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.7 일본</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{JP_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{JP_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{JP_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{JP_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{JP_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{JP_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{JP_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{JP_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{JP_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{JP_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ▼▼ 2.8 EU ▼▼ -->
+<tr><td style="padding:10px 28px 0 28px;">
+<div style="font-size:17px; color:#333333; font-weight:bold; border-left:4px solid #8e63c7; padding-left:10px; margin-bottom:12px;">2.8 유럽연합 (EU)</div>
+</td></tr>
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{EU_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{EU_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{EU_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{EU_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{EU_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{EU_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{EU_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{EU_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{EU_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{EU_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 3. 대한민국 ===== -->
+<tr><td style="padding:22px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px; margin-bottom:14px;">3. 대한민국 연구윤리·연구진실성 이슈</div>
+</td></tr>
+
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd; border-left:4px solid #c0392b;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{KR_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{KR_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{KR_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{KR_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{KR_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{KR_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{KR_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{KR_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{KR_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd; border-left:4px solid #c0392b;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{KR_ISSUE_2_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{KR_ISSUE_2_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{KR_ISSUE_2_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{KR_ISSUE_2_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{KR_ISSUE_2_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{KR_ISSUE_2_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{KR_ISSUE_2_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{KR_ISSUE_2_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{KR_ISSUE_2_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd; border-left:4px solid #c0392b;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{KR_ISSUE_3_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{KR_ISSUE_3_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>국가/기관:</b> {{KR_ISSUE_3_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{KR_ISSUE_3_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{KR_ISSUE_3_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{KR_ISSUE_3_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{KR_ISSUE_3_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{KR_ISSUE_3_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{KR_ISSUE_3_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{KR_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 4. 국제기관 ===== -->
+<tr><td style="padding:22px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px; margin-bottom:14px;">4. 국제기관 및 글로벌 이니셔티브 주요 동향</div>
+</td></tr>
+
+<tr><td style="padding:0 28px 14px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #dddddd;">
+<tr><td style="padding:16px 18px;">
+<div style="font-size:16px; font-weight:bold; color:#6a3d9a; line-height:1.45;">{{INTL_ISSUE_1_TITLE_KR}}</div>
+<div style="font-size:13px; color:#555555; margin-top:4px;">원문: {{INTL_ISSUE_1_ORIGINAL_TITLE}}</div>
+<div style="font-size:13px; color:#555555; margin:10px 0; line-height:1.7;"><b>기관:</b> {{INTL_ISSUE_1_ORGANIZATION}} &nbsp;|&nbsp; <b>발표일:</b> {{INTL_ISSUE_1_DATE}} &nbsp;|&nbsp; <b>이슈 유형:</b> {{INTL_ISSUE_1_CATEGORY}}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;">
+<tr><td style="background-color:#f7f2fb; border:1px solid #d6c5ea; padding:9px 12px; font-size:13px; color:#333333;"><b style="color:#6a3d9a;">진행 상태:</b> {{INTL_ISSUE_1_STATUS}}</td></tr>
+</table>
+<div style="font-size:14px; color:#333333; margin-bottom:10px; line-height:1.75;">{{INTL_ISSUE_1_CONTENT}}</div>
+<div style="font-size:13px; word-break:break-all;">🔗 <a href="{{INTL_ISSUE_1_SOURCE_URL}}" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">원문 보기</a> {{INTL_ISSUE_1_SECONDARY_SOURCE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td style="padding:0 28px 18px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:13px 16px; color:#666666; font-size:13.5px; line-height:1.7;">{{INTL_OTHER_TRENDS_OR_NO_ISSUE}}</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 5. 종합 분석 ===== -->
+<tr><td style="padding:22px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px; margin-bottom:14px;">5. 종합 분석 및 시사점</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f2f7f2; border-left:5px solid #4f8a5b;">
+<tr><td style="padding:16px 20px; font-size:13.5px; line-height:1.8; color:#333333;">
+<div style="margin-bottom:10px;"><b>① 월간 주요 트렌드:</b> {{MONTHLY_TREND_ANALYSIS}}</div>
+<div style="margin-bottom:10px;"><b>② 국가 간 비교:</b> {{COUNTRY_COMPARISON_ANALYSIS}}</div>
+<div style="margin-bottom:10px;"><b>③ 한국에 대한 정책적 함의:</b> {{POLICY_IMPLICATIONS_FOR_KOREA}}</div>
+<div style="margin-bottom:10px;"><b>④ 연구기관·대학에 대한 시사점:</b> {{IMPLICATIONS_FOR_RESEARCH_INSTITUTIONS}}</div>
+<div><b>⑤ 향후 모니터링 필요 사항:</b> {{FUTURE_MONITORING_POINTS}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 6. 출처 및 작성 기준 ===== -->
+<tr><td style="padding:22px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px; margin-bottom:14px;">6. 출처 및 작성 기준</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fff3f3; border-left:5px solid #c0392b;">
+<tr><td style="padding:16px 20px; font-size:13px; line-height:1.8; color:#333333;">
+<div style="margin-bottom:8px;">본 리포트는 각 이슈별로 검증 가능한 원문 출처 링크가 확인된 자료만을 포함합니다. 정부·공공기관 발표, 연구지원기관 자료, 대학·연구기관 공지, 출판사·학회 공식 발표, Retraction Watch 등 신뢰 가능한 출처를 우선 활용했습니다.</div>
+<div style="margin-bottom:8px;">연구부정행위, 논문 철회, 우려표명, 조사·제재 등 민감한 사안은 확인된 사실관계와 공식적으로 공개된 조사 진행 단계에 한정하여 서술했습니다.</div>
+<div style="margin-bottom:8px;">검증 가능한 URL이 없는 정보는 리포트에 포함하지 않았습니다.</div>
+<div>{{SOURCE_COMPLIANCE_NOTE}}</div>
+</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== [선택] 전체 이슈 없음 블록 : 수집 이슈가 전혀 없을 때만 위 2~4장을 삭제하고 이 <tr>만 남길 것 ===== -->
+<tr><td style="padding:22px 28px 0 28px;">
+<div style="font-size:20px; color:#6a3d9a; font-weight:bold; border-bottom:2px solid #ddd2ec; padding-bottom:8px; margin-bottom:14px;">해당 기간 특이사항 없음</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td style="background-color:#f7f7f7; border:1px dashed #bbbbbb; padding:14px 18px; color:#666666; font-size:14px; line-height:1.7;">{{START_DATE}} ~ {{END_DATE}} 기간 중 G7 주요국, EU, 대한민국 및 주요 국제기관의 연구윤리·연구진실성 관련 검증 가능한 주요 신규 이슈는 확인되지 않았습니다.</td></tr>
+</table>
+</td></tr>
+
+<!-- ===== 푸터 ===== -->
+<tr><td style="padding:32px 28px 28px 28px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #dddddd;">
+<tr><td style="padding-top:16px; font-size:12.5px; color:#666666; line-height:1.8;">
+<div style="word-break:break-all;"><b>메일 제목:</b> 글로벌 연구윤리·연구진실성 월간 이슈 리포트 – 수집 기간: {{START_DATE_KR}} ~ {{END_DATE_KR}}</div>
+<div style="word-break:break-all;"><b>수신자:</b> min@kistep.re.kr, mk@kistep.re.kr, hurky3219@kistep.re.kr, confusion@kistep.re.kr, jhsuh@kistep.re.kr</div>
+<div><b>자동 실행 일정:</b> 매월 2일 00:05, 대한민국 표준시(KST)</div>
+<div style="margin-top:12px; color:#888888;">본 메일은 글로벌 연구윤리·연구진실성 월간 이슈 모니터링을 위해 자동 생성된 리포트입니다.</div>
+</td></tr>
+</table>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+
+
+[역할] 당신은 KISTEP 글로벌 연구윤리·연구진실성 모니터링 담당자입니다.
+
+[작업] 아래 HTML 템플릿의 {{...}} 플레이스홀더를 채워 완성된 HTML만 출력하세요.
+
+[수집 조건]
+- 수집 기간: {{START_DATE}} ~ {{END_DATE}} (KST) / 한글 표기: {{START_DATE_KR}} ~ {{END_DATE_KR}}
+- 발행일: {{REPORT_DATE}} / 표기: {{REPORT_MONTH}} (예: 2026년 7월호)
+- 대상: 미국(US), 영국(UK), 프랑스(FR), 독일(DE), 이탈리아(IT), 캐나다(CA),
+  일본(JP), EU, 대한민국(KR), 국제기관(INTL)
+- 주제: 연구윤리·연구진실성 정책/규정 개정, 연구부정행위 조사·판정·제재,
+  논문 철회·우려표명·정정, 출판윤리(COPE·ICMJE 등), 논문공장·이미지 조작,
+  AI 연구윤리 및 생성형 AI 활용 지침, 연구평가·책임 있는 연구수행(RCR)
+
+[작성 규칙]
+1. 검증 가능한 원문 URL이 확인된 자료만 포함한다. URL 미확인 이슈는 제외한다.
+   1차 출처(정부·기관·저널 공식 공지) 우선, 언론·Retraction Watch는 보조로 사용한다.
+2. 수집 기간 내 신규 발표만 본 이슈로 다룬다. 이전 발표 사안은 원발표일을 본문에
+   명시하고 {{XX_ISSUE_n_STATUS}}에 '진행 중 동향'으로 표기한다.
+3. {{XX_ISSUE_n_STATUS}}는 다음 중 선택: 조사 중 / 최종 판정 / 제재 확정 /
+   철회 확정 / 우려표명(EoC) / 정정 / 정책 발표 / 가이드라인 개정 / 진행 중 동향
+4. {{XX_ISSUE_n_CATEGORY}}는 다음 중 선택: 제도·규정 개정, 부정행위 조사·판정,
+   논문 철회·정정, 출판윤리, 논문공장·조직적 부정, AI 연구윤리,
+   연구평가·RCR, 보고서·실태조사
+5. 민감 사안 서술 원칙: 확정되지 않은 사안은 반드시 '의혹' 또는 '조사 중'으로 명시하고,
+   개인 실명은 이미 공식 발표·판정으로 공개된 경우에만 기재한다.
+   미확정 사안에 단정적 표현(부정행위를 저질렀다 등)을 쓰지 않는다.
+6. 이슈가 없는 국가는 해당 이슈 카드 <tr>을 삭제하고,
+   {{XX_OTHER_TRENDS_OR_NO_ISSUE}}에 "이번 달 검증 가능한 신규 이슈 없음" 또는
+   진행 중 동향 요약(1~2문장)을 넣는다. 기타 동향도 없으면 그 <tr>도 삭제한다.
+7. 이슈가 2건 이상이면 이슈 카드 <tr>을 복제하고 번호를 올린다
+   (예: {{DE_ISSUE_2_TITLE_KR}} …). 미국·한국은 최대 3건, 그 외는 최대 2건 권장.
+8. {{XX_ISSUE_n_SECONDARY_SOURCE}}는 보조 링크가 있을 때만
+   ' | 보조: <a href="URL" style="color:#0b63ce; text-decoration:underline; font-weight:bold;">기관·매체명</a>'
+   형태로 채우고, 없으면 빈 문자열로 둔다.
+9. {{XX_ISSUE_n_CONTENT}}는 2~4문장, 사실 중심 서술체로 작성한다. 추측·과장 금지.
+10. {{EXECUTIVE_SUMMARY_1~5}}는 [국가/기관] 태그와 날짜를 포함한 한 문장씩 작성하고,
+    5개가 채워지지 않으면 남는 <tr>은 삭제한다.
+11. {{SOURCE_COMPLIANCE_NOTE}}에는 이번 호의 한계(미확인 국가, 의혹 단계 사안,
+    진행 중 동향으로 처리한 항목 등)를 1~3문장으로 명시한다.
+12. 전 지역에서 이슈가 확인되지 않은 경우에만 2~4장을 삭제하고
+    '해당 기간 특이사항 없음' 블록을 남긴다. 이슈가 있으면 이 블록은 삭제한다.
+13. 스타일 규칙(G-Cloud 호환): <style> 태그·미디어쿼리·클래스 사용 금지,
+    모든 CSS는 인라인, 배경색은 <td>에만 지정,
+    border-radius·<ul>·<ol>·<hr>·<h1~h6> 사용 금지.
+
+[출력] 설명 문구 없이 완성된 HTML 코드만 출력할 것.
+
+[템플릿]
+(위 ①의 HTML 전체를 여기에 붙여넣기)
