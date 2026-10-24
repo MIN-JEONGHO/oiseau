@@ -1,9 +1,11 @@
 """Windows WebView2 host for the local v16 review interface.
 
-The renderer receives eleven explicitly exposed functions, never a Python object:
-the nine v15 functions plus the read-only notice lookups search_notice_clauses
-and get_notice_clause (desktop_bridge_v16.PUBLIC_METHODS).
+The renderer receives twelve explicitly exposed functions, never a Python object:
+the nine v15 functions, the read-only notice lookups search_notice_clauses and
+get_notice_clause, and save_input_template (desktop_bridge_v16.PUBLIC_METHODS).
 The HTTP service serves an immutable snapshot of ui_v16 only; it has no RPC routes.
+Before the window is shown, its size is fitted to the monitor work area in the
+synchronous before_show event, directly on the native form (spec 4.1).
 ``--self-check report.json`` uses the same host with synthetic credentials/model
 and a hidden, isolated WebView2 profile. No personal browser is controlled.
 """
@@ -33,8 +35,15 @@ TITLE = "연구보안 등급분류 시뮬레이터 · v16"
 PUBLIC_METHODS = (
     "get_initial_state", "select_path", "save_key", "delete_key",
     "start_single", "start_batch", "get_job", "cancel_job", "start_export",
-    "search_notice_clauses", "get_notice_clause",
+    "search_notice_clauses", "get_notice_clause", "save_input_template",
 )
+# Spec 4.1: the current window size, kept whenever the work area is not measured.
+DEFAULT_WINDOW_SIZE = (1366, 900)
+DEFAULT_MIN_SIZE = (760, 560)
+WINDOW_MARGIN = 16
+EXCEL_TYPES = ("Excel files (*.xlsx)",)
+SAVE_FILENAME = "v16_검토결과.xlsx"
+TEMPLATE_FILENAME = "v16_일괄검토_입력양식.xlsx"
 CSP = ("default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; "
        "img-src 'self' data:; connect-src 'none'; object-src 'none'; "
        "base-uri 'none'; form-action 'none'; frame-src 'none'; frame-ancestors 'none'")
@@ -202,7 +211,7 @@ class LocalAssetServer:
 
 
 def bind_public_api(window, bridge):
-    """Expose only the flat eleven-function whitelist; no object fallback exists."""
+    """Expose only the flat twelve-function whitelist; no object fallback exists."""
     if window._js_api is not None:
         raise HostError("앱 연결 경계 검증 실패")
     methods = tuple(getattr(bridge, name) for name in PUBLIC_METHODS)
@@ -354,18 +363,186 @@ class NativeBoundary:
             self._fail()
 
 
+def window_geometry(work_area, margin=WINDOW_MARGIN):
+    """Spec 4.1: (start width, start height, min width, min height), logical pixels.
+
+    ``work_area`` is the monitor work area's logical (width, height), or None
+    when it could not be measured; an unusable value keeps the current size.
+    """
+    default = DEFAULT_WINDOW_SIZE + DEFAULT_MIN_SIZE
+    if (type(margin) is not int or margin < 0 or type(work_area) not in (tuple, list)
+            or len(work_area) != 2 or any(type(value) is not int for value in work_area)):
+        return default
+    width = min(DEFAULT_WINDOW_SIZE[0], work_area[0] - 2 * margin)
+    height = min(DEFAULT_WINDOW_SIZE[1], work_area[1] - 2 * margin)
+    if width < 1 or height < 1:
+        return default
+    return width, height, min(DEFAULT_MIN_SIZE[0], width), min(DEFAULT_MIN_SIZE[1], height)
+
+
+def window_plan(work_rect, dpi, margin=WINDOW_MARGIN):
+    """Physical minimum size, size and centred location for one work area.
+
+    ``work_rect`` is rcWork (left, top, right, bottom) in physical pixels and
+    ``dpi`` the window's GetDpiForWindow value (scale = dpi / 96). Logical =
+    physical x 96 // dpi and physical = logical x dpi // 96, both rounded down,
+    so the scale is applied exactly once. None when the measurement is unusable.
+    """
+    if (type(dpi) is not int or dpi <= 0 or type(margin) is not int or margin < 0
+            or type(work_rect) not in (tuple, list) or len(work_rect) != 4
+            or any(type(value) is not int for value in work_rect)):
+        return None
+    left, top, right, bottom = work_rect
+    physical_work = (right - left, bottom - top)
+    logical_work = tuple(value * 96 // dpi for value in physical_work)
+    if min(logical_work) - 2 * margin < 1:
+        return None
+    width, height, min_width, min_height = window_geometry(logical_work, margin)
+
+    def physical(value):
+        return value * dpi // 96
+
+    size = (physical(width), physical(height))
+    return {"dpi": dpi, "scale": dpi / 96, "work_area_physical": (left, top, right, bottom),
+            "work_area_logical": logical_work,
+            "logical": {"size": (width, height), "min_size": (min_width, min_height)},
+            "physical": {"min_size": (physical(min_width), physical(min_height)), "size": size,
+                         "location": (left + (physical_work[0] - size[0]) // 2,
+                                      top + (physical_work[1] - size[1]) // 2)}}
+
+
+def _measure_work_area(form):
+    """Win32 rcWork (physical) of the monitor under the cursor and the window DPI, or None.
+
+    The monitor under the mouse cursor is used, as WinForms CenterScreen did
+    before; when the cursor or its monitor cannot be read, the form's monitor.
+    """
+    from ctypes import wintypes
+
+    class MonitorInfo(ctypes.Structure):
+        _fields_ = (("cbSize", wintypes.DWORD), ("rcMonitor", wintypes.RECT),
+                    ("rcWork", wintypes.RECT), ("dwFlags", wintypes.DWORD))
+
+    # A private user32 instance: pywebview's shared windll prototypes stay untouched.
+    user32 = ctypes.WinDLL("user32")
+    user32.GetCursorPos.argtypes = (ctypes.POINTER(wintypes.POINT),)
+    user32.GetCursorPos.restype = wintypes.BOOL
+    user32.MonitorFromPoint.argtypes = (wintypes.POINT, wintypes.DWORD)
+    user32.MonitorFromPoint.restype = wintypes.HANDLE
+    user32.MonitorFromWindow.argtypes = (wintypes.HWND, wintypes.DWORD)
+    user32.MonitorFromWindow.restype = wintypes.HANDLE
+    user32.GetMonitorInfoW.argtypes = (wintypes.HANDLE, ctypes.POINTER(MonitorInfo))
+    user32.GetMonitorInfoW.restype = wintypes.BOOL
+    user32.GetDpiForWindow.argtypes = (wintypes.HWND,)
+    user32.GetDpiForWindow.restype = wintypes.UINT
+    hwnd = form.Handle.ToInt64()
+
+    def work_rect(monitor):
+        if not monitor:
+            return None
+        info = MonitorInfo()
+        info.cbSize = ctypes.sizeof(MonitorInfo)
+        if not user32.GetMonitorInfoW(monitor, ctypes.byref(info)):
+            return None
+        return info.rcWork
+
+    work = None
+    try:
+        cursor = wintypes.POINT()
+        if user32.GetCursorPos(ctypes.byref(cursor)):
+            work = work_rect(user32.MonitorFromPoint(cursor, 2))  # MONITOR_DEFAULTTONEAREST
+    except Exception:
+        work = None
+    if work is None:
+        work = work_rect(user32.MonitorFromWindow(hwnd, 2))  # MONITOR_DEFAULTTONEAREST
+    if work is None:
+        return None
+    dpi = int(user32.GetDpiForWindow(hwnd))
+    if dpi <= 0:
+        return None
+    return (int(work.left), int(work.top), int(work.right), int(work.bottom)), dpi
+
+
+def _apply_window_plan(form, plan, size=None, point=None, manual=None):
+    """Set the native form: minimum size, then size, then location (physical)."""
+    if size is None:
+        from System.Drawing import Point, Size
+        from System.Windows.Forms import FormStartPosition
+        size, point, manual = Size, Point, FormStartPosition.Manual
+    physical = plan["physical"]
+    # Lower the minimum first; a minimum above the new size would enlarge it again.
+    form.MinimumSize = size(*physical["min_size"])
+    form.Size = size(*physical["size"])
+    form.StartPosition = manual
+    form.Location = point(*physical["location"])
+
+
+def _form_geometry(form):
+    try:
+        return {"min_size": (int(form.MinimumSize.Width), int(form.MinimumSize.Height)),
+                "size": (int(form.Width), int(form.Height)),
+                "location": (int(form.Location.X), int(form.Location.Y))}
+    except Exception:
+        return None
+
+
+class WindowFit:
+    """Spec 4.1: fit the start and minimum size to the monitor work area.
+
+    Runs in pywebview's synchronous before_show event on the GUI thread, after
+    pywebview enabled DPI awareness and created the native form, and sets that
+    form directly. pywebview's resize/move wait for 'shown' and would stall this
+    event, and its minimum size is fixed once at creation, so neither is used.
+    Any failure keeps the size pywebview created (1366x900, minimum 760x560).
+    """
+    def __init__(self, window, margin=WINDOW_MARGIN):
+        self.window = window
+        self.margin = margin
+        self.outcome = {"applied": False, "reason": "not_run"}
+
+    def before_show(self):
+        started = time.monotonic()
+        outcome = {"applied": False, "reason": None}
+        try:
+            form = self.window.native
+            if getattr(form, "IsDisposed", False):
+                outcome["reason"] = "window_closed"
+            else:
+                try:
+                    measured = _measure_work_area(form)
+                except Exception:
+                    measured = None
+                plan = window_plan(*measured, self.margin) if measured else None
+                if plan is None:
+                    outcome["reason"] = "work_area_unavailable"
+                else:
+                    outcome.update(plan)
+                    _apply_window_plan(form, plan)
+                    outcome["applied"] = True
+                    outcome["readback"] = _form_geometry(form)
+        except Exception:
+            outcome["applied"] = False
+            outcome["reason"] = "native_fit_failed"
+        outcome["elapsed_ms"] = round((time.monotonic() - started) * 1000, 1)
+        self.outcome = outcome
+
+
 def _select_native_path(window, purpose):
     import webview
     if purpose == "input_excel":
         result = window.create_file_dialog(webview.FileDialog.OPEN, allow_multiple=False,
-                                          file_types=("Excel files (*.xlsx)",))
+                                          file_types=EXCEL_TYPES)
     elif purpose == "output_excel":
-        result = window.create_file_dialog(webview.FileDialog.SAVE, save_filename="v16_검토결과.xlsx",
-                                          file_types=("Excel files (*.xlsx)",))
+        result = window.create_file_dialog(webview.FileDialog.SAVE, save_filename=SAVE_FILENAME,
+                                          file_types=EXCEL_TYPES)
+    elif purpose == "input_template":
+        result = window.create_file_dialog(webview.FileDialog.SAVE, save_filename=TEMPLATE_FILENAME,
+                                          file_types=EXCEL_TYPES)
     elif purpose == "output_directory":
         result = window.create_file_dialog(webview.FileDialog.FOLDER)
     else:
-        return None
+        # Spec 4.5: an unknown purpose is an error (bridge: validation), not a cancel.
+        raise ValueError("Unknown path purpose")
     return result[0] if isinstance(result, (tuple, list)) and result else result or None
 
 
@@ -489,19 +666,34 @@ window.__v16check = null;
      code:await refused('validation','search_notice_clauses',...args)});
  out.lookupInvalid.push({name:'get_notice_clause',args:'[5]',code:await refused('validation','get_notice_clause',5)});
  out.lookupNotFound=await refused('not_found','get_notice_clause','synthetic:missing-clause');
+ // Spec 4.5: the input template save, protected-path refusals, cancel and wrong tokens.
+ out.template=await call('select_path','input_template');
+ out.templateSaved=await call('save_input_template',{output_token:out.template.path_token});
+ out.templateProtected=[];
+ for(let i=0;i<3;i++){const picked=await call('select_path','input_template');
+   const r=await raw('save_input_template',{output_token:picked.path_token});
+   assert(r && r.ok===false && r.data===null && r.error && Object.keys(r.error).sort().join(',')==='code,message','protected template envelope');
+   out.templateProtected.push({display_name:picked.display_name,error:r.error});}
+ out.templateCancelled=await call('select_path','input_template');
+ out.templateWrongPurpose=await refused('validation','save_input_template',{output_token:out.directory.path_token});
+ out.templateBadRequest=await refused('validation','save_input_template',{output_token:out.template.path_token,extra:1});
+ // select_path is refused while a job runs, so this token is taken before the held job.
+ out.busyTemplate=await call('select_path','input_template');
  // Hold one synthetic model call open (Python releases it) so the job is surely running.
  const held=await call('start_single',{task:{...task,'과제명':'합성 진행 중 조회',
    '연구내용':'synthetic-busy-lookup-gate 실제 연구정보가 아닌 합성 진행 중 조회'},options:opts,output_dir_token:null});
  const before=await call('get_job',held.job_id,0);
  assert(!['done','failed','cancelled'].includes(before.state),'job running before lookups');
  const second=await refused('busy','start_single',{task,options:opts,output_dir_token:null});
+ const busyTemplate=await refused('busy','save_input_template',{output_token:out.busyTemplate.path_token});
+ const busyPicker=await refused('busy','select_path','input_template');
  const busyPage=await call('search_notice_clauses',{query:'',family:null,offset:0,limit:50});
  const busyClause=await call('get_notice_clause',page.items[0].clause_id);
  const after=await call('get_job',held.job_id,0);
  assert(!['done','failed','cancelled'].includes(after.state),'job running after lookups');
  assert(JSON.stringify(busyPage)===JSON.stringify(page) && JSON.stringify(busyClause)===JSON.stringify(clause),'lookups unchanged while busy');
  out.busy={job_id:held.job_id,state_before:before.state,state_after:after.state,second_start:second,
-   search_ok:true,clause_ok:true};
+   template_save:busyTemplate,template_picker:busyPicker,search_ok:true,clause_ok:true};
  window.__v16busyHeld=held.job_id;
  while(!window.__v16busyReleased)await new Promise(r=>setTimeout(r,25));
  out.held=await poll(held.job_id);
@@ -525,7 +717,8 @@ window.__v16check = null;
    ['__str__',[]],['__class__.__base__.__subclasses__',[]],['_pywebviewAlert',['synthetic forbidden alert']],
    ['console',['synthetic forbidden console']],['pywebviewStateUpdate',{key:'v16Forbidden',value:'synthetic'}],
    ['pywebviewMoveWindow',[42,42]],['_clause_details.get',['synthetic:missing-clause']],
-   ['get_notice_clause.__wrapped__',['synthetic:missing-clause']]]){
+   ['get_notice_clause.__wrapped__',['synthetic:missing-clause']],['_protected',['C:/synthetic.xlsx']],
+   ['_review_paths.clear',[]],['save_input_template.__wrapped__',[{output_token:out.template.path_token}]]]){
    window.pywebview._returnValuesCallbacks[name]={};
    window.pywebview._returnValuesCallbacks[name]['v16-private']=()=>{out.privateReplies++;};
    window.chrome.webview.postMessage([name,JSON.stringify(args),'v16-private']);
@@ -547,17 +740,35 @@ window.__v16check = null;
  assert(document.querySelector('[data-view="notices"]').textContent.includes('참고 고시'),'notices menu');
  for(const stale of ['자동 선택','좋은 판단은','연구보안 검토실','研','WORKSPACE','RESEARCH SECURITY'])
    assert(!document.body.textContent.includes(stale),'stale wording '+stale);
+ // Spec 4.6/4.7: agent composition choices, the always-visible footnote and batch guidance.
+ for(const stale of ['전문가 3개 에이전트','의 독립 의견과 종합 검토'])
+   assert(!document.body.textContent.includes(stale),'stale wording '+stale);
+ const reviewer=el('reviewer-count'),footnote=el('reviewer-footnote');
+ assert([...reviewer.options].map(option=>option.value).join(',')==='1,3' && reviewer.value==='3','agent composition values');
+ assert(reviewer.options[0].textContent==='AI 기술분야 전문가 1개' && reviewer.options[1].textContent==='AI 분야별* 전문가 3개','agent composition wording');
+ assert(footnote.textContent==='* AI 기술분야 · 연구보안 · 기술사업화 전문가' && !footnote.hidden,'agent footnote');
+ assert(document.body.textContent.includes('입력 엑셀은 기본 5개 항목 필수, 추가 4개 항목 선택. 과제명이 빈 행은 제외'),'batch guidance');
  el('provider').value='claude';el('provider').dispatchEvent(new Event('change'));
  el('api-key').value='synthetic-ui-only-credential';el('save-key').click();
  await until(()=>el('key-status').textContent.includes('API 키 저장됨'),'UI key save');
  assert(el('api-key').value==='','UI key input cleared');
  el('task-name').value='합성 UI 클릭 단건';el('task-content').value='실제 연구정보가 아닌 합성 UI 검사';
- el('reviewer-count').value='1';el('start-single').click();
+ reviewer.value='1';reviewer.dispatchEvent(new Event('input'));reviewer.dispatchEvent(new Event('change'));
+ assert(footnote.textContent==='* AI 기술분야 · 연구보안 · 기술사업화 전문가' && !footnote.hidden,'agent footnote after choice');
+ el('start-single').click();
  await until(()=>el('result-heading').textContent==='합성 UI 클릭 단건' && !el('start-single').disabled,'UI single result');
  out.dom={ready:true,keyInputCleared:true,singleStatus:el('result-status').textContent};
  el('start-export').click();
  await until(()=>!el('start-export').disabled && el('job-events').textContent.includes('단건 의견서 저장 완료'),'UI export');
  out.dom.exportRendered=el('result-content').textContent.includes('완료');
+ // Spec 4.4: the shipped template button saves through the bridge and shows only the name.
+ document.querySelector('.nav [data-view="batch"]').click();
+ await until(()=>el('batch-options-summary').textContent.includes('AI 기술분야 전문가 1개'),'batch summary composition');
+ out.dom.batchSummaryComposition=!el('batch-options-summary').textContent.includes('분야별*');
+ assert(el('batch-template').textContent==='입력 양식 내려받기' && el('batch-template-name').textContent==='저장하지 않음','template button initial');
+ el('batch-template').click();await until(()=>el('batch-template-name').textContent==='synthetic-ui-template.xlsx','UI template save');
+ assert(el('batch-input-name').textContent==='선택하지 않음','template not selected as input');
+ out.dom.templateName=el('batch-template-name').textContent;
  el('batch-input').click();await until(()=>el('batch-input-name').textContent.includes('synthetic-input'),'UI input picker');
  el('batch-output').click();await until(()=>el('batch-output-name').textContent.includes('synthetic-output'),'UI output picker');
  el('batch-resume').checked=false;el('batch-forms').checked=false;el('start-batch').click();
@@ -585,20 +796,21 @@ window.__v16check = null;
 FORBIDDEN_NATIVE_NAMES = (
     "_keys.resolve", "_keys._backend.get", "_paths.clear", "_jobs.clear", "_get_catalogue", "_path",
     "_path_selector", "_catalogue_loader", "_clause_details.get", "_clause_rows",
+    "_protected", "_review_paths.clear",
     "__str__", "__class__.__base__.__subclasses__", "get_notice_clause.__wrapped__",
-    "search_notice_clauses.__globals__", "_pywebviewAlert", "console", "pywebviewStateUpdate",
-    "pywebviewMoveWindow",
+    "search_notice_clauses.__globals__", "save_input_template.__wrapped__",
+    "_pywebviewAlert", "console", "pywebviewStateUpdate", "pywebviewMoveWindow",
 )
 
 
 def _allowlist_cases(server):
-    """The native gate admits exactly the eleven public names (spec 4.6, 4.10)."""
+    """The native gate admits exactly the twelve public names (spec 4.5)."""
     def admitted(name):
         return _allow_native_message(server, server.url, json.dumps([name, "[]", "self-check"]))
     accepted = [name for name in PUBLIC_METHODS if admitted(name)]
     rejected = [name for name in FORBIDDEN_NATIVE_NAMES if not admitted(name)]
-    _check(len(PUBLIC_METHODS) == len(set(PUBLIC_METHODS)) == 11 and accepted == list(PUBLIC_METHODS),
-           "Native allowlist is not exactly the eleven public functions")
+    _check(len(PUBLIC_METHODS) == len(set(PUBLIC_METHODS)) == 12 and accepted == list(PUBLIC_METHODS),
+           "Native allowlist is not exactly the twelve public functions")
     _check(rejected == list(FORBIDDEN_NATIVE_NAMES), "Native allowlist admitted a private or builtin name")
     return {"count": len(accepted), "accepted": accepted, "rejected": rejected}
 
@@ -745,6 +957,7 @@ def run_app(*, self_check_path=None):
         if checking:
             report["sdk_imports"] = _selfcheck_sdks()
             from openpyxl import Workbook
+            from desktop_bridge_v16 import _EVENTS as BRIDGE_EVENTS
             backend = _FakeBackend()
             key_manager = KeyManager(backend=backend, environ={})
             catalogue = load_catalogue()
@@ -765,8 +978,20 @@ def run_app(*, self_check_path=None):
             book.active.append(["합성 자체검사 배치 B", "실제 연구정보가 아닌 합성 B"])
             book.save(input_path)
             book.close()
+            # Spec 4.5: input template targets. The guard is a result workbook by its
+            # audit sibling only; input/output paths are protected as review paths.
+            template_path = temporary / "synthetic-template.xlsx"
+            busy_template_path = temporary / "synthetic-busy-template.xlsx"
+            ui_template_path = temporary / "synthetic-ui-template.xlsx"
+            guard_path = temporary / "synthetic-guard.xlsx"
+            guard_path.write_bytes(b"synthetic result workbook guard")
+            Path(str(guard_path) + ".audit.jsonl").write_text("{}\n", encoding="utf-8")
+            protected_hashes = {path: hashlib.sha256(path.read_bytes()).hexdigest()
+                                for path in (input_path, guard_path)}
             selected = {"output_directory": [None, document_path, document_path],
-                        "input_excel": [input_path, input_path], "output_excel": [output_path, output_path]}
+                        "input_excel": [input_path, input_path], "output_excel": [output_path, output_path],
+                        "input_template": [template_path, input_path, output_path, guard_path, None,
+                                           busy_template_path, ui_template_path]}
 
             def selector(purpose):
                 probes["path_selections"] += 1
@@ -794,19 +1019,28 @@ def run_app(*, self_check_path=None):
                 client_factory=client_factory, path_selector=selector, regenerator=regenerator)
         else:
             bridge = DesktopBridge()
+        # Created at the current size; WindowFit lowers it to the work area before showing.
         window = webview.create_window(TITLE, url=server.url, js_api=None,
-            hidden=checking, focus=not checking, width=1366, height=900, min_size=(760, 560),
-            text_select=True, zoomable=False, background_color="#F4F5F3")
+            hidden=checking, focus=not checking, width=DEFAULT_WINDOW_SIZE[0], height=DEFAULT_WINDOW_SIZE[1],
+            min_size=DEFAULT_MIN_SIZE, text_select=True, zoomable=False, background_color="#F4F5F3")
         bind_public_api(window, bridge)
         if not checking:
             bridge._path_selector = lambda purpose: _select_native_path(window, purpose)
         boundary = NativeBoundary(window, server)
         window.events.before_show += boundary.before_show
+        fit = WindowFit(window)
+        window.events.before_show += fit.before_show
 
         def cases():
             try:
                 _check(window.events.loaded.wait(25), "Local UI/bridge did not load")
                 _check(boundary.failure is None and boundary.version, "Native WebView2 guard startup failed")
+                # Spec 4.1 on this machine's monitor, hidden window: applied natively, no stall.
+                after_show = _form_geometry(window.native)
+                report["window_fit"] = dict(fit.outcome, after_show=after_show)
+                _check(fit.outcome.get("applied") is True and fit.outcome["elapsed_ms"] < 5000
+                       and fit.outcome.get("readback") == fit.outcome["physical"]
+                       and after_show == fit.outcome["physical"], "Window work-area fit was not applied")
                 _check(window._js_api is None and set(window._functions) == set(PUBLIC_METHODS), "Unsafe exposed API")
                 window.evaluate_js(_selfcheck_script())
                 deadline = time.monotonic() + 130
@@ -850,12 +1084,52 @@ def run_app(*, self_check_path=None):
                 report["javascript"] = result
                 _check(isinstance(result, dict) and "failure" not in result, "Actual async bridge flow failed")
                 _check(result["api"] == sorted(PUBLIC_METHODS), "Renderer API list differs")
-                _check(set(result["calls"]) == set(PUBLIC_METHODS), "Not all eleven APIs were called")
+                _check(set(result["calls"]) == set(PUBLIC_METHODS), "Not all twelve APIs were called")
                 exposed = sorted(window._functions)
                 report["allowlist"] = {"count": len(PUBLIC_METHODS), "names": list(PUBLIC_METHODS),
-                                       "exposed": exposed, "renderer_api": result["api"]}
-                _check(len(PUBLIC_METHODS) == 11 and exposed == sorted(PUBLIC_METHODS) == result["api"],
-                       "Allowlist is not exactly the eleven public functions")
+                                       "exposed": exposed, "renderer_api": result["api"],
+                                       "called": sorted(set(result["calls"]))}
+                _check(len(PUBLIC_METHODS) == 12 and exposed == sorted(PUBLIC_METHODS) == result["api"],
+                       "Allowlist is not exactly the twelve public functions")
+                # Spec 4.5: input template save, protected paths, cancel, wrong tokens and busy.
+                from openpyxl import load_workbook
+                from io import BytesIO
+                _check(result["templateSaved"] == {"saved": True, "display_name": template_path.name}
+                       and template_path.is_file(), "Input template save failed")
+                template_book = load_workbook(BytesIO(template_path.read_bytes()), read_only=True)
+                try:
+                    template_sheets = list(template_book.sheetnames)
+                    template_header = next(template_book["분류대상"].iter_rows(min_row=1, max_row=1, values_only=True))
+                finally:
+                    template_book.close()
+                template_header = [value for value in template_header if value not in (None, "")]
+                _check(set(template_sheets) == {"작성안내", "분류대상"} and len(template_sheets) == 2
+                       and len(template_header) == 9, "Input template workbook shape")
+                protected_message = BRIDGE_EVENTS["template_protected"]
+                protected = result["templateProtected"]
+                _check([entry["display_name"] for entry in protected] == [input_path.name, output_path.name, guard_path.name]
+                       and all(entry["error"] == {"code": "validation", "message": protected_message}
+                               for entry in protected), "Protected template path was not refused")
+                _check(all(hashlib.sha256(path.read_bytes()).hexdigest() == digest
+                           for path, digest in protected_hashes.items()), "Protected file bytes changed")
+                _check(result["templateCancelled"] == {"cancelled": True, "path_token": None, "display_name": None},
+                       "Template picker cancellation contract")
+                _check(result["templateWrongPurpose"] == "validation" and result["templateBadRequest"] == "validation",
+                       "Template save accepted a wrong token or request")
+                _check(result["busy"]["template_save"] == "busy" and result["busy"]["template_picker"] == "busy"
+                       and not busy_template_path.exists(), "Template save was not refused during a job")
+                _check(ui_template_path.is_file() and result["dom"]["templateName"] == ui_template_path.name
+                       and result["dom"]["batchSummaryComposition"] is True, "Actual UI template flow failed")
+                _check(selected["input_template"] == [], "Template picker selections were not all used")
+                report["input_template"] = {
+                    "saved": result["templateSaved"], "sheets": template_sheets, "header_count": len(template_header),
+                    "protected": [{"display_name": entry["display_name"], "code": entry["error"]["code"],
+                                   "message_is_template_protected": entry["error"]["message"] == protected_message}
+                                  for entry in protected],
+                    "protected_bytes_unchanged": True, "cancelled": result["templateCancelled"]["cancelled"],
+                    "wrong_purpose": result["templateWrongPurpose"], "bad_request": result["templateBadRequest"],
+                    "busy_save": result["busy"]["template_save"], "busy_picker": result["busy"]["template_picker"],
+                    "busy_file_absent": True, "ui_display_name": result["dom"]["templateName"]}
                 lookups = result["lookups"]
                 plain = {clause["clause_id"]: clause for clause in catalogue.to_dict()["clauses"]}
                 _check(lookups["search"]["keys"] == ["items", "limit", "offset", "total"]

@@ -106,7 +106,12 @@ def _atomic_write(path, writer):
 
 
 def make_template(path):
-    """Create the existing input flow using only clearly synthetic example rows."""
+    """Create the existing input flow using only clearly synthetic example rows.
+
+    The guide text and header marks are the one v16 exception to 'Excel wording
+    stays v15': the five base columns are marked required and the four extra
+    columns optional. Marks are display only; reading still requires 과제명 only.
+    """
     target = Path(path).resolve()
     book = Workbook()
     try:
@@ -114,14 +119,17 @@ def make_template(path):
         guide.title = "작성안내"
         for row in [
             ["연구보안 등급분류 입력 양식"],
-            ["분류대상 시트에 과제요약을 입력하세요. 과제명 열은 필수이며 나머지는 선택 입력입니다."],
-            ["빈 과제명과 (예시)로 시작하는 과제명은 제외하고, 중복 과제명은 첫 행만 처리합니다."],
-            ["추가 검토정보에는 실제 제공한 사실만, 부처 세부기준에는 적용할 기준이 있을 때만 입력하세요."],
-            ["AI 에이전트 검토의견은 참고 의견이며 실제 심의위원회 심의 및 최종 등급 확정을 대신하지 않습니다."],
+            ["분류대상 시트에 과제별 한 행씩 입력"],
+            ["기본 5개 항목(세부사업명·과제명·연구목표·연구내용·기대효과) 필수 입력, "
+             "추가 4개 항목(추가 검토정보·부처 세부기준·현재 기술사양·개발목표 사양) 선택 입력"],
+            ["과제명이 빈 행과 '(예시)'로 시작하는 행은 검토에서 제외, 같은 과제명은 첫 행만 처리"],
+            ["추가 검토정보는 실제 확인한 사실만, 부처 세부기준은 적용할 기준이 있을 때만 입력"],
+            ["현재 기술사양과 개발목표 사양은 구분해 입력"],
+            ["AI 에이전트 검토의견은 참고 의견이며 실제 심의위원회 심의와 최종 등급 확정을 대신하지 않음"],
         ]:
             guide.append(row)
         sheet = book.create_sheet("분류대상")
-        sheet.append([name + ("(필수)" if name == "과제명" else "(선택)")
+        sheet.append([name + ("(필수)" if name in TASK_COLUMNS else "(선택)")
                       for name in TASK_COLUMNS + OPTIONAL_TASK_COLUMNS])
         sheet.append(["합성 세부사업 A", "(예시) 합성 과제 A", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과", "", "", "", ""])
         sheet.append(["합성 세부사업 B", "(예시) 합성 과제 B", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과", "합성 검토정보", "합성 부처 기준", "속도 5 GHz", "속도 20 GHz"])

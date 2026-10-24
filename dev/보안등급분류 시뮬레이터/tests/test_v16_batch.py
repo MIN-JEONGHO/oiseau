@@ -22,6 +22,28 @@ from test_v16_notice_review import (STYLE_ENDINGS, catalogue, catalogue_mapping,
                                     repack, substitute)
 
 
+# Spec 4.4 '양식 내용': the only exception to 'Excel wording stays v15'.
+TEMPLATE_HEADER = ["세부사업명(필수)", "과제명(필수)", "연구목표(필수)", "연구내용(필수)", "기대효과(필수)",
+                   "추가 검토정보(선택)", "부처 세부기준(선택)", "현재 기술사양(선택)", "개발목표 사양(선택)"]
+TEMPLATE_EXAMPLES = [
+    ["합성 세부사업 A", "(예시) 합성 과제 A", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과",
+     None, None, None, None],
+    ["합성 세부사업 B", "(예시) 합성 과제 B", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과",
+     "합성 검토정보", "합성 부처 기준", "속도 5 GHz", "속도 20 GHz"],
+]
+TEMPLATE_GUIDE = [
+    "연구보안 등급분류 입력 양식",
+    "분류대상 시트에 과제별 한 행씩 입력",
+    "기본 5개 항목(세부사업명·과제명·연구목표·연구내용·기대효과) 필수 입력, "
+    "추가 4개 항목(추가 검토정보·부처 세부기준·현재 기술사양·개발목표 사양) 선택 입력",
+    "과제명이 빈 행과 '(예시)'로 시작하는 행은 검토에서 제외, 같은 과제명은 첫 행만 처리",
+    "추가 검토정보는 실제 확인한 사실만, 부처 세부기준은 적용할 기준이 있을 때만 입력",
+    "현재 기술사양과 개발목표 사양은 구분해 입력",
+    "AI 에이전트 검토의견은 참고 의견이며 실제 심의위원회 심의와 최종 등급 확정을 대신하지 않음",
+]
+TEMPLATE_STYLE_PATTERN = re.compile("(?:" + "|".join(STYLE_ENDINGS) + r")[)\]」』’”'\"]*(?=$|[\s.!?,…:;])")
+
+
 def documents(result, output_dir):
     files = [dict(kind="reviewer", reviewer_id=r["reviewer_id"],
                   path=str(Path(output_dir) / (r["reviewer_id"] + ".hwpx")), status="완료", error="")
@@ -110,6 +132,84 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(book.sheetnames, ["작성안내", "분류대상"])
         self.assertEqual(book["분류대상"].max_column, 9)
         self.assertTrue(book["분류대상"]["B2"].value.startswith("(예시)"))
+
+    def template_cells(self):
+        path = self.root / "template.xlsx"
+        batch.make_template(path)
+        book = load_workbook(BytesIO(path.read_bytes()))
+        try:
+            return path, {sheet.title: [list(row) for row in sheet.values] for sheet in book}
+        finally:
+            book.close()
+
+    def test_template_header_marks_base_five_required_and_extra_four_optional(self):
+        _, cells = self.template_cells()
+        self.assertEqual(cells["분류대상"][0], TEMPLATE_HEADER)
+        self.assertEqual([name + "(필수)" for name in d.TASK_COLUMNS]
+                         + [name + "(선택)" for name in d.OPTIONAL_TASK_COLUMNS], TEMPLATE_HEADER)
+
+    def test_template_example_rows_keep_current_cell_values(self):
+        _, cells = self.template_cells()
+        self.assertEqual(cells["분류대상"][1:], TEMPLATE_EXAMPLES)
+
+    def test_template_guide_is_noun_style_and_carries_the_spec_facts(self):
+        _, cells = self.template_cells()
+        guide = cells["작성안내"]
+        self.assertTrue(all(len(row) == 1 and isinstance(row[0], str) and row[0].strip() for row in guide), guide)
+        self.assertEqual([row[0] for row in guide], TEMPLATE_GUIDE)
+        for text in TEMPLATE_GUIDE:
+            with self.subTest(text=text):
+                self.assertEqual(TEMPLATE_STYLE_PATTERN.findall(text), [])
+                for sentence in re.split(r"[.,·\n]\s*", text):
+                    self.assertFalse(sentence.rstrip().endswith(STYLE_ENDINGS), sentence)
+        joined = "\n".join(TEMPLATE_GUIDE)
+        for fact_text in ("과제별 한 행", "기본 5개 항목", "필수 입력", "추가 4개 항목", "선택 입력",
+                          "과제명이 빈 행", "'(예시)'로 시작하는 행", "첫 행만 처리", "실제 확인한 사실만",
+                          "적용할 기준이 있을 때만", "구분해 입력", "참고 의견", "대신하지 않음"):
+            self.assertIn(fact_text, joined)
+
+    def test_template_style_check_rejects_sentence_endings(self):
+        for text in ("과제명을 입력하세요", "제외합니다.", "입력해 주세요", "처리해요", "있어요", "좋아요",
+                     "의견이에요", "예시예요", "할까요?"):
+            with self.subTest(text=text):
+                self.assertTrue(TEMPLATE_STYLE_PATTERN.findall(text))
+
+    def test_saved_template_reads_as_two_examples_excluded_and_zero_tasks(self):
+        path, _ = self.template_cells()
+        tasks, excluded = batch._read_tasks(path)
+        self.assertEqual((tasks, excluded), ([], dict(blank=0, example=2, duplicate=0)))
+        report = batch.run_excel(path, self.output, {}, self.factory, catalogue=self.cat, make_forms=False)
+        self.assertEqual(report["input_counts"], dict(blank=0, example=2, duplicate=0))
+        self.assertEqual((report["task_count"], report["results"]), (0, []))
+        self.assertIn("입력 제외: 빈 과제명 0건, 예시 2건, 중복 과제명 0건. 중복은 첫 행 유지", report["warnings"])
+        self.assertFalse(self.clients)
+
+    def test_template_formatting_matches_v15(self):
+        import batch_v15
+        books = {}
+        for module in (batch_v15, batch):
+            path = self.root / (module.__name__ + "-format.xlsx")
+            module.make_template(path)
+            books[module.__name__] = load_workbook(BytesIO(path.read_bytes()))
+            self.addCleanup(books[module.__name__].close)
+
+        def styles(sheet):
+            def style(cell):
+                return (cell.font.name, cell.font.size, cell.font.bold, cell.font.color and cell.font.color.rgb,
+                        cell.fill.fill_type, cell.fill.fgColor.rgb, cell.alignment.vertical, cell.alignment.wrap_text,
+                        cell.data_type)
+            rows = list(sheet.iter_rows())
+            return ({style(cell) for cell in rows[0]}, {style(cell) for row in rows[1:] for cell in row if cell.value is not None})
+
+        old, new = books["batch_v15"], books["batch_v16"]
+        self.assertEqual(old.sheetnames, new.sheetnames)
+        for name in old.sheetnames:
+            with self.subTest(sheet=name):
+                self.assertEqual(old[name].freeze_panes, new[name].freeze_panes)
+                self.assertEqual(old[name].auto_filter.ref, new[name].auto_filter.ref)
+                self.assertEqual({k: v.width for k, v in old[name].column_dimensions.items()},
+                                 {k: v.width for k, v in new[name].column_dimensions.items()})
+                self.assertEqual(styles(old[name]), styles(new[name]))
 
     def test_same_input_rejected_and_workers_boundaries(self):
         with self.assertRaises(batch.BatchError):
@@ -920,7 +1020,15 @@ class ScreenMessageV16Tests(unittest.TestCase):
                 return [[list(row) for row in sheet.values] for sheet in book]
             finally:
                 book.close()
-        self.assertEqual(cells("batch_v15"), cells("batch_v16"))
+        # Spec 4.4 exception: only the guide text and the header marks differ from v15.
+        old, new = cells("batch_v15"), cells("batch_v16")
+        self.assertEqual(len(old), len(new))
+        self.assertEqual([row[0] for row in new[0]], TEMPLATE_GUIDE)
+        self.assertEqual(new[1][0], TEMPLATE_HEADER)
+        strip = lambda header: [value.replace("(필수)", "").replace("(선택)", "") for value in header]
+        self.assertEqual(strip(old[1][0]), strip(new[1][0]))
+        self.assertEqual(old[1][1:], new[1][1:])
+        self.assertEqual(new[1][1:], TEMPLATE_EXAMPLES)
         source = self.root / "input.xlsx"
         self.workbook(source, [("합성", "속도 20 GHz")])
 

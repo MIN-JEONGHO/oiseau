@@ -238,7 +238,9 @@ print(json.dumps(host._selfcheck_sdks()))
     def test_native_message_allowlist_rejects_dunder_builtins_and_malformed_packets(self):
         server = host.LocalAssetServer()
         self.addCleanup(server.close)
-        self.assertEqual(len(host.PUBLIC_METHODS), 11)
+        self.assertEqual(len(host.PUBLIC_METHODS), 12)
+        self.assertEqual(len(set(host.PUBLIC_METHODS)), 12)
+        self.assertEqual(host.PUBLIC_METHODS[-1], "save_input_template")
         self.assertEqual(tuple(host.PUBLIC_METHODS), tuple(desktop_bridge_v16.PUBLIC_METHODS))
         for name in host.PUBLIC_METHODS:
             packet = json.dumps([name, "[]", "1234567890"])
@@ -260,6 +262,19 @@ print(json.dumps(host._selfcheck_sdks()))
                        json.dumps(["get_initial_state", "[]", "x" * 129])):
             with self.subTest(packet=packet):
                 self.assertFalse(host._allow_native_message(server, server.url, packet))
+
+    def test_host_bridge_and_screen_mock_name_the_same_twelve_functions(self):
+        """Follow-up spec 4.5/6: host allowlist, bridge PUBLIC_METHODS and the UI mock agree."""
+        from tests.test_v16_frontend import BRIDGE_FUNCTIONS
+        host_names, bridge_names = tuple(host.PUBLIC_METHODS), tuple(desktop_bridge_v16.PUBLIC_METHODS)
+        self.assertEqual(host_names, bridge_names)
+        self.assertEqual(len(host_names), 12)
+        self.assertEqual(len(BRIDGE_FUNCTIONS), 12)
+        self.assertEqual(set(BRIDGE_FUNCTIONS), set(host_names))
+        self.assertEqual(set(BRIDGE_FUNCTIONS), set(bridge_names))
+        for name in bridge_names:
+            with self.subTest(name=name):
+                self.assertTrue(callable(getattr(DesktopBridge, name, None)))
 
     def test_actual_static_server_serves_only_local_asset_snapshot(self):
         server = host.LocalAssetServer().start()
@@ -538,6 +553,10 @@ def host_screen_strings(module):
     """Title, startup guidance and HostError texts (shown in the startup message box)."""
     names = {name: getattr(module, name) for name in ("TITLE", "RUNTIME_MESSAGE", "INITIALIZATION_MESSAGE")}
     found = dict(names)
+    # Default names shown in the native save dialogs (v16 follow-up adds the template).
+    for name in ("SAVE_FILENAME", "TEMPLATE_FILENAME"):
+        if isinstance(getattr(module, name, None), str):
+            found[name] = getattr(module, name)
     for node in ast.walk(_tree(module.__name__)):
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "HostError":
             for argument in node.args:
@@ -605,6 +624,13 @@ class ScreenStringStyleTests(unittest.TestCase):
                                                           "표준 종합 의견 작성", "입력 근거 확인 중", "고시 조건 대조 중"})
         self.assertEqual(groups["batch"]["PREVIOUS_RESULT_MESSAGE"], "기존 결과 파일 보호를 위해 중단. 새 결과 엑셀 경로 선택 필요")
         self.assertEqual(desktop_bridge_v16._EVENTS["previous_result"], batch_v16.PREVIOUS_RESULT_MESSAGE)
+        # Follow-up spec 4.4/4.5: the protected-path refusal is scanned, and the
+        # screen shows exactly this bridge text; the save dialog default is scanned.
+        from tests.test_v16_frontend import PROTECTED_MESSAGE
+        self.assertEqual(groups["bridge"]["_EVENTS.template_protected"], PROTECTED_MESSAGE)
+        self.assertEqual(set(desktop_bridge_v16._MESSAGES), {"validation", "catalogue", "credential", "busy",
+                                                              "not_found", "io", "runtime"})
+        self.assertEqual(groups["host"]["TEMPLATE_FILENAME"], "v16_일괄검토_입력양식.xlsx")
         for group, strings in groups.items():
             for name, text in strings.items():
                 with self.subTest(group=group, name=name):

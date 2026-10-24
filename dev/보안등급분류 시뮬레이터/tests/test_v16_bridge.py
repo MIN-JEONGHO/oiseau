@@ -8,6 +8,7 @@ from collections import Counter
 from contextlib import nullcontext
 from copy import deepcopy
 import json
+import os
 from pathlib import Path
 import re
 import tempfile
@@ -16,7 +17,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 
 import batch_v16
 import classification_v16 as engine
@@ -33,8 +34,10 @@ from test_v16_notice_review import STYLE_ENDINGS, catalogue, repack
 PUBLIC_METHODS = {
     "get_initial_state", "select_path", "save_key", "delete_key", "start_single",
     "start_batch", "get_job", "cancel_job", "start_export",
-    "search_notice_clauses", "get_notice_clause",
+    "search_notice_clauses", "get_notice_clause", "save_input_template",
 }
+# Spec 4.4/4.5: the one failure whose message is not _MESSAGES[code].
+TEMPLATE_PROTECTED = "검토에 쓰는 파일 보호를 위해 저장 중단. 다른 파일 이름 선택 필요"
 ERROR_CODES = {"validation", "catalogue", "credential", "busy", "not_found", "io", "runtime"}
 STAGES = {"preflight", "facts", "notices", "candidate", "criteria", "agents", "summary", "documents", "persistence"}
 TERMINAL = {"done", "cancelled", "failed"}
@@ -117,8 +120,9 @@ class BridgeTests(unittest.TestCase):
         self.output = self.root / "output.xlsx"
         self.directory = self.root / "documents"
         self.directory.mkdir()
+        self.template = self.root / "v16_일괄검토_입력양식.xlsx"
         self.selected = {"input_excel": self.input, "output_excel": self.output,
-                         "output_directory": self.directory}
+                         "output_directory": self.directory, "input_template": self.template}
         self.backend = FakeBackend()
         self.backend.values["claude"] = SECRET
         self.cat = catalogue()
@@ -147,7 +151,7 @@ class BridgeTests(unittest.TestCase):
         self.bridges.append(bridge)
         return bridge
 
-    def envelope(self, response, *, ok=True, code=None):
+    def envelope(self, response, *, ok=True, code=None, protected=False):
         self.assertIsInstance(response, dict)
         self.assertEqual(set(response), {"ok", "data", "error"})
         self.assertIs(response["ok"], ok)
@@ -163,7 +167,14 @@ class BridgeTests(unittest.TestCase):
         if code:
             self.assertEqual(response["error"]["code"], code)
         # Only the fixed message for the code: never exception text or a stack.
-        self.assertEqual(response["error"]["message"], bridge_module._MESSAGES[response["error"]["code"]])
+        # The single exception is save_input_template's protected-path refusal
+        # (spec 4.5): code validation with its own fixed _EVENTS message.
+        if protected:
+            self.assertEqual(response["error"]["code"], "validation")
+            self.assertEqual(response["error"]["message"], TEMPLATE_PROTECTED)
+            self.assertEqual(response["error"]["message"], bridge_module._EVENTS["template_protected"])
+        else:
+            self.assertEqual(response["error"]["message"], bridge_module._MESSAGES[response["error"]["code"]])
         return response["error"]
 
     def token(self, purpose, bridge=None):
@@ -205,7 +216,7 @@ class BridgeTests(unittest.TestCase):
     def result(self, task=None):
         return engine.classify_task(task or TASK, {"num_reviewers": 1}, Client(facts=[]), catalogue=self.cat)
 
-    def test_only_eleven_public_methods_and_safe_arity_envelopes(self):
+    def test_only_twelve_public_methods_and_safe_arity_envelopes(self):
         actual = {name for name in dir(self.bridge) if not name.startswith("_") and callable(getattr(self.bridge, name))}
         self.assertEqual(actual, PUBLIC_METHODS)
         valid_args = {
@@ -214,7 +225,9 @@ class BridgeTests(unittest.TestCase):
             "start_single": ({},), "start_batch": ({},), "get_job": ("unknown", 0),
             "cancel_job": ("unknown",), "start_export": ({},),
             "search_notice_clauses": ({},), "get_notice_clause": ("advanced:1",),
+            "save_input_template": ({},),
         }
+        self.assertEqual(set(valid_args), PUBLIC_METHODS)
         for name, args in valid_args.items():
             method = getattr(self.bridge, name)
             with self.subTest(method=name, case="extra positional"):
@@ -926,6 +939,210 @@ class BridgeTests(unittest.TestCase):
                 self.assertEqual(sorted(self.root.rglob("*")), listing)
                 self.assertEqual(self.clients, [])
 
+    # --- v16: input template download (spec 4.4, 4.5) -----------------------
+
+    def assert_template_workbook(self, path):
+        """Two sheets and nine columns; header and guide wording belong to batch_v16."""
+        book = load_workbook(path)
+        try:
+            self.assertEqual(book.sheetnames, ["작성안내", "분류대상"])
+            self.assertTrue(any(cell.value for row in book["작성안내"] for cell in row))
+            sheet = book["분류대상"]
+            self.assertEqual(sheet.max_column, 9)
+            header = [cell.value for cell in sheet[1]]
+            self.assertEqual(len(header), 9)
+            self.assertTrue(all(type(value) is str and value.strip() for value in header))
+        finally:
+            book.close()
+
+    def template_token(self, path, bridge=None):
+        self.selected["input_template"] = path
+        return self.token("input_template", bridge)
+
+    def save_template(self, token, bridge=None):
+        return (bridge or self.bridge).save_input_template({"output_token": token})
+
+    def files(self):
+        return {path: path.read_bytes() for path in self.root.rglob("*") if path.is_file()}
+
+    def assert_protected_refusal(self, bridge, path):
+        before, listing = self.files(), sorted(self.root.rglob("*"))
+        token = self.template_token(path, bridge)
+        response = self.save_template(token, bridge)
+        self.envelope(response, ok=False, protected=True)
+        self.assertNotIn(str(self.root), json.dumps(response, ensure_ascii=False))
+        # The existing file (and every sibling) is left byte-identical.
+        self.assertEqual(self.files(), before)
+        self.assertEqual(sorted(self.root.rglob("*")), listing)
+
+    def test_input_template_saves_two_sheet_nine_column_workbook(self):
+        token = self.token("input_template")
+        response = self.save_template(token)
+        data = self.envelope(response)
+        self.assertEqual(data, {"saved": True, "display_name": self.template.name})
+        self.assertNotIn(str(self.root), json.dumps(response, ensure_ascii=False))
+        self.assert_template_workbook(self.template)
+        # The saved template is never selected as the input workbook (spec 4.4).
+        self.assertEqual([purpose for purpose, _ in self.bridge._paths.values()], ["input_template"])
+        # An ordinary existing file is replaced after the native overwrite confirmation.
+        ordinary = self.root / "기존 파일.XLSX"
+        ordinary.write_bytes(b"synthetic ordinary file")
+        data = self.envelope(self.save_template(self.template_token(ordinary)))
+        self.assertEqual(data, {"saved": True, "display_name": "기존 파일.XLSX"})
+        self.assert_template_workbook(ordinary)
+        self.assertEqual(sorted(path.name for path in self.root.iterdir()),
+                         sorted(["documents", "input.xlsx", "기존 파일.XLSX", self.template.name]))
+        self.assertFalse(self.clients)
+        self.assertEqual(self.backend.calls, [])
+
+    def test_input_template_cancel_is_not_an_error_and_writes_nothing(self):
+        before = self.files()
+        for cancelled in (None, ""):
+            with self.subTest(cancelled=cancelled):
+                self.selected["input_template"] = cancelled
+                data = self.envelope(self.bridge.select_path("input_template"))
+                self.assertEqual(data, {"cancelled": True, "path_token": None, "display_name": None})
+        self.assertEqual(self.bridge._paths, {})
+        self.assertEqual(self.files(), before)
+        self.assertFalse(self.template.exists())
+
+    def test_input_template_path_rules_and_purpose_bound_tokens(self):
+        (self.root / "folder.xlsx").mkdir()
+        for name, path in {"xls": self.root / "양식.xls", "csv": self.root / "양식.csv",
+                           "no suffix": self.root / "양식", "xlsx then tmp": self.root / "양식.xlsx.tmp",
+                           "directory": self.root / "folder.xlsx", "directory without suffix": self.directory,
+                           "missing parent": self.root / "없는 폴더" / "양식.xlsx"}.items():
+            with self.subTest(case=name):
+                self.selected["input_template"] = path
+                self.envelope(self.bridge.select_path("input_template"), ok=False, code="validation")
+        self.assertEqual(self.bridge._paths, {})
+        self.assertFalse((self.root / "없는 폴더").exists())
+        template = self.template_token(self.template)
+        others = {purpose: self.token(purpose) for purpose in ("input_excel", "output_excel", "output_directory")}
+        for name, request in {**{purpose: {"output_token": token} for purpose, token in others.items()},
+                              "forged": {"output_token": "forged-token"}, "raw path": {"output_token": str(self.template)},
+                              "none": {"output_token": None}, "number": {"output_token": 5}, "empty": {"output_token": ""},
+                              "bare token": template, "empty request": {}, "list": [template],
+                              "extra key": {"output_token": template, "path": str(self.template)},
+                              "wrong key": {"input_token": template}}.items():
+            with self.subTest(request=name):
+                self.envelope(self.bridge.save_input_template(request), ok=False, code="validation")
+        # Template tokens are bridge-local and usable for no other purpose.
+        self.envelope(self.save_template(template, self.make_bridge()), ok=False, code="validation")
+        self.envelope(self.bridge.start_single(self.single_request(output_dir_token=template)), ok=False, code="validation")
+        self.envelope(self.bridge.start_batch(self.batch_request(input_token=template)), ok=False, code="validation")
+        self.envelope(self.bridge.start_batch(self.batch_request(output_token=template)), ok=False, code="validation")
+        self.assertFalse(self.template.exists())
+        self.assertFalse(self.clients)
+        # An unknown purpose never falls through to the output-directory rule.
+        with patch.object(bridge_module, "_PURPOSES", bridge_module._PURPOSES | {"mystery"}):
+            self.selected["mystery"] = self.directory
+            self.envelope(self.bridge.select_path("mystery"), ok=False, code="validation")
+        self.assertNotIn("mystery", {purpose for purpose, _ in self.bridge._paths.values()})
+
+    def test_input_template_refuses_paths_selected_as_input_or_output(self):
+        self.input.write_bytes(b"synthetic selected input bytes")
+        self.output.write_bytes(b"synthetic previous result bytes")
+        missing_output = self.root / "아직 없는 결과.xlsx"
+        self.token("input_excel")
+        self.token("output_excel")
+        self.selected["output_excel"] = missing_output
+        self.token("output_excel")
+        for path in (self.input, self.output, missing_output):
+            with self.subTest(path=path.name):
+                self.assert_protected_refusal(self.bridge, path)
+        self.assertFalse(missing_output.exists())
+        if os.name == "nt":
+            with self.subTest(path="case variant of the input"):
+                self.assert_protected_refusal(self.bridge, self.root / "INPUT.XLSX")
+        # The rule is per app session: a bridge that never selected the path for
+        # review treats it as an ordinary file (the native dialog confirms overwrite).
+        fresh = self.make_bridge()
+        self.envelope(self.save_template(self.template_token(self.output, fresh), fresh))
+        self.assert_template_workbook(self.output)
+        self.assertEqual(self.input.read_bytes(), b"synthetic selected input bytes")
+
+    def test_input_template_refuses_result_workbooks_with_checkpoint_or_audit(self):
+        bridge = self.make_bridge()
+        for suffix in (".checkpoint.jsonl", ".audit.jsonl"):
+            result = self.root / ("이전 결과" + suffix.split(".")[1] + ".xlsx")
+            result.write_bytes(b"synthetic result workbook " + suffix.encode())
+            Path(str(result) + suffix).write_bytes(b'{"schema_version": 3}\n')
+            with self.subTest(sibling=suffix):
+                self.assert_protected_refusal(bridge, result)
+            # The workbook itself need not exist yet: the sibling alone protects it.
+            orphan = self.root / ("결과 없음" + suffix.split(".")[1] + ".xlsx")
+            Path(str(orphan) + suffix).write_bytes(b"{}\n")
+            with self.subTest(sibling=suffix, workbook="missing"):
+                self.assert_protected_refusal(bridge, orphan)
+                self.assertFalse(orphan.exists())
+
+    def test_input_template_is_busy_while_a_job_runs(self):
+        entered, release = threading.Event(), threading.Event()
+        self.addCleanup(release.set)
+
+        def classify(task, options, client, progress_callback=None, *, catalogue=None):
+            entered.set()
+            if not release.wait(4):
+                raise AssertionError("test did not release synthetic classifier")
+            return engine.classify_task(task, options, client, progress_callback=progress_callback, catalogue=catalogue)
+
+        bridge = self.make_bridge(classify=classify)
+        # Path selection is blocked during a job, so the token is taken first.
+        token = self.template_token(self.template, bridge)
+        job_id = self.start_single(bridge=bridge)
+        self.assertTrue(entered.wait(2))
+        self.envelope(bridge.select_path("input_template"), ok=False, code="busy")
+        self.envelope(self.save_template(token, bridge), ok=False, code="busy")
+        self.assertFalse(self.template.exists())
+        release.set()
+        self.assertEqual(self.wait_job(job_id, bridge)["state"], "done")
+        self.envelope(self.save_template(token, bridge))
+        self.assert_template_workbook(self.template)
+
+    def test_input_template_write_holds_the_bridge_lock(self):
+        bridge = self.make_bridge()
+        token = self.template_token(self.template, bridge)
+        original, observed = batch_v16.make_template, []
+
+        def probe():
+            acquired = bridge._lock.acquire(timeout=.05)
+            observed.append(acquired)
+            if acquired:
+                bridge._lock.release()
+
+        def writer(path):
+            thread = threading.Thread(target=probe)
+            thread.start()
+            thread.join(2)
+            observed.append(bridge._active)
+            return original(path)
+
+        with patch.object(batch_v16, "make_template", writer):
+            self.envelope(self.save_template(token, bridge))
+        # No job can start between the busy check and the write.
+        self.assertEqual(observed, [False, None])
+        self.assert_template_workbook(self.template)
+
+    def test_input_template_write_failures_are_safe_io(self):
+        token = self.token("input_template")
+        for error in (batch_v16.BatchError("template diagnostic " + SECRET), OSError("disk diagnostic " + SECRET),
+                      PermissionError("locked diagnostic " + SECRET)):
+            with self.subTest(error=type(error).__name__), patch.object(batch_v16, "make_template", side_effect=error):
+                response = self.save_template(token)
+                self.envelope(response, ok=False, code="io")
+                self.assertNotIn("diagnostic", json.dumps(response, ensure_ascii=False))
+        self.assertFalse(self.template.exists())
+        if os.name == "nt":
+            # A real failure: an open file cannot be replaced on Windows.
+            self.template.write_bytes(b"synthetic open template")
+            with self.template.open("rb"):
+                response = self.save_template(token)
+            self.envelope(response, ok=False, code="io")
+            self.assertNotIn("저장하지 못했습니다", json.dumps(response, ensure_ascii=False))
+            self.assertEqual(self.template.read_bytes(), b"synthetic open template")
+            self.assertEqual([path.name for path in self.root.iterdir() if path.name.startswith(".v16-")], [])
+
     # --- v16: screen-only message style -------------------------------------
 
     def test_emitted_events_come_from_the_fixed_noun_style_tables(self):
@@ -964,6 +1181,10 @@ class BridgeMessageStyleTests(unittest.TestCase):
                                                          "io", "runtime"})
         self.assertIn("진행 중", bridge_module._MESSAGES["busy"])
         self.assertEqual(bridge_module._EVENTS["previous_result"], batch_v16.PREVIOUS_RESULT_MESSAGE)
+        # Spec 4.4/4.5: the protected-path text lives in _EVENTS, not _MESSAGES.
+        self.assertEqual(bridge_module._EVENTS["template_protected"], TEMPLATE_PROTECTED)
+        self.assertNotIn(TEMPLATE_PROTECTED, bridge_module._MESSAGES.values())
+        self.assertEqual(style_violations(TEMPLATE_PROTECTED), [])
         for table in (bridge_module._MESSAGES, bridge_module._EVENTS):
             for name, message in table.items():
                 with self.subTest(name=name):
@@ -998,9 +1219,14 @@ class BridgeMessageStyleTests(unittest.TestCase):
                 self.assertFalse(isinstance(argument, ast.Constant) and type(argument.value) is str
                                  and HANGUL.search(argument.value), ast.unparse(call))
 
-    def test_public_methods_tuple_is_exactly_the_eleven_names(self):
-        self.assertEqual(len(bridge_module.PUBLIC_METHODS), 11)
+    def test_public_methods_tuple_is_exactly_the_twelve_names(self):
+        self.assertEqual(len(bridge_module.PUBLIC_METHODS), 12)
         self.assertEqual(set(bridge_module.PUBLIC_METHODS), PUBLIC_METHODS)
+        # Spec 4.5: the new name is appended last; the eleven keep their order.
+        self.assertEqual(bridge_module.PUBLIC_METHODS, (
+            "get_initial_state", "select_path", "save_key", "delete_key", "start_single", "start_batch",
+            "get_job", "cancel_job", "start_export", "search_notice_clauses", "get_notice_clause",
+            "save_input_template"))
 
 
 class RealCatalogueSearchTests(unittest.TestCase):

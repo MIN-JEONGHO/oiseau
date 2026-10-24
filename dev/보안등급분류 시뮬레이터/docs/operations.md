@@ -73,6 +73,6 @@ $check.ExitCode
 
 v16 기준본을 다시 만들 때는 생성 도구가 기본 위치(resources_v16/notices)를 바로 덮어쓰므로, 먼저 임시 폴더에 resources_v15/notices의 raw와 .gitattributes를 복사하고 `& $PY tools/build_notice_catalogue_v16.py --root <임시 폴더>`로 만든다. 그 결과의 raw·extracted·normalized·review가 resources_v15와 바이트까지 같을 때만 resources_v16/notices로 옮긴다. 다르면 옮기지 않는다. 생성 도구는 같은 고시번호 본문 HTML 머리글의 고시일·시행일을 정해 둔 값과 대조하며 다르면 실패한다.
 
-배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-24 통합 브랜치 빌드는 42,079,521바이트, SHA256 c7f918f03275eb331ebf929df06613b375c4a90b78063e880f671c1b00b5690d이며 실행 파일 자체 확인 pass:true·frozen:true, 아카이브 점검 통과다. 다시 빌드하면 해시가 달라질 수 있다.
+배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-24 보완 빌드는 42,091,646바이트, SHA256 4062654fb28341007075979b0331c08253524ee5c4b955748fdd0e09d52fef6d이며 실행 파일 자체 확인 pass:true·frozen:true, 아카이브 점검 통과다. 다시 빌드하면 해시가 달라질 수 있다.
 
 v15 결과 엑셀을 v16 일괄 검토의 결과 파일로 고르면 덮어쓰지 않고 멈추므로 새 결과 경로를 고른다. v15 중간 저장 기록은 v16에서 재개에 쓰이지 않는다.

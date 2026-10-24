@@ -2,7 +2,8 @@
 
 Run with the v15 development environment (Playwright is a test-only tool).
 The browser uses a fresh profile, never the person's browser or credentials.
-The bridge (desktop_bridge_v16) is mocked with exactly the 11 spec 4.6 functions.
+The bridge (desktop_bridge_v16) is mocked with exactly the 12 public functions
+(the 11 of the first v16 spec plus save_input_template, follow-up spec 4.5).
 """
 from copy import deepcopy
 from html.parser import HTMLParser
@@ -22,7 +23,83 @@ EDGE = Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
 CAPTURE = ROOT / ".dryforge" / "ui-v16-captures"
 PROGRAM_NAME = "연구보안 등급분류 시뮬레이터"
 BRIDGE_FUNCTIONS = ("get_initial_state", "select_path", "save_key", "delete_key", "start_single", "start_batch",
-                    "get_job", "cancel_job", "start_export", "search_notice_clauses", "get_notice_clause")
+                    "get_job", "cancel_job", "start_export", "search_notice_clauses", "get_notice_clause",
+                    "save_input_template")
+# Follow-up spec 4.4/4.5: template download, shown name and the protected-path message.
+TEMPLATE_BUTTON = "입력 양식 내려받기"
+TEMPLATE_NAME = "v16_일괄검토_입력양식.xlsx"
+PROTECTED_MESSAGE = "검토에 쓰는 파일 보호를 위해 저장 중단. 다른 파일 이름 선택 필요"
+# Follow-up spec 4.6: composition options in order, footnote and summary names.
+REVIEWER_OPTIONS = (("1", "AI 기술분야 전문가 1개"), ("3", "AI 분야별* 전문가 3개"))
+REVIEWER_FOOTNOTE = "* AI 기술분야 · 연구보안 · 기술사업화 전문가"
+REVIEWER_SUMMARIES = {"1": "AI 기술분야 전문가 1개", "3": "AI 분야별 전문가 3개"}
+BATCH_GUIDANCE = "입력 엑셀은 기본 5개 항목 필수, 추가 4개 항목 선택. 과제명이 빈 행은 제외"
+# Follow-up spec 4.2: CSS viewport × device scale factor (start windows and one maximized).
+VIEWPORTS = (
+    ("1920x1080-125-start", 1350, 754, 1.25),
+    ("1920x1080-125-maximized", 1536, 790, 1.25),
+    ("1920x1080-150-start", 1232, 617, 1.5),
+    ("1366x768-125-start", 1044, 505, 1.25),
+    ("1366x768-100-start", 1318, 649, 1.0),
+)
+# Per menu: the bottom button that must be reachable by vertical scrolling.
+BOTTOM_BUTTONS = (
+    ("연구개발과제 검토", "input", "start-single"),
+    ("연구개발과제 일괄 검토", "batch", "start-batch"),
+    ("검토 결과", "result", "start-export"),
+    ("참고 고시", "notices", "notice-more"),
+    ("모델·설정", "settings", "save-key"),
+)
+# Sidebar name, menus, buttons, summary labels and notice date lines.
+WORD_TARGETS = (".brand, .nav button, #job-panel:not([hidden]) button, .screen:not([hidden]) button, "
+                ".screen:not([hidden]) .metric > span:first-child, .screen:not([hidden]) .notice-list small, "
+                ".screen:not([hidden]) .notice-card .metric")
+# Each whitespace-separated word of each visible text node must sit on one line.
+SPLIT_WORDS_JS = r"""
+selector => {
+ const split=[];
+ for(const element of document.querySelectorAll(selector)){
+  // Closed details content keeps layout boxes, so visibility is checked explicitly.
+  const box=element.getBoundingClientRect();if(!box.width || !box.height || !element.checkVisibility())continue;
+  const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);
+  for(let text=walker.nextNode();text;text=walker.nextNode()){
+   if(!text.parentElement.checkVisibility())continue;
+   const pattern=/\S+/gu;let match;
+   while((match=pattern.exec(text.data))){
+    const range=document.createRange();range.setStart(text,match.index);range.setEnd(text,match.index+match[0].length);
+    const rects=[...range.getClientRects()].filter(rect=>rect.width>0 && rect.height>0);if(!rects.length)continue;
+    const middles=rects.map(rect=>(rect.top+rect.bottom)/2),height=Math.min(...rects.map(rect=>rect.height));
+    if(Math.max(...middles)-Math.min(...middles)>height/2)split.push(`${match[0]} @ ${element.id || element.className || element.tagName}`);
+   }
+  }
+ }
+ return split;
+}
+"""
+# The element is scrolled into view, lies inside the viewport and receives the hit.
+REACH_JS = r"""
+id => {
+ const element=document.getElementById(id);if(!element || element.closest('[hidden]'))return 'missing';
+ element.scrollIntoView({block:'center',inline:'nearest'});
+ const box=element.getBoundingClientRect();if(!box.width || !box.height)return 'not rendered';
+ if(box.top<0 || box.left<0 || box.bottom>innerHeight || box.right>document.documentElement.clientWidth)return 'outside '+JSON.stringify(box);
+ const hit=document.elementFromPoint(box.left+box.width/2,box.top+box.height/2);
+ return hit && (hit===element || element.contains(hit)) ? 'ok' : 'covered by '+(hit ? hit.id || hit.className || hit.tagName : 'nothing');
+}
+"""
+# After scrolling to the page end the sidebar still covers the whole viewport height.
+SIDEBAR_JS = r"""
+() => {
+ window.scrollTo(0,document.documentElement.scrollHeight);
+ const sidebar=document.querySelector('.sidebar'),box=sidebar.getBoundingClientRect();
+ const hits=[1,innerHeight/2,innerHeight-1].map(y=>{const hit=document.elementFromPoint(4,y);return !!(hit && hit.closest('.sidebar'));});
+ const style=getComputedStyle(sidebar);
+ // Sidebar content never spills past its background: it fits or scrolls inside the sidebar.
+ const contained=sidebar.scrollHeight<=sidebar.clientHeight || ['auto','scroll'].includes(style.overflowY);
+ const result={top:box.top,bottom:box.bottom,height:innerHeight,hits,background:style.backgroundColor,contained};
+ window.scrollTo(0,0);return result;
+}
+"""
 MENUS = (
     ("01", "연구개발과제 검토", "input"),
     ("02", "연구개발과제 일괄 검토", "batch"),
@@ -281,16 +358,22 @@ FAKE = r"""
  const ok = data => ({ok:true,data,error:null});
  const bad = (code,message) => ({ok:false,data:null,error:{code,message}});
  const calls = []; let next = 0; const jobs = {}; const deferred = [];
- const h = window.testHarness = {calls,jobs,deferred,mode:'normal',failNext:null, cancelledPicker:false,result:RESULT};
- const record = (name,args) => {calls.push({name,args}); if(h.failNext===name){h.failNext=null;return bad('busy','진행 중인 작업 있음. 완료 또는 취소 후 다시 시작');} return null;};
+ const h = window.testHarness = {calls,jobs,deferred,mode:'normal',failNext:null, cancelledPicker:false,result:RESULT,templateMode:'normal'};
+ const busyError = () => bad('busy','진행 중인 작업 있음. 완료 또는 취소 후 다시 시작');
+ const record = (name,args) => {calls.push({name,args}); if(h.failNext===name){h.failNext=null;return busyError();} return null;};
  const invalid = () => bad('validation','입력 또는 실행 설정 확인 후 다시 시도');
+ // Spec 4.5: purpose-bound tokens; an unknown purpose is a validation error.
+ const purposes = ['input_excel','output_excel','output_directory','input_template'];
+ const TEMPLATE_NAME = 'v16_일괄검토_입력양식.xlsx';
+ const PROTECTED = '검토에 쓰는 파일 보호를 위해 저장 중단. 다른 파일 이름 선택 필요';
+ const running = () => Object.values(jobs).some(job=>!job.cancelled && !job.done);
  const families = ['advanced','core','dual_use','military'];
  const integer = value => typeof value==='number' && Number.isInteger(value);
  const normal = value => String(value).normalize('NFKC').replace(/\s/gu,'').toLowerCase();
  const sources = Object.fromEntries(INITIAL.catalogue.sources.map(source=>[source.source_id,source]));
  window.pywebview = {api:{
   get_initial_state:async()=>{record('get_initial_state',[]);return ok(INITIAL);},
-  select_path:async purpose=>{record('select_path',[purpose]);return ok(h.cancelledPicker?{cancelled:true,path_token:null,display_name:null}:{cancelled:false,path_token:'token-'+purpose,display_name:'합성 '+purpose});},
+  select_path:async purpose=>{record('select_path',[purpose]);if(!purposes.includes(purpose))return invalid();return ok(h.cancelledPicker?{cancelled:true,path_token:null,display_name:null}:{cancelled:false,path_token:'token-'+purpose,display_name:purpose==='input_template'?TEMPLATE_NAME:'합성 '+purpose});},
   save_key:async(provider,key)=>{const fail=record('save_key',[provider,key]);if(fail)return fail;return ok({provider,stored:true});},
   delete_key:async provider=>{const fail=record('delete_key',[provider]);if(fail)return fail;return ok({provider,stored:false});},
   start_single:async payload=>{const fail=record('start_single',[payload]);if(fail)return fail;const job_id='job-'+(++next);jobs[job_id]={type:'single',polls:0};return ok({job_id});},
@@ -301,11 +384,12 @@ FAKE = r"""
    if(h.mode==='deferred'){return await new Promise(resolve=>deferred.push(()=>resolve(ok({job_id,state:'done',events:[{sequence:99,stage:'summary',message:'이전 작업 지연 응답',completed:1,total:1}],result:{...RESULT,task_name:'이전 작업 지연 결과'}}))));}
    if(job.cancelled)return ok({job_id,state:'cancelled',events:[],result:null});
    if(h.mode==='hold')return ok({job_id,state:'running',events:[{sequence:job.polls,stage:'notices',message:'합성 고시 대조 진행',completed:1,total:4}],result:null});
-   if(h.mode==='failed')return ok({job_id,state:'failed',events:[{sequence:1,stage:'preflight',message:'합성 기준 로드 오류',completed:0,total:1}],result:null});
+   if(h.mode==='failed'){job.done=true;return ok({job_id,state:'failed',events:[{sequence:1,stage:'preflight',message:'합성 기준 로드 오류',completed:0,total:1}],result:null});}
    if(job.polls===1)return ok({job_id,state:'running',events:[{sequence:1,stage:'facts',message:'합성 사실 확인',completed:1,total:4}],result:null});
    const base=h.result;
    const exported={...base,documents:{...base.documents,status:'완료',errors:[],files:base.documents.files.map(f=>({...f,status:'완료',error:''}))}};
    const result=job.type==='batch'?{results:[base],counts:{total:1,completed:1,failed:0,cancelled:0,needs_review:0,excluded:0},paths:{output_excel:'C:/synthetic/결과.xlsx'},warnings:['합성 감사 일부 실패'],persistence:{status:'일부실패',checkpoint:'완료',workbook:'완료',audit:'오류'}}:job.type==='export'?exported:base;
+   job.done=true;
    return ok({job_id,state:'done',events:[{sequence:2,stage:'documents',message:'합성 의견서 처리',completed:4,total:4}],result});
   },
   cancel_job:async job_id=>{record('cancel_job',[job_id]);jobs[job_id].cancelled=true;return ok({job_id,state:'cancelled'});},
@@ -326,6 +410,16 @@ FAKE = r"""
    const clause=CLAUSES.find(item=>item.clause_id===clause_id);if(!clause)return bad('not_found','조항 없음');
    const source=sources[clause.source_id];
    return ok({clause_id:clause.clause_id,family:clause.family,source_id:clause.source_id,notice_number:clause.notice_number,notice_title:INITIAL.catalogue.notice_titles[clause.notice_number],announcement_date:source.announcement_date,effective_date:source.effective_date,official_url:source.official_url,code:clause.code,title:clause.title,field:clause.field,source_anchor:clause.source_anchor,text:clause.text});
+  },
+  // Spec 4.5: only an input_template token; busy while a job runs; protected path
+  // is a validation error with its own fixed message; success {saved,display_name}.
+  save_input_template:async request=>{
+   const fail=record('save_input_template',[request]);if(fail)return fail;
+   if(!request || typeof request!=='object' || Array.isArray(request) || Object.keys(request).join()!=='output_token' || request.output_token!=='token-input_template')return invalid();
+   if(running())return busyError();
+   if(h.templateMode==='protected')return bad('validation',PROTECTED);
+   if(h.templateMode==='io')return bad('io','파일 처리 실패. 저장 위치·권한과 열린 파일 확인 후 다시 시도');
+   return ok({saved:true,display_name:TEMPLATE_NAME});
   }
  }};
 })();
@@ -471,6 +565,14 @@ class FrontendStaticTests(unittest.TestCase):
                     "보안등급(AI 참고)", "등급분류 대상", "대상 제외", "중점 논의사항", "종합 의견", "후보 조항", "AI 에이전트"):
             with self.subTest(new=new):
                 self.assertIn(new, texts)
+
+    def test_korean_word_break_rules(self):
+        # Follow-up spec 4.2: keep-all for the whole screen, anywhere for long strings, never break-word.
+        css = PAGE.with_name("styles.css").read_text(encoding="utf-8")
+        compact = re.sub(r"\s+", "", css)
+        self.assertRegex(compact, r"(?:^|[};])(?:html|body)[^{}]*\{[^}]*word-break:keep-all")
+        self.assertIn("overflow-wrap:anywhere", compact)
+        self.assertNotIn("break-word", compact)
 
     def test_mock_initial_state_matches_spec_shapes(self):
         guideline = INITIAL["guideline"]
@@ -1021,18 +1123,30 @@ class FrontendBrowserTests(unittest.TestCase):
         self.assertEqual(notes, list(NOTICE_NOTES))
         cards = screen.locator(".notice-card")
         self.assertEqual(cards.count(), 3)
-        counts = {item["family"]: item for item in FAMILY_COUNTS}
+        # Follow-up spec 4.3: title, number, dates and official source only; no range or clause counts.
         for index, notice in enumerate(INITIAL["catalogue"]["notices"]):
-            text = cards.nth(index).inner_text()
-            for value in (notice["title"], notice["notice_number"], notice["announcement_date"], notice["effective_date"], notice["official_url"]):
-                self.assertIn(value, text)
-            for family in notice["families"]:
-                entry = counts[family]
-                self.assertIn(f"조항 {entry['total_clauses']}", text)
-                self.assertIn(f"자동 해석 가능 {entry['interpreted_clauses']}", text)
-                self.assertIn(f"미해석 {entry['unsupported_clauses']}", text)
-        self.assertIn("이중용도", cards.nth(2).inner_text())
-        self.assertIn("군용", cards.nth(2).inner_text())
+            card = cards.nth(index)
+            text = card.text_content()
+            self.assertEqual(card.locator("h2").inner_text(), notice["title"])
+            labels = card.locator(".metric > span:first-child").all_inner_texts()
+            values = card.locator(".metric > span:last-child").all_inner_texts()
+            self.assertEqual(labels, ["고시번호", "고시일", "시행일"])
+            self.assertEqual(values, [notice["notice_number"], notice["announcement_date"], notice["effective_date"]])
+            self.assertEqual(card.locator("h3").all_inner_texts(), ["공식 출처 주소"])
+            self.assertIn(notice["official_url"], text)
+            for removed in ("범위", "조항", "자동 해석", "미해석", "이중용도", "군용"):
+                self.assertNotIn(removed, text)
+        # The search keeps its range filter; result lines and opened clauses keep the range.
+        family = screen.get_by_label("고시 범위", exact=True)
+        self.assertEqual(family.locator("option").all_inner_texts(),
+                         ["전체", "국가첨단전략기술", "국가핵심기술", "전략물자 · 별표 2 이중용도", "전략물자 · 별표 3 군용"])
+        first = self.page.locator("#notice-results details.clause-item").first
+        self.assertIn("국가첨단전략기술", first.locator(".clause-meta").inner_text())
+        first.locator("summary").click()
+        first.locator(".clause-text").wait_for()
+        pairs = first.locator(".clause-body .metric").evaluate_all(
+            "rows=>rows.map(row=>[...row.children].map(cell=>cell.textContent))")
+        self.assertIn(["범위", "국가첨단전략기술"], pairs)
         self.assertEqual(screen.locator("a").count(), 0)
         url = cards.nth(0).locator(".url-text")
         self.assertEqual(url.inner_text(), INITIAL["catalogue"]["notices"][0]["official_url"])
@@ -1160,7 +1274,7 @@ class FrontendBrowserTests(unittest.TestCase):
         self.page.get_by_role("button", name="가이드라인 정의·원칙 보기 →", exact=True).click()
         self.assertEqual(dialog.locator(".guideline-definition").count(), len(APPENDIX_A_DEFINITIONS))
 
-    def test_eleven_function_mock_wiring(self):
+    def test_twelve_function_mock_wiring(self):
         self.assertEqual(sorted(self.page.evaluate("Object.keys(window.pywebview.api)")), sorted(BRIDGE_FUNCTIONS))
         self.menu("모델·설정")
         self.page.get_by_label("새 API 키", exact=True).fill("synthetic-wiring-key")
@@ -1169,6 +1283,8 @@ class FrontendBrowserTests(unittest.TestCase):
         self.page.get_by_role("button", name="저장 키 삭제", exact=True).click()
         self.page.wait_for_function("() => testHarness.calls.some(c=>c.name==='delete_key')")
         self.menu("연구개발과제 일괄 검토")
+        self.page.get_by_role("button", name=TEMPLATE_BUTTON, exact=True).click()
+        self.page.wait_for_function("() => testHarness.calls.some(c=>c.name==='save_input_template')")
         for name in ("입력 엑셀 선택", "결과 엑셀 선택", "의견서 폴더 선택"):
             self.page.get_by_role("button", name=name, exact=True).click()
         self.page.get_by_role("button", name="일괄 검토 시작", exact=True).click()
@@ -1193,6 +1309,7 @@ class FrontendBrowserTests(unittest.TestCase):
         self.assertLessEqual(named, set(BRIDGE_FUNCTIONS))
         self.assertIn("search_notice_clauses", named)
         self.assertIn("get_notice_clause", named)
+        self.assertIn("save_input_template", named)
 
     def test_notice_screen_widths_390_and_1366(self):
         CAPTURE.mkdir(parents=True, exist_ok=True)
@@ -1209,6 +1326,222 @@ class FrontendBrowserTests(unittest.TestCase):
                     self.menu(menu)
                     self.assertFalse(self.page.evaluate("document.documentElement.scrollWidth>innerWidth"), menu)
                 self.page.screenshot(path=str(CAPTURE / f"settings-{width}.png"), full_page=True)
+
+    # v16 follow-up additions --------------------------------------------------------
+
+    def test_template_button_sits_at_top_of_batch_file_panel(self):
+        self.menu("연구개발과제 일괄 검토")
+        panel = self.page.locator("#screen-batch section.panel").filter(
+            has=self.page.get_by_role("heading", name="일괄 검토 파일", exact=True))
+        self.assertEqual(panel.count(), 1)
+        buttons = panel.locator("button").all_inner_texts()
+        self.assertEqual(buttons[:2], [TEMPLATE_BUTTON, "입력 엑셀 선택"])
+        self.assertEqual(panel.locator(".mini-text").first.inner_text(), BATCH_GUIDANCE)
+        template = panel.get_by_role("button", name=TEMPLATE_BUTTON, exact=True)
+        self.assertTrue(template.is_enabled())
+        self.assertLess(template.bounding_box()["y"], panel.get_by_role("button", name="입력 엑셀 선택", exact=True).bounding_box()["y"])
+
+    def test_template_download_flow_cancel_save_protected_and_busy(self):
+        self.menu("연구개발과제 일괄 검토")
+        button = self.page.get_by_role("button", name=TEMPLATE_BUTTON, exact=True)
+        name = self.page.locator("#batch-template-name")
+        initial_name = name.inner_text()
+        # Cancelling the save dialog does nothing: no save call, no message.
+        self.page.evaluate("testHarness.cancelledPicker=true")
+        button.click()
+        self.page.wait_for_function("() => testHarness.calls.some(c=>c.name==='select_path')")
+        self.page.wait_for_timeout(100)
+        self.assertEqual(self.calls("select_path")[-1]["args"], ["input_template"])
+        self.assertEqual(self.calls("save_input_template"), [])
+        self.assertEqual(name.inner_text(), initial_name)
+        self.assertTrue(self.page.locator("#message").is_hidden())
+        # A chosen path is saved with its own token; only the file name is shown.
+        self.page.evaluate("testHarness.cancelledPicker=false")
+        button.click()
+        self.page.wait_for_function("() => document.querySelector('#batch-template-name').textContent.includes('xlsx')")
+        self.assertEqual(self.calls("save_input_template")[0]["args"], [{"output_token": "token-input_template"}])
+        self.assertEqual(name.inner_text(), TEMPLATE_NAME)
+        self.assertNotIn("token-input_template", self.page.locator("body").inner_text())
+        # The saved template is never selected as the input workbook.
+        self.assertEqual(self.page.locator("#batch-input-name").inner_text(), "선택하지 않음")
+        self.page.get_by_role("button", name="결과 엑셀 선택", exact=True).click()
+        self.page.wait_for_function("() => document.querySelector('#batch-output-name').textContent.includes('output_excel')")
+        self.page.get_by_role("button", name="일괄 검토 시작", exact=True).click()
+        self.page.wait_for_function("() => !document.querySelector('#message').hidden")
+        self.assertEqual(self.page.locator("#message").inner_text(), "입력 엑셀과 결과 엑셀 선택 필요")
+        self.assertEqual(self.calls("start_batch"), [])
+        # Protected path: the bridge message is shown exactly as sent.
+        self.page.evaluate("testHarness.templateMode='protected'")
+        button.click()
+        self.page.wait_for_function("m => document.querySelector('#message').textContent===m", arg=PROTECTED_MESSAGE)
+        self.assertEqual(len(self.calls("save_input_template")), 2)
+        # Busy from the bridge is shown too.
+        self.page.evaluate("testHarness.templateMode='normal';testHarness.failNext='save_input_template'")
+        button.click()
+        self.page.wait_for_function("() => document.querySelector('#message').textContent.includes('진행 중')")
+        # A running job disables the button like the other file pickers.
+        self.page.evaluate("testHarness.mode='hold'")
+        self.menu("연구개발과제 검토")
+        self.start()
+        self.page.wait_for_function("() => document.querySelector('#job-status').textContent.includes('고시 대조')")
+        self.menu("연구개발과제 일괄 검토")
+        self.assertTrue(button.is_disabled())
+        self.assertTrue(self.page.get_by_role("button", name="입력 엑셀 선택", exact=True).is_disabled())
+        direct = self.page.evaluate("window.pywebview.api.save_input_template({output_token:'token-input_template'})")
+        self.assertEqual(direct["error"]["code"], "busy")
+        self.page.get_by_role("button", name="작업 취소", exact=True).click()
+        self.page.wait_for_function("() => document.querySelector('#job-state').textContent==='취소'")
+        self.assertTrue(button.is_enabled())
+
+    def test_template_mock_rejects_wrong_token_and_purpose(self):
+        api = "window.pywebview.api"
+        for request in ("{output_token:'token-output_excel'}", "{}", "{output_token:'token-input_template',extra:1}", "null"):
+            with self.subTest(request=request):
+                response = self.page.evaluate(f"{api}.save_input_template({request})")
+                self.assertEqual(response["error"]["code"], "validation")
+        self.assertEqual(self.page.evaluate(f"{api}.select_path('unknown')")["error"]["code"], "validation")
+
+    def test_reviewer_composition_options_footnote_and_summary(self):
+        select = self.page.get_by_label("AI 에이전트 구성", exact=True)
+        options = select.locator("option").evaluate_all("els=>els.map(el=>[el.value,el.textContent])")
+        self.assertEqual([tuple(option) for option in options], list(REVIEWER_OPTIONS))
+        self.assertEqual(select.input_value(), "3")
+        footnote = self.page.locator("#reviewer-footnote")
+        self.assertEqual(self.page.locator("#reviewer-description").count(), 0)
+        self.assertEqual(self.page.locator("#review-settings").get_by_text("독립 의견과 종합 검토").count(), 0)
+        for value in ("3", "1", "3"):
+            with self.subTest(value=value):
+                select.select_option(value)
+                self.assertTrue(footnote.is_visible())
+                self.assertEqual(footnote.inner_text(), REVIEWER_FOOTNOTE)
+                # The footnote sits directly below the select box.
+                below = footnote.evaluate("el=>el.previousElementSibling && el.previousElementSibling.contains(document.getElementById('reviewer-count'))")
+                self.assertTrue(below)
+                self.assertGreaterEqual(footnote.bounding_box()["y"], select.bounding_box()["y"] + select.bounding_box()["height"] - 1)
+                self.menu("연구개발과제 일괄 검토")
+                pairs = self.page.locator("#batch-options-summary > .metric").evaluate_all(
+                    "rows=>rows.map(row=>[...row.children].map(cell=>cell.textContent))")
+                agent = [pair[1] for pair in pairs if pair[0] == "AI 에이전트"]
+                self.assertEqual(agent, [REVIEWER_SUMMARIES[value]])
+                self.assertNotIn("*", agent[0])
+                self.menu("연구개발과제 검토")
+        select.select_option("1")
+        self.start()
+        self.wait_result()
+        self.assertEqual(self.calls("start_single")[0]["args"][0]["options"]["num_reviewers"], 1)
+
+    def test_required_marks_and_start_rule_unchanged(self):
+        def marks(column):
+            return self.page.locator(f"[data-task='{column}']").evaluate(
+                "el=>[...el.closest('label').querySelectorAll(':scope > span em')].map(em=>em.textContent)")
+        for column in domain.TASK_COLUMNS:
+            with self.subTest(column=column):
+                found = marks(column)
+                self.assertIn("*", found)
+                self.assertNotIn("선택", found)
+        for column in domain.OPTIONAL_TASK_COLUMNS:
+            with self.subTest(column=column):
+                found = marks(column)
+                self.assertIn("선택", found)
+                self.assertNotIn("*", found)
+        # The marks are guidance only: an empty 과제명 blocks, the other base fields do not.
+        for column in domain.TASK_COLUMNS:
+            if column != "과제명":
+                self.page.get_by_label(column, exact=True).fill("합성 " + column)
+        self.page.get_by_role("button", name="AI 에이전트 검토 시작", exact=True).click()
+        self.page.wait_for_function("() => !document.querySelector('#message').hidden")
+        self.assertEqual(self.page.locator("#message").inner_text(), "과제명 필수 입력")
+        self.assertEqual(self.calls("start_single"), [])
+        for column in domain.TASK_COLUMNS:
+            self.page.get_by_label(column, exact=True).fill("")
+        self.start()
+        self.wait_result()
+        task = self.calls("start_single")[0]["args"][0]["task"]
+        self.assertEqual(task["과제명"], "오프라인 합성 과제")
+        self.assertEqual(task["연구목표"], "")
+
+
+class FrontendViewportTests(unittest.TestCase):
+    """Follow-up spec 4.2: five CSS viewport × scale conditions, all five menus (headless Edge)."""
+
+    @classmethod
+    def setUpClass(cls):
+        from playwright.sync_api import sync_playwright
+        cls.playwright = sync_playwright().start()
+        cls.browser = cls.playwright.chromium.launch(executable_path=str(EDGE), headless=True,
+                                                     args=["--disable-background-networking", "--no-first-run"])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.browser.close()
+        cls.playwright.stop()
+
+    def check_viewport(self, label, width, height, scale):
+        context = self.browser.new_context(viewport={"width": width, "height": height}, device_scale_factor=scale,
+                                           reduced_motion="reduce")
+        external, errors = [], []
+        def route(request_route):
+            if request_route.request.url.startswith(("file:", "data:")):
+                request_route.continue_()
+            else:
+                external.append(request_route.request.url)
+                request_route.abort()
+        context.route("**/*", route)
+        page = context.new_page()
+        page.on("pageerror", lambda error: errors.append(str(error)))
+        page.add_init_script("const INITIAL=" + json.dumps(INITIAL, ensure_ascii=False) + ";const RESULT="
+                             + json.dumps(RESULT, ensure_ascii=False) + ";const CLAUSES="
+                             + json.dumps(CLAUSES, ensure_ascii=False) + ";" + FAKE)
+        try:
+            page.goto(PAGE.as_uri())
+            page.wait_for_selector('[data-ready="true"]')
+            self.assertEqual(page.evaluate("devicePixelRatio"), scale)
+            # A saved result, so the result screen shows its regenerate button.
+            page.get_by_label("과제명", exact=True).fill("오프라인 합성 과제")
+            page.get_by_role("button", name="AI 에이전트 검토 시작", exact=True).click()
+            page.wait_for_function("() => document.querySelector('#result-heading')?.textContent.includes('합성 과제')"
+                                   " && !document.querySelector('#start-single').disabled")
+            for menu, view, bottom in BOTTOM_BUTTONS:
+                with self.subTest(viewport=label, menu=menu):
+                    page.get_by_role("navigation", name="주요 메뉴").get_by_role("button", name=menu, exact=True).click()
+                    page.wait_for_selector(f"#screen-{view}:not([hidden])")
+                    if view == "notices":
+                        page.wait_for_function("() => document.querySelectorAll('#notice-results details').length===50"
+                                               " && !document.querySelector('#notice-more').hidden")
+                    overflow = page.evaluate("[document.documentElement.scrollWidth,document.documentElement.clientWidth]")
+                    self.assertLessEqual(overflow[0], overflow[1], "page horizontal overflow")
+                    self.assertEqual(page.evaluate(REACH_JS, bottom), "ok", bottom)
+                    self.assertEqual(page.evaluate(SPLIT_WORDS_JS, WORD_TARGETS), [])
+                    sidebar = page.evaluate(SIDEBAR_JS)
+                    self.assertLessEqual(sidebar["top"], 0.5, sidebar)
+                    self.assertGreaterEqual(sidebar["bottom"], sidebar["height"] - 0.5, sidebar)
+                    self.assertEqual(sidebar["hits"], [True, True, True], sidebar)
+                    self.assertNotIn(sidebar["background"], ("rgba(0, 0, 0, 0)", "transparent"))
+                    self.assertTrue(sidebar["contained"], sidebar)
+                    if view == "batch":
+                        links = page.locator("#screen-batch .aside .text-link")
+                        self.assertEqual(links.all_inner_texts(), ["검토항목 설정 →", "모델·공통 부처기준 설정 →"])
+                        first, second = links.nth(0).bounding_box(), links.nth(1).bounding_box()
+                        self.assertGreaterEqual(second["y"], first["y"] + first["height"] - 1)
+            self.assertEqual(external, [])
+            self.assertEqual(errors, [])
+        finally:
+            context.close()
+
+    def test_viewport_1920x1080_125_start_window(self):
+        self.check_viewport(*VIEWPORTS[0])
+
+    def test_viewport_1920x1080_125_maximized(self):
+        self.check_viewport(*VIEWPORTS[1])
+
+    def test_viewport_1920x1080_150_start_window(self):
+        self.check_viewport(*VIEWPORTS[2])
+
+    def test_viewport_1366x768_125_start_window(self):
+        self.check_viewport(*VIEWPORTS[3])
+
+    def test_viewport_1366x768_100_start_window(self):
+        self.check_viewport(*VIEWPORTS[4])
 
 
 if __name__ == "__main__":

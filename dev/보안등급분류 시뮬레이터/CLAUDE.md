@@ -9,8 +9,8 @@
 ├── AGENTS.md                               → 작업 진입점·루트 기능별 경계
 ├── CLAUDE.md                               → AGENTS.md와 바이트까지 동일한 지침
 ├── README_v16.md                           → v16 설치·사용·변경점·실제 검증 수준
-├── security_grade_classifier_v16.py        → v16 호스트: ui_v16·11개 함수 허용 목록·자체 확인
-├── desktop_bridge_v16.py                   → v16 브리지: 11개 API(참고 고시 읽기 전용 2개 포함)·화면 문구
+├── security_grade_classifier_v16.py        → v16 호스트: ui_v16·12개 함수 허용 목록·창 크기 화면 맞춤·자체 확인
+├── desktop_bridge_v16.py                   → v16 브리지: 12개 API(참고 고시 읽기 전용 2개·입력 양식 저장 포함)·화면 문구
 ├── v16_domain.py                           → schema3·고시명 표·출처 고시일 검사·가이드라인 창 원문
 ├── notice_catalogue_v16.py                 → resources_v16 기준본 로더·고시일 검사
 ├── notice_review_v16.py                    → v15와 같은 고시 대조(지시문 동일)
@@ -81,7 +81,7 @@
     ├── standards.md                       → 변경·검증·커밋·모듈 경계 규칙
     ├── engineering-notes.md               → 네이티브·분할 요청·재출력·문서 검증의 함정
     ├── operations.md                      → 설치·실행·자체 확인·빌드
-    ├── contracts.md                       → 9열·9API·schema2(v16: 11API·schema3)·고시 근거·저장/재개 계약
+    ├── contracts.md                       → 9열·9API·schema2(v16: 12API·schema3)·고시 근거·저장/재개 계약
     └── tracking/
         ├── status.md                      → 구현·검증·남은 작업
         ├── findings.md                    → 보류 검증·미해석 조건·기관 정책·과거 한계
@@ -97,7 +97,7 @@
             ├── 0008-installed-web-ui.md   → 단일 창 설치형 웹 UI
             ├── 0009-frozen-notice-review.md → 고정 고시·현재/목표·부족정보
             ├── 0010-standard-review-options.md → 표준 의견·자동 가중치 1.0
-            └── 0011-v16-notice-screen.md  → v16 함수 11개·고시일 기준본·화면 전용 개조식
+            └── 0011-v16-notice-screen.md  → v16 함수 12개·고시일 기준본·화면 전용 개조식·입력 양식 예외
 ```
 
 소스는 루트의 평면 모듈이며 가상의 패키지 폴더를 만들지 않는다. ui_v15·resources_v15·templates는 호스트·출력기가 소비하는 자산이므로 지침 파일을 무심코 추가해 서버·번들 목록이나 고시 지문을 바꾸지 않는다. build/dist·환경·입력·감사·체크포인트는 소스와 분리한다. 과거 Claude 변형은 키 형태 리터럴 위험으로 새 작업 사본·빌드에서 제외하며 사용자 원본을 임의 복원·삭제하지 않는다.
