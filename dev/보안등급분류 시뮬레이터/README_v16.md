@@ -133,7 +133,7 @@ Get-Content -LiteralPath '.\build-v16\frozen-self-check.json' -Encoding UTF8
 - 회귀시험(종료 코드 모두 0)
   - v16 393개 통과(`test_v16_*`, 새 통합 시험 17개 포함)
   - v15 279개, v14 134개 통과(손대지 않은 이전 버전 회귀)
-  - 총 805개
+  - 총 806개
 - 문법 검사: v16 실행 경로 8개 파일과 `llm_client_v14.py`·`credential_store.py`의 `py_compile` 종료 코드 0
 - 지시문 동일(`tests/test_v16_integration.py`)
   - v15 브리지와 v16 브리지에 같은 합성 과제를 단건·일괄로 넣고 모의 모델이 받은 요청 비교
