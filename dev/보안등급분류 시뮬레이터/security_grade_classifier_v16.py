@@ -747,7 +747,7 @@ window.__v16check = null;
  assert([...reviewer.options].map(option=>option.value).join(',')==='1,3' && reviewer.value==='3','agent composition values');
  assert(reviewer.options[0].textContent==='AI 기술분야 전문가 1개' && reviewer.options[1].textContent==='AI 분야별* 전문가 3개','agent composition wording');
  assert(footnote.textContent==='* AI 기술분야 · 연구보안 · 기술사업화 전문가' && !footnote.hidden,'agent footnote');
- assert(document.body.textContent.includes('입력 엑셀은 기본 5개 항목 필수, 추가 4개 항목 선택. 과제명이 빈 행은 제외'),'batch guidance');
+ assert(document.body.textContent.includes('입력 엑셀은 4개 항목 필수, 세부사업명과 추가 4개 항목 선택. 과제명이 빈 행은 제외'),'batch guidance');
  el('provider').value='claude';el('provider').dispatchEvent(new Event('change'));
  el('api-key').value='synthetic-ui-only-credential';el('save-key').click();
  await until(()=>el('key-status').textContent.includes('API 키 저장됨'),'UI key save');

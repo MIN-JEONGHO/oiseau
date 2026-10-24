@@ -4,7 +4,8 @@ The first two classes are the v15 integration checks retargeted to v16. The
 rest are v16 release-level checks (spec 6):
 
 - the full bridge pipeline (single and batch) sends v15-identical system
-  prompts and v15-equal user prompts after the 기준본 파생값 substitution;
+  prompts and v15-equal user prompts after the 기준본 파생값 substitution,
+  also when only v16 receives task and policy text that needs cleaning;
 - every screen-only Python string across bridge, host, batch, classification
   and notice review is a noun-ending 개조식 (exception texts and persisted
   sentences intentionally stay as in v15 and are not scanned);
@@ -128,6 +129,7 @@ class DesktopIntegrationTests(unittest.TestCase):
         calls = len(self.clients), self.loader_calls
         with patch("notice_catalogue_v16.load_catalogue", side_effect=AssertionError("export catalogue")), \
                 patch("llm_client_v14.LLMClient", side_effect=AssertionError("export model")), \
+                patch("llm_json_v16.TolerantLLMClient", side_effect=AssertionError("export model")), \
                 patch.object(self.bridge._keys, "resolve", side_effect=AssertionError("export credentials")):
             first = self.export(initial["job_id"], a)
             second = self.export(initial["job_id"], b)
@@ -494,6 +496,139 @@ class BridgePromptParityTests(unittest.TestCase):
                     self.assert_saved_equal(old_result, new_result, mapping)
                 self.assert_screen_events(new_job)
 
+    # Spec 6 'v15 대조': text needing cleaning goes to v16 only; v15 gets the
+    # same text already passed through v16_domain.clean_input_text.
+    MESSY_TASK = {
+        "과제명": "합성 정리 단건  \t",
+        "연구목표": "목표 1_x000D_\n목표 2  \n\n\n\n\n목표 3\t",
+        "연구내용": "측정 20_x000D_30 구간\r\n  들여쓴 줄 \t\n끝_x000a_정리",
+        "기대효과": "효과_x0009_정리_x000D_",
+        "현재 기술사양": "속도 5 GHz \t\n참고 줄",
+        "개발목표 사양": "속도 20 GHz_x000D_\n",
+        "부처 세부기준": "합성 과제 기준_x000D_\n둘째 줄  \n\n\n\n셋째 줄",
+    }
+    MESSY_POLICY = "합성 공통 기준_x000D_\n둘째 줄 \t\n\n\n\n\n셋째 줄  "
+
+    @staticmethod
+    def cleaned(task):
+        return {name: d.clean_input_text(value) for name, value in task.items()}
+
+    def notice_count(self, job, name):
+        text = desktop_bridge_v16._EVENTS[name]
+        return sum(event["message"] == text for event in job["events"])
+
+    def test_single_flow_with_messy_input_matches_v15_with_cleaned_input(self):
+        clean_task = self.cleaned(self.MESSY_TASK)
+        clean_policy = d.clean_input_text(self.MESSY_POLICY)
+        # The fixture really needs cleaning: every field but the name changes beyond strip().
+        for name, value in self.MESSY_TASK.items():
+            if name != "과제명":
+                self.assertNotEqual(clean_task[name], value.strip(), name)
+        self.assertNotEqual(clean_policy, self.MESSY_POLICY.strip())
+        self.assertEqual(clean_task["연구내용"], "측정 20\n30 구간\n  들여쓴 줄\n끝\n정리")
+        scenarios = (
+            ("messy_checklist_policy", {"num_reviewers": 1, "method": "checklist"},
+             dict(candidates=("advanced:1",), chosen=(1, 8),
+                  facts=[fact("속도 5 GHz", number="5"), fact(field="개발목표 사양", basis="target", identity="t1")])),
+            ("messy_impact_three", {"num_reviewers": 3},
+             dict(candidates=("advanced:1", "core:1"),
+                  facts=[fact("속도 5 GHz", number="5"), fact(field="개발목표 사양", basis="target", identity="t1")])),
+        )
+        for name, options, client_options in scenarios:
+            with self.subTest(scenario=name):
+                old_cat = catalogue(v15=True, catalogue_id="synthetic-v15")
+                new_cat = catalogue(catalogue_id="synthetic-v16")
+                old, new = self.pipelines(name, lambda: old_cat, lambda: new_cat, [client_options])
+                old_job = old.single(clean_task, options | {"ministry_policy": clean_policy})
+                new_job = new.single(dict(self.MESSY_TASK), options | {"ministry_policy": self.MESSY_POLICY})
+                self.assertEqual((old_job["state"], new_job["state"]), ("done", "done"))
+                self.assertEqual(old_job["result"]["status"], new_job["result"]["status"])
+                self.assertEqual(old_job["result"]["task_fingerprint"], new_job["result"]["task_fingerprint"])
+                self.assertEqual(new_job["result"]["task_snapshot"], d.task_snapshot(clean_task))
+                mapping = catalogue_mapping(old_cat, new_cat)
+                mapping[old_job["result"]["options_fingerprint"]] = new_job["result"]["options_fingerprint"]
+                self.assert_prompt_parity(old, new, mapping)
+                self.assert_saved_equal(old_job["result"], new_job["result"], mapping)
+                self.assert_screen_events(new_job)
+                self.assertEqual(self.notice_count(new_job, "input_cleaned"), 1)
+                self.assertEqual(self.notice_count(new_job, "response_trimmed"), 0)
+                wire = json.dumps([client.wire for client in new.clients], ensure_ascii=False)
+                for marker in ("_x000D_", "_x000a_", "_x0009_", "목표 2  "):
+                    self.assertNotIn(marker, wire)
+                self.assertIn("측정 20\\\\n30 구간", wire)
+                saved = json.dumps(new_job["result"], ensure_ascii=False)
+                for text in desktop_bridge_v16._EVENTS.values():
+                    self.assertNotIn(text, saved)
+
+    def test_batch_flow_with_messy_input_matches_v15_with_cleaned_input(self):
+        header = ("과제명", "연구목표", "연구내용", "기대효과", "현재 기술사양", "개발목표 사양", "부처 세부기준")
+        messy_rows = [
+            tuple(self.MESSY_TASK[name] if name != "과제명" else "합성 정리 배치 A_x000D_" for name in header),
+            ("합성 정리 배치 B  ", "목표\t\n\n\n\n끝", "", "", "속도 20 GHz", "", ""),
+            ("_x000D_", "제외 행", "", "", "", "", ""),
+            ("합성 정리 배치 B_x000D_\n", "정리 후 중복", "", "", "", "", ""),
+        ]
+        new_source, old_source = self.root / "messy-input.xlsx", self.root / "cleaned-input.xlsx"
+        for path, rows in ((new_source, messy_rows), (old_source, None)):
+            book = Workbook()
+            book.active.title = "분류대상"
+            book.active.append(header)
+            if rows is None:
+                # What v16 actually reads back, passed through the v16 cleaning.
+                read = load_workbook(new_source, read_only=True)
+                try:
+                    rows = [tuple(d.clean_input_text("" if value is None else str(value)) for value in values)
+                            for values in list(read["분류대상"].iter_rows(values_only=True))[1:]]
+                finally:
+                    read.close()
+                self.assertEqual([row[0] for row in rows],
+                                 ["합성 정리 배치 A", "합성 정리 배치 B", "", "합성 정리 배치 B"])
+            for row in rows:
+                book.active.append(row)
+            book.save(path)
+            book.close()
+        read = load_workbook(new_source, read_only=True)
+        try:
+            raw = json.dumps(list(read["분류대상"].iter_rows(values_only=True)), ensure_ascii=False)
+        finally:
+            read.close()
+        self.assertIn("_x000D_", raw)  # the v16 file really carries the Excel markers
+        clients = [dict(candidates=("advanced:1",), chosen=(1, 8),
+                        facts=[fact("속도 5 GHz", number="5"), fact(field="개발목표 사양", basis="target", identity="t1")]),
+                   dict(candidates=("advanced:1", "core:1"))]
+        options = {"num_reviewers": 1, "method": "checklist"}
+        old_cat = catalogue(v15=True, catalogue_id="synthetic-v15")
+        new_cat = catalogue(catalogue_id="synthetic-v16")
+        old, new = self.pipelines("messy-batch", lambda: old_cat, lambda: new_cat, clients)
+        old_job = old.batch(old_source, options | {"ministry_policy": d.clean_input_text(self.MESSY_POLICY)})
+        new_job = new.batch(new_source, options | {"ministry_policy": self.MESSY_POLICY})
+        self.assertEqual((old_job["state"], new_job["state"]), ("done", "done"))
+        old_results, new_results = old_job["result"]["results"], new_job["result"]["results"]
+        self.assertEqual(len(new_results), 2)
+        self.assertEqual(old_job["result"]["counts"], new_job["result"]["counts"])
+        self.assertEqual(len(old_job["result"]["warnings"]), len(new_job["result"]["warnings"]))
+        mapping = catalogue_mapping(old_cat, new_cat)
+        for old_result, new_result in zip(old_results, new_results):
+            self.assertEqual(old_result["task_fingerprint"], new_result["task_fingerprint"])
+            mapping[old_result["options_fingerprint"]] = new_result["options_fingerprint"]
+        self.assertEqual(len(old.clients), 2)
+        self.assert_prompt_parity(old, new, mapping)
+        for old_result, new_result in zip(old_results, new_results):
+            self.assert_saved_equal(old_result, new_result, mapping)
+        self.assert_screen_events(new_job)
+        self.assertEqual(self.notice_count(new_job, "input_cleaned"), 1)
+        self.assertEqual(self.notice_count(new_job, "response_trimmed"), 0)
+        # Screen-only notices never reach the stored checkpoint, audit or workbook.
+        output = new.root / "output.xlsx"
+        stored = "".join(Path(str(output) + suffix).read_text(encoding="utf-8")
+                         for suffix in (".checkpoint.jsonl", ".audit.jsonl"))
+        self.assertNotIn("_x000D_", stored)
+        book = load_workbook(BytesIO(output.read_bytes()))
+        self.addCleanup(book.close)
+        stored += json.dumps([list(sheet.values) for sheet in book], ensure_ascii=False, default=str)
+        for text in desktop_bridge_v16._EVENTS.values():
+            self.assertNotIn(text, stored)
+
     def test_installed_catalogues_single_flow_sends_v15_prompts(self):
         """resources_v15/notices vs resources_v16/notices via each bridge's default loader."""
         import notice_catalogue_v15
@@ -669,7 +804,7 @@ class ScreenStringStyleTests(unittest.TestCase):
 # Import boundary: v16 runtime never loads v15/v14 modules (llm_client_v14 only).
 # ---------------------------------------------------------------------------
 V16_RUNTIME = ("security_grade_classifier_v16", "desktop_bridge_v16", "v16_domain", "notice_catalogue_v16",
-               "notice_review_v16", "classification_v16", "batch_v16", "hwpx_writer_v16")
+               "notice_review_v16", "classification_v16", "batch_v16", "hwpx_writer_v16", "llm_json_v16")
 REUSED = ("llm_client_v14", "credential_store")
 LEGACY_NAME = re.compile(r"(?:^|_)v(?:[0-9]|1[0-5])(?:\.5)?(?:_test)?$|^v1[0-5]_|_claude$|^embedded_key$")
 

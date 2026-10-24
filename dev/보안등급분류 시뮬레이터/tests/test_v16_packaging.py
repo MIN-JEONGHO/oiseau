@@ -53,7 +53,7 @@ TEMPLATE_NAME = "v16_일괄검토_입력양식.xlsx"
 APP_MODULES = frozenset((
     ENTRY, "desktop_bridge_v16", "batch_v16", "classification_v16",
     "v16_domain", "notice_catalogue_v16", "notice_review_v16",
-    "hwpx_writer_v16", "credential_store", "llm_client_v14",
+    "hwpx_writer_v16", "credential_store", "llm_client_v14", "llm_json_v16",
 ))
 # Spec 4.10: the eight v15 runtime modules join the v15 exclusions.
 V15_RUNTIME_MODULES = frozenset((
@@ -570,9 +570,12 @@ class HostBoundaryTests(unittest.TestCase):
                         "단건 의견서 저장 완료", "연구보안 등급분류 시뮬레이터 · v16",
                         "입력 양식 내려받기", "저장하지 않음", "AI 기술분야 전문가 1개", "AI 분야별* 전문가 3개",
                         "* AI 기술분야 · 연구보안 · 기술사업화 전문가",
-                        "입력 엑셀은 기본 5개 항목 필수, 추가 4개 항목 선택. 과제명이 빈 행은 제외"):
+                        "입력 엑셀은 4개 항목 필수, 세부사업명과 추가 4개 항목 선택. 과제명이 빈 행은 제외"):
             self.assertIn("'" + wording + "'", script)
         self.assertNotIn("단건 의견서를 저장", script)
+        # Spec 4.4: the previous five-required guidance is gone from the script and the screen.
+        self.assertNotIn("기본 5개 항목 필수", script)
+        self.assertNotIn("기본 5개 항목 필수", ui)
 
     def test_host_screen_messages_are_noun_style(self):
         endings = ("니다", "세요", "주세요", "해요", "어요", "아요", "에요", "예요", "까요")

@@ -33,7 +33,9 @@ PROTECTED_MESSAGE = "검토에 쓰는 파일 보호를 위해 저장 중단. 다
 REVIEWER_OPTIONS = (("1", "AI 기술분야 전문가 1개"), ("3", "AI 분야별* 전문가 3개"))
 REVIEWER_FOOTNOTE = "* AI 기술분야 · 연구보안 · 기술사업화 전문가"
 REVIEWER_SUMMARIES = {"1": "AI 기술분야 전문가 1개", "3": "AI 분야별 전문가 3개"}
-BATCH_GUIDANCE = "입력 엑셀은 기본 5개 항목 필수, 추가 4개 항목 선택. 과제명이 빈 행은 제외"
+BATCH_GUIDANCE = "입력 엑셀은 4개 항목 필수, 세부사업명과 추가 4개 항목 선택. 과제명이 빈 행은 제외"
+# Required marks are display only (spec 4.4); 세부사업명 is optional like the four extras.
+REQUIRED_MARKED = ("과제명", "연구목표", "연구내용", "기대효과")
 # Follow-up spec 4.2: CSS viewport × device scale factor (start windows and one maximized).
 VIEWPORTS = (
     ("1920x1080-125-start", 1350, 754, 1.25),
@@ -1434,12 +1436,16 @@ class FrontendBrowserTests(unittest.TestCase):
         def marks(column):
             return self.page.locator(f"[data-task='{column}']").evaluate(
                 "el=>[...el.closest('label').querySelectorAll(':scope > span em')].map(em=>em.textContent)")
-        for column in domain.TASK_COLUMNS:
+        for column in REQUIRED_MARKED:
             with self.subTest(column=column):
                 found = marks(column)
                 self.assertIn("*", found)
                 self.assertNotIn("선택", found)
-        for column in domain.OPTIONAL_TASK_COLUMNS:
+        optional = [column for column in domain.TASK_COLUMNS + domain.OPTIONAL_TASK_COLUMNS
+                    if column not in REQUIRED_MARKED]
+        self.assertEqual(optional[0], "세부사업명")
+        self.assertEqual(len(optional), 5)
+        for column in optional:
             with self.subTest(column=column):
                 found = marks(column)
                 self.assertIn("선택", found)

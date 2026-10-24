@@ -29,7 +29,7 @@ v15는 Windows의 단일 pywebview·Edge WebView2 창 안에서 HTML/CSS/JavaScr
 
 ## v16 실행 경로
 
-v16은 v15 구성요소마다 같은 역할의 v16 파일(security_grade_classifier_v16 → desktop_bridge_v16 → classification_v16·batch_v16 → notice_review_v16 → notice_catalogue_v16, 공통 기준 v16_domain, 출력 hwpx_writer_v16)을 두고 v16 모듈끼리만 연결한다. llm_client_v14·credential_store는 v15와 같이 재사용한다. 화면 자산은 ui_v16, 기준본은 resources_v16/notices, 의견서 서식은 templates/v15 두 파생 서식을 그대로 쓴다. v15 경로는 독립적으로 보존되며 v16 실행 파일은 v15 실행 모듈을 묶지 않는다.
+v16은 v15 구성요소마다 같은 역할의 v16 파일(security_grade_classifier_v16 → desktop_bridge_v16 → classification_v16·batch_v16 → notice_review_v16 → notice_catalogue_v16, 공통 기준 v16_domain, 출력 hwpx_writer_v16)을 두고 v16 모듈끼리만 연결한다. llm_client_v14·credential_store는 v15와 같이 재사용한다. 브리지의 모델 클라이언트는 llm_client_v14를 감싼 llm_json_v16.TolerantLLMClient(설명문 붙은 응답에서 완전한 JSON 하나만 받기)이고, 과제 글과 부처 세부기준은 v16_domain.clean_input_text로 정리된 뒤 task_snapshot·normalize_options를 거쳐 AI 요청과 지문에 들어간다. 화면 자산은 ui_v16, 기준본은 resources_v16/notices, 의견서 서식은 templates/v15 두 파생 서식을 그대로 쓴다. v15 경로는 독립적으로 보존되며 v16 실행 파일은 v15 실행 모듈을 묶지 않는다.
 
 v16 화면은 12개 브리지 함수만 호출한다. 입력 양식 내려받기는 select_path('input_template')로 받은 토큰을 save_input_template에 넘기고, 브리지가 batch_v16.make_template로 파일을 쓴다. 참고 고시 화면은 get_initial_state의 고시별 목록을 표시하고, 조항 목록은 search_notice_clauses, 펼친 원문은 get_notice_clause로 받는다. 두 함수는 Python 쪽에서 불러 둔 검증된 기준본만 읽고 작업 상태와 무관하게 응답한다. 검색 계산은 화면 스크립트가 하지 않는다. 결과 화면은 결과에 저장된 출처를 고시번호로 묶어 표시하며 고시명은 초기 상태의 고시명 표에서 찾는다.
 

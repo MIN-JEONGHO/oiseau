@@ -159,6 +159,133 @@ class OptionsTests(unittest.TestCase):
         self.assertEqual(auto.selected_items, ())
 
 
+# Spec 5 input rows (synthetic text only).
+CLEANING_ROWS = (
+    ("줄1_x000D_\n줄2", "줄1\n줄2"),
+    ("20_x000D_30", "20\n30"),
+    ("_x00_x000D_0D_", "_x00\n0D_"),
+    ("_x005F_x000D_", "_x005F_x000D_"),
+    ("a_x000D_x005F_x000D_b", "a\nx005F\nb"),
+    ("a  \t\n\n\n\nb", "a\n\nb"),
+    ("첫 줄\n  들여쓴 줄\n끝 줄", "첫 줄\n  들여쓴 줄\n끝 줄"),
+)
+CLEANING_EXTRA = (
+    ("줄1_x000A_줄2_x0009_칸", "줄1\n줄2\t칸"),
+    ("_X000d_가_x000a_나_X0009_다", "가\n나\t다"),
+    ("_x005f_X000A_ 그대로", "_x005f_X000A_ 그대로"),
+    ("_x0020_ 다른 표시_x00E9_", "_x0020_ 다른 표시_x00E9_"),
+    ("가\r\n나\r다\n\r라", "가\n나\n다\n\n라"),
+    ("가 _x000D_\n _x0009_\n\n나", "가\n\n나"),
+    ("  앞뒤  ", "앞뒤"),
+    ("_x000D_", ""),
+    ("", ""),
+)
+CLEANING_FRAGMENTS = ("_x000D_", "_x005F", "_x000A_", "_x0009_", "_x00", "0D_", "\r", "\n", " ", "\t", "a", "가", "_")
+
+
+class InputCleaningTests(unittest.TestCase):
+    def test_spec_rows_and_marker_rules(self):
+        for raw, expected in CLEANING_ROWS + CLEANING_EXTRA:
+            with self.subTest(raw=raw):
+                self.assertEqual(d.clean_input_text(raw), expected)
+                self.assertEqual(d.clean_input_text(expected), expected)
+
+    def test_idempotent_on_fixed_and_random_fragment_strings(self):
+        import random
+        fixed = [raw for raw, _ in CLEANING_ROWS + CLEANING_EXTRA] + [
+            "_x005F_x005F_x000D_", "_x000D_x000D_", "_x000D_x0009__", "_x00_x000A_0A_", "_x005F_x000D__x000D_",
+            "a\t_x000D_\t\r\n b", "\n\n\n_x0009_\n\n\n", "_x000D_x005F_x000A_x005F_x0009_",
+        ]
+        rng = random.Random(20261024)
+        generated = ["".join(rng.choice(CLEANING_FRAGMENTS) for _ in range(rng.randint(0, 24)))
+                     for _ in range(5000)]
+        for raw in fixed + generated:
+            once = d.clean_input_text(raw)
+            twice = d.clean_input_text(once)
+            if once != twice:
+                self.fail(f"not idempotent: {raw!r} -> {once!r} -> {twice!r}")
+            self.assertNotIn("\r", once)
+            self.assertNotIn("\n\n\n", once)
+            self.assertEqual(once, once.strip())
+
+    def test_other_control_characters_in_the_middle_are_preserved(self):
+        for char in ("\x0b", "\x0c", "\x1c", "\x1d", "\x1e", "\x1f", "\x85", " ", " "):
+            with self.subTest(char=repr(char)):
+                self.assertEqual(d.clean_input_text("가" + char + "나"), "가" + char + "나")
+                # Only space and tab are removed at a line end; the line split is LF only.
+                self.assertEqual(d.clean_input_text("가" + char + " \t\n나"), "가" + char + "\n나")
+                self.assertEqual(d.clean_input_text("가\n" + char + "나"), "가\n" + char + "나")
+                # At either end str.strip() still removes it, exactly as before.
+                self.assertEqual(d.clean_input_text(char + "가" + char), "가")
+
+    def test_task_snapshot_cleans_all_nine_columns(self):
+        columns = d.TASK_COLUMNS + d.OPTIONAL_TASK_COLUMNS
+        self.assertEqual(len(columns), 9)
+        dirty = {column: f" {column}_x000D_\n둘째 줄 \t_x000D_\n\n\n셋째 " for column in columns}
+        snapshot = d.task_snapshot(dirty)
+        # "_x000D_\n" is one CRLF, so it becomes a single line break.
+        self.assertEqual(snapshot, {column: f"{column}\n둘째 줄\n\n셋째" for column in columns})
+        self.assertEqual(snapshot, d.task_snapshot(snapshot))
+        self.assertEqual(d.task_fingerprint(dirty), d.task_fingerprint(snapshot))
+        self.assertEqual(d.task_snapshot({"과제명": 20, "연구내용": None})["과제명"], "20")
+        for name in ("_x000D_", "_x000D__x000A_ \t_x0009_", "\r\n"):
+            with self.subTest(name=name), self.assertRaises(ValueError) as caught:
+                d.task_snapshot({"과제명": name, "연구내용": "합성 내용"})
+            self.assertEqual(str(caught.exception), "과제명은 필수입니다.")
+
+    def test_cleaned_result_snapshot_passes_validation(self):
+        manifest = synthetic_notice()["catalogue_manifest"]
+        dirty = {"과제명": "합성_x000D_\n과제", "현재 기술사양": "속도 20 GHz_x000D_",
+                 "연구내용": "_x005F_x000D_ 글자 그대로\r\n  들여쓴 줄"}
+        result = d.make_result(dirty, catalogue_manifest=manifest)
+        self.assertEqual(result["task_snapshot"]["과제명"], "합성\n과제")
+        self.assertEqual(result["task_snapshot"]["연구내용"], "_x005F_x000D_ 글자 그대로\n  들여쓴 줄")
+        self.assertEqual(result["task_name"], "합성\n과제")
+        self.assertEqual(result["task_fingerprint"], d.task_fingerprint(result["task_snapshot"]))
+        d.validate_result(result)
+        d.validate_result(result, task=dirty)
+
+    def test_normalize_options_cleans_common_policy_and_fingerprint_uses_cleaned_text(self):
+        raw = {"ministry_policy": "  공통_x000D_\n정책 \t\n\n\n\n끝_x000A_"}
+        options = d.normalize_options(raw)
+        self.assertEqual(options.ministry_policy, "공통\n정책\n\n끝")
+        self.assertEqual(d.options_fingerprint(raw), d.options_fingerprint({"ministry_policy": "공통\n정책\n\n끝"}))
+        self.assertEqual(d.normalize_options(options), options)
+        empty = d.normalize_options({"ministry_policy": "_x000D_\r\n_x0009_"})
+        self.assertEqual(empty.ministry_policy, "")
+        self.assertEqual(d.options_fingerprint({"ministry_policy": "_x000D_"}), d.options_fingerprint())
+        manual = {"selection_mode": "manual", "selected_items": [8]}
+        for policy in ("_x000D_", "_x000A__x0009_ "):
+            with self.subTest(policy=policy):
+                with self.assertRaises(ValueError):
+                    d.normalize_options(manual | {"ministry_policy": policy})
+                with self.assertRaises(ValueError):
+                    d.normalize_options(manual, ministry_policy_context=policy)
+        self.assertEqual(d.normalize_options(manual, ministry_policy_context="정책_x000D_").selected_items,
+                         (d.ITEM_NAMES[7],))
+        with self.assertRaises(ValueError):
+            d.make_result({"과제명": "합성", "부처 세부기준": "_x000D_"}, d.normalize_options(manual, allow_row_policy=True))
+
+    def test_clean_inputs_keep_v15_snapshot_and_fingerprints(self):
+        import v15_domain as previous
+        tasks = [
+            {"과제명": "합성 과제"},
+            {"과제명": " 합성 과제 \n", "연구목표": "  첫 줄\n  둘째 줄\n\n셋째", "부처 세부기준": "정책",
+             "현재 기술사양": "속도 20 GHz", "개발목표 사양": "속도 30 GHz", "세부사업명": "합성 사업"},
+            {"과제명": "_x005F_x000D_ 글자 그대로", "연구내용": "가\t나\n다"},
+        ]
+        for task in tasks:
+            with self.subTest(task=task):
+                self.assertEqual(d.task_snapshot(task), previous.task_snapshot(task))
+                self.assertEqual(d.task_fingerprint(task), previous.task_fingerprint(task))
+        for options in ({}, {"ministry_policy": " 공통 정책 "}, {"ministry_policy": "첫 줄\n  둘째 줄"},
+                        {"method": "checklist", "selection_mode": "manual", "selected_items": [1, 8],
+                         "ministry_policy": "정책"}):
+            with self.subTest(options=options):
+                self.assertEqual(d.options_fingerprint(options), previous.options_fingerprint(options))
+                self.assertEqual(d.normalize_options(options).to_dict(), previous.normalize_options(options).to_dict())
+
+
 class EvidenceTests(unittest.TestCase):
     def setUp(self):
         self.task = d.task_snapshot({"과제명": "합성 과제", "현재 기술사양": "속도 20 GHz"})
