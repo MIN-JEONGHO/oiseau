@@ -372,8 +372,9 @@ def normalize_options(options=None, *, ministry_policy_context="", allow_row_pol
     names = () if selection == "auto" else canonical_items(raw.get("selected_items", ()))
     if selection == "manual" and not names:
         raise ValueError("직접 선택할 검토항목이 필요합니다.")
-    policy = str(raw.get("ministry_policy", "") or "").strip()
-    context_policy = str(ministry_policy_context or "").strip()
+    # Pasted policy text reaches the AI prompt and the options fingerprint cleaned.
+    policy = clean_input_text(str(raw.get("ministry_policy", "") or ""))
+    context_policy = clean_input_text(str(ministry_policy_context or ""))
     if ITEM_NAMES[7] in names and not (policy or context_policy or allow_row_policy):
         raise ValueError("8번 항목을 선택하려면 부처 세부기준을 입력해야 합니다.")
     tol = _decimal(raw.get("weight_tolerance", 1e-6), "허용오차") if method == "impact" and selection == "manual" else Decimal("0.000001")
@@ -409,8 +410,30 @@ def normalize_options(options=None, *, ministry_policy_context="", allow_row_pol
                       float(tol), policy, guideline, base_url, catalogue, comparison_rules)
 
 
+# Excel stores CR/LF/tab in cell text as _x000D_/_x000A_/_x0009_ and openpyxl
+# leaves them in place. The _x005F_-escaped form (a literal marker typed by the
+# user) is matched as one chunk and kept, so a single left-to-right pass never
+# decodes it and never re-joins a decoded marker's trailing "_" with the next.
+_EXCEL_MARKER = re.compile(r"(_x005F_x(?:000D|000A|0009)_)|_x(000D|000A|0009)_", re.IGNORECASE)
+_EXCEL_MARKER_CHARS = {"000D": "\r", "000A": "\n", "0009": "\t"}
+
+
+def clean_input_text(value: str) -> str:
+    """Normalise pasted task text idempotently (spec 4.2).
+
+    Only Excel line-break markers, line endings and trailing spaces/tabs change.
+    Lines are split on LF alone: splitlines() and bare rstrip() would also treat
+    VT, FF, U+001C..U+001F, NEL and U+2028 as line ends and alter content.
+    """
+    text = _EXCEL_MARKER.sub(lambda match: match.group(1) or _EXCEL_MARKER_CHARS[match.group(2).upper()], value)
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    text = "\n".join(line.rstrip(" \t") for line in text.split("\n"))
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
 def task_snapshot(task: Mapping) -> dict[str, str]:
-    result = {column: "" if task.get(column) is None else str(task.get(column, "")).strip()
+    # Cleaning is idempotent, so a saved snapshot still equals task_snapshot(snapshot).
+    result = {column: "" if task.get(column) is None else clean_input_text(str(task.get(column, "")))
               for column in TASK_COLUMNS + OPTIONAL_TASK_COLUMNS}
     if not result["과제명"]:
         raise ValueError("과제명은 필수입니다.")
