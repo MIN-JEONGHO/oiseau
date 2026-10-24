@@ -108,12 +108,15 @@ v16은 위 v15 규약을 그대로 따르고 아래만 다르다. v16 결과·�
 
 - 기준본: resources_v16/notices, `catalogue_id` `kr-notices-v16-1`. manifest 출처 키는 v15 키에 `announcement_date`(고시일, ISO)를 더한 집합과 정확히 같고, 키 순서에서 `effective_date` 바로 앞이다. 로더(notice_catalogue_v16)와 도메인 검증(v16_domain.validate_manifest) 모두 다음을 거부한다: ISO가 아닌 날짜, 고시일 > 시행일, 같은 고시번호의 날짜 불일치, 고시명 표(`NOTICE_TITLES`)에 없는 고시번호, 고시마다 `-body`로 끝나는 본문 출처가 정확히 하나가 아닌 경우. 로더의 고시명 표 사본은 도메인 표와 같아야 한다.
 - 저장 결과: `schema_version` 3. 루트 키 25개·나머지 구조는 schema2와 같고 `notice_review`의 manifest·출처에 `announcement_date`가 있다. schema 3이 아닌 결과는 검증·재출력에서 거부한다.
-- 브리지 함수 11개: v15의 9개에 아래 읽기 전용 2개를 더한다. 둘 다 모델·키·파일·작업 상태를 건드리지 않고, 진행 중인 작업이 있어도 호출할 수 있으며, 기준본을 읽지 못하면 `catalogue` 오류다.
+- 브리지 함수 12개: v15의 9개에 아래 읽기 전용 조회 2개와 입력 양식 저장 1개를 더한다. 이름 목록의 순서는 v15 9개, search_notice_clauses, get_notice_clause, save_input_template이며 호스트 허용 목록도 같은 순서다. 조회 2개는 모델·키·파일·작업 상태를 건드리지 않고, 진행 중인 작업이 있어도 호출할 수 있으며, 기준본을 읽지 못하면 `catalogue` 오류다.
 
   | 함수와 입력 | 성공 data | 오류 |
   | --- | --- | --- |
   | search_notice_clauses({query?,family?,offset?,limit?}) | total, offset, limit, items(clause_id·family·source_id·notice_number·code·title·field, 원문 없음) | 사전 아님·정의되지 않은 키·bool 정수·query 201자 이상(정규화 전)·family 오타·offset 음수·limit 0 또는 101 → validation |
   | get_notice_clause(clause_id) | clause_id, family, source_id, notice_number, notice_title, announcement_date, effective_date, official_url(그 조항 출처의 URL), code, title, field, source_anchor, text(원문 그대로) | 문자열 아님 → validation, 없는 조항 → not_found |
+  | save_input_template({output_token}) | saved:true, display_name(파일 이름만) | 키가 output_token 하나가 아님·input_template 용도가 아닌 토큰 → validation, 진행 중 작업 → busy, 보호 경로 → validation(전용 문구 `_EVENTS["template_protected"]` '검토에 쓰는 파일 보호를 위해 저장 중단. 다른 파일 이름 선택 필요'), make_template의 BatchError·OSError → io |
+
+  select_path의 용도에 input_template(.xlsx 저장 대화상자, 기본 이름 `v16_일괄검토_입력양식.xlsx`)을 더한다. 확장자 .xlsx·상위 폴더 존재·폴더 아님만 받으며 그 토큰은 이 용도에만 유효하다. 모르는 용도는 폴더로 취급하지 않고 validation이다. 보호 경로는 이번 앱 실행 중 input_excel·output_excel 용도로 발급한 토큰의 경로(같은 파일 포함)와, 옆에 `<경로>.checkpoint.jsonl` 또는 `<경로>.audit.jsonl`이 있는 경로다. 그 밖의 기존 파일은 Windows 덮어쓰기 확인을 따른다. 작업 확인과 쓰기는 한 잠금 구간 안에서 한다. 저장한 양식을 입력 엑셀로 자동 선택하지 않는다. 실패 응답의 message는 code별 고정 문구이며 이 보호 경로 경우만 전용 문구다.
 
   검색은 검색어와 조항의 clause_id·code·title·field·text를 NFKC → 모든 공백 문자 제거 → casefold로 정규화한 뒤 부분 문자열로 비교한다. 기본값은 query "", family null(전체), offset 0, limit 50이고 순서는 기준본 조항 순서다. 정규화는 비교에만 쓰고 반환값은 원문 그대로다. 검색 결과 없음은 비해당 판정이 아니다.
 - get_initial_state: `catalogue.sources`에 `announcement_date`, 새 키 `catalogue.notices`(고시번호별 notice_number·title·announcement_date·effective_date·families·source_ids·official_url, 기준본 출처 순서의 첫 등장 순서, official_url은 본문 출처의 URL)와 `catalogue.notice_titles`(고시번호→고시명 전체 표). `guideline`은 `{id, definitions:[{heading,text}], principles:[{title,details:[문자열]}]}`이며 내용은 법 제21조④⑤·시행령 제45조①②·가이드라인 일반과제 설명·분류 원칙 4개의 원문 인용이다.
@@ -121,4 +124,6 @@ v16은 위 v15 규약을 그대로 따르고 아래만 다르다. v16 결과·�
 - 결과 엑셀: 시트·열 이름은 v15와 같고 `고시기준본` 시트에만 `고시일` 열이 `시행일` 바로 앞에 들어간다. 그 뒤 열은 한 칸씩 밀린다.
 - HWPX: 서식은 templates/v15 그대로. 출처 부록 제목은 `출처 및 버전·고시일·시행일·URL·SHA256`, 출처별 `고시일` 항목이 `시행일` 앞에 온다. 그 밖의 의견서 문구는 v15와 같다.
 - 일괄 검토 결과 보호: 결과 경로 옆 중간 저장 파일에 정수 `schema_version`이 3 미만인 기록이 하나라도 있거나, 결과 엑셀이 이미 있는데 열 수 있고 `고시기준본` 시트 머리 행에 `고시일`이 있는 v16 결과로 확인되지 않으면 `batch_v16.PreviousResultError`(BatchError 하위)로 멈춘다. 재개 여부와 관계없고, 중간 저장 초기화·엑셀 교체·감사·모델 호출 전에 멈추며 기존 세 파일은 바이트까지 그대로다. 브리지는 오류 code `io`를 유지하고 진행 이벤트에 `batch_v16.PREVIOUS_RESULT_MESSAGE`를 남긴 뒤 작업을 `failed`로 끝낸다(취소 요청이 먼저 있었어도 failed). 해독할 수 없는 줄·정수가 아닌 버전 값은 이전 버전 근거로 보지 않고 v15처럼 경고 후 새로 처리한다.
-- 실행 파일: `dist-v16/보안등급분류시뮬레이터_v16.exe`, 결과 엑셀 기본 이름 `v16_검토결과.xlsx`. `--self-check`는 v15 범위에 새 함수 2개의 정상·오류 응답, 진행 중 호출, 허용 목록 정확히 11개를 더해 확인한다.
+- 실행 파일: `dist-v16/보안등급분류시뮬레이터_v16.exe`, 결과 엑셀 기본 이름 `v16_검토결과.xlsx`. `--self-check`는 v15 범위에 새 함수 2개의 정상·오류 응답, 진행 중 호출, 입력 양식 저장·보호 경로 거부·작업 중 busy, 허용 목록 정확히 12개, 창 크기 맞춤 적용을 더해 확인한다.
+- 입력 양식(`batch_v16.make_template`): 시트 '작성안내'·'분류대상'. 분류대상 머리글 9개 중 기본 5개(세부사업명·과제명·연구목표·연구내용·기대효과)는 '(필수)', 추가 4개는 '(선택)' 표시이고 '(예시)' 합성 예시 2행이 있다. 작성안내는 명사형 개조식이다. 이 양식은 결과 엑셀·의견서 문구를 v15 그대로 두는 원칙의 예외다. 읽기 규칙은 바뀌지 않으며 실제로 제외하는 것은 과제명이 빈 행·'(예시)' 행·중복 과제명뿐이다. 기본 5개 중 다른 칸이 비어도 검토한다.
+- 참고 고시 카드는 고시명·고시번호·고시일·시행일·공식 출처만 표시한다. `catalogue.notices`의 families와 초기 상태의 범위별 집계는 그대로 반환하며, 조항 검색의 범위 선택·결과 줄·펼친 조항의 범위 표시에 쓴다.

@@ -61,3 +61,9 @@ pywebview의 js_bridge_call은 js_api=None이어도 `__str__` 같은 dunder 이�
 v16 일괄 검토의 이전 버전 결과 판정은 중간 저장 파일의 각 줄을 관대하게 해독한다. 같은 키가 두 번 있는 줄도 마지막 값으로 읽어 `schema_version` 2면 멈춘다. bool·문자열·실수 버전 값과 해독할 수 없는 줄은 이전 버전 근거로 보지 않고 v15처럼 경고 후 새로 처리한다. 결과 경로가 폴더나 바로가기면 결과 엑셀로 확인되지 않으므로 멈춘다.
 
 git 작업 사본을 새로 만들 때 core.autocrlf=true가 소스 파일을 CRLF로 되돌린다. 고시 기준본 폴더는 `.gitattributes`의 `* -text`로 바이트를 보존하므로, resources_v16/notices를 옮기거나 새로 만들 때 이 파일을 함께 커밋하지 않으면 manifest 해시가 작업 사본에서 깨진다. 기존 v15 화면 시험(test_v15_frontend)은 프로젝트 `.dryforge/ui-v15-captures`에, v16 화면 시험은 `.dryforge/ui-v16-captures`에 캡처를 남긴다. 둘 다 커밋 제외 폴더다.
+
+pywebview(winforms)는 create_window의 width·height·min_size에 화면 배율을 곱한다. 1366×900 창은 125%에서 1708×1125 물리 픽셀이 되어 1920×1080 화면 작업 영역보다 커지고 아래가 잘렸다. v16 호스트는 창 표시 전 이벤트(GUI 스레드, pywebview가 DPI 인식을 켠 뒤)에서 MonitorFromWindow·GetMonitorInfoW의 작업 영역(물리)과 GetDpiForWindow를 읽고, 논리 크기 = 물리 × 96 ÷ dpi(내림)로 계산한 뒤 WinForms 창의 MinimumSize → Size → Location을 직접 바꾼다. pywebview의 resize·move는 창이 보인 뒤를 기다리므로 표시 전 이벤트 안에서 부르면 20초 멈춘 뒤 실패하고, min_size는 창을 만들 때 한 번만 정해져 나중에 낮출 공개 방법이 없다. 측정이나 적용이 실패하면 원래 크기로 둔다. 창 위치는 창을 만든 모니터(보통 주 모니터)의 작업 영역 가운데라서, 여러 모니터에서는 예전(마우스가 있던 모니터 가운데)과 다른 모니터에 뜰 수 있다.
+
+한글 줄바꿈은 `word-break: keep-all`로 낱말 단위로 바꾸고, 공백 없는 긴 값은 `overflow-wrap: anywhere`로 칸 안에서 나눈다. `overflow-wrap: break-word`는 표의 최소 폭 계산에 반영되지 않아 keep-all과 함께 쓰면 긴 낱말이 표를 넓혀 가로로 넘친다. 날짜 '2025-10-02'는 하이픈에서 끊길 수 있으므로 고시번호·고시일·시행일을 각각 줄바꿈 없는 단위로 묶는다. 낱말 끊김은 화면 시험에서 각 낱말 범위의 줄 사각형이 하나인지로 확인하며, 닫힌 details 안의 글자도 배치 상자를 보고하므로 checkVisibility로 보이는 요소만 검사한다.
+
+시험 파일들은 같은 폴더의 다른 시험 모듈을 바로 가져다 쓰고 tests 폴더에 패키지 표시 파일이 없다. 그래서 `python -m unittest tests.test_v16_batch`처럼 모듈 이름으로 부르면 가져오기 오류가 난다. `-m unittest discover -s tests -p "파일이름"` 형태나 PYTHONPATH=tests로 실행한다.
