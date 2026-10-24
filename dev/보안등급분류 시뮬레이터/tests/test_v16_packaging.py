@@ -687,6 +687,130 @@ class WindowFitTests(unittest.TestCase):
         self.assertIs(fit.outcome["applied"], True)
         self.assertEqual(fit.outcome["physical"]["size"], (1707, 991))
 
+    # Fake user32: primary 1920x1032 at the origin, a second monitor at x=1920.
+    PRIMARY, SECOND = 101, 202
+    WORK = {101: (0, 0, 1920, 1032), 202: (1920, 0, 3840, 1032)}
+
+    def fake_user32(self, cursor=(2500, 400), cursor_ok=True, point_monitor=None,
+                    window_monitor=101, info_ok=True, dpi=120):
+        calls = []
+        work = self.WORK
+
+        def GetCursorPos(ref):
+            calls.append(("GetCursorPos",))
+            if not cursor_ok:
+                return False
+            point = getattr(ref, "_obj", ref)
+            point.x, point.y = cursor
+            return True
+
+        def MonitorFromPoint(point, flags):
+            calls.append(("MonitorFromPoint", (point.x, point.y), flags))
+            if point_monitor is not None:
+                return point_monitor
+            return 202 if point.x >= 1920 else 101
+
+        def MonitorFromWindow(hwnd, flags):
+            calls.append(("MonitorFromWindow", hwnd, flags))
+            return window_monitor
+
+        def GetMonitorInfoW(monitor, ref):
+            calls.append(("GetMonitorInfoW", monitor))
+            if not info_ok or monitor not in work:
+                return False
+            info = getattr(ref, "_obj", ref)
+            info.rcWork.left, info.rcWork.top, info.rcWork.right, info.rcWork.bottom = work[monitor]
+            return True
+
+        def GetDpiForWindow(hwnd):
+            calls.append(("GetDpiForWindow", hwnd))
+            return dpi
+
+        user32 = SimpleNamespace(GetCursorPos=GetCursorPos, MonitorFromPoint=MonitorFromPoint,
+                                 MonitorFromWindow=MonitorFromWindow, GetMonitorInfoW=GetMonitorInfoW,
+                                 GetDpiForWindow=GetDpiForWindow)
+        return user32, calls
+
+    @staticmethod
+    def native_window():
+        class Form:
+            def __init__(self):
+                self.__dict__["log"] = []
+                self.__dict__["IsDisposed"] = False
+                self.__dict__["Handle"] = SimpleNamespace(ToInt64=lambda: 4242)
+
+            def __setattr__(self, name, value):
+                self.log.append((name, value))
+
+        return SimpleNamespace(native=Form())
+
+    def run_fit(self, user32):
+        window = self.native_window()
+        fit = host.WindowFit(window)
+        with patch.object(host.ctypes, "WinDLL", return_value=user32) as windll, \
+                patch.object(host, "_apply_window_plan") as apply:
+            fit.before_show()
+        windll.assert_called_once_with("user32")
+        return fit, apply
+
+    def test_measure_uses_the_monitor_under_the_cursor_including_its_offset(self):
+        user32, calls = self.fake_user32(cursor=(2500, 400))
+        with patch.object(host.ctypes, "WinDLL", return_value=user32) as windll:
+            measured = host._measure_work_area(self.native_window().native)
+        windll.assert_called_once_with("user32")
+        self.assertEqual(measured, ((1920, 0, 3840, 1032), 120))
+        self.assertIn(("MonitorFromPoint", (2500, 400), 2), calls)  # MONITOR_DEFAULTTONEAREST
+        self.assertIn(("GetMonitorInfoW", 202), calls)
+        self.assertNotIn("MonitorFromWindow", [call[0] for call in calls])
+        self.assertIn(("GetDpiForWindow", 4242), calls)
+        fit, apply = self.run_fit(self.fake_user32(cursor=(2500, 400))[0])
+        self.assertIs(fit.outcome["applied"], True)
+        apply.assert_called_once()
+        plan = apply.call_args.args[1]
+        self.assertEqual(plan["work_area_physical"], (1920, 0, 3840, 1032))
+        # Same size as on the primary monitor, centred within the second one: 1920 + 106.
+        self.assertEqual(plan["physical"], {"min_size": (950, 700), "size": (1707, 991), "location": (2026, 20)})
+        (x, y), (width, height) = plan["physical"]["location"], plan["physical"]["size"]
+        self.assertEqual((x - 1920, 3840 - (x + width)), (106, 107))
+        self.assertTrue(0 <= y and y + height <= 1032)
+
+    def test_cursor_failure_falls_back_to_the_form_monitor(self):
+        for label, options in (("GetCursorPos", {"cursor_ok": False}),
+                               ("MonitorFromPoint", {"point_monitor": 0})):
+            with self.subTest(failing=label):
+                user32, calls = self.fake_user32(window_monitor=self.PRIMARY, **options)
+                fit, apply = self.run_fit(user32)
+                self.assertIn(("MonitorFromWindow", 4242, 2), calls)
+                self.assertIs(fit.outcome["applied"], True)
+                plan = apply.call_args.args[1]
+                self.assertEqual(plan["work_area_physical"], (0, 0, 1920, 1032))
+                self.assertEqual(plan["physical"]["location"], (106, 20))
+        # A missing GetCursorPos (exception) also falls back.
+        user32, calls = self.fake_user32()
+
+        def broken(ref):
+            raise OSError("synthetic GetCursorPos failure")
+
+        user32.GetCursorPos = broken
+        fit, apply = self.run_fit(user32)
+        self.assertIs(fit.outcome["applied"], True)
+        self.assertEqual(apply.call_args.args[1]["work_area_physical"], (0, 0, 1920, 1032))
+
+    def test_cursor_and_form_monitor_failure_keeps_the_defaults(self):
+        for label, options in (("no monitor", {"cursor_ok": False, "window_monitor": 0}),
+                               ("no point monitor", {"point_monitor": 0, "window_monitor": 0}),
+                               ("no monitor info", {"info_ok": False}),
+                               ("no dpi", {"dpi": 0})):
+            with self.subTest(case=label):
+                user32, _calls = self.fake_user32(**options)
+                window = self.native_window()
+                fit = host.WindowFit(window)
+                with patch.object(host.ctypes, "WinDLL", return_value=user32):
+                    fit.before_show()
+                self.assertEqual(window.native.log, [])
+                self.assertIs(fit.outcome["applied"], False)
+                self.assertEqual(fit.outcome["reason"], "work_area_unavailable")
+
     def test_host_never_uses_pywebview_resize_or_move(self):
         tree = ast.parse((ROOT / (ENTRY + ".py")).read_text(encoding="utf-8-sig"))
         called = {node.func.attr for node in ast.walk(tree)

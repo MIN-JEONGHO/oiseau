@@ -412,7 +412,11 @@ def window_plan(work_rect, dpi, margin=WINDOW_MARGIN):
 
 
 def _measure_work_area(form):
-    """Win32 rcWork (physical) of the form's monitor and its window DPI, or None."""
+    """Win32 rcWork (physical) of the monitor under the cursor and the window DPI, or None.
+
+    The monitor under the mouse cursor is used, as WinForms CenterScreen did
+    before; when the cursor or its monitor cannot be read, the form's monitor.
+    """
     from ctypes import wintypes
 
     class MonitorInfo(ctypes.Structure):
@@ -421,6 +425,10 @@ def _measure_work_area(form):
 
     # A private user32 instance: pywebview's shared windll prototypes stay untouched.
     user32 = ctypes.WinDLL("user32")
+    user32.GetCursorPos.argtypes = (ctypes.POINTER(wintypes.POINT),)
+    user32.GetCursorPos.restype = wintypes.BOOL
+    user32.MonitorFromPoint.argtypes = (wintypes.POINT, wintypes.DWORD)
+    user32.MonitorFromPoint.restype = wintypes.HANDLE
     user32.MonitorFromWindow.argtypes = (wintypes.HWND, wintypes.DWORD)
     user32.MonitorFromWindow.restype = wintypes.HANDLE
     user32.GetMonitorInfoW.argtypes = (wintypes.HANDLE, ctypes.POINTER(MonitorInfo))
@@ -428,17 +436,30 @@ def _measure_work_area(form):
     user32.GetDpiForWindow.argtypes = (wintypes.HWND,)
     user32.GetDpiForWindow.restype = wintypes.UINT
     hwnd = form.Handle.ToInt64()
-    monitor = user32.MonitorFromWindow(hwnd, 2)  # MONITOR_DEFAULTTONEAREST
-    if not monitor:
-        return None
-    info = MonitorInfo()
-    info.cbSize = ctypes.sizeof(MonitorInfo)
-    if not user32.GetMonitorInfoW(monitor, ctypes.byref(info)):
+
+    def work_rect(monitor):
+        if not monitor:
+            return None
+        info = MonitorInfo()
+        info.cbSize = ctypes.sizeof(MonitorInfo)
+        if not user32.GetMonitorInfoW(monitor, ctypes.byref(info)):
+            return None
+        return info.rcWork
+
+    work = None
+    try:
+        cursor = wintypes.POINT()
+        if user32.GetCursorPos(ctypes.byref(cursor)):
+            work = work_rect(user32.MonitorFromPoint(cursor, 2))  # MONITOR_DEFAULTTONEAREST
+    except Exception:
+        work = None
+    if work is None:
+        work = work_rect(user32.MonitorFromWindow(hwnd, 2))  # MONITOR_DEFAULTTONEAREST
+    if work is None:
         return None
     dpi = int(user32.GetDpiForWindow(hwnd))
     if dpi <= 0:
         return None
-    work = info.rcWork
     return (int(work.left), int(work.top), int(work.right), int(work.bottom)), dpi
 
 
