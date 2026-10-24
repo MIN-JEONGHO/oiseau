@@ -5,9 +5,10 @@ packages' real asset/metadata collectors.  This catches lost relative paths,
 incomplete SDK/runtime collection and accidentally bundled working documents.
 The release gate separately inspects the actual built archive and runs it.
 
-The host checks here need no WebView: the eleven-name allowlist, the native
+The host checks here need no WebView: the twelve-name allowlist, the native
 message gate, the real pywebview dispatcher against bind_public_api (moved from
-the v15 bridge test, spec plan T4/T6), the window title and the save default.
+the v15 bridge test, spec plan T4/T6), the window title, the save defaults and
+the work-area window fit (spec 4.1) without a native window.
 The hidden-WebView run is ``security_grade_classifier_v16.py --self-check``.
 """
 from __future__ import annotations
@@ -48,6 +49,7 @@ ENTRY = "security_grade_classifier_v16"
 EXE_NAME = "보안등급분류시뮬레이터_v16"
 TITLE = "연구보안 등급분류 시뮬레이터 · v16"
 SAVE_NAME = "v16_검토결과.xlsx"
+TEMPLATE_NAME = "v16_일괄검토_입력양식.xlsx"
 APP_MODULES = frozenset((
     ENTRY, "desktop_bridge_v16", "batch_v16", "classification_v16",
     "v16_domain", "notice_catalogue_v16", "notice_review_v16",
@@ -58,18 +60,32 @@ V15_RUNTIME_MODULES = frozenset((
     "security_grade_classifier_v15", "desktop_bridge_v15", "v15_domain", "notice_catalogue_v15",
     "notice_review_v15", "classification_v15", "batch_v15", "hwpx_writer_v15",
 ))
-PUBLIC_METHODS = frozenset((
+# Spec 4.5: twelve names, save_input_template last; host and bridge share this order.
+ORDERED_METHODS = (
     "get_initial_state", "select_path", "save_key", "delete_key", "start_single",
     "start_batch", "get_job", "cancel_job", "start_export",
-    "search_notice_clauses", "get_notice_clause",
-))
+    "search_notice_clauses", "get_notice_clause", "save_input_template",
+)
+PUBLIC_METHODS = frozenset(ORDERED_METHODS)
 # Private helpers, dunder paths and pywebview's implicit native commands.
 FORBIDDEN_NAMES = (
     "_keys.resolve", "_keys._backend.get", "_paths.clear", "_jobs.clear", "_get_catalogue",
     "_path", "_path_selector", "_catalogue_loader", "_clause_details.get", "_clause_rows",
+    "_protected", "_review_paths.clear",
     "__str__", "__class__.__base__.__subclasses__", "__dict__._keys.resolve",
     "_pywebviewAlert", "console", "pywebviewStateUpdate", "pywebviewMoveWindow",
     "search_notice_clauses.__globals__", "get_notice_clause.__wrapped__", "Search_notice_clauses",
+    "save_input_template.__wrapped__", "Save_input_template",
+)
+# Spec 4.1 table: logical work area -> (start width, start height, min width, min height).
+WINDOW_CASES = (
+    ("1920x1080 100%", (1920, 1032), (1366, 900, 760, 560)),
+    ("1920x1080 125%", (1536, 825), (1366, 793, 760, 560)),
+    ("1920x1080 150%", (1280, 688), (1248, 656, 760, 560)),
+    ("1366x768 100%", (1366, 720), (1334, 688, 760, 560)),
+    ("1366x768 125%", (1092, 576), (1060, 544, 760, 544)),
+    ("2560x1440 125%", (2048, 1113), (1366, 900, 760, 560)),
+    ("work area unavailable", None, (1366, 900, 760, 560)),
 )
 DIRECT_DISTRIBUTIONS = frozenset((
     "lxml", "openpyxl", "requests", "openai", "anthropic", "pywebview",
@@ -353,12 +369,15 @@ def packet(name, params="[]", identifier="synthetic-id"):
 
 
 class HostBoundaryTests(unittest.TestCase):
-    def test_title_ui_root_and_eleven_name_allowlist(self):
+    def test_title_ui_root_and_twelve_name_allowlist(self):
         self.assertEqual(host.TITLE, TITLE)
-        self.assertEqual(len(host.PUBLIC_METHODS), 11)
-        self.assertEqual(len(set(host.PUBLIC_METHODS)), 11)
+        self.assertEqual(len(host.PUBLIC_METHODS), 12)
+        self.assertEqual(len(set(host.PUBLIC_METHODS)), 12)
         self.assertEqual(set(host.PUBLIC_METHODS), PUBLIC_METHODS)
+        # Same names in the same order as the bridge, the new function last.
+        self.assertEqual(host.PUBLIC_METHODS, ORDERED_METHODS)
         self.assertEqual(host.PUBLIC_METHODS, desktop_bridge_v16.PUBLIC_METHODS)
+        self.assertEqual(host.PUBLIC_METHODS[-1], "save_input_template")
         bridge_public = {name for name in dir(DesktopBridge)
                          if not name.startswith("_") and callable(getattr(DesktopBridge, name))}
         self.assertEqual(bridge_public, PUBLIC_METHODS)
@@ -383,13 +402,18 @@ class HostBoundaryTests(unittest.TestCase):
         self.assertEqual(local, {"desktop_bridge_v16", "credential_store", "notice_catalogue_v16",
                                  "v16_domain", "batch_v16"})
 
-    def test_native_gate_accepts_exactly_the_eleven_public_names(self):
+    def test_native_gate_accepts_exactly_the_twelve_public_names(self):
         source = _AllowedSource()
         for name in sorted(PUBLIC_METHODS):
             with self.subTest(name=name):
                 self.assertTrue(host._allow_native_message(source, source.url, packet(name)))
                 self.assertTrue(host._allow_native_message(source, source.url,
                     packet(name, json.dumps([{"query": "", "family": None, "offset": 0, "limit": 50}]))))
+        self.assertTrue(host._allow_native_message(source, source.url,
+            packet("save_input_template", json.dumps([{"output_token": "synthetic"}]))))
+        admitted = [name for name in ORDERED_METHODS + FORBIDDEN_NAMES
+                    if host._allow_native_message(source, source.url, packet(name))]
+        self.assertEqual(admitted, list(ORDERED_METHODS))
 
     def test_native_gate_rejects_private_dunder_builtin_and_malformed_packets(self):
         source = _AllowedSource()
@@ -436,7 +460,7 @@ class HostBoundaryTests(unittest.TestCase):
         window = Window()
         host.bind_public_api(window, bridge)
         self.assertEqual(set(window._functions), PUBLIC_METHODS)
-        self.assertEqual(len(window._functions), 11)
+        self.assertEqual(len(window._functions), 12)
         with_object = Window()
         with_object._js_api = bridge
         with self.assertRaises(host.HostError):
@@ -463,10 +487,48 @@ class HostBoundaryTests(unittest.TestCase):
         dialog, options = window.calls[-1]
         self.assertEqual(dialog, webview.FileDialog.SAVE)
         self.assertEqual(options["save_filename"], SAVE_NAME)
-        self.assertIsNone(host._select_native_path(window, "unknown"))
+        self.assertEqual(options["file_types"], ("Excel files (*.xlsx)",))
+        # Spec 4.5: an unknown purpose is an error (bridge: validation), never a silent cancel.
+        for purpose in ("unknown", "", None, "Input_template", "output_directory "):
+            with self.subTest(purpose=purpose):
+                with self.assertRaises(ValueError):
+                    host._select_native_path(window, purpose)
         self.assertEqual(len(window.calls), 1)
         source = (ROOT / (ENTRY + ".py")).read_text(encoding="utf-8")
         self.assertNotIn("v15_검토결과", source)
+
+    def test_input_template_save_dialog_default_name(self):
+        class Window:
+            def __init__(self, result):
+                self.calls = []
+                self.result = result
+
+            def create_file_dialog(self, dialog, **options):
+                self.calls.append((dialog, options))
+                return self.result
+
+        import webview
+        window = Window(("C:/synthetic/" + TEMPLATE_NAME,))
+        self.assertEqual(host._select_native_path(window, "input_template"), "C:/synthetic/" + TEMPLATE_NAME)
+        self.assertEqual(window.calls, [(webview.FileDialog.SAVE,
+            {"save_filename": TEMPLATE_NAME, "file_types": ("Excel files (*.xlsx)",)})])
+        # A dismissed dialog is a cancel (None), as for the other purposes.
+        for dismissed in (None, (), [], ""):
+            with self.subTest(dismissed=dismissed):
+                self.assertIsNone(host._select_native_path(Window(dismissed), "input_template"))
+        self.assertEqual(host._select_native_path(Window("C:/synthetic/a.xlsx"), "input_template"),
+                         "C:/synthetic/a.xlsx")
+
+    def test_unknown_purpose_reaches_the_renderer_as_validation(self):
+        bridge = DesktopBridge(key_manager=KeyManager(FakeBackend(), environ={}), catalogue_loader=catalogue,
+                               client_factory=lambda *a: Client(facts=[]),
+                               path_selector=lambda purpose: host._select_native_path(None, purpose))
+        with patch.object(desktop_bridge_v16, "_PURPOSES", desktop_bridge_v16._PURPOSES | {"synthetic"}):
+            response = bridge.select_path("synthetic")
+        self.assertEqual(response, {"ok": False, "data": None, "error": {
+            "code": "validation", "message": desktop_bridge_v16._MESSAGES["validation"]}})
+        self.assertEqual(bridge._paths, {})
+
 
     def test_self_check_script_targets_v16_markers_lookups_and_ui_wording(self):
         script = host._selfcheck_script()
@@ -475,8 +537,15 @@ class HostBoundaryTests(unittest.TestCase):
         for marker in ("__v16check", "__v16attackReady", "__v16attackGo", "__v16attackDone",
                        "__v16attackChecked", "__v16busyHeld", "__v16busyReleased"):
             self.assertIn(marker, script)
-        for name in ("search_notice_clauses", "get_notice_clause", "schema_version===3"):
+        for name in ("search_notice_clauses", "get_notice_clause", "schema_version===3",
+                     "save_input_template", "'input_template'", "batch-template", "batch-template-name",
+                     "reviewer-footnote", "batch-options-summary"):
             self.assertIn(name, script)
+        # Spec 4.5: the busy template token is taken before the held job starts.
+        self.assertLess(script.index("out.busyTemplate=await call('select_path','input_template')"),
+                        script.index("const held=await call('start_single'"))
+        self.assertLess(script.index("const held=await call('start_single'"),
+                        script.index("refused('busy','save_input_template'"))
         source = (ROOT / (ENTRY + ".py")).read_text(encoding="utf-8")
         self.assertNotIn("__v15", source)
         # Every quoted Korean UI string the self-check waits for exists in ui_v16.
@@ -486,7 +555,9 @@ class HostBoundaryTests(unittest.TestCase):
         self.assertTrue(quoted)
         synthetic = {text for text in quoted if "합성" in text or "실제 연구정보" in text}
         # v15 wording the self-check asserts is absent from the rendered v16 document.
-        stale = {"자동 선택", "좋은 판단은", "연구보안 검토실", "研"}
+        stale = {"자동 선택", "좋은 판단은", "연구보안 검토실", "研",
+                 # Spec 4.6: removed agent-composition wording.
+                 "전문가 3개 에이전트", "의 독립 의견과 종합 검토"}
         self.assertTrue(stale - {"研"} <= quoted)
         self.assertIn("'研'", script)
         self.assertIn("'stale wording '+stale", script)
@@ -496,8 +567,11 @@ class HostBoundaryTests(unittest.TestCase):
         for text in stale:
             self.assertNotIn(text, ui)
         for wording in ("연구개발과제 검토", "자동 선정", "참고 고시", "API 키 저장됨", "API 키 저장되지 않음",
-                        "단건 의견서 저장 완료", "연구보안 등급분류 시뮬레이터 · v16"):
-            self.assertIn(wording, script)
+                        "단건 의견서 저장 완료", "연구보안 등급분류 시뮬레이터 · v16",
+                        "입력 양식 내려받기", "저장하지 않음", "AI 기술분야 전문가 1개", "AI 분야별* 전문가 3개",
+                        "* AI 기술분야 · 연구보안 · 기술사업화 전문가",
+                        "입력 엑셀은 기본 5개 항목 필수, 추가 4개 항목 선택. 과제명이 빈 행은 제외"):
+            self.assertIn("'" + wording + "'", script)
         self.assertNotIn("단건 의견서를 저장", script)
 
     def test_host_screen_messages_are_noun_style(self):
@@ -513,6 +587,115 @@ class HostBoundaryTests(unittest.TestCase):
                 with self.subTest(text=sentence):
                     self.assertFalse(sentence.endswith(endings), sentence)
 
+
+class WindowFitTests(unittest.TestCase):
+    """Spec 4.1, without a native window: the pure size table and the native plan."""
+    def test_window_geometry_table(self):
+        for label, work_area, expected in WINDOW_CASES:
+            with self.subTest(case=label):
+                self.assertEqual(host.window_geometry(work_area), expected)
+        self.assertEqual(host.window_geometry(None), (1366, 900, 760, 560))
+        self.assertEqual((host.DEFAULT_WINDOW_SIZE, host.DEFAULT_MIN_SIZE, host.WINDOW_MARGIN),
+                         ((1366, 900), (760, 560), 16))
+
+    def test_window_geometry_small_margin_and_unusable_areas(self):
+        # Smaller than 760x560: start and minimum shrink to the work area.
+        self.assertEqual(host.window_geometry((700, 500)), (668, 468, 668, 468))
+        self.assertEqual(host.window_geometry((1092, 576), margin=0), (1092, 576, 760, 560))
+        self.assertEqual(host.window_geometry((1536, 825), margin=40), (1366, 745, 760, 560))
+        for width, height, minimum_width, minimum_height in (host.window_geometry(area) for area in (
+                (800, 600), (761, 561), (1000, 1000))):
+            self.assertLessEqual(minimum_width, width)
+            self.assertLessEqual(minimum_height, height)
+        # A measurement that cannot be used keeps the current default size.
+        for area in ((0, 0), (32, 900), (900, 32), (-5, 900), (1366.0, 900), (True, 900),
+                     ("1366", 900), (1366,), (1366, 900, 1), "1366x900"):
+            with self.subTest(area=area):
+                self.assertEqual(host.window_geometry(area), (1366, 900, 760, 560))
+        for margin in (-1, 1.5, True, None):
+            with self.subTest(margin=margin):
+                self.assertEqual(host.window_geometry((1536, 825), margin=margin), (1366, 900, 760, 560))
+
+    def test_physical_plan_uses_window_dpi_once_and_centres_in_the_work_area(self):
+        # 1920x1080 at 125% with a 48-pixel taskbar: physical work area 1920x1032.
+        plan = host.window_plan((0, 0, 1920, 1032), 120)
+        self.assertEqual(plan["work_area_logical"], (1536, 825))
+        self.assertEqual(plan["logical"], {"size": (1366, 793), "min_size": (760, 560)})
+        self.assertEqual(plan["physical"], {"min_size": (950, 700), "size": (1707, 991), "location": (106, 20)})
+        self.assertEqual(plan["scale"], 1.25)
+        # 150%: logical 1280x688 -> 1248x656 -> physical 1872x984.
+        plan = host.window_plan((0, 0, 1920, 1032), 144)
+        self.assertEqual(plan["logical"]["size"], (1248, 656))
+        self.assertEqual(plan["physical"]["size"], (1872, 984))
+        self.assertEqual(plan["physical"]["location"], (24, 24))
+        # 100% on a secondary monitor left of the primary one: offset is kept.
+        plan = host.window_plan((-1920, 0, 0, 1040), 96)
+        self.assertEqual(plan["physical"], {"min_size": (760, 560), "size": (1366, 900), "location": (-1643, 70)})
+        # 1366x768 at 125%: logical 1092x576, the minimum height follows the start height.
+        plan = host.window_plan((0, 0, 1366, 720), 120)
+        self.assertEqual(plan["logical"], {"size": (1060, 544), "min_size": (760, 544)})
+        self.assertEqual(plan["physical"]["size"], (1325, 680))
+        for rect in ((0, 0, 1920, 1032), (-1920, 0, 0, 1040), (0, 0, 1366, 720)):
+            for dpi in (96, 120, 144, 168, 192):
+                with self.subTest(rect=rect, dpi=dpi):
+                    plan = host.window_plan(rect, dpi)
+                    (x, y), (width, height) = plan["physical"]["location"], plan["physical"]["size"]
+                    self.assertTrue(rect[0] <= x and x + width <= rect[2] and rect[1] <= y and y + height <= rect[3])
+                    self.assertLessEqual(plan["physical"]["min_size"][0], width)
+                    self.assertLessEqual(plan["physical"]["min_size"][1], height)
+        for rect, dpi in (((0, 0, 1920, 1032), 0), ((0, 0, 1920, 1032), None), ((0, 0, 0, 0), 96),
+                          ((10, 10, 5, 900), 96), (None, 96)):
+            with self.subTest(rect=rect, dpi=dpi):
+                self.assertIsNone(host.window_plan(rect, dpi))
+
+    def test_native_apply_order_and_failure_keeps_the_created_size(self):
+        class Form:
+            def __init__(self):
+                self.__dict__["log"] = []
+                self.__dict__["IsDisposed"] = False
+
+            def __setattr__(self, name, value):
+                self.log.append((name, value))
+
+        plan = host.window_plan((0, 0, 1920, 1032), 120)
+        form = Form()
+        host._apply_window_plan(form, plan, size=lambda w, h: ("size", w, h),
+                                point=lambda x, y: ("point", x, y), manual="manual")
+        self.assertEqual(form.log, [("MinimumSize", ("size", 950, 700)), ("Size", ("size", 1707, 991)),
+                                    ("StartPosition", "manual"), ("Location", ("point", 106, 20))])
+
+        class Window:
+            def __init__(self):
+                self.native = Form()
+
+        for measured in (None, RuntimeError("synthetic measurement failure")):
+            with self.subTest(measured=measured):
+                window = Window()
+                fit = host.WindowFit(window)
+                effect = measured if isinstance(measured, Exception) else None
+                with patch.object(host, "_measure_work_area", return_value=measured, side_effect=effect):
+                    fit.before_show()
+                self.assertEqual(window.native.log, [])
+                self.assertIs(fit.outcome["applied"], False)
+                self.assertTrue(fit.outcome["reason"])
+        window = Window()
+        fit = host.WindowFit(window)
+        with patch.object(host, "_measure_work_area", return_value=((0, 0, 1920, 1032), 120)), \
+                patch.object(host, "_apply_window_plan") as apply:
+            fit.before_show()
+        apply.assert_called_once()
+        self.assertIs(fit.outcome["applied"], True)
+        self.assertEqual(fit.outcome["physical"]["size"], (1707, 991))
+
+    def test_host_never_uses_pywebview_resize_or_move(self):
+        tree = ast.parse((ROOT / (ENTRY + ".py")).read_text(encoding="utf-8-sig"))
+        called = {node.func.attr for node in ast.walk(tree)
+                  if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)}
+        self.assertFalse(called & {"resize", "move", "set_window_size"}, called & {"resize", "move"})
+        # The fit runs in the synchronous before_show event, after the native boundary.
+        source = (ROOT / (ENTRY + ".py")).read_text(encoding="utf-8")
+        self.assertLess(source.index("window.events.before_show += boundary.before_show"),
+                        source.index("window.events.before_show += fit.before_show"))
 
 class RealDispatcherTests(unittest.TestCase):
     """Moved from tests/test_v15_bridge.py: the real pywebview dispatcher path."""
@@ -551,7 +734,7 @@ class RealDispatcherTests(unittest.TestCase):
         bind_public_api(window, self.bridge)
         self.assertIsNone(window._js_api)
         self.assertEqual(set(window._functions), PUBLIC_METHODS)
-        self.assertEqual(len(window._functions), 11)
+        self.assertEqual(len(window._functions), 12)
         initial_calls = list(self.backend.calls)
         # Dunder names resolve on js_api=None inside this framework dispatcher;
         # the host's native gate rejects them first (HostBoundaryTests, --self-check).
