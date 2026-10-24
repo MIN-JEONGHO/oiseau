@@ -36,10 +36,15 @@ from notice_catalogue_v16 import CatalogueError, load_catalogue
 from notice_review_v16 import _preflight
 from v16_domain import (
     COMPARISON_RULES_VERSION, GRADES, SCHEMA_VERSION, STATUSES,
-    TASK_COLUMNS, OPTIONAL_TASK_COLUMNS, format_score, make_result,
+    TASK_COLUMNS, OPTIONAL_TASK_COLUMNS, clean_input_text, format_score, make_result,
     options_fingerprint, task_fingerprint, task_snapshot,
     validate_result as _validate_result, validate_documents as _validate_documents,
 )
+
+
+# Input template marks only (spec 4.4): these four show '(필수)', every other
+# column '(선택)'. Reading still requires 과제명 alone; TASK_COLUMNS is unchanged.
+REQUIRED_TEMPLATE_COLUMNS = ("과제명", "연구목표", "연구내용", "기대효과")
 
 
 RESULT_COLUMNS = ["연번", "과제명", "상태", "최종등급(참고)", "신뢰도", "종합평균",
@@ -109,8 +114,9 @@ def make_template(path):
     """Create the existing input flow using only clearly synthetic example rows.
 
     The guide text and header marks are the one v16 exception to 'Excel wording
-    stays v15': the five base columns are marked required and the four extra
-    columns optional. Marks are display only; reading still requires 과제명 only.
+    stays v15': four base columns (과제명·연구목표·연구내용·기대효과) are marked
+    required, 세부사업명 and the four extra columns optional. Marks are display
+    only; reading still requires 과제명 only.
     """
     target = Path(path).resolve()
     book = Workbook()
@@ -120,8 +126,8 @@ def make_template(path):
         for row in [
             ["연구보안 등급분류 입력 양식"],
             ["분류대상 시트에 과제별 한 행씩 입력"],
-            ["기본 5개 항목(세부사업명·과제명·연구목표·연구내용·기대효과) 필수 입력, "
-             "추가 4개 항목(추가 검토정보·부처 세부기준·현재 기술사양·개발목표 사양) 선택 입력"],
+            ["과제명·연구목표·연구내용·기대효과 4개 항목 필수 입력, "
+             "세부사업명과 추가 4개 항목(추가 검토정보·부처 세부기준·현재 기술사양·개발목표 사양) 선택 입력"],
             ["과제명이 빈 행과 '(예시)'로 시작하는 행은 검토에서 제외, 같은 과제명은 첫 행만 처리"],
             ["추가 검토정보는 실제 확인한 사실만, 부처 세부기준은 적용할 기준이 있을 때만 입력"],
             ["현재 기술사양과 개발목표 사양은 구분해 입력"],
@@ -129,7 +135,7 @@ def make_template(path):
         ]:
             guide.append(row)
         sheet = book.create_sheet("분류대상")
-        sheet.append([name + ("(필수)" if name in TASK_COLUMNS else "(선택)")
+        sheet.append([name + ("(필수)" if name in REQUIRED_TEMPLATE_COLUMNS else "(선택)")
                       for name in TASK_COLUMNS + OPTIONAL_TASK_COLUMNS])
         sheet.append(["합성 세부사업 A", "(예시) 합성 과제 A", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과", "", "", "", ""])
         sheet.append(["합성 세부사업 B", "(예시) 합성 과제 B", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과", "합성 검토정보", "합성 부처 기준", "속도 5 GHz", "속도 20 GHz"])
@@ -182,6 +188,14 @@ def _append_checkpoint(path, encoded):
 
 
 def _read_tasks(path):
+    """Return ``(tasks, excluded, cleaned)`` from the input workbook.
+
+    Every row is cleaned first (clean_input_text); blank, '(예시)' and duplicate
+    decisions then use the cleaned 과제명. ``cleaned`` is screen-only: True when
+    a kept row has a task column whose cleaned text differs from its plain
+    ``str(value).strip()``. Excluded rows and other columns do not count, and it
+    never enters ``excluded`` (which is reported and warned about).
+    """
     book = None
     try:
         book = load_workbook(path, read_only=True, data_only=False)
@@ -194,18 +208,20 @@ def _read_tasks(path):
         relevant = TASK_COLUMNS + OPTIONAL_TASK_COLUMNS
         if any(columns.count(name) > 1 for name in relevant):
             raise ValueError("입력 엑셀의 같은 이름을 가진 열이 중복됩니다. 제목 행을 확인하세요.")
-        tasks, seen = [], set()
+        tasks, seen, cleaned = [], set(), False
         excluded = {"blank": 0, "example": 0, "duplicate": 0}
         for values in rows:
-            row = {name: "" if value is None else str(value).strip() for name, value in zip(columns, values)}
+            raw = {name: "" if value is None else str(value) for name, value in zip(columns, values)}
+            row = {name: clean_input_text(value) for name, value in raw.items()}
             name = row.get("과제명", "")
             reason = "blank" if not name else "example" if name.startswith("(예시)") else "duplicate" if name in seen else None
             if reason:
                 excluded[reason] += 1
                 continue
             seen.add(name)
+            cleaned = cleaned or any(row[column] != raw[column].strip() for column in relevant if column in raw)
             tasks.append(task_snapshot(row))
-        return tasks, excluded
+        return tasks, excluded, cleaned
     except (BatchError, ValueError):
         raise
     except Exception:
@@ -378,7 +394,7 @@ def persist_regenerated_documents(report, saved_result, regenerated_result):
         _require(checkpoint == Path(str(output) + ".checkpoint.jsonl"))
         _require(audit == Path(str(output) + ".audit.jsonl"))
         _require(previous["selection_mode"] in ("auto", "manual"))
-        tasks, _ = _read_tasks(source)
+        tasks, _, _ = _read_tasks(source)
         ordered_ids = [task_fingerprint(task) for task in tasks]
         _require(ordered_ids == previous["input_fingerprints"])
         by_id = {task_fingerprint(task): task for task in tasks}
@@ -595,13 +611,16 @@ def _error_result(task, opts, manifest):
 
 def run_excel(in_path, out_path, options, client_factory, *, resume=True, workers=3,
               make_forms=True, progress_cb=None, status_cb=None, cancel_event=None,
-              catalogue=None, output_dir=None):
+              catalogue=None, output_dir=None, notice_cb=None):
     """Process selected rows; return ordered results, counts and persistence status.
 
     ``client_factory()`` is called once per new task, inside its worker. Options
     are frozen before workers start; factories/clients/keys are never serialized.
     Both callbacks accept one string and may run on workers, so GUI callers must
-    queue messages. Cancellation stops new work and preserves in-flight results.
+    queue messages. ``notice_cb`` receives the fixed name "input_cleaned" once
+    when a kept row's text was cleaned, after the previous-result guard and
+    before any write or model call; it is screen-only and never stored or warned.
+    Cancellation stops new work and preserves in-flight results.
     Global file failures raise BatchError; individual task/document failures do
     not discard successful classifications. Audit errors are reported separately.
     """
@@ -611,7 +630,7 @@ def run_excel(in_path, out_path, options, client_factory, *, resume=True, worker
     source, output = Path(in_path).resolve(), Path(out_path).resolve()
     if source == output or (source.exists() and output.exists() and os.path.samefile(source, output)):
         raise BatchError("결과 저장 위치는 입력 엑셀과 달라야 합니다.")
-    tasks, input_counts = _read_tasks(source)
+    tasks, input_counts, input_cleaned = _read_tasks(source)
     # Validate every row before creating clients or changing any output store.
     for task in tasks:
         normalize_options(provisional, ministry_policy_context=task["부처 세부기준"])
@@ -625,6 +644,8 @@ def run_excel(in_path, out_path, options, client_factory, *, resume=True, worker
     # After input validation, before checkpoint/workbook/audit writes or any
     # model call, regardless of resume: never overwrite a non-v16 result.
     _guard_previous_result(output, checkpoint)
+    if input_cleaned and notice_cb is not None:
+        notice_cb("input_cleaned")
     run_id = uuid4().hex
     forms = Path(output_dir).resolve() if output_dir is not None else output.with_name(output.stem + "_HWPX") / run_id
     warnings = []

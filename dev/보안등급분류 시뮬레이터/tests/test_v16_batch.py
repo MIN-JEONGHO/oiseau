@@ -22,9 +22,11 @@ from test_v16_notice_review import (STYLE_ENDINGS, catalogue, catalogue_mapping,
                                     repack, substitute)
 
 
-# Spec 4.4 '양식 내용': the only exception to 'Excel wording stays v15'.
-TEMPLATE_HEADER = ["세부사업명(필수)", "과제명(필수)", "연구목표(필수)", "연구내용(필수)", "기대효과(필수)",
+# Spec 4.4 '입력 양식': the only exception to 'Excel wording stays v15'.
+TEMPLATE_HEADER = ["세부사업명(선택)", "과제명(필수)", "연구목표(필수)", "연구내용(필수)", "기대효과(필수)",
                    "추가 검토정보(선택)", "부처 세부기준(선택)", "현재 기술사양(선택)", "개발목표 사양(선택)"]
+# Earlier v16 template header (before 세부사업명 became optional); reading ignores marks.
+OLD_TEMPLATE_HEADER = ["세부사업명(필수)"] + TEMPLATE_HEADER[1:]
 TEMPLATE_EXAMPLES = [
     ["합성 세부사업 A", "(예시) 합성 과제 A", "시험용 목표", "실제 과제정보가 아닌 합성 내용", "시험용 효과",
      None, None, None, None],
@@ -34,8 +36,8 @@ TEMPLATE_EXAMPLES = [
 TEMPLATE_GUIDE = [
     "연구보안 등급분류 입력 양식",
     "분류대상 시트에 과제별 한 행씩 입력",
-    "기본 5개 항목(세부사업명·과제명·연구목표·연구내용·기대효과) 필수 입력, "
-    "추가 4개 항목(추가 검토정보·부처 세부기준·현재 기술사양·개발목표 사양) 선택 입력",
+    "과제명·연구목표·연구내용·기대효과 4개 항목 필수 입력, "
+    "세부사업명과 추가 4개 항목(추가 검토정보·부처 세부기준·현재 기술사양·개발목표 사양) 선택 입력",
     "과제명이 빈 행과 '(예시)'로 시작하는 행은 검토에서 제외, 같은 과제명은 첫 행만 처리",
     "추가 검토정보는 실제 확인한 사실만, 부처 세부기준은 적용할 기준이 있을 때만 입력",
     "현재 기술사양과 개발목표 사양은 구분해 입력",
@@ -142,11 +144,16 @@ class BatchTests(unittest.TestCase):
         finally:
             book.close()
 
-    def test_template_header_marks_base_five_required_and_extra_four_optional(self):
+    def test_template_header_marks_four_required_and_five_optional(self):
         _, cells = self.template_cells()
         self.assertEqual(cells["분류대상"][0], TEMPLATE_HEADER)
-        self.assertEqual([name + "(필수)" for name in d.TASK_COLUMNS]
-                         + [name + "(선택)" for name in d.OPTIONAL_TASK_COLUMNS], TEMPLATE_HEADER)
+        self.assertEqual(len(TEMPLATE_HEADER), 9)
+        self.assertEqual(TEMPLATE_HEADER[0], "세부사업명(선택)")
+        self.assertEqual(batch.REQUIRED_TEMPLATE_COLUMNS, ("과제명", "연구목표", "연구내용", "기대효과"))
+        # Marks are display only: column meaning and order stay as TASK_COLUMNS.
+        self.assertEqual(d.TASK_COLUMNS, ("세부사업명", "과제명", "연구목표", "연구내용", "기대효과"))
+        self.assertEqual([name + ("(필수)" if name in batch.REQUIRED_TEMPLATE_COLUMNS else "(선택)")
+                          for name in d.TASK_COLUMNS + d.OPTIONAL_TASK_COLUMNS], TEMPLATE_HEADER)
 
     def test_template_example_rows_keep_current_cell_values(self):
         _, cells = self.template_cells()
@@ -163,7 +170,9 @@ class BatchTests(unittest.TestCase):
                 for sentence in re.split(r"[.,·\n]\s*", text):
                     self.assertFalse(sentence.rstrip().endswith(STYLE_ENDINGS), sentence)
         joined = "\n".join(TEMPLATE_GUIDE)
-        for fact_text in ("과제별 한 행", "기본 5개 항목", "필수 입력", "추가 4개 항목", "선택 입력",
+        self.assertNotIn("기본 5개 항목", joined)
+        for fact_text in ("과제별 한 행", "과제명·연구목표·연구내용·기대효과 4개 항목 필수 입력",
+                          "세부사업명과 추가 4개 항목", "선택 입력",
                           "과제명이 빈 행", "'(예시)'로 시작하는 행", "첫 행만 처리", "실제 확인한 사실만",
                           "적용할 기준이 있을 때만", "구분해 입력", "참고 의견", "대신하지 않음"):
             self.assertIn(fact_text, joined)
@@ -176,13 +185,117 @@ class BatchTests(unittest.TestCase):
 
     def test_saved_template_reads_as_two_examples_excluded_and_zero_tasks(self):
         path, _ = self.template_cells()
-        tasks, excluded = batch._read_tasks(path)
-        self.assertEqual((tasks, excluded), ([], dict(blank=0, example=2, duplicate=0)))
-        report = batch.run_excel(path, self.output, {}, self.factory, catalogue=self.cat, make_forms=False)
+        tasks, excluded, cleaned = batch._read_tasks(path)
+        self.assertEqual((tasks, excluded, cleaned), ([], dict(blank=0, example=2, duplicate=0), False))
+        notices = []
+        report = batch.run_excel(path, self.output, {}, self.factory, catalogue=self.cat, make_forms=False,
+                                 notice_cb=notices.append)
+        self.assertEqual(notices, [])
         self.assertEqual(report["input_counts"], dict(blank=0, example=2, duplicate=0))
         self.assertEqual((report["task_count"], report["results"]), (0, []))
         self.assertIn("입력 제외: 빈 과제명 0건, 예시 2건, 중복 과제명 0건. 중복은 첫 행 유지", report["warnings"])
         self.assertFalse(self.clients)
+
+    def test_old_template_header_with_required_business_name_reads_the_same(self):
+        rows = [["합성 세부사업", "합성 과제", "합성 목표", "합성 내용", "합성 효과", "", "", "속도 5 GHz", "속도 20 GHz"],
+                [None, "합성 과제 둘", "합성 목표", "합성 내용", "합성 효과", None, None, None, None]]
+        read = []
+        for header in (OLD_TEMPLATE_HEADER, TEMPLATE_HEADER):
+            self.workbook([list(TEMPLATE_EXAMPLES[0])] + rows, header)
+            read.append(batch._read_tasks(self.input))
+        self.assertEqual(read[0], read[1])
+        tasks, excluded, cleaned = read[0]
+        self.assertEqual([task["과제명"] for task in tasks], ["합성 과제", "합성 과제 둘"])
+        self.assertEqual(tasks[0]["세부사업명"], "합성 세부사업")
+        self.assertEqual(tasks[1]["세부사업명"], "")
+        self.assertEqual((excluded, cleaned), (dict(blank=0, example=1, duplicate=0), False))
+
+    def test_excel_marker_only_task_name_is_blank_and_batch_continues(self):
+        self.workbook([("_x000D_", "속도 20 GHz"), (" _x000A__x0009_ ", ""), ("합성 과제", "속도 20 GHz")])
+        tasks, excluded, _ = batch._read_tasks(self.input)
+        self.assertEqual([task["과제명"] for task in tasks], ["합성 과제"])
+        self.assertEqual(excluded, dict(blank=2, example=0, duplicate=0))
+        report = self.run_batch()
+        self.assertEqual([r["task_name"] for r in report["results"]], ["합성 과제"])
+        self.assertEqual(report["input_counts"], dict(blank=2, example=0, duplicate=0))
+        self.assertIn("입력 제외: 빈 과제명 2건, 예시 0건, 중복 과제명 0건. 중복은 첫 행 유지", report["warnings"])
+        self.assertEqual(len(self.clients), 1)
+
+    def test_names_equal_after_cleaning_count_second_as_duplicate(self):
+        self.workbook([("합성_x000D_과제", "속도 20 GHz"), ("합성\n과제", "변경"),
+                       ("합성 과제 둘", ""), ("합성 과제 둘_x000D_  ", "변경"), ("(예시)_x000D_합성", "")])
+        tasks, excluded, cleaned = batch._read_tasks(self.input)
+        self.assertEqual([task["과제명"] for task in tasks], ["합성\n과제", "합성 과제 둘"])
+        self.assertEqual(tasks[0]["현재 기술사양"], "속도 20 GHz")
+        self.assertEqual(excluded, dict(blank=0, example=1, duplicate=2))
+        self.assertTrue(cleaned)
+        report = self.run_batch()
+        self.assertEqual([r["task_name"] for r in report["results"]], ["합성\n과제", "합성 과제 둘"])
+        self.assertEqual(report["input_counts"], dict(blank=0, example=1, duplicate=2))
+
+    def test_input_cleaned_notice_once_before_any_write_or_model_call(self):
+        fields = list(d.TASK_COLUMNS + d.OPTIONAL_TASK_COLUMNS)
+        dirty = ["합성 세부_x000D_사업", "합성 과제 A", "목표  \t\n둘째 줄", "내용\n\n\n\n끝", "효과",
+                 "검토_x000A_정보", "", "속도 5 GHz \r\n", "속도 20 GHz"]
+        self.workbook([dirty, ["", "합성 과제 B_x000D_", "", "", "", "", "", "", ""]], fields)
+        tasks, excluded, cleaned = batch._read_tasks(self.input)
+        self.assertTrue(cleaned)
+        self.assertEqual(excluded, dict(blank=0, example=0, duplicate=0))
+        self.assertEqual([task["과제명"] for task in tasks], ["합성 과제 A", "합성 과제 B"])
+        self.assertEqual(tasks[0]["연구목표"], "목표\n둘째 줄")
+        self.assertEqual(tasks[0]["연구내용"], "내용\n\n끝")
+        events = []
+        original_guard, original_write = batch._guard_previous_result, batch._atomic_write
+
+        def guard(*args):
+            events.append("guard")
+            return original_guard(*args)
+
+        def write(*args):
+            events.append("write")
+            return original_write(*args)
+
+        def factory():
+            events.append("client")
+            return self.factory()
+        with patch.object(batch, "_guard_previous_result", guard), patch.object(batch, "_atomic_write", write):
+            report = self.run_batch(client_factory=factory, workers=1,
+                                    notice_cb=lambda name: events.append(("notice", name)))
+        self.assertEqual([event for event in events if isinstance(event, tuple)], [("notice", "input_cleaned")])
+        self.assertEqual(events[:2], ["guard", ("notice", "input_cleaned")])
+        self.assertIn("write", events)
+        self.assertIn("client", events)
+        # Screen only: no warning, no stored text, report structure unchanged.
+        self.assertEqual(report["warnings"], [])
+        self.assertEqual(report["input_counts"], dict(blank=0, example=0, duplicate=0))
+        self.assertEqual(report["results"][0]["task_snapshot"]["세부사업명"], "합성 세부\n사업")
+        stored = Path(str(self.output) + ".checkpoint.jsonl").read_text(encoding="utf-8")
+        self.assertNotIn("input_cleaned", stored)
+        self.assertNotIn("_x000D_", stored)
+
+    def test_clean_input_never_sends_input_cleaned(self):
+        self.workbook([("  합성 과제  ", " 속도 20 GHz "), ("합성 과제 둘", 20), ("합성 과제 셋", None)])
+        self.assertFalse(batch._read_tasks(self.input)[2])
+        notices = []
+        report = self.run_batch(notice_cb=notices.append)
+        self.assertEqual(notices, [])
+        self.assertEqual(len(report["results"]), 3)
+        # The default keeps working without a callback.
+        self.assertEqual(len(self.run_batch()["results"]), 3)
+
+    def test_only_excluded_or_non_task_columns_dirty_never_sends_input_cleaned(self):
+        self.workbook([("", "속도_x000D_20"), ("_x000D_", "속도  \n\n\n20"), ("(예시) 합성_x000D_", "a_x000D_b"),
+                       ("합성 과제", "속도 20 GHz", "메모_x000D_칸"), ("합성 과제", "속도_x000D_20", ""),
+                       ("합성 과제_x000D_", "속도_x000A_20", "")],
+                      ("과제명", "현재 기술사양", "메모"))
+        tasks, excluded, cleaned = batch._read_tasks(self.input)
+        self.assertEqual([task["과제명"] for task in tasks], ["합성 과제"])
+        self.assertEqual(excluded, dict(blank=2, example=1, duplicate=2))
+        self.assertFalse(cleaned)
+        notices = []
+        report = self.run_batch(notice_cb=notices.append)
+        self.assertEqual(notices, [])
+        self.assertEqual(report["input_counts"], dict(blank=2, example=1, duplicate=2))
 
     def test_template_formatting_matches_v15(self):
         import batch_v15
@@ -788,6 +901,23 @@ class PreviousResultProtectionTests(unittest.TestCase):
         for resume in (True, False):
             with self.subTest(resume=resume):
                 self.assert_stopped(resume)
+
+    def test_previous_result_stop_never_sends_input_cleaned(self):
+        self.v15_run()
+        book = Workbook()
+        book.active.title = "작성안내"
+        sheet = book.create_sheet("분류대상")
+        sheet.append(("과제명", "현재 기술사양"))
+        sheet.append(("합성 과제 A_x000D_", "속도_x000D_20 GHz"))
+        book.save(self.input)
+        book.close()
+        self.assertTrue(batch._read_tasks(self.input)[2])
+        notices = []
+        for resume in (True, False):
+            with self.subTest(resume=resume), self.assertRaises(batch.PreviousResultError):
+                batch.run_excel(self.input, self.output, {}, self.factory, catalogue=catalogue(), resume=resume,
+                                make_forms=False, notice_cb=notices.append)
+        self.assertEqual(notices, [])
 
     def test_v15_checkpoint_only(self):
         self.v15_run()
