@@ -1,4 +1,4 @@
-"""The eleven-operation v16 desktop boundary; no renderer supplied paths or DTOs.
+"""The twelve-operation v16 desktop boundary; no renderer supplied paths or DTOs.
 
 Only explicitly exposed methods are an IPC API. All dependencies, credentials,
 path capabilities, immutable run snapshots and retained results stay in Python.
@@ -10,6 +10,9 @@ title table and display-only guideline quotations, the dedicated stop event for
 a protected previous result (batch_v16.PreviousResultError, code io), and
 screen-only fixed error and progress messages written as noun-ending 개조식.
 Nothing persisted in a result, checkpoint, workbook, audit or document changes.
+The twelfth operation, save_input_template, writes the batch input template
+(batch_v16.make_template) to an input_template path token and refuses a path
+this session reviews or a result workbook with a checkpoint or audit sibling.
 """
 from __future__ import annotations
 
@@ -35,11 +38,14 @@ import v16_domain as d
 
 PUBLIC_METHODS = ("get_initial_state", "select_path", "save_key", "delete_key",
                   "start_single", "start_batch", "get_job", "cancel_job", "start_export",
-                  "search_notice_clauses", "get_notice_clause")
+                  "search_notice_clauses", "get_notice_clause", "save_input_template")
 _TERMINAL = frozenset(("done", "cancelled", "failed"))
 _STAGES = frozenset(("preflight", "facts", "notices", "candidate", "criteria",
                      "agents", "summary", "documents", "persistence"))
-_PURPOSES = frozenset(("input_excel", "output_excel", "output_directory"))
+_PURPOSES = frozenset(("input_excel", "output_excel", "output_directory", "input_template"))
+# Spec 4.4: a template is never written over a file the review uses.
+_REVIEW_PURPOSES = frozenset(("input_excel", "output_excel"))
+_RESULT_SIBLINGS = (".checkpoint.jsonl", ".audit.jsonl")
 # Screen-only fixed messages (spec 4.8); never stored in any result or file.
 _MESSAGES = {
     "validation": "입력 또는 실행 설정 확인 후 다시 시도",
@@ -81,6 +87,8 @@ _EVENTS = {
     "single_failed": "단건 의견서 일부 또는 전체 저장 실패. 저장 위치와 서식 확인 후 다시 내보내기 필요",
     # Spec 4.5: the dedicated stop for a protected previous result (code io).
     "previous_result": batch_v16.PREVIOUS_RESULT_MESSAGE,
+    # Spec 4.4/4.5: save_input_template's protected-path refusal (code validation).
+    "template_protected": "검토에 쓰는 파일 보호를 위해 저장 중단. 다른 파일 이름 선택 필요",
 }
 _SEARCH_KEYS = frozenset(("query", "family", "offset", "limit"))
 _QUERY_MAX = 200
@@ -91,12 +99,16 @@ _WHITESPACE = re.compile(r"\s+")
 
 
 class _BoundaryError(Exception):
-    def __init__(self, code):
+    # message_key optionally names a fixed _EVENTS text shown instead of
+    # _MESSAGES[code]; the code set itself never grows.
+    def __init__(self, code, message_key=None):
         self.code = code
+        self.message_key = message_key
 
 
-def _failure(code):
-    return {"ok": False, "data": None, "error": {"code": code, "message": _MESSAGES[code]}}
+def _failure(code, message_key=None):
+    message = _EVENTS[message_key] if message_key is not None else _MESSAGES[code]
+    return {"ok": False, "data": None, "error": {"code": code, "message": message}}
 
 
 def _public(function):
@@ -111,7 +123,7 @@ def _public(function):
             # Never hand shared mutable state to a caller/serialization thread.
             return {"ok": True, "data": deepcopy(data), "error": None}
         except _BoundaryError as error:
-            return _failure(error.code)
+            return _failure(error.code, error.message_key)
         except CatalogueError:
             return _failure("catalogue")
         except (ValueError, TypeError, KeyError, OverflowError):
@@ -258,6 +270,7 @@ class DesktopBridge:
         self._clause_rows = ()
         self._clause_details = {}
         self._paths = {}
+        self._review_paths = set()
         self._jobs = {}
         self._active = None
 
@@ -319,10 +332,33 @@ class DesktopBridge:
             _require(path.is_file() and path.suffix.lower() == ".xlsx")
         elif purpose == "output_excel":
             _require(path.suffix.lower() == ".xlsx" and path.parent.is_dir() and not path.is_dir())
-        else:
+        elif purpose == "input_template":
+            _require(path.suffix.lower() == ".xlsx" and path.parent.is_dir() and not path.is_dir())
+        elif purpose == "output_directory":
             _require(not path.exists() or path.is_dir())
             _require(path.is_dir() or path.parent.is_dir())
+        else:
+            # An unknown purpose is never treated as a directory.
+            _require(False)
         return path
+
+    def _protected(self, path):
+        """Spec 4.4: a path chosen for review this session, or a result workbook."""
+        if any(Path(str(path) + suffix).exists() for suffix in _RESULT_SIBLINGS):
+            return True
+        key = os.path.normcase(str(path))
+        with self._lock:
+            reviewed = tuple(self._review_paths)
+        for other in reviewed:
+            if os.path.normcase(str(other)) == key:
+                return True
+            try:
+                if path.exists() and other.exists() and os.path.samefile(path, other):
+                    return True
+            except OSError:
+                # Undecidable identity of two existing files: keep them safe.
+                return True
+        return False
 
     def _event(self, job, stage, message, completed=0, total=0):
         with self._lock:
@@ -461,6 +497,9 @@ class DesktopBridge:
             with self._lock:
                 self._paths.pop(token, None)
             raise
+        if purpose in _REVIEW_PURPOSES:
+            with self._lock:
+                self._review_paths.add(path)
         return dict(cancelled=False, path_token=token, display_name=path.name or str(path.anchor))
 
     @_public
@@ -654,3 +693,21 @@ class DesktopBridge:
         detail = self._clause_details.get(clause_id)
         _require(detail is not None, "not_found")
         return detail
+
+    # Spec 4.4/4.5: runs at once, not as a job. The busy check, token and path
+    # checks and the write share one lock section, so no batch can start in
+    # between; the template is small, so the lock is held briefly.
+    @_public
+    def save_input_template(self, request):
+        self._idle()
+        request = _request(request, ("output_token",))
+        with self._lock:
+            _require(self._active is None, "busy")
+            path = self._path(request["output_token"], "input_template")
+            if self._protected(path):
+                raise _BoundaryError("validation", "template_protected")
+            try:
+                batch_v16.make_template(path)
+            except (batch_v16.BatchError, OSError):
+                raise _BoundaryError("io") from None
+        return dict(saved=True, display_name=path.name)
