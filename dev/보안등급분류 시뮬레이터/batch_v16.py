@@ -9,7 +9,9 @@ v16 differs from v15 in three places only: the 고시기준본 sheet has a 고�
 column before 시행일, a selected non-v16 result stops the run before any write
 or model call (PreviousResultError), and screen-only progress/status/warning
 strings are noun-ending. Every sentence stored in a checkpoint, workbook, audit
-record, HWPX document or result is byte-identical to v15.
+record, HWPX document or result is byte-identical to v15. Input rows are cleaned
+(v16_domain.clean_input_text) before the blank/example/duplicate decisions, and
+a cleaned row is reported only through the screen-only notice_cb.
 """
 from __future__ import annotations
 
