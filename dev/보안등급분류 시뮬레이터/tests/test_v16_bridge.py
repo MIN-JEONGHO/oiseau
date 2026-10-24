@@ -1164,6 +1164,248 @@ class BridgeTests(unittest.TestCase):
                 self.assertIn(event["message"], allowed)
                 self.assertEqual(style_violations(event["message"]), [])
 
+    # --- v16 보완: screen-only input_cleaned / response_trimmed notices --------
+
+    def notices(self, job, name):
+        return [event for event in job["events"] if event["message"] == NOTICE_TEXTS[name]]
+
+    def assert_notice_progress(self, job):
+        """Each notice copies the stage, completed and total of the event before it."""
+        events = job["events"]
+        for index, event in enumerate(events):
+            if event["message"] in NOTICE_TEXTS.values():
+                self.assertGreater(index, 0)
+                previous = events[index - 1]
+                self.assertEqual((event["stage"], event["completed"], event["total"]),
+                                 (previous["stage"], previous["completed"], previous["total"]))
+
+    def assert_no_notice_text(self, value):
+        dumped = json.dumps(value, ensure_ascii=False)
+        for text in NOTICE_TEXTS.values():
+            self.assertNotIn(text, dumped)
+
+    def test_notice_texts_are_fixed_event_entries(self):
+        for name, text in NOTICE_TEXTS.items():
+            with self.subTest(name=name):
+                self.assertEqual(bridge_module._EVENTS[name], text)
+                self.assertEqual(style_violations(text), [])
+                self.assertNotIn(text, bridge_module._MESSAGES.values())
+
+    def test_messy_single_input_emits_input_cleaned_once_and_result_stays_clean(self):
+        messy = TASK | {"연구목표": "목표 1_x000D_\n목표 2  ", "연구내용": "내용\r\n\n\n\n끝\t",
+                        "기대효과": "효과_x000A_정리"}
+        job = self.wait_job(self.start_single(self.single_request(task=messy)))
+        self.assertEqual(job["state"], "done")
+        self.assertEqual(len(self.notices(job, "input_cleaned")), 1)
+        self.assertEqual(self.notices(job, "response_trimmed"), [])
+        self.assert_notice_progress(job)
+        self.assertEqual(job["result"]["task_snapshot"]["연구목표"], "목표 1\n목표 2")
+        self.assert_no_notice_text(job["result"])
+        self.assert_no_notice_text(self.bridge._jobs[job["job_id"]].result)
+
+    def test_clean_or_only_space_padded_single_input_emits_no_notice(self):
+        for task in (TASK, TASK | {"과제명": "  합성 브리지 과제  ", "연구내용": "\n내용\n"}):
+            with self.subTest(task=task):
+                job = self.wait_job(self.start_single(self.single_request(task=task)))
+                self.assertEqual(job["state"], "done")
+                self.assertEqual(self.notices(job, "input_cleaned"), [])
+                self.assertEqual(self.notices(job, "response_trimmed"), [])
+                self.assertTrue(all(event["message"] in bridge_module._EVENTS.values() for event in job["events"]))
+
+    def test_only_messy_common_policy_emits_one_input_cleaned(self):
+        cases = ((" 합성 기준  ", 0), ("합성 기준_x000D_\n세부  \n\n\n\n끝", 1), (None, 0))
+        for policy, expected in cases:
+            with self.subTest(policy=policy):
+                request = self.single_request(options={"num_reviewers": 1, "ministry_policy": policy})
+                job = self.wait_job(self.start_single(request))
+                self.assertEqual(job["state"], "done")
+                self.assertEqual(len(self.notices(job, "input_cleaned")), expected)
+                self.assert_no_notice_text(job["result"])
+        # Messy task text and messy policy together still notify once.
+        request = self.single_request(task=TASK | {"연구목표": "목표_x000D_"},
+                                      options={"num_reviewers": 1, "ministry_policy": "기준  \n끝"})
+        job = self.wait_job(self.start_single(request))
+        self.assertEqual(len(self.notices(job, "input_cleaned")), 1)
+
+    def test_batch_policy_cleaned_and_runner_notices_emit_once_across_threads(self):
+        report = self.batch_report([self.result()])
+        seen = []
+
+        def runner(in_path, out_path, options, client_factory, **kwargs):
+            notice = kwargs["notice_cb"]
+            seen.append(notice)
+            kwargs["progress_cb"](dict(stage="criteria", completed=2, total=5))
+            barrier = threading.Barrier(8)
+
+            def worker():
+                barrier.wait(2)
+                for name in ("input_cleaned", "input_cleaned", "unknown", "response_trimmed"):
+                    notice(name)
+            threads = [threading.Thread(target=worker) for _ in range(8)]
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join(4)
+            return deepcopy(report)
+
+        bridge = self.make_bridge(batch_runner=runner)
+        options = {"num_reviewers": 1, "ministry_policy": "기준_x000D_\n끝"}
+        job = self.wait_job(self.envelope(bridge.start_batch(self.batch_request(bridge, options=options)))["job_id"], bridge)
+        self.assertEqual(job["state"], "done")
+        self.assertEqual(len(seen), 1)
+        cleaned = self.notices(job, "input_cleaned")
+        self.assertEqual(len(cleaned), 1)
+        self.assertEqual(self.notices(job, "response_trimmed"), [])
+        self.assert_notice_progress(job)
+        self.assertTrue(all(event["message"] in bridge_module._EVENTS.values() for event in job["events"]))
+        self.assert_no_notice_text(job["result"])
+        self.assert_no_notice_text(bridge._jobs[job["job_id"]].context.report)
+
+    def test_batch_runner_notice_copies_last_progress_and_clean_batch_has_none(self):
+        report = self.batch_report([self.result()])
+
+        def runner(in_path, out_path, options, client_factory, **kwargs):
+            kwargs["progress_cb"](dict(stage="criteria", completed=2, total=5))
+            kwargs["notice_cb"]("input_cleaned")
+            return deepcopy(report)
+
+        bridge = self.make_bridge(batch_runner=runner)
+        job = self.wait_job(self.envelope(bridge.start_batch(self.batch_request(bridge)))["job_id"], bridge)
+        cleaned = self.notices(job, "input_cleaned")
+        self.assertEqual([(e["stage"], e["completed"], e["total"]) for e in cleaned], [("criteria", 2, 5)])
+        bridge = self.make_bridge(batch_runner=lambda *args, **kwargs: deepcopy(report))
+        job = self.wait_job(self.envelope(bridge.start_batch(self.batch_request(bridge)))["job_id"], bridge)
+        self.assertEqual(job["state"], "done")
+        self.assertEqual(self.notices(job, "input_cleaned"), [])
+
+    def test_notice_without_events_uses_preflight_zero_and_respects_job_guards(self):
+        bridge = self.make_bridge()
+        job = bridge_module._Job("synthetic-notice-job")
+        bridge._jobs[job.job_id] = job
+        bridge._notice(job, "input_cleaned")
+        bridge._notice(job, "input_cleaned")
+        bridge._notice(job, "unknown")
+        self.assertEqual(job.events, [dict(sequence=1, stage="preflight", message=NOTICE_TEXTS["input_cleaned"],
+                                           completed=0, total=0)])
+        job.state = "done"
+        bridge._notice(job, "response_trimmed")
+        stranger = bridge_module._Job("synthetic-unregistered-job")
+        bridge._notice(stranger, "input_cleaned")
+        self.assertEqual(len(job.events), 1)
+        self.assertEqual(stranger.events, [])
+
+    def test_growing_trimmed_counter_emits_one_response_trimmed(self):
+        for grow, expected in ((True, 1), (False, 0)):
+            with self.subTest(grow=grow):
+                clients = []
+
+                def factory(options, key):
+                    client = TrimmingClient(grow=grow, facts=[])
+                    clients.append(client)
+                    return client
+
+                bridge = self.make_bridge(client_factory=factory)
+                job = self.wait_job(self.start_single(bridge=bridge), bridge)
+                self.assertEqual(job["state"], "done")
+                self.assertGreater(clients[0].trimmed_responses if grow else len(clients[0].engine_calls), 1)
+                self.assertEqual(len(self.notices(job, "response_trimmed")), expected)
+                self.assertEqual(self.notices(job, "input_cleaned"), [])
+                self.assert_notice_progress(job)
+                self.assert_no_notice_text(job["result"])
+        # The default fake Client has no trimmed_responses attribute at all.
+        self.assertFalse(hasattr(Client(facts=[]), "trimmed_responses"))
+        job = self.wait_job(self.start_single())
+        self.assertEqual(self.notices(job, "response_trimmed"), [])
+
+    def test_batch_clients_each_trimmed_still_emit_one_response_trimmed(self):
+        report = self.batch_report([self.result()])
+
+        def runner(in_path, out_path, options, client_factory, **kwargs):
+            clients = [client_factory() for _ in range(4)]
+
+            def worker(client):
+                for _ in range(3):
+                    client.ask_json("system", "{}")
+            threads = [threading.Thread(target=worker, args=(client,)) for client in clients]
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join(4)
+            return deepcopy(report)
+
+        bridge = self.make_bridge(batch_runner=runner, client_factory=lambda options, key: CountingClient())
+        job = self.wait_job(self.envelope(bridge.start_batch(self.batch_request(bridge)))["job_id"], bridge)
+        self.assertEqual(job["state"], "done")
+        self.assertEqual(len(self.notices(job, "response_trimmed")), 1)
+        self.assert_notice_progress(job)
+
+    def test_cancellable_client_keeps_cancel_and_model_checks_and_ignores_odd_counters(self):
+        opts = domain.normalize_options({"num_reviewers": 1})
+        calls = []
+        client = CountingClient()
+        wrapped = bridge_module._CancellableClient(client, opts, threading.Event(), lambda: calls.append(True))
+        wrapped.ask_json("system", "{}")
+        wrapped.ask_json("system", "{}")
+        self.assertEqual(len(calls), 2)  # the once-per-job rule lives in the bridge helper
+        odd = CountingClient()
+        odd.trimmed_responses = "not a count"
+        bridge_module._CancellableClient(odd, opts, threading.Event(), lambda: calls.append(True)).ask_json("s", "{}")
+        self.assertEqual(len(calls), 2)
+        cancel = threading.Event()
+        cancel.set()
+        with self.assertRaises(RuntimeError):
+            bridge_module._CancellableClient(CountingClient(), opts, cancel, calls.append).ask_json("s", "{}")
+        drifting = CountingClient()
+        drifting.model = "other-model"
+        with self.assertRaises(RuntimeError):
+            bridge_module._CancellableClient(drifting, opts, threading.Event(), calls.append).ask_json("s", "{}")
+        self.assertEqual(len(calls), 2)
+
+    def test_default_client_factory_builds_tolerant_client_without_network(self):
+        import llm_json_v16
+        opts = domain.normalize_options({"num_reviewers": 1})
+        client = bridge_module._client(opts, "synthetic-construct-only-key")
+        self.assertIsInstance(client, llm_json_v16.TolerantLLMClient)
+        self.assertEqual((client.provider, client.model, client.trimmed_responses), (opts.provider, opts.model, 0))
+
+
+# Spec 4.3: the two screen-only notices, copied here so a wording change is deliberate.
+NOTICE_TEXTS = {
+    "input_cleaned": "입력 글의 엑셀 줄바꿈 표시·줄 끝 공백·연속 빈 줄 정리 후 검토",
+    "response_trimmed": "AI 응답 앞뒤 설명문 제외 후 JSON 결과만 사용",
+}
+
+
+class TrimmingClient(Client):
+    """Fake engine client whose counter grows on every call when grow is set."""
+
+    def __init__(self, *, grow=True, **kwargs):
+        super().__init__(**kwargs)
+        self.grow = grow
+        self.trimmed_responses = 0
+
+    def ask_json(self, system_prompt, user_prompt, temperature=None):
+        value = super().ask_json(system_prompt, user_prompt, temperature)
+        if self.grow:
+            self.trimmed_responses += 1
+        return value
+
+
+class CountingClient:
+    """Minimal synthetic client: each call counts as a trimmed response."""
+    provider = "claude"
+    model = domain.DEFAULT_MODELS["claude"]
+
+    def __init__(self):
+        self.trimmed_responses = 0
+
+    def ask_json(self, system_prompt, user_prompt, temperature=None):
+        if type(self.trimmed_responses) is int:
+            self.trimmed_responses += 1
+        else:
+            self.trimmed_responses += "+"
+        return {}
+
 
 class BridgeMessageStyleTests(unittest.TestCase):
     """Spec 4.8: every fixed error and event literal is a noun-ending 개조식."""

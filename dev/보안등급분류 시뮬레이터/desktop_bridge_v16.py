@@ -8,7 +8,12 @@ v16 differs from v15 in four places only: two read-only notice lookups
 (search_notice_clauses, get_notice_clause), the initial state's notice list,
 title table and display-only guideline quotations, the dedicated stop event for
 a protected previous result (batch_v16.PreviousResultError, code io), and
-screen-only fixed error and progress messages written as noun-ending 개조식.
+screen-only fixed error and progress messages written as noun-ending 개조식,
+the default model client llm_json_v16.TolerantLLMClient (one JSON object taken
+out of surrounding prose), and two screen-only notices shown at most once per
+job: input_cleaned (task or common policy text changed by
+v16_domain.clean_input_text, or batch_v16.run_excel's notice_cb) and
+response_trimmed (a client's trimmed_responses grew during a call).
 Nothing persisted in a result, checkpoint, workbook, audit or document changes.
 The twelfth operation, save_input_template, writes the batch input template
 (batch_v16.make_template) to an input_template path token and refuses a path
@@ -89,7 +94,11 @@ _EVENTS = {
     "previous_result": batch_v16.PREVIOUS_RESULT_MESSAGE,
     # Spec 4.4/4.5: save_input_template's protected-path refusal (code validation).
     "template_protected": "검토에 쓰는 파일 보호를 위해 저장 중단. 다른 파일 이름 선택 필요",
+    # Spec 4.3: screen-only notices, each at most once per job (_notice).
+    "input_cleaned": "입력 글의 엑셀 줄바꿈 표시·줄 끝 공백·연속 빈 줄 정리 후 검토",
+    "response_trimmed": "AI 응답 앞뒤 설명문 제외 후 JSON 결과만 사용",
 }
+_NOTICES = frozenset(("input_cleaned", "response_trimmed"))
 _SEARCH_KEYS = frozenset(("query", "family", "offset", "limit"))
 _QUERY_MAX = 200
 _LIMIT_DEFAULT, _LIMIT_MAX = 50, 100
@@ -155,9 +164,19 @@ def _text(value):
 
 
 def _client(opts, key):
-    from llm_client_v14 import LLMClient
-    return LLMClient(provider=opts.provider, api_key=key or None, model=opts.model,
-                     base_url=opts.local_base_url or None)
+    from llm_json_v16 import TolerantLLMClient
+    return TolerantLLMClient(provider=opts.provider, api_key=key or None, model=opts.model,
+                             base_url=opts.local_base_url or None)
+
+
+def _policy_cleaned(raw, opts):
+    """Spec 4.3: the common policy text changed beyond a plain strip()."""
+    return str(raw.get("ministry_policy") or "").strip() != opts.ministry_policy
+
+
+def _trimmed_count(client):
+    count = getattr(client, "trimmed_responses", 0)
+    return count if type(count) is int else 0
 
 
 def _normalise(text):
@@ -230,11 +249,12 @@ class _Job:
     result_digest: str | None = None
     cancel: threading.Event = field(default_factory=threading.Event)
     context: _BatchContext | None = None
+    notices: set = field(default_factory=set)
 
 
 class _CancellableClient:
-    def __init__(self, client, opts, cancel):
-        self._client, self._cancel = client, cancel
+    def __init__(self, client, opts, cancel, on_trimmed=None):
+        self._client, self._cancel, self._on_trimmed = client, cancel, on_trimmed
         self.provider, self.model = opts.provider, opts.model
 
     def ask_json(self, *args, **kwargs):
@@ -243,10 +263,14 @@ class _CancellableClient:
         for key in ("provider", "model"):
             if hasattr(self._client, key) and getattr(self._client, key) != getattr(self, key):
                 raise RuntimeError("선택 모델 불일치")
+        before = _trimmed_count(self._client)
         value = self._client.ask_json(*args, **kwargs)
         for key in ("provider", "model"):
             if hasattr(self._client, key) and getattr(self._client, key) != getattr(self, key):
                 raise RuntimeError("선택 모델 불일치")
+        # Each client counts its own calls; the job-wide once rule is _notice's.
+        if self._on_trimmed is not None and _trimmed_count(self._client) > before:
+            self._on_trimmed()
         return value
 
 
@@ -373,6 +397,25 @@ class DesktopBridge:
             total = total if type(total) is int and total >= completed else completed
             job.events.append(dict(sequence=len(job.events) + 1, stage=stage,
                                    message=message, completed=completed, total=total))
+
+    def _notice(self, job, name):
+        """Spec 4.3: one screen-only notice per job, at the last event's progress.
+
+        Batch workers call this concurrently, so the check, the record and the
+        event share one section of the reentrant bridge lock (_event re-enters it).
+        """
+        if name not in _NOTICES:
+            return
+        with self._lock:
+            if name in job.notices:
+                return
+            job.notices.add(name)
+            last = job.events[-1] if job.events else dict(stage="preflight", completed=0, total=0)
+            self._event(job, last["stage"], _EVENTS[name], last["completed"], last["total"])
+
+    def _client_for(self, job, opts, key):
+        return _CancellableClient(self._client_factory(opts, key), opts, job.cancel,
+                                  lambda: self._notice(job, "response_trimmed"))
 
     def _progress(self, job, event):
         if type(event) is dict:
@@ -538,6 +581,8 @@ class DesktopBridge:
                  and all(type(value) is str for value in task.values()))
         snapshot = d.task_snapshot(task)
         opts = self._options(request["options"], task=snapshot)
+        cleaned = (any(snapshot[column] != str(task.get(column, "")).strip() for column in snapshot)
+                   or _policy_cleaned(request["options"], opts))
         directory = self._path(request["output_dir_token"], "output_directory", nullable=True)
         key, key_warning = self._key(opts.provider)
         cat = self._catalogue
@@ -545,7 +590,9 @@ class DesktopBridge:
         def work(job):
             if key_warning:
                 self._event(job, "preflight", key_warning)
-            client = _CancellableClient(self._client_factory(opts, key), opts, job.cancel)
+            if cleaned:
+                self._notice(job, "input_cleaned")
+            client = self._client_for(job, opts, key)
             result = self._classify(deepcopy(snapshot), opts, client,
                 progress_callback=lambda event: self._progress(job, event), catalogue=cat)
             d.validate_result(result, opts, snapshot)
@@ -565,17 +612,26 @@ class DesktopBridge:
         _require(source != output and not (output.exists() and os.path.samefile(source, output)))
         directory = self._path(request["output_dir_token"], "output_directory", nullable=True)
         opts = self._options(request["options"], batch=True)
+        policy_cleaned = _policy_cleaned(request["options"], opts)
         (key, key_warning), cat = self._key(opts.provider), self._catalogue
+
+        def notice(job, name):
+            # The runner reports only cleaned rows; response_trimmed is the client's.
+            if name == "input_cleaned":
+                self._notice(job, name)
 
         def work(job):
             if key_warning:
                 self._event(job, "preflight", key_warning)
+            if policy_cleaned:
+                self._notice(job, "input_cleaned")
             report = self._batch_runner(source, output, opts,
-                lambda: _CancellableClient(self._client_factory(opts, key), opts, job.cancel),
+                lambda: self._client_for(job, opts, key),
                 resume=request["resume"], workers=request["workers"], make_forms=request["make_forms"],
                 progress_cb=lambda event: self._progress(job, event),
                 status_cb=lambda event: self._progress(job, event),
-                cancel_event=job.cancel, catalogue=cat, output_dir=directory)
+                cancel_event=job.cancel, catalogue=cat, output_dir=directory,
+                notice_cb=lambda name: notice(job, name))
             for result in report["results"]:
                 d.validate_result(result)
             with self._lock:
