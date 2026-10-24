@@ -67,3 +67,8 @@ pywebview(winforms)는 create_window의 width·height·min_size에 화면 배율
 한글 줄바꿈은 `word-break: keep-all`로 낱말 단위로 바꾸고, 공백 없는 긴 값은 `overflow-wrap: anywhere`로 칸 안에서 나눈다. `overflow-wrap: break-word`는 표의 최소 폭 계산에 반영되지 않아 keep-all과 함께 쓰면 긴 낱말이 표를 넓혀 가로로 넘친다. 날짜 '2025-10-02'는 하이픈에서 끊길 수 있으므로 고시번호·고시일·시행일을 각각 줄바꿈 없는 단위로 묶는다. 낱말 끊김은 화면 시험에서 각 낱말 범위의 줄 사각형이 하나인지로 확인하며, 닫힌 details 안의 글자도 배치 상자를 보고하므로 checkVisibility로 보이는 요소만 검사한다.
 
 시험 파일들은 같은 폴더의 다른 시험 모듈을 바로 가져다 쓰고 tests 폴더에 패키지 표시 파일이 없다. 그래서 `python -m unittest tests.test_v16_batch`처럼 모듈 이름으로 부르면 가져오기 오류가 난다. `-m unittest discover -s tests -p "파일이름"` 형태나 PYTHONPATH=tests로 실행한다.
+
+Claude는 JSON 전용 응답을 요청할 수 없어서, 지시문이 JSON만 요구해도 앞에 설명 문장을 붙일 때가 있다. 실제 과제 근거 추출에서 '설명 + 빈 줄 + `{"facts": []}`' 응답이 나왔고, v14 파서가 이를 거부해 과제 전체가 오류가 되었다. OpenAI·LM Studio·Ollama는 JSON 모드를 요청하므로 드물다. v16은 `llm_json_v16.TolerantLLMClient`로 완전한 JSON 객체가 정확히 하나일 때만 받는다. `llm_client_v14.parse_json_object`는 v14·v15가 함께 쓰므로 고치거나 실행 중 바꿔치기하지 않는다. 같은 시험 프로세스에서 v15도 그 모듈을 쓴다. 해독기 오류(JSONDecodeError)는 `.doc`에 응답 원문을 들고 있으므로, 거부 예외는 except 블록 밖에서 새로 만들어 원문이 예외 연결로 새지 않게 한다.
+
+openpyxl은 셀 문자열의 엑셀 표시 `_x000D_`(CR)를 풀지 않는다. 엑셀에서 Alt+Enter나 복사로 줄을 바꾼 과제 글은 `줄1_x000D_
+줄2`처럼 읽힌다. v16은 `v16_domain.clean_input_text`로 표시를 줄바꿈으로 바꾼다. 지우기만 하면 줄바꿈 없이 혼자 있는 표시에서 앞뒤 글자가 붙는다(`20_x000D_30`→`2030`). 표시 풀기는 `_x005F_x000D_`(글자 그대로의 표시) 덩어리를 같은 정규식에서 함께 찾아 소비해야 두 번 적용해도 같다. 뒤를 보는 방식(lookbehind)은 `a_x000D_x005F_x000D_b`에서 두 번째 적용 결과가 달라지고, 그러면 저장 결과 검증의 `snapshot == task_snapshot(snapshot)`이 깨진다. 줄 끝 정리는 LF로만 나누고 `rstrip(" 	")`만 쓴다. `splitlines()`와 인자 없는 `rstrip()`은 VT·FF·U+001C~U+001F·NEL·U+2028까지 줄 끝으로 보거나 지워 글 내용을 바꾼다.

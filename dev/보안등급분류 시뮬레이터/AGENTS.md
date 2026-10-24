@@ -11,11 +11,12 @@
 ├── README_v16.md                           → v16 설치·사용·변경점·실제 검증 수준
 ├── security_grade_classifier_v16.py        → v16 호스트: ui_v16·12개 함수 허용 목록·창 크기 화면 맞춤·자체 확인
 ├── desktop_bridge_v16.py                   → v16 브리지: 12개 API(참고 고시 읽기 전용 2개·입력 양식 저장 포함)·화면 문구
-├── v16_domain.py                           → schema3·고시명 표·출처 고시일 검사·가이드라인 창 원문
+├── llm_json_v16.py                         → v16 모델 클라이언트: 설명문 붙은 응답에서 완전한 JSON 하나만 받기
+├── v16_domain.py                           → schema3·고시명 표·출처 고시일 검사·가이드라인 창 원문·입력 글 정리
 ├── notice_catalogue_v16.py                 → resources_v16 기준본 로더·고시일 검사
 ├── notice_review_v16.py                    → v15와 같은 고시 대조(지시문 동일)
 ├── classification_v16.py                   → v15와 같은 분류(지시문 동일)
-├── batch_v16.py                            → 고시일 열·이전 버전 결과 보호
+├── batch_v16.py                            → 고시일 열·이전 버전 결과 보호·정리 뒤 제외 판정
 ├── hwpx_writer_v16.py                      → 출처 부록 고시일(서식은 templates/v15)
 ├── ui_v16/                                 → 개조식 화면·참고 고시 화면·가이드라인 창 원문
 ├── resources_v16/
@@ -130,6 +131,8 @@ docs/standards.md와 docs/engineering-notes.md를 먼저 읽는다. v16 화면 �
   - AI 시스템 지시문과 요청 구성은 v15와 바이트까지 같아야 한다. 결과·중간 저장·엑셀·감사·HWPX에 저장되거나 AI 입력에 들어가는 프로그램 문장도 v15 그대로다. 화면에만 뜨는 문구(브리지 `_MESSAGES`·`_EVENTS`, 호스트 안내, 배치 경고·진행, 분류·고시 대조 진행 표시)만 명사형 개조식으로 쓴다. 예외 문자열은 화면에 나오지 않으므로 바꾸지 않는다. tests/test_v16_integration.py·test_v16_engine.py·test_v16_batch.py의 v15 대조 시험이 이를 확인한다.
   - 용어 대응표(검토항목·보안등급(AI 참고)·대상 제외 등)는 화면에만 적용한다. 엑셀·의견서 문구와 저장 상태값(`후보제외` 등)은 바꾸지 않는다. 고시 대조의 '후보 조항'은 이름을 바꾸지 않는다.
   - 가이드라인 창의 정의·원칙은 `v16_domain.guideline_display()`의 원문 인용만 쓴다. AI 지시문의 `LEGAL_DEFINITIONS`·`CLASSIFICATION_PRINCIPLES`는 v15 그대로 둔다.
+  - 과제 글과 공통 부처 세부기준은 `v16_domain.clean_input_text`로 엑셀 줄바꿈 표시·줄 끝 공백·연속 빈 줄만 정리해 AI에 보내고 저장한다. 정리는 두 번 적용해도 같아야 한다. 정리가 필요한 입력의 지시문·저장 결과는 미리 정리한 같은 글을 v15에 넣은 것과 같아야 한다.
+  - 모델 응답은 `llm_json_v16.TolerantLLMClient`가 받는다. 완전한 JSON 객체가 정확히 하나일 때만 받고, 둘 이상·깨짐·잘림·배열은 오류로 둔다. `llm_client_v14.py`는 v14·v15와 같이 쓰므로 고치거나 실행 중 바꿔치기하지 않는다. 정리·설명문 제외가 일어나면 브리지가 화면 전용 알림을 작업마다 한 번 띄우고, 결과·저장 파일에는 남기지 않는다.
   - resources_v16/notices의 원문·추출·정규화·검수 파일은 v15와 바이트까지 같아야 한다. 고시일·기준본 이름이 바뀌면 생성 도구(tools/build_notice_catalogue_v16.py)를 PyMuPDF 2.0 환경에서 다시 돌리고 바이트 일치를 확인한다.
 - reference_lists.py·과거 앱 내부 목록·excel_viewer.py는 새 고시와 자동 연결되지 않는다. 독립 열람기의 PySide6·pandas를 v15 빌드에 추가하지 않는다. requirements_v15.txt·v15 .spec·README_v15.md와 실제 실행 경로·자산 목록을 함께 확인한다.
 
