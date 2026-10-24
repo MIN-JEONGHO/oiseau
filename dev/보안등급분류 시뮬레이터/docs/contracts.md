@@ -101,3 +101,24 @@ client는 `ask_json(system_prompt,user_prompt,temperature=None)`를 제공한다
 대량 재출력 persistence는 전체 status와 checkpoint·workbook·audit의 완료/실패/미시도 및 warnings를 반환한다. 체크포인트 추가 → 엑셀 원자 교체 → 감사 추가 순서이며 엑셀 잠금으로 실패해도 성공한 체크포인트를 되돌렸다고 표시하지 않는다. 세 파일의 일괄 원자 저장을 보장하지 않는다.
 
 `security_grade_classifier_v15.py --self-check 보고서.json`과 같은 실행 파일 옵션은 숨긴 실제 WebView·가짜 저장소·모의 모델로 자체 확인하며 JSON의 pass와 프로세스 종료 코드로 결과를 알린다. 실제 API 인증·계정 권한·한글 표시·Windows 배율 검증을 대신하지 않는다.
+
+## v16 변경
+
+v16은 위 v15 규약을 그대로 따르고 아래만 다르다. v16 결과·기록을 v15 경로로, v15 결과를 v16 경로로 읽지 않는다.
+
+- 기준본: resources_v16/notices, `catalogue_id` `kr-notices-v16-1`. manifest 출처 키는 v15 키에 `announcement_date`(고시일, ISO)를 더한 집합과 정확히 같고, 키 순서에서 `effective_date` 바로 앞이다. 로더(notice_catalogue_v16)와 도메인 검증(v16_domain.validate_manifest) 모두 다음을 거부한다: ISO가 아닌 날짜, 고시일 > 시행일, 같은 고시번호의 날짜 불일치, 고시명 표(`NOTICE_TITLES`)에 없는 고시번호, 고시마다 `-body`로 끝나는 본문 출처가 정확히 하나가 아닌 경우. 로더의 고시명 표 사본은 도메인 표와 같아야 한다.
+- 저장 결과: `schema_version` 3. 루트 키 25개·나머지 구조는 schema2와 같고 `notice_review`의 manifest·출처에 `announcement_date`가 있다. schema 3이 아닌 결과는 검증·재출력에서 거부한다.
+- 브리지 함수 11개: v15의 9개에 아래 읽기 전용 2개를 더한다. 둘 다 모델·키·파일·작업 상태를 건드리지 않고, 진행 중인 작업이 있어도 호출할 수 있으며, 기준본을 읽지 못하면 `catalogue` 오류다.
+
+  | 함수와 입력 | 성공 data | 오류 |
+  | --- | --- | --- |
+  | search_notice_clauses({query?,family?,offset?,limit?}) | total, offset, limit, items(clause_id·family·source_id·notice_number·code·title·field, 원문 없음) | 사전 아님·정의되지 않은 키·bool 정수·query 201자 이상(정규화 전)·family 오타·offset 음수·limit 0 또는 101 → validation |
+  | get_notice_clause(clause_id) | clause_id, family, source_id, notice_number, notice_title, announcement_date, effective_date, official_url(그 조항 출처의 URL), code, title, field, source_anchor, text(원문 그대로) | 문자열 아님 → validation, 없는 조항 → not_found |
+
+  검색은 검색어와 조항의 clause_id·code·title·field·text를 NFKC → 모든 공백 문자 제거 → casefold로 정규화한 뒤 부분 문자열로 비교한다. 기본값은 query "", family null(전체), offset 0, limit 50이고 순서는 기준본 조항 순서다. 정규화는 비교에만 쓰고 반환값은 원문 그대로다. 검색 결과 없음은 비해당 판정이 아니다.
+- get_initial_state: `catalogue.sources`에 `announcement_date`, 새 키 `catalogue.notices`(고시번호별 notice_number·title·announcement_date·effective_date·families·source_ids·official_url, 기준본 출처 순서의 첫 등장 순서, official_url은 본문 출처의 URL)와 `catalogue.notice_titles`(고시번호→고시명 전체 표). `guideline`은 `{id, definitions:[{heading,text}], principles:[{title,details:[문자열]}]}`이며 내용은 법 제21조④⑤·시행령 제45조①②·가이드라인 일반과제 설명·분류 원칙 4개의 원문 인용이다.
+- 고정 오류 문구와 진행 이벤트는 브리지 `_MESSAGES`·`_EVENTS`의 명사형 개조식 문구다. 오류 code 집합은 v15와 같다.
+- 결과 엑셀: 시트·열 이름은 v15와 같고 `고시기준본` 시트에만 `고시일` 열이 `시행일` 바로 앞에 들어간다. 그 뒤 열은 한 칸씩 밀린다.
+- HWPX: 서식은 templates/v15 그대로. 출처 부록 제목은 `출처 및 버전·고시일·시행일·URL·SHA256`, 출처별 `고시일` 항목이 `시행일` 앞에 온다. 그 밖의 의견서 문구는 v15와 같다.
+- 일괄 검토 결과 보호: 결과 경로 옆 중간 저장 파일에 정수 `schema_version`이 3 미만인 기록이 하나라도 있거나, 결과 엑셀이 이미 있는데 열 수 있고 `고시기준본` 시트 머리 행에 `고시일`이 있는 v16 결과로 확인되지 않으면 `batch_v16.PreviousResultError`(BatchError 하위)로 멈춘다. 재개 여부와 관계없고, 중간 저장 초기화·엑셀 교체·감사·모델 호출 전에 멈추며 기존 세 파일은 바이트까지 그대로다. 브리지는 오류 code `io`를 유지하고 진행 이벤트에 `batch_v16.PREVIOUS_RESULT_MESSAGE`를 남긴 뒤 작업을 `failed`로 끝낸다(취소 요청이 먼저 있었어도 failed). 해독할 수 없는 줄·정수가 아닌 버전 값은 이전 버전 근거로 보지 않고 v15처럼 경고 후 새로 처리한다.
+- 실행 파일: `dist-v16/보안등급분류시뮬레이터_v16.exe`, 결과 엑셀 기본 이름 `v16_검토결과.xlsx`. `--self-check`는 v15 범위에 새 함수 2개의 정상·오류 응답, 진행 중 호출, 허용 목록 정확히 11개를 더해 확인한다.

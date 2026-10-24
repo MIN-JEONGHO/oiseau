@@ -149,8 +149,8 @@ Get-Content -LiteralPath '.\build-v16\frozen-self-check.json' -Encoding UTF8
   - 프로젝트 자산 33개(`ui_v16` 5개·폰트 라이선스 포함, 고시 25개, 파생 서식 2개, 아이콘) 포함, 원본과 바이트 일치
   - 프로젝트 모듈은 v16 실행 모듈 8개와 `credential_store`·`llm_client_v14`만 포함
   - v15 실행 모듈 8개, v14 이하 실행 모듈, `ui_v15`·`resources_v15`, `tests`·`tools`, PyMuPDF·Playwright·PySide6·pandas, `…_claude`·`embedded_key`, `.dryforge`·가이드라인 파일 없음
-- 확인한 실행 파일: 42,079,435바이트, SHA256 `e357bcf9c8c0a25b98eec85b0a2d19ca968e796b6a5ac757b1997f5f26f2f9d1`
-  - 작업 사본에서 빌드한 파일. 다시 빌드하면 해시가 달라질 수 있음
+- 확인한 실행 파일: 42,079,223바이트, SHA256 `76a69d58c542496fb0fb725c8d4bd21bb4324864a2b0cff79bfcce1a83004e4f`
+  - 통합 브랜치에서 빌드한 파일. 다시 빌드하면 해시가 달라질 수 있음
 
 ## 미확인
 
