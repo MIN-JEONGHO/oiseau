@@ -24,7 +24,7 @@ for entry in manifest['files']:
 hiddenimports = [
     'desktop_bridge_v16', 'classification_v16', 'batch_v16', 'hwpx_writer_v16',
     'v16_domain', 'notice_catalogue_v16', 'notice_review_v16',
-    'credential_store', 'llm_client_v14',
+    'credential_store', 'llm_client_v14', 'llm_json_v16',
     'webview', 'webview.platforms.winforms', 'webview.platforms.edgechromium',
     'webview.platforms.win32', 'clr', 'pythonnet', 'clr_loader', '_cffi_backend',
     'requests', 'openpyxl', 'lxml.etree',

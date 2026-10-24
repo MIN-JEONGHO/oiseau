@@ -4,10 +4,10 @@ Only explicitly exposed methods are an IPC API. All dependencies, credentials,
 path capabilities, immutable run snapshots and retained results stay in Python.
 The host MUST use js_api=None and window.expose, never expose this object.
 
-v16 differs from v15 in four places only: two read-only notice lookups
+v16 differs from v15 in these places only: two read-only notice lookups
 (search_notice_clauses, get_notice_clause), the initial state's notice list,
 title table and display-only guideline quotations, the dedicated stop event for
-a protected previous result (batch_v16.PreviousResultError, code io), and
+a protected previous result (batch_v16.PreviousResultError, code io),
 screen-only fixed error and progress messages written as noun-ending 개조식,
 the default model client llm_json_v16.TolerantLLMClient (one JSON object taken
 out of surrounding prose), and two screen-only notices shown at most once per
