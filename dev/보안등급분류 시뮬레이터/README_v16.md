@@ -131,7 +131,7 @@ Get-Content -LiteralPath '.\build-v16\frozen-self-check.json' -Encoding UTF8
 
 - 모두 합성 과제·모의 모델·가짜 키 저장소 사용. 각 명령의 실제 종료 코드로 판단
 - 회귀시험(종료 코드 모두 0)
-  - v16 392개 통과(`test_v16_*`, 새 통합 시험 17개 포함)
+  - v16 393개 통과(`test_v16_*`, 새 통합 시험 17개 포함)
   - v15 279개, v14 134개 통과(손대지 않은 이전 버전 회귀)
   - 총 805개
 - 문법 검사: v16 실행 경로 8개 파일과 `llm_client_v14.py`·`credential_store.py`의 `py_compile` 종료 코드 0
@@ -149,7 +149,7 @@ Get-Content -LiteralPath '.\build-v16\frozen-self-check.json' -Encoding UTF8
   - 프로젝트 자산 33개(`ui_v16` 5개·폰트 라이선스 포함, 고시 25개, 파생 서식 2개, 아이콘) 포함, 원본과 바이트 일치
   - 프로젝트 모듈은 v16 실행 모듈 8개와 `credential_store`·`llm_client_v14`만 포함
   - v15 실행 모듈 8개, v14 이하 실행 모듈, `ui_v15`·`resources_v15`, `tests`·`tools`, PyMuPDF·Playwright·PySide6·pandas, `…_claude`·`embedded_key`, `.dryforge`·가이드라인 파일 없음
-- 확인한 실행 파일: 42,079,223바이트, SHA256 `76a69d58c542496fb0fb725c8d4bd21bb4324864a2b0cff79bfcce1a83004e4f`
+- 확인한 실행 파일: 42,079,521바이트, SHA256 `c7f918f03275eb331ebf929df06613b375c4a90b78063e880f671c1b00b5690d`
   - 통합 브랜치에서 빌드한 파일. 다시 빌드하면 해시가 달라질 수 있음
 
 ## 미확인
