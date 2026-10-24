@@ -1,0 +1,4 @@
+# Preserve the exact source and manifest-bound bytes across Windows checkouts.
+* -text
+# Official HTML is an immutable downloaded artifact, not authored application UI.
+raw/*.html -diff

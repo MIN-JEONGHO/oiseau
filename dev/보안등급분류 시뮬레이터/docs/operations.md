@@ -55,3 +55,24 @@ Get-Content -LiteralPath '.\build-v15\frozen-self-check.json' -Encoding UTF8
 v12는 별도 전환 전 운영 기준이며 기존 진입점과 .spec를 유지한다. v13_test·v14도 독립 검토 경로다. 각 버전의 기존 SDK·Tkinter·기타 의존성을 v15 requirements가 모두 충족한다고 가정하지 않는다. 과거 .spec로 빌드한 파일을 v15라고 표시하지 않는다.
 
 excel_viewer.py는 PySide6·pandas 기반 독립 열람기다. .xls의 추가 엔진은 별도 확인 대상이며 그 의존성을 v15 필수에 추가하지 않는다.
+
+## v16
+
+v16은 requirements_v15.txt와 같은 의존성을 쓴다. 개발 확인 환경은 시뮬레이터 폴더의 `.dryforge/implementation/.dryforge/env-v15/Scripts/python.exe`(Python 3.14.6, 실행 의존성과 개발용 PyMuPDF 2.0·Playwright 1.64.0)이다. 이 경로는 커밋되지 않는 로컬 환경이므로, 다른 PC나 새 사본에서는 위 v15 절차로 환경을 만든 뒤 같은 버전의 PyMuPDF·Playwright를 개발 환경에만 설치한다. 아래 `$PY`는 그 Python이다.
+
+```powershell
+& $PY .\security_grade_classifier_v16.py
+& $PY -m unittest discover -s tests -p "test_v16_*.py"
+& $PY -m unittest discover -s tests -p "test_v15_*.py"
+& $PY -m unittest discover -s tests -p "test_v14_*.py"
+& $PY .\security_grade_classifier_v16.py --self-check .\build-v16\source-self-check.json
+& $PY -m PyInstaller --noconfirm --workpath .\build-v16 --distpath .\dist-v16 '보안등급분류시뮬레이터_v16.spec'
+$check = Start-Process -FilePath '.\dist-v16\보안등급분류시뮬레이터_v16.exe' -ArgumentList '--self-check', '.\build-v16\frozen-self-check.json' -WindowStyle Hidden -PassThru -Wait
+$check.ExitCode
+```
+
+v16 기준본을 다시 만들 때는 생성 도구가 기본 위치(resources_v16/notices)를 바로 덮어쓰므로, 먼저 임시 폴더에 resources_v15/notices의 raw와 .gitattributes를 복사하고 `& $PY tools/build_notice_catalogue_v16.py --root <임시 폴더>`로 만든다. 그 결과의 raw·extracted·normalized·review가 resources_v15와 바이트까지 같을 때만 resources_v16/notices로 옮긴다. 다르면 옮기지 않는다. 생성 도구는 같은 고시번호 본문 HTML 머리글의 고시일·시행일을 정해 둔 값과 대조하며 다르면 실패한다.
+
+배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-24 통합 브랜치 빌드는 42,079,521바이트, SHA256 c7f918f03275eb331ebf929df06613b375c4a90b78063e880f671c1b00b5690d이며 실행 파일 자체 확인 pass:true·frozen:true, 아카이브 점검 통과다. 다시 빌드하면 해시가 달라질 수 있다.
+
+v15 결과 엑셀을 v16 일괄 검토의 결과 파일로 고르면 덮어쓰지 않고 멈추므로 새 결과 경로를 고른다. v15 중간 저장 기록은 v16에서 재개에 쓰이지 않는다.

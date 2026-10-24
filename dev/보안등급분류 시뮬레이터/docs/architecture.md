@@ -26,3 +26,11 @@ v15는 Windows의 단일 pywebview·Edge WebView2 창 안에서 HTML/CSS/JavaScr
 문서 재생성은 세션에 보존된 결과 또는 검증된 저장 결과만 소비하며 모델·키·현재 설치 고시를 조회하지 않는다. 대량 결과를 다시 내보내면 최신 체크포인트와 문서 상태까지 대조한 뒤 체크포인트 → 엑셀 → 감사 순서로 개별 갱신한다. 같은 배치의 연속 내보내기는 최신 보고서 상태를 공유한다.
 
 외부 모델에는 선택한 과제 요약·추가 정보·부처 기준·현재/목표 사양·판단에 필요한 고시 근거가 전달된다. 입력 엑셀 파일이나 전체 가이드라인을 첨부하지 않는다. 로컬 모델도 설정 주소가 실제 전송 목적지다. reference_lists.py와 과거 앱 내부 목록은 새 고시 기준본과 자동 동기화되지 않으며 독립 excel_viewer.py의 PySide6·pandas는 v15 실행 의존성이 아니다.
+
+## v16 실행 경로
+
+v16은 v15 구성요소마다 같은 역할의 v16 파일(security_grade_classifier_v16 → desktop_bridge_v16 → classification_v16·batch_v16 → notice_review_v16 → notice_catalogue_v16, 공통 기준 v16_domain, 출력 hwpx_writer_v16)을 두고 v16 모듈끼리만 연결한다. llm_client_v14·credential_store는 v15와 같이 재사용한다. 화면 자산은 ui_v16, 기준본은 resources_v16/notices, 의견서 서식은 templates/v15 두 파생 서식을 그대로 쓴다. v15 경로는 독립적으로 보존되며 v16 실행 파일은 v15 실행 모듈을 묶지 않는다.
+
+v16 화면은 11개 브리지 함수만 호출한다. 참고 고시 화면은 get_initial_state의 고시별 목록을 표시하고, 조항 목록은 search_notice_clauses, 펼친 원문은 get_notice_clause로 받는다. 두 함수는 Python 쪽에서 불러 둔 검증된 기준본만 읽고 작업 상태와 무관하게 응답한다. 검색 계산은 화면 스크립트가 하지 않는다. 결과 화면은 결과에 저장된 출처를 고시번호로 묶어 표시하며 고시명은 초기 상태의 고시명 표에서 찾는다.
+
+단건·일괄 흐름과 AI 요청은 v15와 같다. 달라지는 것은 기준본(고시일·이름·지문)과 schema3, 엑셀 고시일 열, HWPX 고시일 줄, 일괄 검토 시작 전의 이전 버전 결과 보호뿐이다.

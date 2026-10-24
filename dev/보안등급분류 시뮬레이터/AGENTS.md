@@ -1,6 +1,6 @@
 # 연구보안 등급분류 시뮬레이터 작업 지침
 
-중앙행정기관·연구관리 전문기관이 보안등급 심의를 준비하는 Windows 도구다. v15는 단일 WebView2 창의 웹 UI와 Python 분류·고시 대조·엑셀/HWPX 출력을 연결한다. AI 에이전트의 참고 의견은 실제 위원회 의결·서명·행정기관 확정을 대신하지 않는다. 실제 운영 기준은 별도 사용자 전환 결정 전까지 v12이며 v13·v14와 과거 파일은 보존한다.
+중앙행정기관·연구관리 전문기관이 보안등급 심의를 준비하는 Windows 도구다. v15·v16은 단일 WebView2 창의 웹 UI와 Python 분류·고시 대조·엑셀/HWPX 출력을 연결한다. 개발 중인 최신 경로는 v16이며, v15와 판정 방식·AI 지시문이 같고 화면 개조식 문구·가이드라인 용어·참고 고시 화면·고시일을 더했다. AI 에이전트의 참고 의견은 실제 위원회 의결·서명·행정기관 확정을 대신하지 않는다. 실제 운영 기준은 별도 사용자 전환 결정 전까지 v12이며 v13·v14·v15와 과거 파일은 보존한다.
 
 ## 전체 구조
 
@@ -8,6 +8,19 @@
 보안등급분류 시뮬레이터/
 ├── AGENTS.md                               → 작업 진입점·루트 기능별 경계
 ├── CLAUDE.md                               → AGENTS.md와 바이트까지 동일한 지침
+├── README_v16.md                           → v16 설치·사용·변경점·실제 검증 수준
+├── security_grade_classifier_v16.py        → v16 호스트: ui_v16·11개 함수 허용 목록·자체 확인
+├── desktop_bridge_v16.py                   → v16 브리지: 11개 API(참고 고시 읽기 전용 2개 포함)·화면 문구
+├── v16_domain.py                           → schema3·고시명 표·출처 고시일 검사·가이드라인 창 원문
+├── notice_catalogue_v16.py                 → resources_v16 기준본 로더·고시일 검사
+├── notice_review_v16.py                    → v15와 같은 고시 대조(지시문 동일)
+├── classification_v16.py                   → v15와 같은 분류(지시문 동일)
+├── batch_v16.py                            → 고시일 열·이전 버전 결과 보호
+├── hwpx_writer_v16.py                      → 출처 부록 고시일(서식은 templates/v15)
+├── ui_v16/                                 → 개조식 화면·참고 고시 화면·가이드라인 창 원문
+├── resources_v16/
+│   └── notices/                            → 고시일을 담은 기준본 kr-notices-v16-1(원문·파생 파일은 v15와 바이트 동일)
+├── 보안등급분류시뮬레이터_v16.spec           → v16 빌드(v15 실행 모듈 제외)
 ├── README_v15.md                           → v15 설치·사용·실제 검증 수준
 ├── requirements_v15.txt                    → v15 실행·빌드 고정 의존성
 ├── security_grade_classifier_v15.py        → WebView2 호스트·로컬 자산·네이티브 경계·자체 확인
@@ -32,7 +45,7 @@
 │   ├── committee_summary.hwpx              → 보존된 v14 종합 서식
 │   └── v15/                                → 고시 근거 부록을 포함한 두 파생 서식
 ├── tests/                                  → 합성 입력·모의 모델·실제 Edge의 오프라인 검증
-├── tools/                                  → 고시 기준본의 재현·검수 보조 도구
+├── tools/                                  → 고시 기준본의 재현·검수 보조 도구(v15·v16 생성 도구)
 ├── book_icon.ico                           → 공용 아이콘
 ├── 보안등급분류시뮬레이터_v15.spec           → v15 호스트·자산·SDK·WebView 구성요소 빌드
 ├── README_v14.md                           → 과거 v14 사용·검증 기록 보존
@@ -68,7 +81,7 @@
     ├── standards.md                       → 변경·검증·커밋·모듈 경계 규칙
     ├── engineering-notes.md               → 네이티브·분할 요청·재출력·문서 검증의 함정
     ├── operations.md                      → 설치·실행·자체 확인·빌드
-    ├── contracts.md                       → 9열·9API·schema2·고시 근거·저장/재개 계약
+    ├── contracts.md                       → 9열·9API·schema2(v16: 11API·schema3)·고시 근거·저장/재개 계약
     └── tracking/
         ├── status.md                      → 구현·검증·남은 작업
         ├── findings.md                    → 보류 검증·미해석 조건·기관 정책·과거 한계
@@ -83,7 +96,8 @@
             ├── 0007-agent-naming.md       → AI 검토와 실제 사람 심의 구분
             ├── 0008-installed-web-ui.md   → 단일 창 설치형 웹 UI
             ├── 0009-frozen-notice-review.md → 고정 고시·현재/목표·부족정보
-            └── 0010-standard-review-options.md → 표준 의견·자동 가중치 1.0
+            ├── 0010-standard-review-options.md → 표준 의견·자동 가중치 1.0
+            └── 0011-v16-notice-screen.md  → v16 함수 11개·고시일 기준본·화면 전용 개조식
 ```
 
 소스는 루트의 평면 모듈이며 가상의 패키지 폴더를 만들지 않는다. ui_v15·resources_v15·templates는 호스트·출력기가 소비하는 자산이므로 지침 파일을 무심코 추가해 서버·번들 목록이나 고시 지문을 바꾸지 않는다. build/dist·환경·입력·감사·체크포인트는 소스와 분리한다. 과거 Claude 변형은 키 형태 리터럴 위험으로 새 작업 사본·빌드에서 제외하며 사용자 원본을 임의 복원·삭제하지 않는다.
@@ -98,7 +112,7 @@
 
 ## 작업 전 확인
 
-docs/standards.md와 docs/engineering-notes.md를 먼저 읽는다. 기준·가중치·고시 조건 변경 전 docs/business-rules.md, 입력·저장 구조·브리지 변경 전 docs/contracts.md, 키·전송·네이티브 메시지 변경 전 docs/security.md, 환경·빌드 변경 전 docs/operations.md를 확인한다. 최종 가이드라인은 이미 승인됐으며 사례 불일치보다 본문 법령·정의·산식을 적용한다. 한국어 UTF-8·4칸 Python 들여쓰기를 유지하고 무관한 재서식화를 하지 않는다.
+docs/standards.md와 docs/engineering-notes.md를 먼저 읽는다. v16 화면 문구를 고치기 전에는 docs/contracts.md의 'v16 변경' 절에서 저장 문장과 화면 전용 문구의 구분을 확인한다. 기준·가중치·고시 조건 변경 전 docs/business-rules.md, 입력·저장 구조·브리지 변경 전 docs/contracts.md, 키·전송·네이티브 메시지 변경 전 docs/security.md, 환경·빌드 변경 전 docs/operations.md를 확인한다. 최종 가이드라인은 이미 승인됐으며 사례 불일치보다 본문 법령·정의·산식을 적용한다. 한국어 UTF-8·4칸 Python 들여쓰기를 유지하고 무관한 재서식화를 하지 않는다.
 
 ## 루트 기능별 작업 경계
 
@@ -112,6 +126,11 @@ docs/standards.md와 docs/engineering-notes.md를 먼저 읽는다. 기준·가�
 - ui_v15는 화면과 브리지 소비만 소유한다. 분류 계산·고시 판정·키 저장·파일 쓰기를 JavaScript에 복제하지 않는다. 원문을 HTML로 삽입하거나 키를 DOM/브라우저 저장소에 재주입하지 않는다. 자동 1.0 안내·표준 고정·AI 전문가 명칭·현재/목표·부족 질문·새 내보내기 작업 ID를 유지하며 tests/test_v15_frontend.py의 실제 Edge·390/1366 폭·장문·악성 태그·모의 9API를 확인한다. 외부 CDN·새 창·원격 리소스를 추가하지 않는다.
 - hwpx_writer_v15.py는 검증된 저장 결과와 두 파생 서식만 사용한다. 모델·키·현재 설치 기준본 조회 없이 개인별 실제 의견·전체 고시 참조·AI 표시·빈 사람 서명을 보존한다. 문서별 실패와 ZIP/XML·긴 한글·부록을 확인한다.
 - batch_v15.py는 모든 행 검증 뒤 독립 작업을 시작하고 조정자만 저장한다. schema2 지문·수식 텍스트·긴 셀 이어쓰기·5개 시트·오래된 보고서 거부·수량 제한 없는 문서 요청을 유지한다. 체크포인트·엑셀·감사를 하나의 원자 저장으로 표시하지 않는다.
+- v16 파일은 같은 역할의 v15 파일과 같은 경계를 따르며 v16 모듈끼리만 가져다 쓴다(재사용 경계 llm_client_v14·credential_store 제외). v15 모듈을 가져다 쓰거나 v15 파일을 고쳐 v16을 만들지 않는다. v16에서 달라지는 규칙은 다음뿐이다.
+  - AI 시스템 지시문과 요청 구성은 v15와 바이트까지 같아야 한다. 결과·중간 저장·엑셀·감사·HWPX에 저장되거나 AI 입력에 들어가는 프로그램 문장도 v15 그대로다. 화면에만 뜨는 문구(브리지 `_MESSAGES`·`_EVENTS`, 호스트 안내, 배치 경고·진행, 분류·고시 대조 진행 표시)만 명사형 개조식으로 쓴다. 예외 문자열은 화면에 나오지 않으므로 바꾸지 않는다. tests/test_v16_integration.py·test_v16_engine.py·test_v16_batch.py의 v15 대조 시험이 이를 확인한다.
+  - 용어 대응표(검토항목·보안등급(AI 참고)·대상 제외 등)는 화면에만 적용한다. 엑셀·의견서 문구와 저장 상태값(`후보제외` 등)은 바꾸지 않는다. 고시 대조의 '후보 조항'은 이름을 바꾸지 않는다.
+  - 가이드라인 창의 정의·원칙은 `v16_domain.guideline_display()`의 원문 인용만 쓴다. AI 지시문의 `LEGAL_DEFINITIONS`·`CLASSIFICATION_PRINCIPLES`는 v15 그대로 둔다.
+  - resources_v16/notices의 원문·추출·정규화·검수 파일은 v15와 바이트까지 같아야 한다. 고시일·기준본 이름이 바뀌면 생성 도구(tools/build_notice_catalogue_v16.py)를 PyMuPDF 2.0 환경에서 다시 돌리고 바이트 일치를 확인한다.
 - reference_lists.py·과거 앱 내부 목록·excel_viewer.py는 새 고시와 자동 연결되지 않는다. 독립 열람기의 PySide6·pandas를 v15 빌드에 추가하지 않는다. requirements_v15.txt·v15 .spec·README_v15.md와 실제 실행 경로·자산 목록을 함께 확인한다.
 
 ## 검증과 문제 처리
