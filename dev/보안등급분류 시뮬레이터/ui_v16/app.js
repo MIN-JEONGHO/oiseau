@@ -1,5 +1,5 @@
 /* Public bridge contract v16 (all calls are window.pywebview.api methods only;
- * exactly 11 functions). Every response: success {ok:true,data:<below>,error:null};
+ * exactly 12 functions). Every response: success {ok:true,data:<below>,error:null};
  * failure {ok:false,data:null,error:{code:string,message:string}}.
  * get_initial_state() => {defaults:RunOptions.to_dict(),
  * criteria:[{id,name,security_refs,sensitive_refs,rubric}],
@@ -10,8 +10,11 @@
  * effective_date,families,source_ids,official_url}],notice_titles:{number:title}},
  * guideline:{id,definitions:[{heading,text}],principles:[{title,details:[]}]}}.
  * Missing counts remain unconfirmed.
- * select_path('input_excel'|'output_excel'|'output_directory') =>
+ * select_path('input_excel'|'output_excel'|'output_directory'|'input_template') =>
  * {cancelled,path_token,display_name}; cancellation has both latter values null.
+ * save_input_template({output_token}) with an 'input_template' token only =>
+ * {saved:true,display_name}. Protected paths, busy and write errors come back as
+ * ordinary failures; the screen shows their message and never decides itself.
  * save_key(provider,key), delete_key(provider) => {provider,stored:boolean}.
  * start_single({task,options,output_dir_token:null|string}) => {job_id}.
  * start_batch({input_token,output_token,output_dir_token,options,
@@ -49,6 +52,8 @@
   const viewTitles = {input:'연구개발과제 검토',batch:'연구개발과제 일괄 검토',result:'검토 결과',notices:'참고 고시',settings:'모델·설정'};
   // Display-only labels: the stored status values stay unchanged.
   const statusNames = {'검토필요':'검토 필요','후보제외':'대상 제외'};
+  // Composition names for summaries (the '*' footnote mark stays in the select only).
+  const reviewerNames = {'1':'AI 기술분야 전문가 1개','3':'AI 분야별 전문가 3개'};
   const GUIDELINE_SOURCE = '출처: 「국가연구개발혁신법」 및 같은 법 시행령(2026.8.20. 시행), 「연구보안 등급분류 가이드라인」 최종본.';
   const state = {initial:null,method:'impact',selection:'auto',busy:false,ready:false,initializing:false,active:null,epoch:0,records:[],recordIndex:0,tab:'summary',view:'input',credentials:{claude:false,openai:false},paths:{single:null,input:null,output:null,directory:null,export:null},search:{query:'',family:null,items:[],total:0,token:0,loading:false,started:false}};
   function node(tag, text, cls) { const element=document.createElement(tag); if(text!==undefined && text!==null) element.textContent=String(text); if(cls)element.className=cls; return element; }
@@ -94,7 +99,8 @@
   // Notice title, number and dates for every place a catalogue appears.
   function noticeList(parent,notices) {
     const ul=node('ul',null,'source-list notice-list');
-    (notices||[]).forEach(notice=>{const li=node('li');li.dataset.noticeNumber=notice.notice_number||'';append(li,node('strong',notice.title||textValue(notice.notice_number)),node('small',`${textValue(notice.notice_number)} · 고시일 ${textValue(notice.announcement_date)} · 시행일 ${textValue(notice.effective_date)}`));ul.append(li);});
+    // Each date part stays on one line; the line breaks only between parts.
+    (notices||[]).forEach(notice=>{const li=node('li'),line=node('small');li.dataset.noticeNumber=notice.notice_number||'';[textValue(notice.notice_number),`고시일 ${textValue(notice.announcement_date)}`,`시행일 ${textValue(notice.effective_date)}`].forEach((part,index)=>{if(index)line.append(' · ');line.append(node('span',part,'date-part'));});append(li,node('strong',notice.title||textValue(notice.notice_number)),line);ul.append(li);});
     if(!ul.children.length)ul.append(node('li','고시 정보 미확인'));
     parent.append(ul);return ul;
   }
@@ -136,7 +142,6 @@
     $('selection-summary').textContent=state.selection==='auto'?'예정: AI의 검토항목 자동 선정. 실제 선정 항목은 완료 결과에 표시':'예정: 아래에서 직접 선정한 항목 검토. 실제 선정 항목은 완료 결과와 대조 필요';
     (state.initial?.criteria || []).forEach(criterion=>{const check=$(`criterion-${criterion.id}`),weight=$(`weight-${criterion.id}`);const blocked=criterion.id===8 && !effectivePolicy();if(blocked)check.checked=false;check.disabled=state.busy || state.selection==='auto' || blocked;weight.disabled=state.busy || state.method==='checklist' || state.selection==='auto' || !check.checked;weight.readOnly=state.selection==='auto';if(state.selection==='auto')weight.value='1.0';});
     all('[data-score-rubric]').forEach(el=>{el.hidden=state.method==='checklist';});all('#criteria-controls summary').forEach(el=>{el.textContent=state.method==='checklist'?'관련 조항':'조항·영향수준 점수 기준';});
-    $('reviewer-description').textContent=$('reviewer-count').value==='1'?'AI 기술분야 전문가의 독립 의견과 종합 검토':'AI 기술분야 · 연구보안 · 기술사업화 전문가의 독립 의견과 종합 검토';
     $('model-summary').textContent=currentModel();renderOptionsSummary();
   }
   function renderCriteriaControls() {
@@ -145,7 +150,7 @@
   }
   function currentModel() { const provider=$('provider').value;return provider==='claude'?'claude-sonnet-5-5':provider==='openai'?'gpt-6-luna':$('local-model').value.trim() || '로컬 모델 식별자 미입력'; }
   function renderProvider() { const provider=$('provider').value,local=provider==='ollama' || provider==='lmstudio';$('cloud-settings').hidden=local;$('local-settings').hidden=!local;$('cloud-model').value=local?'':currentModel();$('key-status').textContent=state.credentials[provider]?'API 키 저장됨 · 저장된 키 재사용':'API 키 저장되지 않음';$('model-summary').textContent=currentModel();renderOptionsSummary(); }
-  function renderOptionsSummary() {const area=clear($('batch-options-summary'));metric(area,'분류 방식',methodName(state.method));metric(area,'항목 선정',state.selection==='auto'?'검토항목 자동 선정 · 실제 항목은 결과에서 확인':'검토항목 직접 선정');metric(area,'AI 에이전트',`${$('reviewer-count').value}개`);metric(area,'모델',currentModel());catalogueSection(area,'이번 실행 고시 기준본',state.initial?.catalogue);}
+  function renderOptionsSummary() {const area=clear($('batch-options-summary'));metric(area,'분류 방식',methodName(state.method));metric(area,'항목 선정',state.selection==='auto'?'검토항목 자동 선정 · 실제 항목은 결과에서 확인':'검토항목 직접 선정');metric(area,'AI 에이전트',reviewerNames[$('reviewer-count').value] || `${$('reviewer-count').value}개`);metric(area,'모델',currentModel());catalogueSection(area,'이번 실행 고시 기준본',state.initial?.catalogue);}
   function buildOptions() {
     const provider=$('provider').value;const selected=state.selection==='manual'?state.initial.criteria.filter(c=>$(`criterion-${c.id}`).checked).map(c=>c.name):[];
     if(state.selection==='manual' && !selected.length)throw new Error('직접 선정할 검토항목 하나 이상 선택 필요');
@@ -160,12 +165,15 @@
     return {method:state.method,provider,model:currentModel(),num_reviewers:Number($('reviewer-count').value),selection_mode:state.selection,selected_items:selected,weights,ministry_policy:$('common-policy').value.trim(),local_base_url:base,guideline_id:defaults.guideline_id,catalogue_fingerprint:state.initial.catalogue.fingerprint,comparison_rules_version:defaults.comparison_rules_version};
   }
   function busy(value) {
-    state.busy=value;const ids=['provider','api-key','save-key','delete-key','local-url','local-model','common-policy','reviewer-count','batch-workers','batch-resume','batch-forms','start-single','start-batch','single-directory','batch-input','batch-output','batch-directory','start-export','export-directory'];
+    state.busy=value;const ids=['provider','api-key','save-key','delete-key','local-url','local-model','common-policy','reviewer-count','batch-workers','batch-resume','batch-forms','start-single','start-batch','single-directory','batch-template','batch-input','batch-output','batch-directory','start-export','export-directory'];
     ids.forEach(id=>{$(id).disabled=value || !state.ready;});all('[data-task]').forEach(el=>{el.disabled=value||!state.ready;});updateControls();$('cancel-job').disabled=!state.active || state.active.state==='cancelling';
     // Read-only notice search stays available while a job runs.
     ['notice-query','notice-family','notice-search'].forEach(id=>{$(id).disabled=!state.ready;});
   }
   async function pick(purpose,slot,label) {if(state.busy)return;try{const result=await call('select_path',purpose);if(result.cancelled)return;if(typeof result.path_token!=='string' || !result.path_token)throw new Error('선택한 경로 확인 불가');state.paths[slot]=result.path_token;$(label).textContent=result.display_name || '경로 선택됨';if(purpose==='output_directory'){state.paths.export=result.path_token;$('export-directory-name').textContent=result.display_name || '경로 선택됨';}message();}catch(error){fail(error);} }
+  // Template download: the bridge saves and decides protection; the screen shows the
+  // returned file name only and never selects the template as the input workbook.
+  async function saveTemplate() {if(state.busy || !state.ready)return;try{const picked=await call('select_path','input_template');if(picked.cancelled)return;if(typeof picked.path_token!=='string' || !picked.path_token)throw new Error('선택한 경로 확인 불가');const saved=await call('save_input_template',{output_token:picked.path_token});if(!saved || saved.saved!==true)throw new Error('양식 저장 확인 불가');$('batch-template-name').textContent=saved.display_name || '양식 저장됨';message();}catch(error){fail(error);} }
   async function saveKey() {if(state.busy)return;const provider=$('provider').value;let key=$('api-key').value.trim();if(!key){message('새 API 키 입력 필요');return;}try{const pending=call('save_key',provider,key);$('api-key').value='';key='';const saved=await pending;state.credentials[saved.provider]=saved.stored;renderProvider();message('API 키 보안 저장소 저장 완료');}catch(error){fail(error);}finally{$('api-key').value='';key='';} }
   async function deleteKey() {if(state.busy)return;$('api-key').value='';try{const saved=await call('delete_key',$('provider').value);state.credentials[saved.provider]=saved.stored;renderProvider();message('저장된 API 키 삭제 완료');}catch(error){fail(error);} }
   function step(stage) {const index=['facts','preflight'].includes(stage)?0:['notices','candidate','criteria'].includes(stage)?1:['agents','summary'].includes(stage)?2:3;all('#review-steps li').forEach((li,i)=>li.classList.toggle('current',i===index));}
@@ -280,15 +288,13 @@
   function renderResult() {const record=state.records[state.recordIndex];if(!record)return;const dto=record.dto;$('empty-result').hidden=true;$('saved-results').hidden=false;const picker=clear($('result-picker'));state.records.forEach((item,index)=>{const option=node('option',`${index+1}. ${item.dto.task_name} · ${statusLabel(item.dto.status)}`);option.value=String(index);picker.append(option);});picker.value=String(state.recordIndex);$('result-heading').textContent=dto.task_name;$('result-status').textContent=`${statusLabel(dto.status)} · ${methodName(dto.method)} · ${dto.reviewers.length}개 AI 에이전트`;$('result-grade').textContent=dto.final_grade||'등급 미확정';all('[data-result-tab]').forEach(button=>{const chosen=button.dataset.resultTab===state.tab;button.classList.toggle('chosen',chosen);button.setAttribute('aria-pressed',String(chosen));});const parent=clear($('result-content'));({summary:renderSummary,evidence:renderEvidence,criteria:renderCriteria,agents:renderAgents}[state.tab])(parent,dto);}
   function renderCatalogue() {const catalogue=state.initial.catalogue,area=clear($('catalogue-info'));metric(area,'상태',catalogue.status==='ready'?'준비됨':catalogue.status);area.append(node('h3','고시별 고시일·시행일','data-label'));noticeList(area,catalogue.notices);catalogue.families.forEach(family=>{const p=node('section',null,'source-record');p.append(node('h3',familyNames[family.family]||family.family));metric(p,'보존 원문 조항',family.total_clauses??'미확인');metric(p,'자동 조건해석 지원',family.interpreted_clauses??'미확인');metric(p,'추가 전문 검토 범위',family.unsupported_clauses??'미확인');area.append(p);});paragraph(area,'보존 원문 조항 수와 자동 조건해석 지원 수 구분. 수치는 실제 기준본의 메타정보. 집계가 없으면 미확인 표시','mini-text');const identity=disclosure(area,'기준본 식별 정보','catalogue-identity');metric(identity,'기준본 내부 이름',catalogue.catalogue_id);metric(identity,'기준본 확인값(지문)',catalogue.fingerprint);catalogue.sources.forEach(source=>sourceRecord(identity,source));}
   function renderInputNotices() {noticeList(clear($('input-notices')),state.initial.catalogue.notices);}
-  function familyCounts(family) {return (state.initial.catalogue.families||[]).find(item=>item.family===family) || {};}
+  // Cards show title, number, dates and the official source only (follow-up spec 4.3).
   function renderNoticeCards() {
     const area=clear($('notice-cards'));
     state.initial.catalogue.notices.forEach(notice=>{
       const card=node('section',null,'panel compact notice-card');card.dataset.noticeNumber=notice.notice_number;card.append(node('h2',notice.title));
       metric(card,'고시번호',notice.notice_number);metric(card,'고시일',notice.announcement_date);metric(card,'시행일',notice.effective_date);
-      card.append(node('h3','범위','data-label'));const ranges=node('ul',null,'data-list');
-      (notice.families||[]).forEach(family=>{const counts=familyCounts(family);ranges.append(node('li',`${familyNames[family]||family} · 조항 ${counts.total_clauses??'미확인'} · 자동 해석 가능 ${counts.interpreted_clauses??'미확인'} · 미해석 ${counts.unsupported_clauses??'미확인'}`));});
-      card.append(ranges,node('h3','공식 출처 주소','data-label'),node('p',notice.official_url || '미확인','url-text'));area.append(card);
+      card.append(node('h3','공식 출처 주소','data-label'),node('p',notice.official_url || '미확인','url-text'));area.append(card);
     });
   }
   function renderClause(body,clause) {
@@ -340,7 +346,7 @@
   all('[data-method]').forEach(button=>button.addEventListener('click',()=>{state.method=button.dataset.method;updateControls();}));all('[data-selection]').forEach(button=>button.addEventListener('click',()=>{state.selection=button.dataset.selection;updateControls();}));
   ['task-policy','common-policy','reviewer-count','local-model','local-url'].forEach(id=>$(id).addEventListener('input',updateControls));$('provider').addEventListener('change',()=>{$('api-key').value='';renderProvider();});
   $('save-key').addEventListener('click',saveKey);$('delete-key').addEventListener('click',deleteKey);$('start-single').addEventListener('click',()=>start('single'));$('start-batch').addEventListener('click',()=>start('batch'));$('start-export').addEventListener('click',()=>start('export'));$('cancel-job').addEventListener('click',cancel);
-  $('single-directory').addEventListener('click',()=>pick('output_directory','single','single-directory-name'));$('batch-input').addEventListener('click',()=>pick('input_excel','input','batch-input-name'));$('batch-output').addEventListener('click',()=>pick('output_excel','output','batch-output-name'));$('batch-directory').addEventListener('click',()=>pick('output_directory','directory','batch-directory-name'));$('export-directory').addEventListener('click',()=>pick('output_directory','export','export-directory-name'));
+  $('single-directory').addEventListener('click',()=>pick('output_directory','single','single-directory-name'));$('batch-template').addEventListener('click',saveTemplate);$('batch-input').addEventListener('click',()=>pick('input_excel','input','batch-input-name'));$('batch-output').addEventListener('click',()=>pick('output_excel','output','batch-output-name'));$('batch-directory').addEventListener('click',()=>pick('output_directory','directory','batch-directory-name'));$('export-directory').addEventListener('click',()=>pick('output_directory','export','export-directory-name'));
   $('notice-search').addEventListener('click',()=>searchNotices(true));$('notice-query').addEventListener('keydown',event=>{if(event.key==='Enter' && !event.isComposing){event.preventDefault();searchNotices(true);}});$('notice-more').addEventListener('click',()=>{if(!state.search.loading)searchNotices(false);});
   all('[data-result-tab]').forEach(button=>button.addEventListener('click',()=>{state.tab=button.dataset.resultTab;renderResult();}));$('result-picker').addEventListener('change',()=>{state.recordIndex=Number($('result-picker').value);renderResult();});$('open-guideline').addEventListener('click',openGuideline);$('settings-guideline').addEventListener('click',openGuideline);$('close-guideline').addEventListener('click',()=>$('guideline-dialog').close());
   window.addEventListener('pywebviewready',initialize);busy(false);if(window.pywebview?.api)initialize();
