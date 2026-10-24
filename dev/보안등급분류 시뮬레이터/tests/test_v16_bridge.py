@@ -1032,6 +1032,23 @@ class RealCatalogueSearchTests(unittest.TestCase):
             offset += 100
         return found
 
+    def test_frontend_mock_matches_bridge_contract(self):
+        """The UI tests' mock must have the same shapes as the real bridge (bridge-UI seam)."""
+        from tests.test_v16_frontend import ROOT as UI_ROOT, catalogue_notices
+        catalogue_data = self.ok(self.bridge.get_initial_state())["catalogue"]
+        self.assertEqual(catalogue_notices(self.cat.manifest["sources"]), catalogue_data["notices"])
+        self.assertEqual(dict(domain.NOTICE_TITLES), catalogue_data["notice_titles"])
+        bridge_source = Path(bridge_module.__file__).read_text(encoding="utf-8")
+        counts = re.search(r"counts=dict\((.*?)\),\s*paths=dict", bridge_source, re.S).group(1)
+        bridge_keys = set(re.findall(r"(?:^|,)\s*([a-z_]+)=", counts))
+        mock_source = (UI_ROOT / "tests" / "test_v16_frontend.py").read_text(encoding="utf-8")
+        mock_keys = set(re.findall(r"([a-z_]+):", re.search(r"counts:\{([^}]*)\}", mock_source).group(1)))
+        self.assertEqual(bridge_keys, {"total", "completed", "failed", "cancelled", "needs_review", "excluded"})
+        self.assertEqual(mock_keys, bridge_keys)
+        app = (UI_ROOT / "ui_v16" / "app.js").read_text(encoding="utf-8")
+        labels = re.search(r"\{total:'전체'[^}]*\}", app).group(0)
+        self.assertEqual(set(re.findall(r"([a-z_]+):'", labels)), bridge_keys)
+
     def test_installed_notices_titles_and_body_urls(self):
         catalogue_data = self.ok(self.bridge.get_initial_state())["catalogue"]
         self.assertEqual(catalogue_data["catalogue_id"], "kr-notices-v16-1")

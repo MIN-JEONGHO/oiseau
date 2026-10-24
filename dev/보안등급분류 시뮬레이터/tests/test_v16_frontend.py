@@ -305,7 +305,7 @@ FAKE = r"""
    if(job.polls===1)return ok({job_id,state:'running',events:[{sequence:1,stage:'facts',message:'합성 사실 확인',completed:1,total:4}],result:null});
    const base=h.result;
    const exported={...base,documents:{...base.documents,status:'완료',errors:[],files:base.documents.files.map(f=>({...f,status:'완료',error:''}))}};
-   const result=job.type==='batch'?{results:[base],counts:{total:1,completed:1},paths:{output_excel:'C:/synthetic/결과.xlsx'},warnings:['합성 감사 일부 실패'],persistence:{status:'일부실패',checkpoint:'완료',workbook:'완료',audit:'오류'}}:job.type==='export'?exported:base;
+   const result=job.type==='batch'?{results:[base],counts:{total:1,completed:1,failed:0,cancelled:0,needs_review:0,excluded:0},paths:{output_excel:'C:/synthetic/결과.xlsx'},warnings:['합성 감사 일부 실패'],persistence:{status:'일부실패',checkpoint:'완료',workbook:'완료',audit:'오류'}}:job.type==='export'?exported:base;
    return ok({job_id,state:'done',events:[{sequence:2,stage:'documents',message:'합성 의견서 처리',completed:4,total:4}],result});
   },
   cancel_job:async job_id=>{record('cancel_job',[job_id]);jobs[job_id].cancelled=true;return ok({job_id,state:'cancelled'});},
@@ -708,6 +708,9 @@ class FrontendBrowserTests(unittest.TestCase):
         self.assertEqual(payload["output_token"], "token-output_excel")
         self.assertEqual(payload["workers"], 8)
         self.assertIn("합성 감사 일부 실패", self.page.locator("#batch-report").inner_text())
+        report_text = self.page.locator("#batch-report").inner_text()
+        self.assertIn("대상 제외", report_text)
+        self.assertNotRegex(report_text, r"\b(total|completed|failed|cancelled|needs_review|excluded)\b")
         self.page.get_by_role("button", name="저장 결과로 의견서 재생성", exact=True).click()
         self.page.wait_for_function("() => testHarness.calls.some(c=>c.name==='start_export')")
         export = self.calls("start_export")[0]["args"][0]

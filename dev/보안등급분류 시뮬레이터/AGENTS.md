@@ -81,7 +81,7 @@
     ├── standards.md                       → 변경·검증·커밋·모듈 경계 규칙
     ├── engineering-notes.md               → 네이티브·분할 요청·재출력·문서 검증의 함정
     ├── operations.md                      → 설치·실행·자체 확인·빌드
-    ├── contracts.md                       → 9열·9API·schema2·고시 근거·저장/재개 계약
+    ├── contracts.md                       → 9열·9API·schema2(v16: 11API·schema3)·고시 근거·저장/재개 계약
     └── tracking/
         ├── status.md                      → 구현·검증·남은 작업
         ├── findings.md                    → 보류 검증·미해석 조건·기관 정책·과거 한계
