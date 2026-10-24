@@ -27,6 +27,8 @@ dev/dev test/
 build/
 dist/
 dist-v15/
+build-v16/
+dist-v16/
 *.exe
 *.zip
 __pycache__/
