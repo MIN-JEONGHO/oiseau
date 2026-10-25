@@ -1,2 +1,38 @@
+# GitHub에는 현재 버전(v16)과 v16이 쓰는 공용 파일만 올린다.
+# 이전 버전 파일·실제 자료·작업 폴더는 PC에서만 관리한다.
+# 새 파일을 올리려면 아래 허용 목록에 더한다.
+/*
+!/.gitignore
+!/CLAUDE.md
+!/AGENTS.md
+!/README_v16.md
+!/book_icon.ico
+!/requirements_v15.txt
+!/보안등급분류시뮬레이터_v16.spec
+!/security_grade_classifier_v16.py
+!/desktop_bridge_v16.py
+!/v16_domain.py
+!/notice_catalogue_v16.py
+!/notice_review_v16.py
+!/classification_v16.py
+!/batch_v16.py
+!/hwpx_writer_v16.py
+!/llm_json_v16.py
+!/llm_client_v14.py
+!/credential_store.py
+!/docs/
+!/ui_v16/
+!/resources_v16/
+!/templates/
+/templates/*
+!/templates/v15/
+!/tests/
+/tests/*
+!/tests/test_v16_*.py
+!/tools/
+/tools/*
+!/tools/build_notice_catalogue_v16.py
+!/tools/v16_mock_model.py
+!/tools/v16_bulk_check.py
 .dryforge/
 예시과제*/

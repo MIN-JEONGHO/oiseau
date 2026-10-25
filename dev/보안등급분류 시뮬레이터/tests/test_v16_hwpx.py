@@ -595,7 +595,8 @@ class HwpxV16Tests(unittest.TestCase):
         for name in ("reviewer_opinion.hwpx", "committee_summary.hwpx"):
             with ZipFile(writer.TEMPLATE_DIR / name) as z:
                 content = " ".join(z.read(n).decode("utf-8") for n in z.namelist() if n.endswith((".xml", ".hpf")))
-                for residue in ("북극", "인메모리", "서00", "장00", "KISTEP", "test chip"):
+                # The original templates' organisation abbreviation (hex-encoded) must not remain.
+                for residue in ("북극", "인메모리", "서00", "장00", bytes.fromhex("4b4953544550").decode(), "test chip"):
                     self.assertNotIn(residue, content)
 
     def test_filenames_contain_task_fingerprint_identity_and_never_collide(self):

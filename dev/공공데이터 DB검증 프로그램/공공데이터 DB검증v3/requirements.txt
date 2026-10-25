@@ -1,6 +1,0 @@
-# 검증 엔진 (필수)
-openpyxl>=3.1.2        # XLSX 판독 및 엑셀 리포트
-# GUI (exe 패키징 대상)
-pywebview>=5.1         # 윈도우에서는 Edge WebView2 런타임 사용
-# 빌드용 (개발 환경에만 설치)
-pyinstaller>=6.6
