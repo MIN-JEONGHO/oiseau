@@ -73,6 +73,20 @@ $check.ExitCode
 
 v16 기준본을 다시 만들 때는 생성 도구가 기본 위치(resources_v16/notices)를 바로 덮어쓰므로, 먼저 임시 폴더에 resources_v15/notices의 raw와 .gitattributes를 복사하고 `& $PY tools/build_notice_catalogue_v16.py --root <임시 폴더>`로 만든다. 그 결과의 raw·extracted·normalized·review가 resources_v15와 바이트까지 같을 때만 resources_v16/notices로 옮긴다. 다르면 옮기지 않는다. 생성 도구는 같은 고시번호 본문 HTML 머리글의 고시일·시행일을 정해 둔 값과 대조하며 다르면 실패한다.
 
-배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-25 보완 빌드는 42,097,260바이트, SHA256 c9e9051e80f9c63d54c81bd9e2a856ad0a7d91efa1522d30820b5fa61cc6fe7a이며 실행 파일 자체 확인 pass:true·frozen:true, 아카이브 점검 통과다. 다시 빌드하면 해시가 달라질 수 있다.
+배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-25 보완 2 빌드는 42,098,356바이트, SHA256 b229e78efa16b0bc93a95b6c11c8b19a957e3f574099f5fbdcebd82dbbdb8b5c이며 아카이브 점검 통과, 실행 파일 자체 확인은 빌드 직후 7번 중 5번 pass:true·frozen:true다(나머지 2번 '앱 초기화 실패', findings 참고). 다시 빌드하면 해시가 달라질 수 있다.
+
+대량 점검(모의 응답, 실제 AI 호출 없음):
+
+```powershell
+& $PY tools16_bulk_check.py notice <입력.xlsx>            # 과제별 고시 후보·대조 상태 미리 보기
+& $PY tools16_bulk_check.py run <입력.xlsx> <과제목록.json> <새 실행 폴더>
+& $PY tools16_bulk_check.py stats <원본.xlsx>              # 형식 통계(숫자만)
+```
+
+`run`은 실행 파일과 같은 일괄 검토 경로를 모의 모델·메모리 키 저장소로 돌린 뒤, 의견서 검사와 분석 엑셀·요약 보고서를 만든다. 실행 폴더가 이미 있으면 멈춘다. 종료 코드는 다음과 같다.
+- 0: 모두 통과
+- 2: 끝났지만 문제 있음
+- 1: 입력 오류
+실제 과제 자료와 점검 결과는 `예시과제*/` 아래에만 둔다. 이 폴더는 커밋하지 않는다. 시뮬레이터 `.gitignore`에 들어 있다. 실제 자료의 행 원문은 화면이나 파일에 남기지 않는다.
 
 v15 결과 엑셀을 v16 일괄 검토의 결과 파일로 고르면 덮어쓰지 않고 멈추므로 새 결과 경로를 고른다. v15 중간 저장 기록은 v16에서 재개에 쓰이지 않는다.
