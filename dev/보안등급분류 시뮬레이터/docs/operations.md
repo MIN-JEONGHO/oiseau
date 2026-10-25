@@ -73,7 +73,7 @@ $check.ExitCode
 
 v16 기준본을 다시 만들 때는 생성 도구가 기본 위치(resources_v16/notices)를 바로 덮어쓰므로, 먼저 임시 폴더에 resources_v15/notices의 raw와 .gitattributes를 복사하고 `& $PY tools/build_notice_catalogue_v16.py --root <임시 폴더>`로 만든다. 그 결과의 raw·extracted·normalized·review가 resources_v15와 바이트까지 같을 때만 resources_v16/notices로 옮긴다. 다르면 옮기지 않는다. 생성 도구는 같은 고시번호 본문 HTML 머리글의 고시일·시행일을 정해 둔 값과 대조하며 다르면 실패한다.
 
-배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-25 보완 2 빌드는 42,098,356바이트, SHA256 b229e78efa16b0bc93a95b6c11c8b19a957e3f574099f5fbdcebd82dbbdb8b5c이며 아카이브 점검 통과, 실행 파일 자체 확인은 빌드 직후 7번 중 5번 pass:true·frozen:true다(나머지 2번 '앱 초기화 실패', findings 참고). 다시 빌드하면 해시가 달라질 수 있다.
+배포 자산은 ui_v16 전체와 폰트 라이선스, resources_v16/notices 25개 파일, templates/v15 두 서식, 아이콘이다. v15 실행 모듈 8개, v14 이하 모듈, ui_v15·resources_v15, 시험·개발 도구, 가이드라인 원본, `_claude` 변형, 실제 입력·감사·중간 저장은 묶지 않는다. 2026-10-25 보완 2 최종 빌드는 42,099,127바이트, SHA256 ad8b8ecbd48e07253829fd77aab1a4d31471061d38b418f1e82407c3d3c96b44이며 아카이브 점검 통과, 실행 파일 자체 확인 3번 모두 pass:true·frozen:true다. 직전 빌드에서 빌드 직후 '앱 초기화 실패'가 간헐적으로 있었다(findings 참고). 다시 빌드하면 해시가 달라질 수 있다.
 
 대량 점검(모의 응답, 실제 AI 호출 없음):
 
