@@ -93,20 +93,36 @@ def _decode(line):
                       parse_constant=lambda value: (_ for _ in ()).throw(ValueError()))
 
 
+# Antivirus scans, search indexing or an editor can hold a just-written target
+# for several seconds on Windows; a replace refused with PermissionError is
+# retried with growing waits up to this total before the failure is reported.
+_REPLACE_RETRY_SECONDS = 10.0
+
+
+def _replace_delays():
+    delay, waited = .05, 0.0
+    while waited + delay <= _REPLACE_RETRY_SECONDS:
+        yield delay
+        waited += delay
+        delay = min(delay * 2, 2.0)
+
+
 def _atomic_write(path, writer):
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(prefix=".v16-", suffix=".tmp", dir=path.parent, delete=False) as stream:
             temporary = Path(stream.name)
         writer(temporary)
-        for attempt in range(3):
+        delays = _replace_delays()
+        while True:
             try:
                 os.replace(temporary, path)
                 break
             except PermissionError:
-                if attempt == 2:
+                delay = next(delays, None)
+                if delay is None:
                     raise
-                time.sleep(.05 * (attempt + 1))
+                time.sleep(delay)
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
