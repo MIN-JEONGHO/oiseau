@@ -663,7 +663,7 @@ class NoticeReviewTests(unittest.TestCase):
                     if not source or sum(len(r['text']) for r in source)!=source[0]['total']:
                         self.unresolved.append(row['path'])
                 return super().ask_json(system_prompt,user_prompt,temperature)
-        client=Stateless();r=self.run_review(client=client,cat=repack(plain))
+        client=Stateless();r=self.run_review(client=client,cat=repack(plain),chunk_chars=24000)
         self.assertEqual(client.unresolved,[])
         packets=[p for _,p,_ in client.calls if p['phase']=='compare']
         self.assertEqual(reconstruct(packets)['clause'],plain['clauses'][0])
@@ -727,7 +727,7 @@ class NoticeReviewTests(unittest.TestCase):
         note['condition']['predicate_id']='note-predicate'
         note['condition']['text']=note['text']
         plain['clauses'].append(note);plain['clauses'][0]['qualifier_refs']=['advanced:note']
-        client=Client([fact()]);r=self.run_review(client=client,cat=repack(plain))
+        client=Client([fact()]);r=self.run_review(client=client,cat=repack(plain),chunk_chars=24000)
         self.assertEqual(r['status'],'complete')
         excluded=next(e for e in r['families'][0]['excluded'] if e['clause_id']=='advanced:note')
         self.assertIn('독립 지정항목이 아니',excluded['reason'])
@@ -961,6 +961,118 @@ class NoticeReviewV16ContractTests(unittest.TestCase):
                                  normalise(new))
                 self.assertTrue(all('announcement_date' in source for source in new['sources']))
                 self.assertEqual(new['sources'], new['catalogue_manifest']['sources'])
+
+
+# ---------------------------------------------------------------------------
+# v16 보완 (spec 2·4.1): 고시 대조 요청 크기 100,000자와 screen 조항 수 한도 60.
+# Installed catalogue (resources_v16/notices), synthetic task text, stub model.
+# ---------------------------------------------------------------------------
+_SIZE_SENTENCES = (
+    '합성 과제는 공정 자동화를 위한 소프트웨어 구조를 정리한다. ',
+    '연구진은 시험 환경에서 데이터 흐름과 사용자 화면을 점검한다. ',
+    '기대효과로 업무 처리 시간을 줄이고 기록 관리를 쉽게 한다. ',
+    '세부 내용은 설계, 구현, 시험, 문서화 단계로 나누어 진행한다. ',
+)
+
+
+def sized_task(total):
+    """Synthetic nine-field task whose four text fields hold `total` characters."""
+    fields = ('과제명', '연구목표', '연구내용', '기대효과')
+    shares = (min(60, total // 10),)
+    rest = total - shares[0]
+    shares += (rest // 4, rest - rest // 4 - rest // 4, rest // 4)
+    task = {}
+    for index, (field, share) in enumerate(zip(fields, shares)):
+        sentence = _SIZE_SENTENCES[index % len(_SIZE_SENTENCES)]
+        text = (sentence * (share // len(sentence) + 1))[:share].strip()
+        task[field] = text
+    task['과제명'] = task['과제명'] or '합성 과제'
+    snapshot = d.task_snapshot(task)
+    assert abs(sum(len(snapshot[f]) for f in fields) - total) <= 8, total
+    return task
+
+
+class AllNegativeClient:
+    """facts -> no facts; screen -> every clause not a candidate with a reason."""
+
+    def __init__(self):
+        self.requests = []
+
+    def ask_json(self, system_prompt, user_prompt, temperature=None):
+        data = json.loads(user_prompt)
+        self.requests.append((user_prompt, data))
+        if data['phase'] == 'facts':
+            return {'facts': []}
+        if data['phase'] == 'screen':
+            return {'decisions': [{'clause_id': c['clause_id'], 'candidate': False,
+                                   'reason': '합성 과제와 관련 없는 분야'} for c in data['clauses']]}
+        raise AssertionError('no candidate means no compare request')
+
+
+class NoticeReviewRequestSizeTests(unittest.TestCase):
+    SIZES = (1600, 5000, 15000)
+
+    @classmethod
+    def setUpClass(cls):
+        cls.catalogue = load_catalogue()
+
+    def review(self, total, **kwargs):
+        task = sized_task(total)
+        client = AllNegativeClient()
+        result = review_notices(task, client, catalogue=self.catalogue, **kwargs)
+        self.assertIs(d.validate_notice_review(result, task), result)
+        return result, client
+
+    def test_module_constants_are_the_specified_defaults(self):
+        self.assertEqual(notice_review_v16.DEFAULT_CHUNK_CHARS, 100000)
+        self.assertEqual(notice_review_v16.SCREEN_CLAUSE_LIMIT, 60)
+
+    def test_default_size_completes_realistic_and_long_all_negative_tasks(self):
+        for total in self.SIZES:
+            with self.subTest(total=total):
+                result, client = self.review(total)
+                self.assertEqual(result['status'], 'complete')
+                self.assertEqual([f['status'] for f in result['families']], ['complete'] * 4)
+                self.assertEqual(result['comparisons'], [])
+                self.assertFalse(any(data.get('partial_context') for _, data in client.requests))
+
+    def test_old_size_reproduces_needs_info_for_a_realistic_task(self):
+        # Constant read at call time (patched) and explicit chunk_chars both keep the old behaviour.
+        with mock.patch.object(notice_review_v16, 'DEFAULT_CHUNK_CHARS', 24000):
+            patched, _ = self.review(1600)
+        explicit, _ = self.review(1600, chunk_chars=24000)
+        for result in (patched, explicit):
+            self.assertEqual(result['status'], 'needs_info')
+            self.assertTrue(any(f['status'] == 'partial' for f in result['families']))
+        self.assertEqual(patched, explicit)
+
+    def test_screen_requests_hold_at_most_sixty_clauses_and_fit_the_default_size(self):
+        for total in self.SIZES:
+            with self.subTest(total=total):
+                _, client = self.review(total)
+                screens = [data for _, data in client.requests if data['phase'] == 'screen']
+                self.assertTrue(screens)
+                self.assertTrue(all(len(data['clauses']) <= 60 for data in screens))
+                self.assertTrue(all(len(wire) <= 100000 for wire, _ in client.requests))
+                screened = [c['clause_id'] for data in screens for c in data['clauses']]
+                self.assertEqual(len(screened), len(set(screened)))
+
+    def test_clause_limit_is_read_at_call_time_and_none_removes_it(self):
+        with mock.patch.object(notice_review_v16, 'SCREEN_CLAUSE_LIMIT', 7):
+            limited, client = self.review(1600)
+        self.assertEqual(limited['status'], 'complete')
+        screens = [data for _, data in client.requests if data['phase'] == 'screen']
+        self.assertTrue(all(len(data['clauses']) <= 7 for data in screens))
+        with mock.patch.object(notice_review_v16, 'SCREEN_CLAUSE_LIMIT', None):
+            unlimited, client = self.review(1600)
+        self.assertEqual(unlimited['status'], 'complete')
+        screens = [data for _, data in client.requests if data['phase'] == 'screen']
+        self.assertGreater(max(len(data['clauses']) for data in screens), 60)
+
+    def test_explicit_chunk_chars_is_still_validated(self):
+        for bad in (127, 0, '100000', 1000.0, True):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                review_notices({'과제명': '합성'}, AllNegativeClient(), catalogue=self.catalogue, chunk_chars=bad)
 
 
 if __name__=='__main__':
