@@ -1324,6 +1324,10 @@ class V15SavedTextParityTests(unittest.TestCase):
         header, rows = sheets["분류결과"]
         self.assertTrue(any(len(row[header.index("AI 종합 검토의견")] or "") > batch.CELL_CHUNK_SIZE for row in rows))
 
+    # v15 comparison means "same request size -> same requests": v16 runs at the
+    # former 24,000-character size without the screen clause limit (spec 4.1).
+    @patch("notice_review_v16.SCREEN_CLAUSE_LIMIT", None)
+    @patch("notice_review_v16.DEFAULT_CHUNK_CHARS", 24000)
     def test_installed_catalogues_with_long_manifests_save_identical_text(self):
         import batch_v15
         import notice_catalogue_v15

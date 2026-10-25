@@ -629,6 +629,10 @@ class BridgePromptParityTests(unittest.TestCase):
         for text in desktop_bridge_v16._EVENTS.values():
             self.assertNotIn(text, stored)
 
+    # v15 comparison means "same request size -> same requests": v16 runs at the
+    # former 24,000-character size without the screen clause limit (spec 4.1).
+    @patch("notice_review_v16.SCREEN_CLAUSE_LIMIT", None)
+    @patch("notice_review_v16.DEFAULT_CHUNK_CHARS", 24000)
     def test_installed_catalogues_single_flow_sends_v15_prompts(self):
         """resources_v15/notices vs resources_v16/notices via each bridge's default loader."""
         import notice_catalogue_v15
