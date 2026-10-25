@@ -921,7 +921,7 @@ def _write_workbook(path, run, checks, analysis):
 
 def _md(value):
     if isinstance(value, float):
-        value = round(value, 4)
+        value = float(f'{value:.4g}')
     return str('' if value is None else value).replace('|', '\\|').replace('\n', ' ')
 
 

@@ -98,23 +98,25 @@ def _decode(line):
 # for about 24 seconds); a replace refused with PermissionError is retried with
 # growing waits (at most 2 seconds each) up to this total before failing.
 _REPLACE_RETRY_SECONDS = 120.0
+# The input template is written inside the bridge lock, so it keeps a short wait.
+_TEMPLATE_RETRY_SECONDS = 2.0
 
 
-def _replace_delays():
+def _replace_delays(budget):
     delay, waited = .05, 0.0
-    while waited + delay <= _REPLACE_RETRY_SECONDS:
+    while waited + delay <= budget:
         yield delay
         waited += delay
         delay = min(delay * 2, 2.0)
 
 
-def _atomic_write(path, writer):
+def _atomic_write(path, writer, retry_seconds=None):
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(prefix=".v16-", suffix=".tmp", dir=path.parent, delete=False) as stream:
             temporary = Path(stream.name)
         writer(temporary)
-        delays = _replace_delays()
+        delays = _replace_delays(_REPLACE_RETRY_SECONDS if retry_seconds is None else retry_seconds)
         while True:
             try:
                 os.replace(temporary, path)
@@ -178,7 +180,7 @@ def make_template(path):
             sheet.column_dimensions[column[0].column_letter].width = 32
         sheet.auto_filter.ref = sheet.dimensions
         target.parent.mkdir(parents=True, exist_ok=True)
-        _atomic_write(target, lambda temporary: book.save(temporary))
+        _atomic_write(target, lambda temporary: book.save(temporary), _TEMPLATE_RETRY_SECONDS)
     except Exception:
         raise BatchError("입력 양식을 저장하지 못했습니다. 열린 파일과 저장 위치의 쓰기 권한을 확인하세요.") from None
     finally:

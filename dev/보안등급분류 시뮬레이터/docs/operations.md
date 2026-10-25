@@ -78,9 +78,9 @@ v16 기준본을 다시 만들 때는 생성 도구가 기본 위치(resources_v
 대량 점검(모의 응답, 실제 AI 호출 없음):
 
 ```powershell
-& $PY tools16_bulk_check.py notice <입력.xlsx>            # 과제별 고시 후보·대조 상태 미리 보기
-& $PY tools16_bulk_check.py run <입력.xlsx> <과제목록.json> <새 실행 폴더>
-& $PY tools16_bulk_check.py stats <원본.xlsx>              # 형식 통계(숫자만)
+& $PY tools/v16_bulk_check.py notice <입력.xlsx>            # 과제별 고시 후보·대조 상태 미리 보기
+& $PY tools/v16_bulk_check.py run <입력.xlsx> <과제목록.json> <새 실행 폴더>
+& $PY tools/v16_bulk_check.py stats <원본.xlsx>              # 형식 통계(숫자만)
 ```
 
 `run`은 실행 파일과 같은 일괄 검토 경로를 모의 모델·메모리 키 저장소로 돌린 뒤, 의견서 검사와 분석 엑셀·요약 보고서를 만든다. 실행 폴더가 이미 있으면 멈춘다. 종료 코드는 다음과 같다.

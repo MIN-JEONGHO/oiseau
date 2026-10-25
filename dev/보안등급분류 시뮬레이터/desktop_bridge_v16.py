@@ -752,7 +752,8 @@ class DesktopBridge:
 
     # Spec 4.4/4.5: runs at once, not as a job. The busy check, token and path
     # checks and the write share one lock section, so no batch can start in
-    # between; the template is small, so the lock is held briefly.
+    # between; the template is small and its file replace retries for at most
+    # batch_v16._TEMPLATE_RETRY_SECONDS, so the lock is held briefly.
     @_public
     def save_input_template(self, request):
         self._idle()

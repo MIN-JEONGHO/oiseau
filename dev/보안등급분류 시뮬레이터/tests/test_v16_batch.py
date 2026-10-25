@@ -644,6 +644,18 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(target.read_bytes(), b"old")
         self.assertFalse(list(self.root.glob(".v16-*")))
 
+    def test_input_template_keeps_a_short_retry(self):
+        # make_template runs inside the bridge lock, so a template open in
+        # Excel must fail within seconds, not after the batch's long budget.
+        target = self.root / "template.xlsx"
+        with patch.object(batch.os, "replace", side_effect=PermissionError("open")), \
+                patch.object(batch.time, "sleep") as sleep, self.assertRaises(batch.BatchError):
+            batch.make_template(target)
+        waited = sum(call.args[0] for call in sleep.call_args_list)
+        self.assertGreater(len(sleep.call_args_list), 0)
+        self.assertLessEqual(waited, batch._TEMPLATE_RETRY_SECONDS)
+        self.assertLess(batch._TEMPLATE_RETRY_SECONDS, 5)
+
     def test_atomic_write_does_not_retry_other_errors(self):
         target = self.root / "other.xlsx"
         with patch.object(batch.os, "replace", side_effect=OSError("disk")) as replace, \
