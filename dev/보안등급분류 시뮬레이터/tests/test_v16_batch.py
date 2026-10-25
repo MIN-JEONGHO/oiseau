@@ -611,11 +611,64 @@ class BatchTests(unittest.TestCase):
                 self.assertEqual("".join(str(book[name].cell(row, column).value or "") for row in range(2, book[name].max_row + 1)), long)
         self.assertFalse(any(c.data_type == "f" for sheet in book for row in sheet for c in row))
 
+    def test_atomic_write_waits_out_a_briefly_held_target(self):
+        # Antivirus, search indexing or an editor can hold a just-written file
+        # for seconds; a short hold must not fail the whole batch.
+        target = self.root / "held.xlsx"
+        target.write_bytes(b"old")
+        replace, failures = batch.os.replace, []
+
+        def held(source, destination):
+            if len(failures) < 6:
+                failures.append(destination)
+                raise PermissionError("held")
+            return replace(source, destination)
+        with patch.object(batch.os, "replace", side_effect=held), patch.object(batch.time, "sleep") as sleep:
+            batch._atomic_write(target, lambda temporary: Path(temporary).write_bytes(b"new"))
+        self.assertEqual(target.read_bytes(), b"new")
+        delays = [call.args[0] for call in sleep.call_args_list]
+        self.assertEqual(len(delays), 6)
+        self.assertEqual(delays, sorted(delays))
+        self.assertFalse(list(self.root.glob(".v16-*")))
+
+    def test_atomic_write_gives_up_after_the_retry_budget(self):
+        target = self.root / "locked.xlsx"
+        target.write_bytes(b"old")
+        with patch.object(batch.os, "replace", side_effect=PermissionError("SECRET")) as replace, \
+                patch.object(batch.time, "sleep") as sleep, self.assertRaises(PermissionError):
+            batch._atomic_write(target, lambda temporary: Path(temporary).write_bytes(b"new"))
+        waited = sum(call.args[0] for call in sleep.call_args_list)
+        self.assertGreaterEqual(waited, batch._REPLACE_RETRY_SECONDS - 2.0)
+        self.assertLessEqual(waited, batch._REPLACE_RETRY_SECONDS)
+        self.assertEqual(replace.call_count, len(sleep.call_args_list) + 1)
+        self.assertEqual(target.read_bytes(), b"old")
+        self.assertFalse(list(self.root.glob(".v16-*")))
+
+    def test_input_template_keeps_a_short_retry(self):
+        # make_template runs inside the bridge lock, so a template open in
+        # Excel must fail within seconds, not after the batch's long budget.
+        target = self.root / "template.xlsx"
+        with patch.object(batch.os, "replace", side_effect=PermissionError("open")), \
+                patch.object(batch.time, "sleep") as sleep, self.assertRaises(batch.BatchError):
+            batch.make_template(target)
+        waited = sum(call.args[0] for call in sleep.call_args_list)
+        self.assertGreater(len(sleep.call_args_list), 0)
+        self.assertLessEqual(waited, batch._TEMPLATE_RETRY_SECONDS)
+        self.assertLess(batch._TEMPLATE_RETRY_SECONDS, 5)
+
+    def test_atomic_write_does_not_retry_other_errors(self):
+        target = self.root / "other.xlsx"
+        with patch.object(batch.os, "replace", side_effect=OSError("disk")) as replace, \
+                patch.object(batch.time, "sleep") as sleep, self.assertRaises(OSError):
+            batch._atomic_write(target, lambda temporary: Path(temporary).write_bytes(b"new"))
+        self.assertEqual(replace.call_count, 1)
+        sleep.assert_not_called()
+
     def test_checkpoint_init_failure_preserves_previous(self):
         self.run_batch()
         checkpoint = Path(str(self.output) + ".checkpoint.jsonl")
         previous = checkpoint.read_bytes()
-        with patch.object(batch.os, "replace", side_effect=PermissionError("SECRET")):
+        with patch.object(batch.os, "replace", side_effect=PermissionError("SECRET")), patch.object(batch.time, "sleep"):
             with self.assertRaises(batch.BatchError) as raised:
                 self.run_batch(resume=False)
         # A v16 result is not a previous-version result; the write itself failed.
@@ -636,7 +689,8 @@ class BatchTests(unittest.TestCase):
             if Path(target) == self.output:
                 raise PermissionError("SECRET")
             return replace(source, target)
-        with patch.object(batch.os, "replace", side_effect=locked), self.assertRaises(batch.BatchError):
+        with patch.object(batch.os, "replace", side_effect=locked), patch.object(batch.time, "sleep"), \
+                self.assertRaises(batch.BatchError):
             self.run_batch(resume=False)
         self.assertEqual(self.output.read_bytes(), old_excel)
         self.assertEqual(len(self.records()), 1)
@@ -1324,6 +1378,10 @@ class V15SavedTextParityTests(unittest.TestCase):
         header, rows = sheets["분류결과"]
         self.assertTrue(any(len(row[header.index("AI 종합 검토의견")] or "") > batch.CELL_CHUNK_SIZE for row in rows))
 
+    # v15 comparison means "same request size -> same requests": v16 runs at the
+    # former 24,000-character size without the screen clause limit (spec 4.1).
+    @patch("notice_review_v16.SCREEN_CLAUSE_LIMIT", None)
+    @patch("notice_review_v16.DEFAULT_CHUNK_CHARS", 24000)
     def test_installed_catalogues_with_long_manifests_save_identical_text(self):
         import batch_v15
         import notice_catalogue_v15

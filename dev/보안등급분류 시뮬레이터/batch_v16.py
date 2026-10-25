@@ -93,20 +93,39 @@ def _decode(line):
                       parse_constant=lambda value: (_ for _ in ()).throw(ValueError()))
 
 
-def _atomic_write(path, writer):
+# Antivirus or privacy scanners, search indexing or an editor can hold a
+# just-written target on Windows (a privacy scanner held a 4 MB result workbook
+# for about 24 seconds); a replace refused with PermissionError is retried with
+# growing waits (at most 2 seconds each) up to this total before failing.
+_REPLACE_RETRY_SECONDS = 120.0
+# The input template is written inside the bridge lock, so it keeps a short wait.
+_TEMPLATE_RETRY_SECONDS = 2.0
+
+
+def _replace_delays(budget):
+    delay, waited = .05, 0.0
+    while waited + delay <= budget:
+        yield delay
+        waited += delay
+        delay = min(delay * 2, 2.0)
+
+
+def _atomic_write(path, writer, retry_seconds=None):
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(prefix=".v16-", suffix=".tmp", dir=path.parent, delete=False) as stream:
             temporary = Path(stream.name)
         writer(temporary)
-        for attempt in range(3):
+        delays = _replace_delays(_REPLACE_RETRY_SECONDS if retry_seconds is None else retry_seconds)
+        while True:
             try:
                 os.replace(temporary, path)
                 break
             except PermissionError:
-                if attempt == 2:
+                delay = next(delays, None)
+                if delay is None:
                     raise
-                time.sleep(.05 * (attempt + 1))
+                time.sleep(delay)
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
@@ -161,7 +180,7 @@ def make_template(path):
             sheet.column_dimensions[column[0].column_letter].width = 32
         sheet.auto_filter.ref = sheet.dimensions
         target.parent.mkdir(parents=True, exist_ok=True)
-        _atomic_write(target, lambda temporary: book.save(temporary))
+        _atomic_write(target, lambda temporary: book.save(temporary), _TEMPLATE_RETRY_SECONDS)
     except Exception:
         raise BatchError("입력 양식을 저장하지 못했습니다. 열린 파일과 저장 위치의 쓰기 권한을 확인하세요.") from None
     finally:
