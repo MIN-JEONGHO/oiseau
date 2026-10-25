@@ -638,7 +638,7 @@ class BatchTests(unittest.TestCase):
                 patch.object(batch.time, "sleep") as sleep, self.assertRaises(PermissionError):
             batch._atomic_write(target, lambda temporary: Path(temporary).write_bytes(b"new"))
         waited = sum(call.args[0] for call in sleep.call_args_list)
-        self.assertGreaterEqual(waited, 9.0)
+        self.assertGreaterEqual(waited, batch._REPLACE_RETRY_SECONDS - 2.0)
         self.assertLessEqual(waited, batch._REPLACE_RETRY_SECONDS)
         self.assertEqual(replace.call_count, len(sleep.call_args_list) + 1)
         self.assertEqual(target.read_bytes(), b"old")

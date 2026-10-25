@@ -93,10 +93,11 @@ def _decode(line):
                       parse_constant=lambda value: (_ for _ in ()).throw(ValueError()))
 
 
-# Antivirus scans, search indexing or an editor can hold a just-written target
-# for several seconds on Windows; a replace refused with PermissionError is
-# retried with growing waits up to this total before the failure is reported.
-_REPLACE_RETRY_SECONDS = 10.0
+# Antivirus or privacy scanners, search indexing or an editor can hold a
+# just-written target on Windows (a privacy scanner held a 4 MB result workbook
+# for about 24 seconds); a replace refused with PermissionError is retried with
+# growing waits (at most 2 seconds each) up to this total before failing.
+_REPLACE_RETRY_SECONDS = 120.0
 
 
 def _replace_delays():
