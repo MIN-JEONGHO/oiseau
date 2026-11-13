@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>연구보안 등급분류 분류기준(고시) 검토</title>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">작업영역으로 이동</a>
+<div class="app">
+<aside class="sidebar">
+    <div class="brand"><span>연구보안 등급분류</span><span>분류기준(고시) 검토</span></div>
+    <nav class="nav" aria-label="주요 메뉴">
+        <button type="button" class="active" data-view="single" aria-current="page"><span aria-hidden="true">01</span>연구개발과제 개별 검토</button>
+        <button type="button" data-view="batch"><span aria-hidden="true">02</span>연구개발과제 일괄 검토</button>
+        <button type="button" data-view="search"><span aria-hidden="true">03</span>고시 검색</button>
+        <button type="button" data-view="settings"><span aria-hidden="true">04</span>설정</button>
+    </nav>
+    <div class="sidebar-bottom"><strong>고시 수치 기준 참고 대조</strong><span id="sidebar-version">버전 확인 중</span></div>
+    <div class="sidebar-credit">powered by min · min@kistep.re.kr</div>
+</aside>
+<div class="workspace">
+<header class="topbar"><div class="topbar-path">연구보안 등급분류 분류기준(고시) 검토 <span aria-hidden="true"> / </span><strong id="breadcrumb">연구개발과제 개별 검토</strong></div><span class="pill" id="connection-status">앱 연결 확인 중</span></header>
+<main id="main" class="body" tabindex="-1">
+<div id="message" class="message" role="alert" hidden></div>
+<section id="job-panel" class="job-panel" aria-label="작업 진행" hidden>
+    <div class="job-top"><strong id="job-state">대기</strong><span id="job-status" role="status" aria-live="polite"></span><button type="button" id="cancel-job" class="secondary">작업 취소</button></div>
+    <progress id="job-progress" aria-label="진행률"></progress>
+    <details><summary>진행 기록</summary><ol id="job-events" class="event-list"></ol></details>
+</section>
+
+<!-- 01 연구개발과제 개별 검토 -->
+<section class="screen" id="screen-single" aria-labelledby="single-heading">
+    <div class="hero"><div><h1 id="single-heading">연구개발과제 개별 검토</h1><p class="sub">연구개발과제명·과제요약정보와 첨부 발췌를 고시 수치 기준과 대조</p></div></div>
+    <div class="columns">
+    <div>
+        <section class="panel"><div class="panel-head"><h2>연구개발과제 정보</h2><span class="required">* 필수 입력</span></div>
+            <label class="field" for="task-title"><span>연구개발과제명 <em>*</em></span><input id="task-title" autocomplete="off" required placeholder="연구개발과제명"></label>
+            <h3 class="data-label">과제요약정보 <small class="mini-text">※첨부파일 미 업로드 시 필수 입력사항</small></h3>
+            <label class="field" for="task-final-goal"><span>최종목표 <em>* 발췌 확인 시 선택</em></span><textarea id="task-final-goal" placeholder="최종목표. 예: 출력 5 kW 이상, 빔 품질 M² 1.3 이하"></textarea></label>
+            <label class="field" for="task-rnd-content"><span>연구개발내용 <em>* 발췌 확인 시 선택</em></span><textarea id="task-rnd-content" placeholder="연구개발내용"></textarea></label>
+            <label class="field" for="task-utilization"><span>활용계획 및 기대효과 <em>* 발췌 확인 시 선택</em></span><textarea id="task-utilization" placeholder="활용계획 및 기대효과"></textarea></label>
+            <div class="field-row">
+                <label class="field" for="task-rnd-stage"><span>연구개발단계 <em>선택</em></span><select id="task-rnd-stage"><option value="">선택 안 함</option><option value="기초연구">기초연구</option><option value="응용연구">응용연구</option><option value="개발연구">개발연구</option></select></label>
+                <label class="field" for="task-gov-fund"><span>정부지원연구개발비(백만원) <em>선택</em></span><input id="task-gov-fund" type="text" autocomplete="off" spellcheck="false" placeholder="예: 1,250.5"></label>
+            </div>
+            <p class="field-note" id="gov-fund-note" role="status" hidden></p>
+            <p class="mini-text">연구개발단계·정부지원연구개발비는 결과에만 적고 AI로 보내지 않음. 검토에 쓰지 않음</p>
+            <div class="picker-row"><button type="button" id="pick-attachment" class="secondary">첨부파일 선택</button><span id="attachment-name">선택하지 않음</span><button type="button" id="clear-attachment" class="text-link" hidden>첨부 지우기</button></div>
+            <p class="mini-text">※ RFP나 연구개발계획서(HWPX, PDF, DOCX 중 하나)를 업로드해주세요</p>
+        </section>
+        <section class="panel" id="extract-panel" hidden><div class="panel-head"><h2>첨부 발췌</h2><span class="pill" id="extract-kind"></span></div>
+            <div id="extract-warnings"></div>
+            <p class="mini-text" id="sections-note"></p>
+            <div id="goal-sections" class="section-list"></div>
+            <label class="field" for="excerpt"><span>AI로 보낼 발췌 글</span><textarea id="excerpt" placeholder="목표 부분 후보가 여기에 들어옴. 고치거나 지우거나 전체 글에서 더 골라 붙이기 가능"></textarea></label>
+            <div class="actions"><button type="button" id="confirm-excerpt" class="secondary">발췌 확인</button><span id="excerpt-status" class="mini-text">발췌 미확인</span></div>
+            <details id="full-text-details"><summary>꺼낸 글 전체 보기</summary>
+                <p class="mini-text">전체 글에서 끌어 선택한 뒤 '선택 부분 추가'로 발췌에 붙임</p>
+                <textarea id="full-text" readonly aria-label="꺼낸 글 전체"></textarea>
+                <div class="actions"><button type="button" id="add-selection" class="secondary">선택 부분 추가</button><span id="full-text-length" class="mini-text"></span></div>
+            </details>
+        </section>
+        <section class="panel" id="single-result" hidden>
+            <div class="panel-head"><h2>고시 수준 검토 결과(AI 참고)</h2><button type="button" id="save-single" class="primary">엑셀로 저장</button></div>
+            <!-- 간단한 결과: 글은 모두 Python(brief)이 만든 것 그대로 -->
+            <div id="single-overview" class="brief-overview"></div>
+            <div id="single-hints" class="brief-hints" role="status" hidden></div>
+            <!-- 초과·근접 조항은 펼쳐 두고, 미달 조항과 추가 검토 필요는 접어 둔다(0건이면 숨김) -->
+            <div id="single-focus" class="brief-block">
+                <h3 class="brief-heading">초과·근접 고시 조항</h3>
+                <p class="mini-text">최종목표 사양이 고시 기준 사양을 충족(초과)하거나 근접한 고시 조항. 넘거나 근접한 사양마다 한 줄</p>
+                <div id="single-focus-items"></div>
+            </div>
+            <details id="single-under" class="brief-fold" hidden><summary id="single-under-title">미달 조항</summary>
+                <p class="mini-text">숫자로 비교했지만 고시 기준 사양에 못 미친 고시 조항</p>
+                <div id="single-under-items"></div>
+            </details>
+            <details id="single-review" class="brief-fold" hidden><summary id="single-review-title">추가 검토 필요</summary>
+                <p class="mini-text">숫자로 비교하지 못한 고시 조항 중 이중용도 관련이거나 세부 기술 일치(AI·검색)인 조항. 원문 확인 필요. 판정 아님</p>
+                <ul id="single-review-list" class="review-list"></ul>
+            </details>
+            <details id="single-detail" class="detail-fold"><summary>상세 보기</summary>
+                <div id="single-summary"></div>
+                <h3 class="data-label">고시 조항별 검토 결과</h3>
+                <div id="single-items"></div>
+                <div id="single-extra"></div>
+            </details>
+        </section>
+    </div>
+    <aside class="aside">
+        <section class="panel compact"><h2>검토 대상 고시</h2><div id="single-families" class="check-list"></div><p class="mini-text" id="single-estimate">예상 AI 호출 수 확인 중</p></section>
+        <section class="panel compact"><h2>이번 실행 설정</h2><div id="single-run-info"></div><button type="button" class="text-link" data-view="settings">모델·키 설정 열기 →</button></section>
+    </aside>
+    </div>
+    <div class="footer"><p class="footer-note" id="single-hint">연구개발과제명과 과제요약정보 세 칸(또는 확인한 첨부 발췌)이 있을 때 검토 가능</p><button type="button" id="start-single" class="primary" disabled>검토 시작</button></div>
+</section>
+
+<!-- 02 연구개발과제 일괄 검토 -->
+<section class="screen" id="screen-batch" aria-labelledby="batch-heading" hidden>
+    <div class="hero"><div><h1 id="batch-heading">연구개발과제 일괄 검토</h1><p class="sub">입력 엑셀의 여러 연구개발과제를 한 번에 대조</p></div></div>
+    <div class="columns">
+    <div>
+        <section class="panel"><h2>입력 파일</h2>
+            <div class="picker-row"><button type="button" id="save-template" class="secondary">입력 양식 내려받기</button><span id="template-name">저장하지 않음</span></div>
+            <div class="picker-row"><button type="button" id="pick-batch-input" class="secondary">입력 엑셀 선택</button><span id="batch-input-name">선택하지 않음</span></div>
+            <div id="batch-read" hidden>
+                <div id="batch-read-metrics"></div>
+                <div id="batch-excluded"></div>
+                <div id="batch-warnings"></div>
+            </div>
+        </section>
+    </div>
+    <aside class="aside">
+        <section class="panel compact"><h2>검토 대상 고시</h2><div id="batch-families" class="check-list"></div><p class="mini-text" id="batch-estimate">입력 엑셀 선택 뒤 예상 호출 수 표시</p></section>
+        <section class="panel compact"><h2>이번 실행 설정</h2><div id="batch-run-info"></div><p class="notice">동시 처리 3건. 취소 시 끝난 행 보존, 시작하지 않은 행은 취소 상태. 이어하기 없음</p></section>
+    </aside>
+    </div>
+    <!-- 일괄 검토 결과는 표가 넓어 두 칸 아래에 전체 너비로 둔다 -->
+    <section class="panel" id="batch-result" hidden>
+        <div class="panel-head"><h2>일괄 검토 결과</h2><button type="button" id="save-batch" class="primary">결과 엑셀 저장</button></div>
+        <!-- 간단한 결과: 건수 줄·종합 건수·안내 줄·중점 검토 과제·판정하지 못한 과제·그 밖의 과제(글·묶음·순서는 Python이 만든 것 그대로) -->
+        <p id="batch-count-line" class="count-line"></p>
+        <div id="batch-tally" class="tally" role="group" aria-label="종합 결과 건수"></div>
+        <p class="mini-text tally-note">건수를 누르면 그 결과의 과제만 보임. 다시 누르거나 '전체 보기'를 누르면 처음 화면</p>
+        <div id="batch-hints" class="brief-hints" role="status" hidden></div>
+        <!-- 종합 건수를 눌렀을 때: 그 건수에 든 과제마다 결과 카드(어느 과제인지는 Python이 준 위치 그대로) -->
+        <div id="batch-picked" class="brief-block" hidden>
+            <div class="picked-head"><h3 class="brief-heading" id="batch-picked-title"></h3><button type="button" id="batch-picked-close" class="text-link">전체 보기</button></div>
+            <div id="batch-picked-items"></div>
+        </div>
+        <div id="batch-default">
+        <div id="batch-focus" class="brief-block">
+            <h3 class="brief-heading" id="batch-focus-title">중점 검토 과제</h3>
+            <p class="mini-text">종합 결과가 고시 사양 초과·근접인 과제와 그 과제의 초과·근접 조항. 넘거나 근접한 사양마다 한 줄</p>
+            <div id="batch-focus-items"></div>
+        </div>
+        <div id="batch-unjudged" class="brief-block" hidden>
+            <h3 class="brief-heading" id="batch-unjudged-title">판정하지 못한 과제</h3>
+            <div id="batch-unjudged-rows"></div>
+        </div>
+        <details id="batch-other" class="brief-fold" hidden><summary id="batch-other-title">그 밖의 과제</summary>
+            <div id="batch-other-rows"></div>
+        </details>
+        </div>
+        <p class="mini-text">초과·근접한 사양은 결과 엑셀 '초과·근접 조항' 시트, 모든 비교는 '고시 조항별 상세' 시트에서 확인</p>
+        <details id="batch-detail" class="detail-fold"><summary>상세 보기</summary>
+            <div id="batch-counts"></div>
+            <div id="batch-rows"></div>
+        </details>
+    </section>
+    <div class="footer"><p class="footer-note" id="batch-hint">입력 엑셀을 읽어 처리 건수를 확인한 뒤 시작 가능</p><button type="button" id="start-batch" class="primary" disabled>검토 시작</button></div>
+</section>
+
+<!-- 03 고시 검색 (읽기만 함. 검토 작업 중에도 사용 가능) -->
+<section class="screen" id="screen-search" aria-labelledby="search-heading" hidden>
+    <div class="hero"><div><h1 id="search-heading">고시 검색</h1><p class="sub">통제번호나 낱말로 고시 조항 찾기. 같은 말·위아래 분야·비슷한 뜻까지 PC 안에서만 검색(AI 미사용, 검색어 미저장)</p></div></div>
+    <div id="search-notices"></div>
+    <section class="panel">
+        <div class="search-bar">
+            <label class="field" for="search-query"><span>검색어 <em>통제번호(예: 3A001, ML8) 또는 낱말. 빈칸이면 고른 고시의 조항 전체</em></span><input id="search-query" type="search" autocomplete="off" spellcheck="false" maxlength="100" placeholder="예: D램, 디스플레이, 드론, 3A001"></label>
+            <label class="field" for="search-family"><span>검토 대상 고시</span><select id="search-family"><option value="전체">전체</option></select></label>
+            <button type="button" id="search-button" class="primary">검색</button>
+        </div>
+        <p class="mini-text" id="search-status" role="status" aria-live="polite">검색어 입력 뒤 검색(엔터 가능)</p>
+    </section>
+    <section class="panel" id="search-focus" hidden>
+        <div class="panel-head"><h2>고시 조항 상세</h2><button type="button" id="search-focus-close" class="text-link">상세 닫기</button></div>
+        <p class="mini-text" id="search-focus-note"></p>
+        <div id="search-focus-body"></div>
+    </section>
+    <p class="notice" id="search-empty" hidden>검색 결과 없음</p>
+    <section class="panel" id="search-results-group" hidden>
+        <div class="panel-head"><h2>검색 결과</h2><span class="pill" id="search-results-count"></span></div>
+        <p class="mini-text">검색어나 관련어가 글자로 들어 있거나 글자가 비슷한 조항. 줄을 누르면 원문 전체와 고시 기준 사양 목록</p>
+        <div class="search-head" aria-hidden="true"><span>검토 대상 고시</span><span>통제번호</span><span>조항 제목 · 분야</span><span>찾은 이유</span></div>
+        <div id="search-results"></div>
+        <p class="mini-text" id="search-results-empty" hidden></p>
+        <div class="actions"><button type="button" id="search-results-more" class="secondary" hidden>더 보기</button></div>
+    </section>
+    <section class="panel" id="search-similar-group" hidden>
+        <div class="panel-head"><h2>비슷한 뜻(참고)</h2><span class="pill" id="search-similar-count"></span></div>
+        <p class="notice" id="search-similar-notice">뜻이 비슷해 보이는 조항이며 맞지 않는 것이 섞일 수 있음</p>
+        <div class="search-head" aria-hidden="true"><span>검토 대상 고시</span><span>통제번호</span><span>조항 제목 · 분야</span><span>찾은 이유</span></div>
+        <div id="search-similar"></div>
+        <p class="mini-text" id="search-similar-empty" hidden></p>
+        <div class="actions"><button type="button" id="search-similar-more" class="secondary" hidden>더 보기</button></div>
+    </section>
+    <p class="footer-note" id="search-footer">관련어 사전과 의미 유사 검색은 참고용이며, 고시 해당 여부는 원문으로 확인해야 함.</p>
+</section>
+
+<!-- 04 설정 -->
+<section class="screen" id="screen-settings" aria-labelledby="settings-heading" hidden>
+    <div class="hero"><div><h1 id="settings-heading">설정</h1><p class="sub">AI 제공자·모델·키. 실행 중에는 시작한 설정 고정</p></div></div>
+    <div class="columns">
+    <div>
+        <section class="panel"><h2>AI 제공자와 모델</h2>
+            <label class="field" for="provider"><span>제공자</span><select id="provider" aria-label="제공자"></select></label>
+            <label class="field" for="model"><span>모델 이름 <em>빈칸이면 기본값</em></span><input id="model" autocomplete="off" spellcheck="false"></label>
+            <label class="field" for="base-url" id="base-url-field"><span>로컬 주소 <em>ollama·lmstudio</em></span><input id="base-url" type="url" autocomplete="off" spellcheck="false" placeholder="빈칸이면 기본 주소"></label>
+            <div class="actions"><button type="button" id="apply-settings" class="secondary">모델 설정 적용</button><span id="settings-status" class="mini-text"></span></div>
+        </section>
+        <section class="panel" id="key-panel"><h2>API 키</h2>
+            <strong id="key-status" role="status">키 상태 확인 중</strong>
+            <p class="mini-text" id="key-warning"></p>
+            <p class="mini-text">키는 현재 Windows 계정의 자격 증명에 이 프로그램 전용 이름으로 저장. 화면에는 키 유무만 표시</p>
+            <label class="field" for="api-key"><span>새 API 키</span><input id="api-key" type="password" autocomplete="off" spellcheck="false"></label>
+            <div class="actions"><button type="button" id="save-key" class="secondary">키 저장</button><button type="button" id="delete-key" class="text-link">저장 키 삭제</button></div>
+        </section>
+    </div>
+    <aside class="aside">
+        <section class="panel compact"><h2>고시 기준본</h2><div id="catalogue-info"></div></section>
+        <section class="panel compact"><h2>검토의 범위</h2><p class="mini-text">고시 기준 사양이 있는 고시 조항만 대조. '관련 고시 항목 없음'은 공식 비해당이 아님. 확인 표시가 있는 고시 조항은 원문 확인 필요</p></section>
+    </aside>
+    </div>
+</section>
+<p class="footer-note bottom-note" id="bottom-note">이 결과는 고시 수치 기준과의 참고 대조이며 고시 해당 여부의 공식 판정이 아님.</p>
+</main>
+</div>
+</div>
+</body>
+</html>

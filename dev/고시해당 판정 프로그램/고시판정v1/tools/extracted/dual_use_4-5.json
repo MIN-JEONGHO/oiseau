@@ -1,0 +1,804 @@
+{
+  "scope": {"families": ["dual_use"], "code_prefixes": ["4", "5"]},
+  "items": [
+    {
+      "clause_id": "dual_use:control:4A001",
+      "title": "전자식(Electronic) 컴퓨터, 관련 장비, \"전자 조립체\"",
+      "branches": [
+        {
+          "label": "a.1 고온 정격(85°C 초과)",
+          "thresholds": [
+            {"subject": "사용 온도(상한)", "operator": "gt", "value": "85", "unit": "°C", "quote": "85°C 초과의 온도에서 사용할 수 있도록 정격화된 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "a.1 저온 정격(-45°C 미만)", "thresholds": [], "text": "-45°C 미만"},
+        {"label": "a.2.a 전흡수선량", "thresholds": [], "text": "전흡수선량(Total Dose)이 실리콘 환산으로 5×103 Gy인 것"},
+        {"label": "a.2.b 흡수선량 비율 상한치", "thresholds": [], "text": "흡수선량 비율 상한치(Dose Rate Upset)가 실리콘 환산으로 5×106 Gy/sec인 것"},
+        {"label": "a.2.c 단일 경우의 상한치", "thresholds": [], "text": "단일 경우의 상한치 : 1×10-8 Error/bit/day 인 것"}
+      ],
+      "checks": [
+        {"quote": "다음 중 하나를 초과하는 방사선에 의한 영향을 방지하도록 된 것(radiation hardened)", "source": "항목 본문"},
+        {"quote": "4A001.a.1은 민수용 자동차, 철도용 또는 \"민간 항공기\"용 으로 전용 설계된 컴퓨터에는 컴퓨터는 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "4A001.a.2는 \"민간 항공기\"용으로 전용 설계된 컴퓨터는 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A003",
+      "title": "\"디지털 컴퓨터\", \"전자 조립체\", 관련 장비",
+      "branches": [
+        {
+          "label": "b. 최적수행성능(APP)",
+          "thresholds": [
+            {"subject": "최적수행성능(APP)", "operator": "gt", "value": "70.0", "unit": "Weighted TeraFLOPS", "quote": "70.0 Weighted TeraFLOPS(WT)를 초과하는 \"디지털 컴퓨터\"", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "c. 결합 전자 조립체", "thresholds": [], "text": "프로세서의 결합을 통해 성능이 증대되도록 전용 설계되거나 개조된 \"전자 조립체\"로서 결합된 \"최적수행성능\"(\"APP\")이 4A003.b 항의 제한을 초과하는 것"},
+        {
+          "label": "g. 외부 통신 연결 장치",
+          "thresholds": [
+            {"subject": "단방향 데이터 전송 속도(링크당)", "operator": "gt", "value": "2.0", "unit": "Gbyte/s", "quote": "단방향 데이터 전송 속도가 링크당 2.0 Gbyte/s를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {"quote": "\"디지털 컴퓨터\" 또는 관련 장비가 다른 장비 또는 시스템의 운용에 필수적인 것", "source": "항목 본문"},
+        {"quote": "4A003.c는 최대 구성(Maximum Configuration)이 4A003.b 항의 한계를 초과하지 않는 제품 및 제품군(family of products)용으로 전용 설계된 \"전자 조립체\"의 경우에는 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "4A003.g는 내부연결장비(backplanes, buses 등), 수동형 연결 장비, '네트워크 접근제어기', 또는 '통신채널제어기'를 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A004",
+      "title": "컴퓨터, 전용 설계된 관련 장비, \"전자 조립체\" 및 관련 구성품",
+      "branches": [],
+      "checks": [
+        {"quote": "'시스톨릭 배열 컴퓨터'(Systolic array computer)", "source": "항목 본문"},
+        {"quote": "'신경 컴퓨터'", "source": "항목 본문"},
+        {"quote": "'광 컴퓨터'", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A005",
+      "title": "\"침입 소프트웨어\"의 생성, 명령, 제어 또는 전송을 위한 시스템",
+      "branches": [],
+      "checks": [
+        {"quote": "\"침입 소프트웨어\"의 생성, 명령, 제어 또는 전송을 위하여 전용 설계 또는 개조된 시스템, 장비, 그리고 구성품", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A101",
+      "title": "우주발사체 또는 관측용 로켓용 내구성 높은 컴퓨터",
+      "branches": [],
+      "checks": [
+        {"quote": "9A004에 명시된 우주발사체 또는 9A104에 명시된 관측용 로켓에 사용하기 위해 내구성이 높은 설계 또는 개조된 아날로그 컴퓨터 및 \"디지털 컴퓨터\", 디지털 차동분석기", "source": "항목 본문"},
+        {"quote": "(4A001.a.1에 명시된 것 제외)", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A102",
+      "title": "우주발사체 또는 관측용 로켓의 모델링·모의시험용 하이브리드 컴퓨터",
+      "branches": [],
+      "checks": [
+        {"quote": "9A004에 명시된 우주발사체 또는 9A104에 명시된 관측용 로켓의 모델링, 모의시험 또는 설계통합을 위해 전용 설계된 하이브리드 컴퓨터", "source": "항목 본문"},
+        {"quote": "장비가 7D103 또는 9D103에 명시된 \"소프트웨어\"를 탑재한 경우에 한하여 적용된다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A506",
+      "title": "양자 컴퓨터와 관련 \"전자 조립체\" 및 이를 위한 구성품",
+      "branches": [
+        {
+          "label": "a.1 물리적 큐비트 34개 이상 100개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "34", "unit": "개", "quote": "34개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "100", "unit": "개", "quote": "100개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2 물리적 큐비트 100개 이상 200개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "100", "unit": "개", "quote": "100개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "200", "unit": "개", "quote": "200개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3 물리적 큐비트 200개 이상 350개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "200", "unit": "개", "quote": "200개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "350", "unit": "개", "quote": "350개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.4 물리적 큐비트 350개 이상 500개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "350", "unit": "개", "quote": "350개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "500", "unit": "개", "quote": "500개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5 물리적 큐비트 500개 이상 700개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "500", "unit": "개", "quote": "500개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "700", "unit": "개", "quote": "700개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.6 물리적 큐비트 700개 이상 1,100개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "700", "unit": "개", "quote": "700개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "1100", "unit": "개", "quote": "1,100개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.7 물리적 큐비트 1,100개 이상 2,000개 미만",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "1100", "unit": "개", "quote": "1,100개 이상", "quote_source": "항목 본문"},
+            {"subject": "물리적 큐비트 수", "operator": "lt", "value": "2000", "unit": "개", "quote": "2,000개 미만", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.8 물리적 큐비트 2,000개 이상",
+          "thresholds": [
+            {"subject": "물리적 큐비트 수", "operator": "ge", "value": "2000", "unit": "개", "quote": "2,000개 이상의 '완전 제어되는', '연결된', '동작하는' '물리적 큐비트'를 지원하는 양자 컴퓨터", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "b. 큐비트 장치 및 큐비트 회로", "thresholds": [], "text": "'물리적 큐비트'의 배열을 포함하거나 지원하는 큐비트 장치 및 큐비트 회로로서, 4A506.a에 통제된 품목을 위해 전용 설계된 것"},
+        {"label": "c. 양자 제어 구성 요소 및 양자 측정 장치", "thresholds": [], "text": "양자 제어 구성 요소 및 양자 측정 장치로, 4A506.a에 통제된 품목을 위해 전용 설계된 것"}
+      ],
+      "checks": [
+        {"quote": "10-4 이하의 'C-NOT 오류'를 갖는 양자 컴퓨터", "source": "항목 본문"},
+        {"quote": "2 × 10-3 이하의 'C-NOT 오류'를 갖는 양자 컴퓨터", "source": "항목 본문"},
+        {"quote": "6×10-3 이하의 'C-NOT 오류'를 갖는 양자 컴퓨터", "source": "항목 본문"},
+        {"quote": "이 항목은 단열(adiabatic) 또는 어닐링(annealing) 방식의 양자 컴퓨터에는 적용되지 않는다", "source": "항목 본문"},
+        {"quote": "'C-NOT 오류'는 가장 가까이에 이웃한 2개의 '물리적 큐비트' C-NOT 게이트들의 평균 물리적 게이트 오류를 의미한다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4A507",
+      "title": "3A501.a.16 집적회로를 포함하는 컴퓨터, \"전자 조립체\", 구성품",
+      "branches": [],
+      "checks": [
+        {"quote": "3A501.a.16에 의해 통제되는 하나 이상의 집적회로를 포함하는 컴퓨터, \"전자 조립체\", 구성품", "source": "항목 본문"},
+        {"quote": "4A507은 \"디지털 컴퓨터\", 그리고 하이브리드 컴퓨터를 포함한다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4D001",
+      "title": "\"소프트웨어\"로서 다음의 것(4A·4D 장비용 개발·생산 소프트웨어)",
+      "branches": [
+        {"label": "a. 4A001~4A005, 4A507, 4D 통제 장비용", "thresholds": [], "text": "4A001부터 4A005, 4A507 또는 4D에 의해 통제되는 장비 또는 \"소프트웨어\"의 \"개발\" 또는 \"생산\"을 위해 전용 설계되거나 개조된 \"소프트웨어\""},
+        {
+          "label": "b.1 최적수행성능(APP)",
+          "thresholds": [
+            {"subject": "최적수행성능(APP)", "operator": "gt", "value": "24", "unit": "Weighted TeraFLOPS", "quote": "24 Weighted TeraFLOPS(WT)를 초과하는 \"디지털 컴퓨터\"", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "b.2 결합 전자 조립체", "thresholds": [], "text": "프로세서의 결합을 통해 성능이 증대되도록 전용 설계되거나 개조된 \"전자 조립체\"로서 결합된 \"최적수행성능\"(\"APP\")이 4D001.b.1항의 제한을 초과하는 것"},
+        {"label": "b.3 4A506.b·c 품목", "thresholds": [], "text": "4A506.b 혹은 4A506.c에 의해 통제되는 품목"}
+      ],
+      "checks": [
+        {"quote": "4D001.a에 의해 통제되지 않는 \"소프트웨어\"로서, 다음의 장비의 \"개발\" 또는 \"생산\"을 위해 전용 설계되거나 개조된 것", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4D002",
+      "title": "삭제 (Not used since 2014)",
+      "branches": [],
+      "checks": [
+        {"quote": "삭제 (Not used since 2014)", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4D003",
+      "title": "삭제 (Not used since 2009)",
+      "branches": [],
+      "checks": [
+        {"quote": "삭제 (Not used since 2009)", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4D004",
+      "title": "\"침입 소프트웨어\"의 생성, 명령, 제어 또는 전송을 위한 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {"quote": "\"침입 소프트웨어\"의 생성, 명령, 제어 또는 전송을 위하여 전용 설계 또는 개조된 \"소프트웨어\"", "source": "항목 본문"},
+        {"quote": "4D004는 다음의 모든 사항을 만족하는 \"소프트웨어\" 업데이트 또는 업그레이드를 제공하기 위해 전용 설계되고 한정된 \"소프트웨어\"는 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:4E001",
+      "title": "\"기술\"로서 다음의 것(4A·4D 장비·소프트웨어용 기술)",
+      "branches": [
+        {"label": "a. 4A·4D 통제 품목의 개발·생산·사용 기술", "thresholds": [], "text": "상기 4A 또는 4D에 의해 통제되는 장비 또는 \"소프트웨어\"의 \"개발\", \"생산\" 또는 \"사용\"을 위한 일반기술해설에 따른 \"기술\""},
+        {
+          "label": "b.1 최적수행성능(APP)",
+          "thresholds": [
+            {"subject": "최적수행성능(APP)", "operator": "gt", "value": "24", "unit": "Weighted TeraFLOPS", "quote": "24 Weighted TeraFLOPS(WT)를 초과하는 \"디지털 컴퓨터\"", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "b.2 결합 전자 조립체", "thresholds": [], "text": "프로세서의 결합을 통해 성능이 증대되도록 전용 설계되거나 개조된 \"전자 조립체\"로서, 결합된 \"최적수행성능\"(\"APP\")이  4E001.b.1항의 제한을 초과하는 것"},
+        {"label": "b.3 4A506.b·c 품목", "thresholds": [], "text": "4A506.b 또는 4A506.c에 의해 통제되는 품목"},
+        {"label": "c. 침입 소프트웨어 개발 기술", "thresholds": [], "text": "\"침입 소프트웨어\"의 \"개발\"을 위한 \"기술\""}
+      ],
+      "checks": [
+        {"quote": "4E001.a 및 4E001.c는 \"취약점 공개\" 또는 \"사이버 사고 대응\"은 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "\"최적수행성능\"(\"APP\")은 64비트 또는 그 이상의 부동소수점 덧셈과 곱셈 연산을 수행하는 \"디지털 컴퓨터\"의 최적수행성능을 의미한다", "source": "항목 본문"},
+        {"quote": "\"최적수행성능\"(\"APP\") = W1×R1 + W2×R2 + ....+ Wn×Rn 으로 \"최적수행성능\"(\"APP\")을 계산한다", "source": "항목 본문"},
+        {"quote": "'벡터프로세서'는 Wi = 0.9, 비 '벡터프로세서'는 Wi = 0.3 으로 간주한다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5A001",
+      "title": "전기통신 시스템, 장비, 구성품 및 부속품",
+      "branches": [
+        {"label": "a.1 핵폭발 전자효과·전자기 펄스 내성", "thresholds": [], "text": "핵폭발로 인하여 생기는 일시적인 전자효과(transitory electronic effects)나 전자기 펄스효과에 견딜 수 있도록 전용 설계된 장비"},
+        {"label": "a.2 방사선 강화", "thresholds": [], "text": "감마선, 중성자선 또는 이온방사선의 영향에 견딜 수 있도록 특별히 강화된 것"},
+        {"label": "a.3 저온 사용(-55°C 보다 낮은 온도)", "thresholds": [], "text": "-55°C (218 K) 보다 낮은 온도에서 사용할 수 있도록 전용 설계된 것"},
+        {
+          "label": "a.4 고온 사용",
+          "thresholds": [
+            {"subject": "사용 온도(상한)", "operator": "gt", "value": "124", "unit": "°C", "quote": "124°C (397 K) 보다 높은 온도에서 사용할 수 있도록 전용 설계된 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "b.1.a 수중 통신 음향 반송주파수(20~60 kHz 이외)", "thresholds": [], "text": "20 ~ 60 kHz 이외의 음향 반송주파수 범위를 사용하는 것"},
+        {
+          "label": "b.1.b 수중 통신 전자기 반송주파수",
+          "thresholds": [
+            {"subject": "전자기 반송주파수", "operator": "lt", "value": "30", "unit": "kHz", "quote": "30 kHz 미만의 전자기 반송주파수를 사용하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "b.1.c 전자적 빔 조작", "thresholds": [], "text": "전자적으로 빔을 조작하는 기능을 갖는 것"},
+        {
+          "label": "b.1.d 근거리통신망 레이저·LED 출력 파장",
+          "thresholds": [
+            {"subject": "출력 파장", "operator": "gt", "value": "400", "unit": "nm", "quote": "출력 파장이 400 nm 초과", "quote_source": "항목 본문"},
+            {"subject": "출력 파장", "operator": "lt", "value": "700", "unit": "nm", "quote": "700 nm 미만인 \"레이저\" 또는 발광 다이오드(LED)", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2 무선장비(1.5 MHz 이상 30 MHz 미만 출력 1 kW 이상)",
+          "thresholds": [
+            {"subject": "작동 주파수(하한)", "operator": "ge", "value": "1.5", "unit": "MHz", "quote": "1.5 MHz 이상이고", "quote_source": "항목 본문"},
+            {"subject": "작동 주파수(상한)", "operator": "lt", "value": "30", "unit": "MHz", "quote": "30 MHz 미만의 주파수범위에서", "quote_source": "항목 본문"},
+            {"subject": "출력", "operator": "ge", "value": "1", "unit": "kW", "quote": "1 kW 이상의 출력이거나", "quote_source": "항목 본문"},
+            {"subject": "순시 대역폭", "operator": "ge", "value": "1", "unit": "옥타브", "quote": "1옥타브 이상의 \"순시 대역폭\"", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2 무선장비(30 MHz 이상 87.5 MHz 이하 출력 250 W 이상)",
+          "thresholds": [
+            {"subject": "작동 주파수(하한)", "operator": "ge", "value": "30", "unit": "MHz", "quote": "30 MHz 이상이고", "quote_source": "항목 본문"},
+            {"subject": "작동 주파수(상한)", "operator": "le", "value": "87.5", "unit": "MHz", "quote": "87.5 MHz 이하의 주파수 범위에 있어서는", "quote_source": "항목 본문"},
+            {"subject": "출력", "operator": "ge", "value": "250", "unit": "W", "quote": "250 W 이상의 출력특성을 가지며", "quote_source": "항목 본문"},
+            {"subject": "순시 대역폭", "operator": "ge", "value": "1", "unit": "옥타브", "quote": "1옥타브 이상의 \"순시 대역폭\"", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "b.3.a 사용자 프로그램 가능 확장코드", "thresholds": [], "text": "사용자가 프로그램 할 수 있는 확장코드(spreading code)기능을 갖고 있거나"},
+        {
+          "label": "b.3.b 총송신대역폭",
+          "thresholds": [
+            {"subject": "총송신대역폭 대 단일 정보채널 대역폭 비율", "operator": "ge", "value": "100", "unit": "배", "quote": "임의의 단일 정보채널의 대역폭보다 100배 이상이고", "quote_source": "항목 본문"},
+            {"subject": "총송신대역폭", "operator": "gt", "value": "50", "unit": "kHz", "quote": "50 kHz를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.a 초광대역변조 무선장비 대역폭",
+          "thresholds": [
+            {"subject": "대역폭", "operator": "gt", "value": "500", "unit": "MHz", "quote": "500 MHz 를 초과하는 대역폭", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.b 초광대역변조 무선장비 비대역폭",
+          "thresholds": [
+            {"subject": "비대역폭", "operator": "ge", "value": "20", "unit": "%", "quote": "20% 또는 이상의 \"비대역폭\"", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5 디지털 제어 무선 수신기(모든 기능)",
+          "thresholds": [
+            {"subject": "채널수", "operator": "gt", "value": "1000", "unit": "회선", "quote": "채널수가 1,000회선을 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "채널 절환 시간", "operator": "lt", "value": "1", "unit": "ms", "quote": "'채널 절환 시간(channel switching time)'이 1ms 미만인 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.6 음성부호화 출력속도",
+          "thresholds": [
+            {"subject": "음성부호화 출력속도", "operator": "lt", "value": "700", "unit": "bit/s", "quote": "'음성부호화' 출력속도가 700 bit/s 미만인 디지털 \"신호처리\" 기능을 갖는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 광섬유",
+          "thresholds": [
+            {"subject": "광섬유 길이", "operator": "gt", "value": "500", "unit": "m", "quote": "광섬유로서 길이가 500 m 를 초과하고", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1 전자조정 위상배열 안테나(31.8~57 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "31.8", "unit": "GHz", "quote": "동작주파수가 31.8 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "57", "unit": "GHz", "quote": "57 GHz이하이며", "quote_source": "항목 본문"},
+            {"subject": "유효 방사 전력(ERP)", "operator": "ge", "value": "20", "unit": "dBm", "quote": "+20 dBm (22.15 dBm 유효 등방성 방사 전력(Effective Isotropic Radiated Power (EIRP)))이상인 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2 전자조정 위상배열 안테나(57~66 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "57", "unit": "GHz", "quote": "동작주파수가 57 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "66", "unit": "GHz", "quote": "66 GHz이하이며", "quote_source": "항목 본문"},
+            {"subject": "유효 방사 전력(ERP)", "operator": "ge", "value": "24", "unit": "dBm", "quote": "+24 dBm (26.15 dBm EIRP)이상인 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3 전자조정 위상배열 안테나(66~90 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "66", "unit": "GHz", "quote": "동작주파수가 66 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "90", "unit": "GHz", "quote": "90 GHz이하이며", "quote_source": "항목 본문"},
+            {"subject": "유효 방사 전력(ERP)", "operator": "ge", "value": "20", "unit": "dBm", "quote": "+20 dBm (22.15 dBm EIRP)이상인 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.4 전자조정 위상배열 안테나(90 GHz 초과)",
+          "thresholds": [
+            {"subject": "동작주파수", "operator": "gt", "value": "90", "unit": "GHz", "quote": "동작주파수가 90 GHz를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "e. 무선방향탐지 장비(모든 특성)",
+          "thresholds": [
+            {"subject": "작동 주파수", "operator": "ge", "value": "30", "unit": "MHz", "quote": "30 MHz 이상의 주파수에서 작동하고", "quote_source": "항목 본문"},
+            {"subject": "순시 대역폭", "operator": "ge", "value": "10", "unit": "MHz", "quote": "\"순시 대역폭\"이 10 MHz 또는 그 이상인 것", "quote_source": "항목 본문"},
+            {"subject": "탐지 가능 신호 지속 시간", "operator": "lt", "value": "1", "unit": "ms", "quote": "1 ms 미만의 지속 신호에서", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "f. 이동 전기통신 가로채기·전파방해·감시 장치", "thresholds": [], "text": "이동 전기통신 전파를 가로채는 장치 또는 전파방해장치, 감시 장치와 이의 전용 설계된 구성품"},
+        {"label": "g. 수동 간섭 위치 시스템", "thresholds": [], "text": "비-레이더 송신기 주위에서 방출되는 무선 주파수의 반사정도를 측정하여 이동하는 물체를 탐지하거나 추적하기 위해 전용 설계된 수동 간섭 위치 시스템 또는 장비"},
+        {"label": "h. 급조 폭발물 방지 장비", "thresholds": [], "text": "급조 폭발물 방지 장비와 관련 장비로 다음의 것"},
+        {"label": "j. 인터넷 망 통신 감시 시스템", "thresholds": [], "text": "인터넷 망(IP network) 통신 감시 시스템 또는 장비와 전용 설계된 구성품으로 다음의 모든 특성을 갖는 것"}
+      ],
+      "checks": [
+        {"quote": "5A001.a.2, 5A001.a.3 및 5A001.a.4에서 \"우주비행체\"에 탑재하여 사용하기 위해 설계되거나 개조된 것은 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "출력 고조파(output harmonic)와 왜곡 성분이 -80 dB 미만인(보다 우수한) 것", "source": "항목 본문"},
+        {"quote": "5A001.b.3항에서 1.0 W 이하의 출력에서 작동하도록 설계된 장비는 제외", "source": "항목 본문"},
+        {"quote": "'인증시험'을 거친 인장강도 2×109 N/㎡ 이상을 견뎌낼 수 있다고 제작자에 의해 명시된 것", "source": "항목 본문"},
+        {"quote": "5A001.d.는 ICAO의 MLS(Microwave Landing System) 표준을 충족시키는 착륙시스템용 '전자조정 위상배열 안테나'는 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5A101",
+      "title": "'미사일'용 원격측정(Telemetry)과 원격제어장비(telecontrol)",
+      "branches": [
+        {
+          "label": "'미사일' 정의(사거리)",
+          "thresholds": [
+            {"subject": "사거리", "operator": "gt", "value": "300", "unit": "km", "quote": "'미사일'은 300km초과의 사거리 능력을 갖는 완성체 로켓시스템이나 무인항공기시스템을 의미한다", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {"quote": "지상 장비를 포함한 원격측정(Telemetry)과 원격제어장비(telecontrol) 로서 '미사일'용으로 설계되거나 개조된 것", "source": "항목 본문"},
+        {"quote": "유인비행체 또는 위성용으로 설계되거나 개조된 장비", "source": "항목 본문"},
+        {"quote": "상업용, 민간용 또는 생명의 안전(데이터 보존, 비행안전)을 위한 전역항법위성시스템 서비스 장비", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5B001",
+      "title": "전기통신 시험, 검사 및 생산용 장비, 구성품 및 부속품",
+      "branches": [
+        {"label": "a. 5A001 통제 장비의 개발·생산용 장비", "thresholds": [], "text": "5A001에 의해서 통제되는 장비, 기능 또는 특성의 \"개발\" 또는 \"생산\"을 위해 전용 설계된 장비와 이를 위해 전용 설계된 구성품 및 부속품"},
+        {
+          "label": "b.2.a 레이저 채용 장비 전송 파장",
+          "thresholds": [
+            {"subject": "전송 파장", "operator": "gt", "value": "1750", "unit": "nm", "quote": "전송 파장이 1,750 nm을 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.d 아날로그 기술 주파수대역폭",
+          "thresholds": [
+            {"subject": "주파수대역폭", "operator": "gt", "value": "2.5", "unit": "GHz", "quote": "아날로그 기술을 채용하고 주파수대역폭이 2.5 GHz 를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4 직교진폭변조(QAM) 레벨",
+          "thresholds": [
+            {"subject": "QAM 레벨 수", "operator": "gt", "value": "1024", "unit": "레벨", "quote": "1,024 레벨을 초과하는 직교진폭변조(Quadrature-Amplitude- Modulation, QAM) 기술을 채택한 무선 장비", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {"quote": "5B001.a는 광섬유 특성화 장비를 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "5B001.b.2.d는 상업용 TV 시스템의 \"개발\"을 위하여 전용 설계된 장비는 제외", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5D001",
+      "title": "\"소프트웨어\"로서 다음의 것(5A001·5B001 관련 소프트웨어)",
+      "branches": [
+        {"label": "a. 5A001 통제 장비용 소프트웨어", "thresholds": [], "text": "5A001에서 통제되는 장비나 기능, 특성의 \"개발\", \"생산\" 또는 \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\""},
+        {"label": "c. 5A001·5B001 장비 특성 제공 소프트웨어", "thresholds": [], "text": "5A001 이나 5B001에서 규제되는 장비의 특성, 기능 또는 특징을 제공하기 위해 전용 설계되거나 개조된 특정(specific) \"소프트웨어\""},
+        {
+          "label": "d.2.a 레이저 채용 장비 전송 파장",
+          "thresholds": [
+            {"subject": "전송 파장", "operator": "gt", "value": "1750", "unit": "nm", "quote": "전송 파장이 1,750 nm을 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2.b 아날로그 기술 주파수대역폭",
+          "thresholds": [
+            {"subject": "주파수대역폭", "operator": "gt", "value": "2.5", "unit": "GHz", "quote": "아날로그 기술을 채용하고 주파수대역폭이 2.5GHz를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.4 직교진폭변조(QAM) 레벨",
+          "thresholds": [
+            {"subject": "QAM 레벨 수", "operator": "gt", "value": "1024", "unit": "레벨", "quote": "1,024 레벨을 초과하는 직교진폭변조(Quadrature-Amplitude- Modulation, QAM) 기술을 채택한 무선 장비", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "e. 법 집행 목적 감시·분석 소프트웨어", "thresholds": [], "text": "법 집행 목적으로 감시나 분석을 위해 전용 설계되거나 개조된 \"소프트웨어\"로 다음 특성을 모두 제공하는 것"}
+      ],
+      "checks": [
+        {"quote": "상업용 TV 시스템의 \"개발\"을 위하여 전용 설계된 \"소프트웨어\"는 제외", "source": "항목 본문"},
+        {"quote": "5D001.e는 다음을 위해 전용 설계되거나 개조된 \"소프트웨어\"는 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5D101",
+      "title": "5A101 장비의 \"사용\"을 위한 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {"quote": "5A101에서 규정된 장비의 \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5E001",
+      "title": "\"기술\"로서 다음의 것(전기통신 장비·소프트웨어용 기술)",
+      "branches": [
+        {"label": "a. 5A001·5D001.a·5D001.e 관련 기술", "thresholds": [], "text": "5A001에서 통제되는 장비, 기능 및 특성 또는 5D001.a 또는 5D001.e에서 통제되는 \"소프트웨어\"의 \"개발\", \"생산\" 또는 \"사용\"(운영 제외)을 위한 [일반기술해설]에 따른 \"기술\""},
+        {"label": "b.1 우주비행체 탑재 원격통신 장비 기술", "thresholds": [], "text": "\"우주비행체\"에 탑재되어 사용되도록 전용 설계된 원격통신 장비의 \"개발\"이나 \"생산\"에 \"필요한\" \"기술\""},
+        {"label": "b.2 레이저 통신기술", "thresholds": [], "text": "\"레이저\" 통신기술의 \"개발\"이나 \"사용\"을 위한 \"기술\"로서 대기권 밖이나 지표면 아래(수중) 매체를 통해 자동적으로 신호를 포착, 추적하고 통신을 유지‧보수하는 기능이 있는 것"},
+        {"label": "b.3 디지털 셀룰러 무선기지국 수신 장치 개발 기술", "thresholds": [], "text": "\"소프트웨어\"의 변경을 통하여 개조 가능한 다중대역, 다중채널, 다중모드, 다중부호화 알고리즘 또는 다중 프로토콜 작동 등의 수용능력이 있는 디지털 셀룰러 무선기지국 수신 장치의 \"개발\"을 위한 \"기술\""},
+        {"label": "b.4 주파수 호핑 확산 스펙트럼 개발 기술", "thresholds": [], "text": "\"주파수 호핑\" 기술을 포함하는 \"확산 스펙트럼\"의 \"개발\"을 위한 \"기술\""},
+        {
+          "label": "c.2.a 레이저 채용 장비 전송 파장",
+          "thresholds": [
+            {"subject": "전송 파장", "operator": "gt", "value": "1750", "unit": "nm", "quote": "전송 파장이 1,750 nm을 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2.d 파장 분할 다중화 스페이싱",
+          "thresholds": [
+            {"subject": "광 캐리어 스페이싱", "operator": "lt", "value": "100", "unit": "GHz", "quote": "100 GHz 스페이싱(Spacing) 미만에서 광 캐리어에 대한 파장 분할 다중화 기법을 채용한 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2.e 아날로그 기술 주파수대역폭",
+          "thresholds": [
+            {"subject": "주파수대역폭", "operator": "gt", "value": "2.5", "unit": "GHz", "quote": "아날로그 기술을 채용하고 주파수대역폭이 2.5 GHz를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.3 광 스위칭 시간",
+          "thresholds": [
+            {"subject": "광 스위칭 시간", "operator": "lt", "value": "1", "unit": "ms", "quote": "'광 스위칭'을 채용하고 스위칭 시간이 1 ms 미만인 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.a 직교진폭변조(QAM) 레벨",
+          "thresholds": [
+            {"subject": "QAM 레벨 수", "operator": "gt", "value": "1024", "unit": "레벨", "quote": "1,024레벨을 초과하는 직교진폭변조(Quadrature-Amplitude- Modulation, QAM) 기술", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.b 무선장비 입출력 주파수",
+          "thresholds": [
+            {"subject": "입출력 주파수", "operator": "gt", "value": "31.8", "unit": "GHz", "quote": "31.8 GHz를 초과하는 입출력 주파수에서 작동하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.c 1.5~87.5 MHz 무선장비 간섭 신호 억압",
+          "thresholds": [
+            {"subject": "간섭 신호 억압 능력", "operator": "gt", "value": "15", "unit": "dB", "quote": "15dB를 초과하는 간섭 신호 억압 능력을 제공하도록 적응적 기술을 채택하고 있는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.6 근거리통신망 이동 장비 광학 파장(모든 특성)",
+          "thresholds": [
+            {"subject": "광학 파장(하한)", "operator": "ge", "value": "200", "unit": "nm", "quote": "200 nm 이상", "quote_source": "항목 본문"},
+            {"subject": "광학 파장(상한)", "operator": "le", "value": "400", "unit": "nm", "quote": "400 nm 이하의 광학 파장에서 작동하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1.a MMIC 증폭기(2.7~2.9 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "2.7", "unit": "GHz", "quote": "동작주파수가 2.7 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "2.9", "unit": "GHz", "quote": "2.9 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "15", "unit": "%", "quote": "\"비대역폭\"이 15%를 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "75", "unit": "W", "quote": "최대 포화 전력 출력(peak saturated power output)이 75 W (48.75 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1.b MMIC 증폭기(2.9~3.2 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "2.9", "unit": "GHz", "quote": "동작주파수가 2.9 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "3.2", "unit": "GHz", "quote": "3.2 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "15", "unit": "%", "quote": "\"비대역폭\"이 15%를 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "55", "unit": "W", "quote": "최대 포화 전력 출력이 55 W (47.4 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1.c MMIC 증폭기(3.2~3.7 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "3.2", "unit": "GHz", "quote": "동작주파수가 3.2 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "3.7", "unit": "GHz", "quote": "3.7 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "15", "unit": "%", "quote": "\"비대역폭\"이 15%를 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "40", "unit": "W", "quote": "최대 포화 전력 출력이 40 W (46 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1.d MMIC 증폭기(3.7~6.8 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "3.7", "unit": "GHz", "quote": "동작주파수가 3.7 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "6.8", "unit": "GHz", "quote": "6.8 GHz 이하이며 최대 포화 전력 출력이 20 W", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "15", "unit": "%", "quote": "\"비대역폭\"이 15%를 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "20", "unit": "W", "quote": "최대 포화 전력 출력이 20 W (43 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2.a MMIC 증폭기(6.8~8.5 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "6.8", "unit": "GHz", "quote": "동작주파수가 6.8 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "8.5", "unit": "GHz", "quote": "8.5 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "10", "unit": "%", "quote": "\"비대역폭\"이 10%를 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "10", "unit": "W", "quote": "최대 포화 전력 출력이 10 W (40 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2.b MMIC 증폭기(8.5~16 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "8.5", "unit": "GHz", "quote": "동작주파수가 8.5 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "16", "unit": "GHz", "quote": "16 GHz 이하이며 최대 포화 전력 출력이 5 W", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "10", "unit": "%", "quote": "\"비대역폭\"이 10%를 초과하는 것", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "5", "unit": "W", "quote": "최대 포화 전력 출력이 5 W (37 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3 MMIC 증폭기(16~31.8 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "16", "unit": "GHz", "quote": "동작주파수가 16 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "31.8", "unit": "GHz", "quote": "31.8 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "10", "unit": "%", "quote": "\"비대역폭\"이 10%를 초과하고 최대 포화 전력 출력이 3 W", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "3", "unit": "W", "quote": "최대 포화 전력 출력이 3 W (34.77 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.4 MMIC 증폭기(31.8~37 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "31.8", "unit": "GHz", "quote": "동작주파수가 31.8 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "37", "unit": "GHz", "quote": "37 GHz 이하이며 최대 포화 전력 출력이 0.1 nW", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "0.1", "unit": "nW", "quote": "최대 포화 전력 출력이 0.1 nW (-70 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.5 MMIC 증폭기(37~43.5 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "37", "unit": "GHz", "quote": "동작주파수가 37 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "43.5", "unit": "GHz", "quote": "43.5 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "10", "unit": "%", "quote": "\"비대역폭\"이 10%를 초과하고 최대 포화 전력 출력이 1 W", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "1", "unit": "W", "quote": "최대 포화 전력 출력이 1 W (30 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.6 MMIC 증폭기(43.5~75 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "43.5", "unit": "GHz", "quote": "동작주파수가 43.5 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "75", "unit": "GHz", "quote": "75 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "10", "unit": "%", "quote": "\"비대역폭\"이 10%를 초과하고 최대 포화 전력 출력이 31.62 mW", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "31.62", "unit": "mW", "quote": "최대 포화 전력 출력이 31.62 mW (15 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.7 MMIC 증폭기(75~90 GHz)",
+          "thresholds": [
+            {"subject": "동작주파수(하한)", "operator": "gt", "value": "75", "unit": "GHz", "quote": "동작주파수가 75 GHz를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "동작주파수(상한)", "operator": "le", "value": "90", "unit": "GHz", "quote": "90 GHz 이하이며", "quote_source": "항목 본문"},
+            {"subject": "비대역폭", "operator": "gt", "value": "5", "unit": "%", "quote": "\"비대역폭\"이 5%를 초과하고", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "10", "unit": "mW", "quote": "최대 포화 전력 출력이 10 mW (10 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.8 MMIC 증폭기(90 GHz 초과)",
+          "thresholds": [
+            {"subject": "동작주파수", "operator": "gt", "value": "90", "unit": "GHz", "quote": "동작주파수가 90 GHz를 초과하고 최대 포화 전력 출력이 0.1 nW", "quote_source": "항목 본문"},
+            {"subject": "최대 포화 전력 출력", "operator": "gt", "value": "0.1", "unit": "nW", "quote": "최대 포화 전력 출력이 0.1 nW (-70 dBm)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "e.1 초전도 게이트 디지털회로", "thresholds": [], "text": "\"초전도\" 게이트를 가진 디지털회로의 전류스위치 기능을 가진 것으로 게이트당 지연시간(초 단위)과 게이트당 소비전력(와트 단위)의 곱이 10-14 J 미만인 것"},
+        {
+          "label": "e.2 초전도 공진회로 Q값",
+          "thresholds": [
+            {"subject": "공진회로 Q값", "operator": "gt", "value": "10000", "unit": "", "quote": "Q값이 10,000을 초과하는 공진회로를 사용하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {"quote": "5E001.c.2.e항은 상업용 TV 시스템을 위한 \"기술\"은 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "주파수대역이 1.5 ~ 87.5 MHz 에서 작동하고", "source": "항목 본문"},
+        {"quote": "전기통신을 위해 전용 설계된 \"단일칩 마이크로웨이브 집적회로\" (\"MMIC\") 증폭기의 \"개발\" 또는 \"생산\"을 위한 [일반기술해설]에 따른 \"기술\"", "source": "항목 본문"},
+        {"quote": "5E001.c.4.b.항은 무선 측위가 아닌 무선통신 서비스용으로 \"ITU에 의해 할당된\" 주파수 대역에서 작동하도록 설계되거나 개조된 장비를 위한 \"기술\"은 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5E101",
+      "title": "5A101 장비의 \"개발\", \"생산\" 또는 \"사용\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {"quote": "5A101에 명시된 장비의 \"개발\", \"생산\" 또는 \"사용\"을 위한 [일반기술해설]에 따른 \"기술\"", "source": "항목 본문"},
+        {"quote": "제2장(정보보안)은 사용자의 개인적인 목적을 위하여 사용될 경우는 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "5A002, 5D002.a.1, 5D002.b 및 5D002.c.1은 다음 사항의 품목에 대해서는 적용하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5A002",
+      "title": "\"정보보안\" 시스템, 장비, 구성품 및 부속품",
+      "branches": [
+        {
+          "label": "a. '기술된 보안 알고리즘' — '대칭 알고리즘' 키 길이",
+          "thresholds": [
+            {"subject": "대칭 알고리즘 키 길이", "operator": "gt", "value": "56", "unit": "비트", "quote": "'대칭 알고리즘'으로서 키 길이(key length)가 56비트를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. '기술된 보안 알고리즘' — 비대칭(정수 인수분해)",
+          "thresholds": [
+            {"subject": "비대칭 알고리즘 정수 인수분해 비트 수", "operator": "gt", "value": "512", "unit": "비트", "quote": "512비트를 초과하는 정수의 인수분해 (예, RSA)", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. '기술된 보안 알고리즘' — 비대칭(곱셈군 이산로그)",
+          "thresholds": [
+            {"subject": "비대칭 알고리즘 곱셈군 이산로그 비트 수", "operator": "gt", "value": "512", "unit": "비트", "quote": "이산(discrete)의 곱셈군(Multiplicative group)에서 이산로그의 계산이 512비트(예, Diffie-Hellman over Z/pZ)를 초과하는 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. '기술된 보안 알고리즘' — 비대칭(기타 군 이산로그)",
+          "thresholds": [
+            {"subject": "비대칭 알고리즘 기타 군 이산로그 비트 수", "operator": "gt", "value": "112", "unit": "비트", "quote": "b.2에서 언급되지 않은 군(Group)의 이산로그가 112비트를 초과하는 것(예, Diffie-Hellman over an elliptic curve)", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "a. '기술된 보안 알고리즘' — 비대칭(양자내성)", "thresholds": [], "text": "격자(lattices)와 관련된 최소 벡터 또는 최근접 벡터를 찾는 문제(예, NewHope, Frodo, NTRUEncrypt, Kyber, Titanium)"},
+        {"label": "b. 암호 활성화 토큰", "thresholds": [], "text": "'암호 활성화 토큰'"},
+        {"label": "c. 양자암호화", "thresholds": [], "text": "\"양자암호화\"를 사용하거나 수행하기 위해 설계되거나 개조된 것"},
+        {
+          "label": "d.1 초광대역 변조 암호화기법 주파수대역폭",
+          "thresholds": [
+            {"subject": "주파수대역폭", "operator": "gt", "value": "500", "unit": "MHz", "quote": "500 MHz를 초과하는 주파수대역폭", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2 초광대역 변조 암호화기법 비대역폭",
+          "thresholds": [
+            {"subject": "비대역폭", "operator": "ge", "value": "20", "unit": "%", "quote": "\"비대역폭\"이 20% 또는 그 이상의 것", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "e. 확산 스펙트럼 스프레딩 부호 생성 암호화기술", "thresholds": [], "text": "\"주파수 호핑\"(frequency hopping)시스템을 위한 호핑 코드(hopping code)를 포함하여 5A002.d.에서 통제되지 않는 \"확산 스펙트럼\" 시스템을 위한 스프레딩 부호를 생성하기 위한 암호화기술을 사용하고자 설계되거나 개조된 것"}
+      ],
+      "checks": [
+        {"quote": "'기술된 보안 알고리즘'을 가진 '정보 기밀성을 위한 암호화'를 사용하기 위해 설계되거나 개조된 것으로서 다음의 것", "source": "항목 본문"},
+        {"quote": "5A002.a는 아래에 해당하는 품목, 또는 이를 위해 전용 설계된 \"정보보안\" 구성품은 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "증폭 없는 무선 통신(unboosted cordless operation)의 최대유효범위(예, 단말기와 댁내 기지국의 직접통신)가 400미터 미만인 종단간의 암호화 기능이 불가능한 무선 전화기", "source": "항목 본문"},
+        {"quote": "민간 사용 목적의 이동통신 무선접속네트워크(RAN) 장비로서 RF 출력이 0.1 W (20 dBm)이하, 동시 사용자의 수가 32명 이하이고", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5A003",
+      "title": "비암호화 \"정보보안\"을 위한 시스템, 장비, 그리고 구성품",
+      "branches": [],
+      "checks": [
+        {"quote": "부정한 침입을 탐지하기 위해 기계적, 전기적 혹은 전자적인 방법을 사용하기 위해 설계되거나 개조된 통신케이블 시스템", "source": "항목 본문"},
+        {"quote": "건강, 안전 또는 전파간섭 기준을 위해 필요한 것 이상으로 정보 신호의 방사(발산)를 줄이기 위해 전용 설계되거나 개조된 것", "source": "항목 본문"},
+        {"quote": "5A003.a는 물리 계층 보안에만 적용된다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5A004",
+      "title": "무력화, 약화, 우회 \"정보보안\"을 위한 시스템, 장비, 그리고 구성품",
+      "branches": [],
+      "checks": [
+        {"quote": "'암호분석 기능'을 수행하기 위해 설계되거나 개조된 것", "source": "항목 본문"},
+        {"quote": "컴퓨터 또는 통신 장비에서 '미가공 데이터를 추출'", "source": "항목 본문"},
+        {"quote": "5A004.b는 컴퓨팅 또는 통신 장치의 \"개발\"이나 \"생산\"을 위해 전용 설계된 시스템 또는 장비는 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5B002",
+      "title": "\"정보보안\" 시험, 검사 및 \"생산\" 장비",
+      "branches": [],
+      "checks": [
+        {"quote": "5A002, 5A003, 5A004 또는 5B002.b에 의해 통제되는 장비의 \"개발\" 또는 \"생산\"을 위해 전용 설계된 장비", "source": "항목 본문"},
+        {"quote": "\"정보보안\" 기능을 평가 및 확인하기 위하여 전용 설계된 측정 장비", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5D002",
+      "title": "\"소프트웨어\"로서 다음의 것(\"정보보안\" 관련 소프트웨어)",
+      "branches": [],
+      "checks": [
+        {"quote": "5A002에서 통제되는 장비 또는 5D002.c.1에서 통제되는 \"소프트웨어\"", "source": "항목 본문"},
+        {"quote": "5A002.b에 명시된 '암호 활성화 토큰'의 특성을 갖는 \"소프트웨어\"", "source": "항목 본문"},
+        {"quote": "5D002.c.1는 공개된, 또는 상업용 암호 표준만으로 구현된 암호화 기능이 \"OAM\"에만 한정된 \"소프트웨어\"는 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "5D002.c.3.b에서 \"침입 소프트웨어\"는 통제하지 않는다", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:5E002",
+      "title": "다음과 같은 \"기술\"(\"정보보안\" 관련 기술)",
+      "branches": [],
+      "checks": [
+        {"quote": "5A002, 5A003, 5A004 또는 5B002에서 통제되는 장비 또는 5D002.a 또는 5D002.c에서 통제되는 \"소프트웨어\"의 \"개발\", \"생산\" 또는 \"사용\" 목적인 [일반기술해설]에 따른 \"기술\"", "source": "항목 본문"},
+        {"quote": "5E002.a는 5A004.b, 5D002.a.3.b, 5D002.c.3.b에 명시된 품목을 위한 \"기술\"은 통제하지 않는다", "source": "항목 본문"},
+        {"quote": "5A002.b에 명시된 '암호 활성화 토큰'의 특성을 갖는 \"기술\"", "source": "항목 본문"}
+      ]
+    }
+  ]
+}

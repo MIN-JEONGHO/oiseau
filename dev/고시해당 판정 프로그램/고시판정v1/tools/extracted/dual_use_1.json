@@ -1,0 +1,4017 @@
+{
+  "scope": {
+    "families": [
+      "dual_use"
+    ],
+    "code_prefixes": [
+      "1"
+    ]
+  },
+  "items": [
+    {
+      "clause_id": "dual_use:control:1A001",
+      "title": "불소화합물로 만들어진 구성품",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [
+            {
+              "subject": "소재 중량 비율",
+              "operator": "gt",
+              "value": "50",
+              "unit": "%",
+              "quote": "1C009.b. 또는 1C009.c에 의해 명시되는 소재를 중량 기준으로 50% 초과 사용하고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"항공기\" 또는 우주선용으로 전용 설계된 실(seals), 가스켓(gaskets), 밀봉제(sealants), 연료용 블래더(bladders)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A002",
+      "title": "\"복합재료\" 구조물 또는 적층구조물(laminate)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "유기물 \"모재\"를 갖고 1C010.c. 또는 1C010.d.에 의해 명시되는 \"섬유상 또는 필라멘트 소재\"로 만들어진 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "프리프레그(prepregs) 또는 프리폼(preforms)으로 1C010.e.에 명시된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"비탄성률\" 10.15×106 m 를 초과하는 것; 그리고\n     b. \"비인장강도\"가 17.7×104 m 를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "면적이 1 m2 을 초과하지 않는 것\n      b. 길이가 2.5 m 를 초과하지 않는 것; 그리고\n      c. 폭이 15 mm 를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1A002는 특정 용도로 전용 설계된 완제품은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "컷팅(cut)된 길이가 25.0 mm 이하의 탄소 \"섬유상 또는 필라멘트 소재\"는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A004",
+      "title": "보호 및 탐지 장비와 그 구성품",
+      "branches": [
+        {
+          "label": "d. '추적탐지' 증기",
+          "thresholds": [
+            {
+              "subject": "탐지 농도",
+              "operator": "lt",
+              "value": "1",
+              "unit": "ppm",
+              "quote": "'추적탐지'는 1 ppm 미만의 증기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. '추적탐지' 고체·액체",
+          "thresholds": [
+            {
+              "subject": "탐지 질량",
+              "operator": "lt",
+              "value": "1",
+              "unit": "mg",
+              "quote": "1 mg 미만의 고체나 액체를 탐지할 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "군사용으로 전용설계된 것을 제외한 보호 및 탐지 장비와 그 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "방호용으로 설계 또는 수정된 전면(안면보호)마스크, 여과통 그리고 정화기와 전용 설계된 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "다음에 대한 방호를 위해 전용설계 또는 수정된 방호복, 장갑 및 신발",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "다음을 식별 또는 탐지를 위해 전용설계 또는 수정된 탐지장비와 이러한 탐지장비를 위하여 전용설계된 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1A004.d는 실험용으로 전용 설계된 장비는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "개인용 방사능 선량계",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A005",
+      "title": "방호복과 그 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군사표준 또는 규격에 따라 생산되지 않았거나, 성능이 동등하지 않은 연성 방호복",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "IIIA 등급(NIJ 0101.06, July 2008) 이하 또는 \"동등한 표준 규격\"의 방탄능력을 갖는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "사용자 개인의 보호를 위해 사용자가 소지한 방호복의 경우는 제외",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "칼, 스파이크, 침 또는 둔기의 방호만을 위해 설계된 방호복은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A006",
+      "title": "급조폭발장치의 처리를 위해 전용 설계되거나 개조된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "급조폭발장치의 처리를 위해 전용 설계되거나 개조된 장비, 구성품 및 부속품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1A006은 조작자가 수반되는 장비를 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A007",
+      "title": "전기적 방법으로 장약을 점화시키기 위한 \"활성물질\"을 포함하는 장비 및 장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1A007.b.에서 정의된 폭발뇌관의 구동을 위해 설계된 폭발신관 기폭세트",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "전기적으로 작동되는 폭발 신관으로 다음과 같은 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A008",
+      "title": "장약, 장치 및 구성품",
+      "branches": [
+        {
+          "label": "a. '성형장약'",
+          "thresholds": [
+            {
+              "subject": "폭발물 순중량(NEQ)",
+              "operator": "gt",
+              "value": "90",
+              "unit": "g",
+              "quote": "폭발물 순중량(NEQ)이 90 g 을 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주조물 외경",
+              "operator": "ge",
+              "value": "75",
+              "unit": "mm",
+              "quote": "Outer casing diameter equal to or greater than 75 mm",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 선형 성형 절단 장약",
+          "thresholds": [
+            {
+              "subject": "폭발물 장전량",
+              "operator": "gt",
+              "value": "40",
+              "unit": "g/m",
+              "quote": "폭발물 장전량이 40 g/m 를 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "폭",
+              "operator": "ge",
+              "value": "10",
+              "unit": "mm",
+              "quote": "A width of 10 mm or more",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 도폭선",
+          "thresholds": [
+            {
+              "subject": "폭발물 내부 장전량",
+              "operator": "gt",
+              "value": "64",
+              "unit": "g/m",
+              "quote": "폭발물 내부 장전량이 64 g/m 을 초과하는 도폭선",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 절단기",
+          "thresholds": [
+            {
+              "subject": "폭발물 순중량(NEQ)",
+              "operator": "gt",
+              "value": "3.5",
+              "unit": "kg",
+              "quote": "폭발물 순중량(NEQ)이 3.5 kg을 초과하는 절단기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1A008에 명시된 장약과 장치는 1장의 부속서 목록에 있는 \"폭발물\" 그리고 이들의 혼합물(mixtures)을 포함하는 것에 한한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A102",
+      "title": "재포화 열분해 탄소-탄소(즉, carbon-carbon) 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A004에 명시된 우주선 발사체 또는 9A104에 명시된 관측용 로켓을 위해 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A202",
+      "title": "얇은 두께의 튜브 형태의 복합재료 구조물",
+      "branches": [
+        {
+          "label": "a.~c. 모두",
+          "thresholds": [
+            {
+              "subject": "두께",
+              "operator": "le",
+              "value": "12",
+              "unit": "mm",
+              "quote": "두께가 12 mm 이하 인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "내경이 75 ～ 650 mm 인 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C010.a. 또는 b, 또는 1C210.a에서 명시된 \"섬유상 또는 필라멘트 소재\"의 일부 또는 1C210.c에서 명시된 탄소섬유 프리프레그 소재로 제조된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A225",
+      "title": "방수 처리된 백금촉매",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "수소와 물 사이의 수소동위원소 교환반응을 촉진하기 위해 전용 설계되거나 준비된 방수 처리된 백금촉매",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A226",
+      "title": "보통 물에서 중수를 분리하는 데 사용되는 특별한 packing",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "습윤성(wettability)을 향상시키기 위해 화학적으로 처리된 인청동망(phosphor-bronze mesh)로 만들어진 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "진공증류탑에서 사용되도록 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A227",
+      "title": "고밀도(납유리 또는 다른 것) 방사선 차폐창",
+      "branches": [
+        {
+          "label": "a.~c. 모두",
+          "thresholds": [
+            {
+              "subject": "'저방사능구역' 면적",
+              "operator": "gt",
+              "value": "0.09",
+              "unit": "m2",
+              "quote": "0.09 m2를 초과하는 '저방사능구역'을 가지는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "밀도",
+              "operator": "gt",
+              "value": "3",
+              "unit": "g/cm3",
+              "quote": "3 g/cm3를 초과하는 밀도를 가지는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "두께",
+              "operator": "ge",
+              "value": "100",
+              "unit": "mm",
+              "quote": "100 mm 이상의 두께인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "고밀도(납유리 또는 다른 것) 방사선 차폐창으로서, 다음의 특성을 모두 갖는 것과, 이를 위해 전용 설계된 프레임",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1A228",
+      "title": "삼중수소 생산용 타겟 집합체 및 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "중성자 조사를 통해 삼중수소를 생산하기 위해 전용 설계된 농축 리튬-6 동위원소를 함유하거나 만들어진 타겟 집합체",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1A228.a에서 명시된 타겟 집합체를 위한 전용 설계된 구성품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B001",
+      "title": "\"복합재료\" 구조물 또는 적층구조물(laminates) 또는 \"섬유상 또는 필라멘트 소재\"의 \"생산\"을 위해 설계된 장비",
+      "branches": [
+        {
+          "label": "a. 필라멘트 와인딩 장치",
+          "thresholds": [
+            {
+              "subject": "주요서보위상 축 수",
+              "operator": "ge",
+              "value": "3",
+              "unit": "축",
+              "quote": "3축 또는 그 이상의 '주요서보위상(primary servo positioning)' 축으로 제어되고 프로그램되는 필라멘트 와인딩 장치",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. '테이프 적층 기계'",
+          "thresholds": [
+            {
+              "subject": "주요 서보 위상 축 수",
+              "operator": "ge",
+              "value": "5",
+              "unit": "축",
+              "quote": "5축 또는 그 이상의 '주요 서보 위상(primary servo positioning)' 축으로 제어되고 프로그램 되는 '테이프 적층(tape-laying) 기계'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "'필라멘트 밴드' 폭(하한)",
+              "operator": "gt",
+              "value": "25.4",
+              "unit": "mm",
+              "quote": "25.4 mm 를 초과하고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "'필라멘트 밴드' 폭(상한)",
+              "operator": "le",
+              "value": "304.8",
+              "unit": "mm",
+              "quote": "304.8 mm 이하의 제한된 폭을 갖는 한 개 이상의 '필라멘트 밴드'를 적층할 수 있고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.2. 수치제어 초음파 검사기",
+          "thresholds": [
+            {
+              "subject": "프로그램 축 수",
+              "operator": "ge",
+              "value": "4",
+              "unit": "축",
+              "quote": "3차원 표면을 따라 4축 이상으로 프로그램되는 수치제어 초음파 검사기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g. '토우 배열 기계'",
+          "thresholds": [
+            {
+              "subject": "주요 서보 위상 축 수",
+              "operator": "ge",
+              "value": "2",
+              "unit": "축",
+              "quote": "2축 또는 그 이상의 '주요 서보 위상(primary servo positioning)' 축으로 제어되고 프로그램 되는 '토우 배열(tow-placement) 기계'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "'필라멘트 밴드' 폭",
+              "operator": "le",
+              "value": "25.4",
+              "unit": "mm",
+              "quote": "25.4 mm 이하의 폭을 가지는 한 개 이상의 '필라멘트 밴드'를 배열할 수 있고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"복합재료\" 구조물을 위한 직조, 꼬여짜기 및 땋아짜기 전용의 다방향(multidirectional), 다차원(multidimensional) 직조기 또는 꼬여짜기 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C010에 명시된 \"섬유상 또는 필라멘트 소재\"의 \"생산\"을 위해 전용 설계되거나 개조된 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'열용융방식'으로 프리프레그를 생산하기 위해 전용 설계되거나 개조된 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3차원 결함검사를 위한 X선 단층촬영 시스템",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B002",
+      "title": "금속합금분말 또는 입자성(particulate) 소재를 생산하기 위해 설계된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "오염방지를 위해 전용 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C002.c.2에서 명시된 공정 중 하나에서 사용하도록 위해 전용 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B003",
+      "title": "\"초소성 성형\" 및 \"확산 결합\"용 공구, 다이스, 금형 또는 고정기구",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "티타늄, 알루미늄 또는 이들의 합금의 \"초소성 성형\" 및 \"확산 결합\"용 공구, 다이스, 금형 또는 고정기구",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "비행기 또는 우주선의 구조물",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"항공기\" 또는 우주선의 엔진",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B101",
+      "title": "구조용 복합재료의 \"생산\" 장비(1B001 제외)",
+      "branches": [
+        {
+          "label": "a. 필라멘트 와인딩 장치 또는 '섬유/토우 배열 기계'",
+          "thresholds": [
+            {
+              "subject": "제어 축 수",
+              "operator": "ge",
+              "value": "3",
+              "unit": "축",
+              "quote": "섬유의 위치제어, 덮기 (wrapping) 및 감기를 위한 동작이 3축 이상에서 제어되고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. '테이프 적층 기계'",
+          "thresholds": [
+            {
+              "subject": "제어 축 수",
+              "operator": "ge",
+              "value": "2",
+              "unit": "축",
+              "quote": "테이프, 그리고 판상(sheets)의 적층과 위치제어를 위한 동작이 2축 또는 그 이상의 축으로 제어되고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'섬유/토우 배열 기계'는 25.4 mm 이하의 폭을 가진 하나 혹은 그 이상의 '필라멘트 밴드'를 위치시킬 수 있는 능력을 가진다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'테이프 적층 (tape-laying) 기계'는 304.8 mm 이하의 폭을 가진 하나 이상의 '필라멘트 밴드'를 위치시키는 능력을 갖추고 있으나, 25.4mm 이하의 '필라멘트 밴드'를 위치시키지는 못한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"섬유상 또는 필라멘트 소재\"의 \"생산\"용으로 설계되거나 개조된 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9C110에 명시된 섬유표면의 특수처리 또는 프리프레그와 프리폼의 생산용으로 설계되거나 개조된 장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B102",
+      "title": "금속분말 \"생산 장비\" 및 구성품 (1B002에 명시된 해당품목 제외)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "통제된 환경 하에서 1C011.a, 1C011.b, 1C111.a.1, 1C111.a.2 또는 군용물자 통제목록 부분에서 명시된 구형, 타원형 또는 분무된 소재의 \"생산\"에 이용할 수 있는 금속분말 \"생산 장비\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1B002 또는 1B102.a에서 명시된 \"생산 장비\"를 위해 전용 설계된 구성품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B115",
+      "title": "추진제와 추진제 구성물의 생산을 위한 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "액체 추진제 또는 추진제 성분의 \"생산\", 취급, 또는 성능합격시험을 위한 \"생산 장비\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "고체추진제 또는 추진제 구성제의 \"생산\", 취급, 혼합, 경화, 주조, 압착, 기계가공, 압출 또는 수락시험을 위한 \"생산 장비\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1B115.b는 배치 혼합기, 연속 혼합기 또는 유체에너지 분쇄기를 포함하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1B115는 탄화붕소의 \"생산\", 취급, 성능합격시험에 관한 장비를 포함하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B116",
+      "title": "열분해 소재를 생성하기 위해 전용 설계된 노즐",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "130 Pa ~ 20 kPa 의 압력으로 1,573 K (1,300°C) ~ 3,173 K (2,900°C) 온도 범위에서 분해되는 전구체 가스(precursor gas)로부터",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "금형․맨드렐․또는 기타 기판(substrate) 위에서 형성되는 열분해 소재를 생성하기 위해 전용 설계된 노즐",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B117",
+      "title": "배치(Batch) 혼합기",
+      "branches": [
+        {
+          "label": "a.~d. 모두",
+          "thresholds": [
+            {
+              "subject": "전체 부피용량",
+              "operator": "ge",
+              "value": "110",
+              "unit": "ℓ",
+              "quote": "전체 부피용량이 110 ℓ이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0 ~ 13.326 kPa 범위의 진공하에서 혼합 기능을 갖도록 설계되거나 개조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "혼합챔버의 온도제어가 가능한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "중심에서 벗어난 '혼합/반죽 축'을 한 개 이상 갖는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B118",
+      "title": "연속혼합기",
+      "branches": [
+        {
+          "label": "c.1.",
+          "thresholds": [
+            {
+              "subject": "혼합 및 반죽용 축 수",
+              "operator": "ge",
+              "value": "2",
+              "unit": "",
+              "quote": "혼합 및 반죽용 축이 2개 이상이거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2.",
+          "thresholds": [],
+          "text": "반죽용 이/핀(kneading teeth/pins)이 있는 단일 회전 및 진동축; 그리고\n      b. 혼합챔버 케이스 안쪽에 반죽용 이/핀(kneading teeth/pins)이 있는 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0 ~ 13.326 KPa 의 진공하에서 혼합할 수 있게 설계 또는 개조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "혼합챔버의 온도제어가 가능한 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B119",
+      "title": "유체에너지 분쇄기",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "소재를 연삭 또는 밀링을 위해 사용할 수 있는 유체에너지 분쇄기 및 이를 위해 전용 설계된 구성품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B201",
+      "title": "필라멘트 와인딩 머신 (filament winding machines) 및 그 관련 장비",
+      "branches": [
+        {
+          "label": "a.3.",
+          "thresholds": [
+            {
+              "subject": "권선 가능 길이",
+              "operator": "ge",
+              "value": "300",
+              "unit": "mm",
+              "quote": "길이가 300 mm 이상인 것을 권선할 능력을 가진 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "운동이 두 축 이상에서 조정되고 프로그램 되는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "원형 튜브 내경이 75 mm ~ 650 mm 이고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1B201.a에 명시된 필라멘트 와인딩 머신을 조정 및 프로그래밍하는 제어 능력",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1B201.a에 명시된 필라멘트 와인딩 머신에 사용하기 위한 정밀 맨드렐(mandrel)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B225",
+      "title": "불소 생산을 위한 전해조",
+      "branches": [
+        {
+          "label": "",
+          "thresholds": [
+            {
+              "subject": "시간당 불소 처리능력",
+              "operator": "gt",
+              "value": "250",
+              "unit": "g",
+              "quote": "시간당 불소 250g을 초과하는 처리능력을 갖는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1B226",
+      "title": "전자자기 동위원소 분리기",
+      "branches": [
+        {
+          "label": "",
+          "thresholds": [
+            {
+              "subject": "이온빔 전류",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mA",
+              "quote": "총 50 mA 이상의 이온빔 전류를 제공할 수 있는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "단일 또는 여러 개의 이온 소스(source)용으로 설계되거나 또는 이온소스가 장착된 전자자기 동위원소 분리기",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B227",
+      "title": "삭제 (Not used since 2013)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "삭제 (Not used since 2013)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B228",
+      "title": "극저온 수소 증류 칼럼",
+      "branches": [
+        {
+          "label": "d.",
+          "thresholds": [
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "30",
+              "unit": "cm",
+              "quote": "내경이 30 cm 이상이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "'유효 길이'",
+              "operator": "ge",
+              "value": "4",
+              "unit": "m",
+              "quote": "'유효 길이'가 4 m 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "15 K (-258°C) ~ 35 K (-238°C) 사이의 내부온도에 작동하도록 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0.1 ~ 1 MPa 의 내압에서 작동되도록 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "오스테나이트 스테인리스강",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B229",
+      "title": "삭제 (Not used since 2020)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "삭제 (Not used since 2020)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B230",
+      "title": "potassium amide 촉매 용액(KNH2/NH3)을 순환시킬 수 있는 펌프",
+      "branches": [
+        {
+          "label": "b. 그리고 c.1.",
+          "thresholds": [
+            {
+              "subject": "용량",
+              "operator": "gt",
+              "value": "8.5",
+              "unit": "m3/h",
+              "quote": "8.5 m3/h 를 초과하는 용량을 갖는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "potassium amide 농도",
+              "operator": "ge",
+              "value": "1",
+              "unit": "%",
+              "quote": "농축 potassium amide 용액(1% 이상의 것)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 그리고 c.2.",
+          "thresholds": [
+            {
+              "subject": "용량",
+              "operator": "gt",
+              "value": "8.5",
+              "unit": "m3/h",
+              "quote": "8.5 m3/h 를 초과하는 용량을 갖는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "potassium amide 농도",
+              "operator": "lt",
+              "value": "1",
+              "unit": "%",
+              "quote": "희석 potassium amide 용액(1% 미만의 것)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "공기차폐(즉, 밀폐)된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1.5 ~ 60 MPa의 압력에서 작동되는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "20 ~ 60 MPa의 압력에서 작동되는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B231",
+      "title": "삼중수소 시설 또는 공장 및 이를 위한 장비",
+      "branches": [
+        {
+          "label": "b.1. 수소 또는 헬륨 냉각기",
+          "thresholds": [
+            {
+              "subject": "냉각 도달 온도",
+              "operator": "le",
+              "value": "23",
+              "unit": "K",
+              "quote": "(23K)이하로 만들 수 있는 냉각능력이 있고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "열 제거 능력",
+              "operator": "gt",
+              "value": "150",
+              "unit": "W",
+              "quote": "150 W를 초과하는 열을 제거하는 능력이 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "삼중수소의 생산, 회수, 추출, 농축 또는 취급용 시설 또는 공장",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "수소 동위원소 저장 및 수소 동위원소 정화시스템으로서 저장 또는 정화 매개체로 금속 하이드라이드를 사용하는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B232",
+      "title": "터보팽창기 또는 터보팽창기 압축기 세트",
+      "branches": [
+        {
+          "label": "b.",
+          "thresholds": [
+            {
+              "subject": "수소·헬륨가스 처리량",
+              "operator": "ge",
+              "value": "1000",
+              "unit": "kg/hr",
+              "quote": "1000 kg/hr 이상의 수소가스 또는 헬륨가스 처리용으로 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "출구온도 15 K (-258 °C) ~ 35 K (-238 °C) 사이에서 작동하도록 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B233",
+      "title": "리튬 동위원소 분리 시설, 공장 그리고 이를 위한 장비와 시스템들",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "리튬동위원소 분리용 시설 또는 공장",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "리튬-수은 아말감 공정에 기반한 리튬동위원소 분리 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "리튬 동위원소 분리를 위해 전용 설계된 이온교환시스템과 이를 위해 전용 설계된 구성부품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "리튬 동위원소 분리를 위해 전용 설계된 화학교환 시스템",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1B234",
+      "title": "고 폭발성 격납용기, 챔버, 컨테이너 및 기타 유사한 격납 장치",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [
+            {
+              "subject": "격납 폭발력(TNT 환산)",
+              "operator": "ge",
+              "value": "2",
+              "unit": "kg",
+              "quote": "TNT(Trinitrotoluene) 2 kg 이상의 폭발력을 완전히 격납하도록 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "고폭발물 또는 폭발 장치를 시험하기 위해 설계된",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "진단 또는 측정 정보를 실시간 혹은 지연 전송이 가능한 구성품이나 기능을 가지고 있는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C001",
+      "title": "전자기파 흡수를 위해 전용 설계된 소재 또는 자체적으로 전도성을 갖는 고분자",
+      "branches": [
+        {
+          "label": "b. 근적외선 흡수 소재",
+          "thresholds": [
+            {
+              "subject": "흡수 파장(하한)",
+              "operator": "gt",
+              "value": "810",
+              "unit": "nm",
+              "quote": "파장이 810 nm 를 초과하고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "흡수 파장(상한)",
+              "operator": "lt",
+              "value": "2000",
+              "unit": "nm",
+              "quote": "2000 nm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. '체적 전기전도도'",
+          "thresholds": [
+            {
+              "subject": "'체적 전기전도도'",
+              "operator": "gt",
+              "value": "10000",
+              "unit": "S/m",
+              "quote": "'체적 전기전도도'가 10,000 S/m (Siemens per meter) 를 초과하거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. '표면 전기저항'",
+          "thresholds": [
+            {
+              "subject": "'표면 전기저항'",
+              "operator": "lt",
+              "value": "100",
+              "unit": "Ω/square",
+              "quote": "'표면 전기저항'이 100 Ω/square 미만인 전도성 고분자 소재",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "2×108 Hz 를 초과하고 3×1012 Hz 미만의 주파수를 흡수하기 위한 소재",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "흡수성을 제공하기 위하여 비자성 천연 또는 합성섬유로 구성된 머리카락 형태의 흡수체",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0.15 g/cm3 이하의 밀도를 가지는 '오픈-셀 폼' 플라스틱 소재로 제조된 자성손실이 없는 평면흡수체",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "고분자의 \"레이저\" 마킹; 또는\n      b. 고분자의 \"레이저\" 용접",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C001.c는 액체상태의 물질을 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C002",
+      "title": "금속합금, 금속합금분말 그리고 합금소재",
+      "branches": [
+        {
+          "label": "a.2. 티타늄알루미나이드",
+          "thresholds": [
+            {
+              "subject": "알루미늄 중량비",
+              "operator": "ge",
+              "value": "10",
+              "unit": "%",
+              "quote": "중량비 10%이상의 알루미늄과 하나 이상의 추가합금성분을 함유한 티타늄알루미나이드",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a. 니켈합금",
+          "thresholds": [
+            {
+              "subject": "'응력파괴 수명'(923 K, 676 MPa)",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "시간",
+              "quote": "온도 923 K (650°C) 및 응력 676 MPa에서 '응력파괴 수명'이 10,000시간 이상인 니켈합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.b. 니켈합금",
+          "thresholds": [
+            {
+              "subject": "'저사이클 피로파괴 수명'(823 K, 1,095 MPa)",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "사이클",
+              "quote": "온도 823 K (550°C) 및 최대응력 1,095 MPa에서 '저사이클 피로파괴 수명'이 10,000사이클 이상인 니켈합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.a. 니오비움합금",
+          "thresholds": [
+            {
+              "subject": "'응력파괴 수명'(1,073 K, 400 MPa)",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "시간",
+              "quote": "온도 1,073 K (800°C) 및 응력 400 MPa에서 '응력파괴 수명'이 10,000시간 이상인 니오비움합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.b. 니오비움합금",
+          "thresholds": [
+            {
+              "subject": "'저사이클 피로파괴 수명'(973 K, 700 MPa)",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "사이클",
+              "quote": "온도 973 K (700°C) 및 최대응력 700 MPa에서 '저사이클 피로파괴 수명'이 10,000사이클 이상인 니오비움합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.a. 티타늄합금",
+          "thresholds": [
+            {
+              "subject": "'응력파괴 수명'(723 K, 200 MPa)",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "시간",
+              "quote": "온도 723 K (450°C) 및 응력 200 MPa에서 '응력파괴 수명'이 10,000시간 이상인 티타늄합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.b. 티타늄합금",
+          "thresholds": [
+            {
+              "subject": "'저사이클 피로파괴 수명'(723 K, 400 MPa)",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "사이클",
+              "quote": "온도 723 K (450°C) 및 최대응력 400 MPa에서 '저사이클 피로파괴 수명'이 10,000사이클 이상인 티타늄합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.a. 알루미늄합금",
+          "thresholds": [
+            {
+              "subject": "인장강도(473 K)",
+              "operator": "ge",
+              "value": "240",
+              "unit": "MPa",
+              "quote": "온도 473 K (200°C) 에서 240 MPa 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.b. 알루미늄합금",
+          "thresholds": [
+            {
+              "subject": "인장강도(298 K)",
+              "operator": "ge",
+              "value": "415",
+              "unit": "MPa",
+              "quote": "온도 298 K (25°C) 에서 415 MPa 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5. 마그네슘합금",
+          "thresholds": [
+            {
+              "subject": "인장강도",
+              "operator": "ge",
+              "value": "345",
+              "unit": "MPa",
+              "quote": "345 MPa 이상의 인장강도를 갖는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "부식률(3% 염수 시험)",
+              "operator": "lt",
+              "value": "1",
+              "unit": "mm/year",
+              "quote": "3% 염수 시험에서 1 mm/year 미만의 부식률을 갖는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C002에서 코팅 목적 전용으로 만들어진 금속합금, 금속분말 그리고 합금소재는 제외",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "중량비 15 ~ 38%의 알루미늄과 하나 이상의 추가합금성분을 함유한 니켈알루미나이드",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C002.c에 명시된 분말 또는 입자성 소재로 만들어진 금속합금",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "109개 합금 입자 내에 100 µm 초과의 크기를 갖는 비금속입자를 3개(제조 공정 중에 도입되는 것)미만 포함한 경우",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "분쇄되지 않는 박편, 리본상 또는 가는 봉상형태의 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C003",
+      "title": "모든 형태의 자성금속류",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [
+            {
+              "subject": "초기상대투자율",
+              "operator": "ge",
+              "value": "120000",
+              "unit": "",
+              "quote": "초기상대투자율(permeability)이 120,000 이상이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "두께",
+              "operator": "le",
+              "value": "0.05",
+              "unit": "mm",
+              "quote": "두께가 0.05 mm 이하의 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2. 자왜 합금",
+          "thresholds": [
+            {
+              "subject": "자성기계적 커플링계수(K)",
+              "operator": "gt",
+              "value": "0.8",
+              "unit": "",
+              "quote": "자성기계적 커플링계수(K)가 0.8 을 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. + c.3.a. 비정질·'나노결정' 합금 스트립",
+          "thresholds": [
+            {
+              "subject": "포화자기유도(Bs)",
+              "operator": "ge",
+              "value": "1.6",
+              "unit": "T",
+              "quote": "포화자기유도(Bs)가 1.6 T 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "스트립 두께",
+              "operator": "le",
+              "value": "0.02",
+              "unit": "mm",
+              "quote": "스트립 두께가 0.02 mm 이하인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. + c.3.b. 비정질·'나노결정' 합금 스트립",
+          "thresholds": [
+            {
+              "subject": "포화자기유도(Bs)",
+              "operator": "ge",
+              "value": "1.6",
+              "unit": "T",
+              "quote": "포화자기유도(Bs)가 1.6 T 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "포화 자왜 5×10-4 을 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "중량비로 Fe, Co, Ni 중 한 원소가 최소 75%인 합성물",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "전기저항이 2 x 10-4 ohm-cm 이상인 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'나노결정' 소재란 X선 회절로 평각된 특정한 결정립(crystal grain)의 크기가 50nm 이하인 소재이다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C004",
+      "title": "우라늄-티타늄합금 또는 텅스텐 합금",
+      "branches": [
+        {
+          "label": "a.~d. 모두",
+          "thresholds": [
+            {
+              "subject": "밀도",
+              "operator": "gt",
+              "value": "17.5",
+              "unit": "g/cm³",
+              "quote": "밀도가 17.5 g/cm³ 을 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "탄성 한도",
+              "operator": "gt",
+              "value": "880",
+              "unit": "MPa",
+              "quote": "탄성 한도가 880 MPa 를 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대인장강도",
+              "operator": "gt",
+              "value": "1270",
+              "unit": "MPa",
+              "quote": "최대인장강도가 1,270 MPa 를 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "연신율",
+              "operator": "gt",
+              "value": "8",
+              "unit": "%",
+              "quote": "연신율이 8%를 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "Fe, Ni 또는 Cu를 기초 \"모재\"로 한 우라늄-티타늄합금 또는 텅스텐 합금",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C005",
+      "title": "\"초전도\" \"복합재료\" 전도체",
+      "branches": [
+        {
+          "label": "머리: 길이",
+          "thresholds": [
+            {
+              "subject": "길이",
+              "operator": "gt",
+              "value": "100",
+              "unit": "m",
+              "quote": "길이가 100 m 를 초과하거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "머리: 질량",
+          "thresholds": [
+            {
+              "subject": "질량",
+              "operator": "gt",
+              "value": "100",
+              "unit": "g",
+              "quote": "질량이 100 g 을 초과하는 \"초전도\" \"복합재료\" 전도체",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2. 니오비움-티타늄 '필라멘트'",
+          "thresholds": [
+            {
+              "subject": "원형 '필라멘트' 직경",
+              "operator": "lt",
+              "value": "6",
+              "unit": "µm",
+              "quote": "6 µm 의 직경) 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. Nb-Ti 이외 '필라멘트'",
+          "thresholds": [
+            {
+              "subject": "\"임계온도\"(자기유도 0)",
+              "operator": "gt",
+              "value": "9.85",
+              "unit": "K",
+              "quote": "\"임계온도\"가 9.85K(-263.3°C) 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "임계 전류밀도(4.2 K, 12 T)",
+              "operator": "gt",
+              "value": "1750",
+              "unit": "A/mm2",
+              "quote": "임계 전류밀도가 1,750 A/mm2 을 넘는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.",
+          "thresholds": [
+            {
+              "subject": "\"초전도\" 유지 온도",
+              "operator": "ge",
+              "value": "115",
+              "unit": "K",
+              "quote": "115K(-158.15°C) 이상에서 \"초전도\"를 유지하는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "Cu 또는 Cu 혼합 \"모재\" 이외의 \"모재\"에 들어가는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'필라멘트'로서 단면적이 0.28 × 10-4 mm2(원형'필라멘트'에 대해서는 6 µm 의 직경) 미만인 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C006",
+      "title": "유체 및 윤활 소재",
+      "branches": [
+        {
+          "label": "c. 댐핑 또는 부유 유체",
+          "thresholds": [
+            {
+              "subject": "순도",
+              "operator": "gt",
+              "value": "99.8",
+              "unit": "%",
+              "quote": "순도 99.8%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "200µm 이상 입자 수(100ml당)",
+              "operator": "lt",
+              "value": "25",
+              "unit": "",
+              "quote": "입자 25개 미만 함유",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "지정 성분 사용 비율",
+              "operator": "ge",
+              "value": "85",
+              "unit": "%",
+              "quote": "최소 85% 이상 사용되어 제조된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 전자냉각용 불화탄소 유체",
+          "thresholds": [
+            {
+              "subject": "지정 성분 함유량(무게)",
+              "operator": "ge",
+              "value": "85",
+              "unit": "%",
+              "quote": "무게로 85%이상 함유하고 있는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "밀도(298 K)",
+              "operator": "ge",
+              "value": "1.5",
+              "unit": "g/ml",
+              "quote": "298 K (25°C) 의 온도에서 1.5 g/ml 이상의 밀도",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "불소함유(무게)",
+              "operator": "ge",
+              "value": "60",
+              "unit": "%",
+              "quote": "무게기준 60% 이상의 불소함유",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "두 개를 초과하는 에테르(ethers) 또는 티오-에테르(ethers) 관능기를 가지고 있거나 이러한 혼합물을 함유한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "273 K (0°C) 에서 액체상태",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C006.d는 의료용 제품으로 특정되거나 포장된 물질은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C007",
+      "title": "세라믹 분말, 세라믹-\"모재\" \"복합재료\" 소재와 그 '전구체 재료'",
+      "branches": [
+        {
+          "label": "a. 티타늄 디보라이드 (TiB2) 세라믹 분말",
+          "thresholds": [
+            {
+              "subject": "총 금속불순물 허용량",
+              "operator": "lt",
+              "value": "5000",
+              "unit": "ppm",
+              "quote": "총 금속불순물의 허용량이 5,000 ppm 미만이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균 입자 크기",
+              "operator": "le",
+              "value": "5",
+              "unit": "µm",
+              "quote": "평균 입자 크기가 5 µm 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "10 µm 초과 입자 비율",
+              "operator": "le",
+              "value": "10",
+              "unit": "%",
+              "quote": "입자가 10% 이하인 티타늄 디보라이드",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.a. 연속 섬유 강화 세라믹-세라믹 \"복합재료\"",
+          "thresholds": [
+            {
+              "subject": "인장강도(1,273 K)",
+              "operator": "ge",
+              "value": "700",
+              "unit": "MPa",
+              "quote": "1,273 K (1,000℃)에서 인장강도가 700 MPa 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "크리프 변형률(1,273 K, 100 MPa, 100시간)",
+              "operator": "le",
+              "value": "1",
+              "unit": "%",
+              "quote": "100시간 동안 1% 이하의 크리프 변형률을 가지는 인장 크리프 저항성",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "유리 또는 산화물 \"모재\"를 가지고 있고 다음 중 하나로 강화된 세라믹-세라믹 \"복합재료\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"비인장강도\"가 12.7 × 103 m 를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "세라믹-\"모재\" \"복합재료\" 소재로서 실리콘, 지르코늄 또는 붕소의 카바이드 또는 질화물로 \"모재\"를 형성하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C007.c.에 명시되는 소재를 \"생산\"하기 위해 전용 설계된 '전구체 재료'",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C008",
+      "title": "비불소 고분자 물질",
+      "branches": [
+        {
+          "label": "a.2. 방향족 폴리아미드-이미드류",
+          "thresholds": [
+            {
+              "subject": "'유리전이온도(Tg)'",
+              "operator": "gt",
+              "value": "563",
+              "unit": "K",
+              "quote": "'유리전이온도(Tg)'가 563 K (290°C) 를 초과하는 방향족 폴리아미드-이미드류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3. 방향족 폴리이미드류",
+          "thresholds": [
+            {
+              "subject": "'유리전이온도(Tg)'",
+              "operator": "gt",
+              "value": "505",
+              "unit": "K",
+              "quote": "'유리전이온도(Tg)'가 505 K (232°C) 를 초과하는 방향족 폴리이미드류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.4. 방향족 폴리에테르이미드류",
+          "thresholds": [
+            {
+              "subject": "'유리전이온도(Tg)'",
+              "operator": "gt",
+              "value": "563",
+              "unit": "K",
+              "quote": "'유리전이온도(Tg)'가 563 K (290°C) 를 초과하는 방향족 폴리에테르이미드류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f. 폴리바이페닐렌 에테르설폰",
+          "thresholds": [
+            {
+              "subject": "'유리전이온도(Tg)'",
+              "operator": "gt",
+              "value": "563",
+              "unit": "K",
+              "quote": "'유리전이온도(Tg)'가 563 K (290°C) 를 초과하는 폴리바이페닐렌 에테르설폰",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.1.",
+          "thresholds": [],
+          "text": "비스말레이미드류(Bismaleimides)"
+        },
+        {
+          "label": "d.",
+          "thresholds": [],
+          "text": "폴리아릴렌 케톤(Polyarylene ketones)"
+        },
+        {
+          "label": "e.",
+          "thresholds": [],
+          "text": "아릴렌기가 비페닐렌, 트리페닐렌 또는 이들의 조합인 폴리아릴렌 설파이드(Polyarylene sulphides)"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C008.a에서 액상 또는 \"가용성\" 고상으로 레진, 분말, 펠렛(pellet), 박판, 필름, 테이프, 또는 리본 형상의 물질을 통제한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C009",
+      "title": "가공되지 않은 불소화합물",
+      "branches": [
+        {
+          "label": "b. 불소화된 폴리이미드",
+          "thresholds": [
+            {
+              "subject": "불소 함유 중량비",
+              "operator": "ge",
+              "value": "10",
+              "unit": "%",
+              "quote": "불소를 중량비 10% 이상 함유한 불소화된 폴리이미드",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 불소화된 포스파젠 탄성체",
+          "thresholds": [
+            {
+              "subject": "불소 함유 중량비",
+              "operator": "ge",
+              "value": "30",
+              "unit": "%",
+              "quote": "불소를 중량비 30% 이상 함유한 불소화된 포스파젠",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C010",
+      "title": "\"섬유상 또는 필라멘트 소재\"",
+      "branches": [
+        {
+          "label": "c.1.a. + c.2. 무기 섬유(아산화규소)",
+          "thresholds": [
+            {
+              "subject": "아산화규소 중량비",
+              "operator": "ge",
+              "value": "50",
+              "unit": "%",
+              "quote": "중량비 50% 이상의 아산화규소로 구성되고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "용융점·연화점·분해점·승화점(비활성분위기)",
+              "operator": "gt",
+              "value": "1922",
+              "unit": "K",
+              "quote": "비활성분위기에서 1,922K(1,649°C)보다 높은 용융점, 연화점, 분해점 또는 승화점을 가지는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b. + c.2. 무기 섬유(그 밖)",
+          "thresholds": [
+            {
+              "subject": "용융점·연화점·분해점·승화점(비활성분위기)",
+              "operator": "gt",
+              "value": "1922",
+              "unit": "K",
+              "quote": "비활성분위기에서 1,922K(1,649°C)보다 높은 용융점, 연화점, 분해점 또는 승화점을 가지는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.2.b. 페놀수지 함침 프리프레그",
+          "thresholds": [
+            {
+              "subject": "DMA Tg(페놀수지 함침)",
+              "operator": "ge",
+              "value": "453",
+              "unit": "K",
+              "quote": "페놀수지에 함침되었을 때 453 K (180oC) 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.2.c. 그 밖의 레진·피치 함침 프리프레그",
+          "thresholds": [
+            {
+              "subject": "DMA Tg",
+              "operator": "ge",
+              "value": "505",
+              "unit": "K",
+              "quote": "'동적기계적분석(dynamic mechanical analysis)법에 의한 유리전이온도(DMA Tg)'가 505 K (232oC) 이상인 것으로서 페놀수지가 아닌 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"비탄성률\"이 12.7 × 106 m 를 초과하는 것; 그리고\n   2. \"비인장강도\"가 23.5 × 104 m 를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"비탄성률\"이 14.65 x 106 m 를 초과하는 것; 그리고\n   2. \"비인장강도\"가 26.82 x 104 m 를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"비탄성률\"이 2.54×106 m를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"비탄성률\"이 5.6×106 m를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"비탄성률\"이 10.15 × 106 m 를 초과하는 것; 그리고\n        2. \"비인장강도\"가 17.7 × 104 m 를 초과하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C010.a은 폴리에틸렌은 제외",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "기계적으로 춉핑(Chopped), 밀링(milled) 또는 컷팅(cut)된 탄소 \"섬유상 또는 필라멘트 소재\"로서 25.0 mm 이하의 길이의 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C008.a에 명시된 폴리에테르이미드(Polyetherimides)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C008. 또는 1C009.b에 명시된 레진이나 피치",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C011",
+      "title": "금속 및 화합물",
+      "branches": [
+        {
+          "label": "a. 지르코늄·마그네슘 금속",
+          "thresholds": [
+            {
+              "subject": "입자크기",
+              "operator": "lt",
+              "value": "60",
+              "unit": "µm",
+              "quote": "입자크기가 60 µm 미만이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "지르코늄·마그네슘·합금성분 함유량",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "지르코늄, 마그네슘, 그리고 이들의 합금성분이 99% 이상 함유된 물질로 제조된 금속",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1. 붕소",
+          "thresholds": [
+            {
+              "subject": "입자크기",
+              "operator": "le",
+              "value": "60",
+              "unit": "µm",
+              "quote": "입자크기가 60 µm 이하이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "붕소 순도(중량)",
+              "operator": "ge",
+              "value": "85",
+              "unit": "%",
+              "quote": "중량기준으로 85% 이상의 순도를 가진 붕소",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2. 붕소 합금",
+          "thresholds": [
+            {
+              "subject": "입자크기",
+              "operator": "le",
+              "value": "60",
+              "unit": "µm",
+              "quote": "입자크기가 60 µm 이하이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "붕소 함유량(중량)",
+              "operator": "ge",
+              "value": "85",
+              "unit": "%",
+              "quote": "붕소의 함유량이 중량기준으로 85% 이상인 붕소 합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.",
+          "thresholds": [],
+          "text": "질산구아니딘(Guanidine nitrate) (CAS 506-93-4)"
+        },
+        {
+          "label": "d.",
+          "thresholds": [],
+          "text": "니트로구아니딘(Nitroguanidine, NQ) (CAS 556-88-7)"
+        },
+        {
+          "label": "e.",
+          "thresholds": [],
+          "text": "오플루오르화아이오딘 (CAS 7783-66-6)"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "입자의 형태(구형, 분쇄된 형태, 타원형, 박형, 연마된 형태)에 관계없이",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "알루미늄, 마그네슘, 지르코늄, 또는 베릴륨으로 포집된 (encapsulated) 형태로 되거나 되지 않았거나 모두 통제된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C012",
+      "title": "원자력 열원 소재(플루토늄·neptunium-237)",
+      "branches": [
+        {
+          "label": "a. 플루토늄",
+          "thresholds": [
+            {
+              "subject": "플루토늄-238 함량(중량)",
+              "operator": "gt",
+              "value": "50",
+              "unit": "%",
+              "quote": "플루토늄-238의 함량이 중량으로 50%를 초과하는 모든 형태의 플루토늄",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "'기분리된' 모든 형태의 neptunium-237"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "플루토늄 1g 이하의 선적",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "장비내 감지 구성품 (sensing component)에 사용된 3 '유효무게' (effective grams) 이하의 선적",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C012.b에서 Neptunium-237 1g 이하의 선적은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C101",
+      "title": "레이더 전파 반사율, 자외선/적외선 특성 및 음파특성(signature) 등을 감소시키기 위한 소재 및 장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "'미사일' 및 \"미사일\" 하부시스템, 9A012 또는 9A112.a에 명시된 무인항공기에 사용될 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "레이더 반사율(Reflectivity)를 줄이기 위해 전용 설계된 구조소재 및 코팅소재",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C101은 인공위성의 열량제어를 위해 전용 사용되는 코팅재료는 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'미사일'은 300 km를 넘는 사거리를 가진 완전한 로켓시스템 및 무인 비행 시스템을 의미한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C102",
+      "title": "재포화 열분해 탄소-탄소(carbon-carbon) 소재",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A004에 명시된 우주선 발사체 또는 9A104에 명시된 관측용 로켓을 위해 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C107",
+      "title": "1C007에 명시된 것을 제외한 흑연과 세라믹소재",
+      "branches": [
+        {
+          "label": "a.1. 미세입자흑연 실린더",
+          "thresholds": [
+            {
+              "subject": "겉보기 밀도(15 °C)",
+              "operator": "ge",
+              "value": "1.72",
+              "unit": "g/cm3",
+              "quote": "15 °C 에서 최소 1.72 g/cm3 이상의 겉보기 밀도를 가지며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자크기",
+              "operator": "le",
+              "value": "100",
+              "unit": "μm",
+              "quote": "(100 μm) 이하의 입자크기를 갖는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "직경",
+              "operator": "ge",
+              "value": "120",
+              "unit": "mm",
+              "quote": "직경이 120 mm 이상이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 실린더",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2. 미세입자흑연 튜브",
+          "thresholds": [
+            {
+              "subject": "겉보기 밀도(15 °C)",
+              "operator": "ge",
+              "value": "1.72",
+              "unit": "g/cm3",
+              "quote": "15 °C 에서 최소 1.72 g/cm3 이상의 겉보기 밀도를 가지며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자크기",
+              "operator": "le",
+              "value": "100",
+              "unit": "μm",
+              "quote": "(100 μm) 이하의 입자크기를 갖는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "65",
+              "unit": "mm",
+              "quote": "내경이 65 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "ge",
+              "value": "25",
+              "unit": "mm",
+              "quote": "벽 두께(wall thickness)가 25 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3. 미세입자흑연 블록",
+          "thresholds": [
+            {
+              "subject": "겉보기 밀도(15 °C)",
+              "operator": "ge",
+              "value": "1.72",
+              "unit": "g/cm3",
+              "quote": "15 °C 에서 최소 1.72 g/cm3 이상의 겉보기 밀도를 가지며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자크기",
+              "operator": "le",
+              "value": "100",
+              "unit": "μm",
+              "quote": "(100 μm) 이하의 입자크기를 갖는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 세라믹 복합재료(레이더 덮개)",
+          "thresholds": [
+            {
+              "subject": "유전상수(100 MHz - 100 GHz)",
+              "operator": "lt",
+              "value": "6",
+              "unit": "",
+              "quote": "100 MHz - 100 GHz 의 주파수대에서 유전상수 6 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f. '초고온 세라믹' 모재 세라믹 복합재료",
+          "thresholds": [
+            {
+              "subject": "모재 녹는점",
+              "operator": "ge",
+              "value": "3000",
+              "unit": "°C",
+              "quote": "3000°C 이상의 녹는점을 가지는 '초고온 세라믹' 모재(matrix)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "열분해 또는 섬유강화흑연으로서 로켓의 노즐과 \"미사일\"에 사용가능한 재진입 비행체의 첨두에 사용될 수 있는 것"
+        },
+        {
+          "label": "d.",
+          "thresholds": [],
+          "text": "대형가공이 가능한 실리콘-카바이드 강화 불연소 세라믹으로서 \"미사일\" 첨두(nose tip)에 사용될 수 있는 것"
+        },
+        {
+          "label": "e.",
+          "thresholds": [],
+          "text": "강화 실리콘-카바이드 세라믹 복합재로서 \"미사일\"에 사용할 수 있는 첨두, 재진입비행체와 노즐 플랩에 사용될 수 있는 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "로켓의 노즐이나 재진입 비행체의 첨두 용도로 가공될 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "120 mm × 120 mm × 50mm 이상의 규격을 갖는 블록",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C107.f는 비복합재료 형태의 '초고온 세라믹' 물질은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C111",
+      "title": "1C011에 명시된 것 이외의 추진제 및 추진제를 구성하는 화학물질",
+      "branches": [
+        {
+          "label": "a.1. 구형·타원형 알루미늄 분말",
+          "thresholds": [
+            {
+              "subject": "입자 사이즈",
+              "operator": "lt",
+              "value": "200",
+              "unit": "µm",
+              "quote": "입자 사이즈가 200 µm 미만의 입자이면서",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "알루미늄 함량(중량)",
+              "operator": "ge",
+              "value": "97",
+              "unit": "%",
+              "quote": "알루미늄 함량이 중량으로 97%이상 함유된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.a. 지르코늄·베릴륨·마그네슘 금속분말",
+          "thresholds": [
+            {
+              "subject": "60 µm 미만 입자 비율(부피·중량)",
+              "operator": "ge",
+              "value": "90",
+              "unit": "%",
+              "quote": "총 입자의 부피 혹은 중량으로 적어도 90% 이상이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자 크기",
+              "operator": "lt",
+              "value": "60",
+              "unit": "µm",
+              "quote": "(60 µm) 미만(체, 레이저 분광법, 광학 스캐닝 등의 방법으로 측정된 것)",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "지르코늄·베릴륨·마그네슘 함량(중량)",
+              "operator": "ge",
+              "value": "97",
+              "unit": "%",
+              "quote": "다음 중 하나가 중량으로 97% 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.b. 붕소·붕소 합금 금속분말",
+          "thresholds": [
+            {
+              "subject": "60 µm 미만 입자 비율(부피·중량)",
+              "operator": "ge",
+              "value": "90",
+              "unit": "%",
+              "quote": "총 입자의 부피 혹은 중량으로 적어도 90% 이상이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자 크기",
+              "operator": "lt",
+              "value": "60",
+              "unit": "µm",
+              "quote": "60 µm 미만(체, 레이저 분광법, 광학 스캐닝 등의 방법으로 측정된 것)",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "붕소 함유량(중량)",
+              "operator": "ge",
+              "value": "85",
+              "unit": "%",
+              "quote": "붕소 함유량이 중량으로 85% 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3.",
+          "thresholds": [],
+          "text": "액체 추진로켓 엔진에 사용될 수 있는 산화물질로서 다음의 것"
+        },
+        {
+          "label": "a.4.",
+          "thresholds": [],
+          "text": "히드라진 유도체로 다음의 것"
+        },
+        {
+          "label": "a.5.",
+          "thresholds": [],
+          "text": "히드라진 대체연료로 다음의 것"
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "고분자물질"
+        },
+        {
+          "label": "c.",
+          "thresholds": [],
+          "text": "기타 추진제 첨가제 및 보조제로서 다음의 것"
+        },
+        {
+          "label": "d.",
+          "thresholds": [],
+          "text": "9A004, 9A012 또는 9A104에 명시된 시스템에 사용되도록 전용 합성된 '젤 추진제'"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "총무게중 최소 10%가 ISO 2591-1:1988, 또는 동등한 국가규격에 따라 63 µm 미만의 입자로 된 것에 한한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C111.a.2.a와 1C111.a.2.b는 하나 이상의 모드가 통제되는 다중모드 분포(다른 입자 사이즈들간의 혼합물)에서는 전체 분말 혼합물을 통제한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C111.c.6.o는 육각 탄소 방향족 관능기가 페로신 분자에 결합된 페로신 유도체는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C116",
+      "title": "마레이징강",
+      "branches": [
+        {
+          "label": "a.1. + b.1.",
+          "thresholds": [
+            {
+              "subject": "최대 인장강도(20 °C, 용체화 풀림 단계)",
+              "operator": "ge",
+              "value": "0.9",
+              "unit": "GPa",
+              "quote": "최대 인장강도가 다음 값 이상인 것:\n  1. 용체화 풀림 단계에서 0.9 GPa",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "두께·벽 두께",
+              "operator": "le",
+              "value": "5.0",
+              "unit": "mm",
+              "quote": "벽 두께가 5.0 mm 이하인 시트, 플레이트 혹은 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.1. + b.2.",
+          "thresholds": [
+            {
+              "subject": "최대 인장강도(20 °C, 용체화 풀림 단계)",
+              "operator": "ge",
+              "value": "0.9",
+              "unit": "GPa",
+              "quote": "최대 인장강도가 다음 값 이상인 것:\n  1. 용체화 풀림 단계에서 0.9 GPa",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "le",
+              "value": "50",
+              "unit": "mm",
+              "quote": "벽 두께가 50 mm 이하인 튜브형태이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "270",
+              "unit": "mm",
+              "quote": "내경이 270 mm 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2. + b.1.",
+          "thresholds": [
+            {
+              "subject": "최대 인장강도(20 °C, 석출 경화 단계)",
+              "operator": "ge",
+              "value": "1.5",
+              "unit": "GPa",
+              "quote": "최대 인장강도가 다음 값 이상인 것:\n  1. 용체화 풀림 단계에서 0.9 GPa; 또는 \n  2. 석출 경화 단계에서 1.5 GPa",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "두께·벽 두께",
+              "operator": "le",
+              "value": "5.0",
+              "unit": "mm",
+              "quote": "벽 두께가 5.0 mm 이하인 시트, 플레이트 혹은 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2. + b.2.",
+          "thresholds": [
+            {
+              "subject": "최대 인장강도(20 °C, 석출 경화 단계)",
+              "operator": "ge",
+              "value": "1.5",
+              "unit": "GPa",
+              "quote": "최대 인장강도가 다음 값 이상인 것:\n  1. 용체화 풀림 단계에서 0.9 GPa; 또는 \n  2. 석출 경화 단계에서 1.5 GPa",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "le",
+              "value": "50",
+              "unit": "mm",
+              "quote": "벽 두께가 50 mm 이하인 튜브형태이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "270",
+              "unit": "mm",
+              "quote": "내경이 270 mm 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "탄소 함량이 중량기준 0.03% 이하이고 치환형 원소 혹은 석출물(precipitate)을 활용해 합금의 강도 및 시효경화(age-hardening)를 유도하는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C117",
+      "title": "우주발사체·UAV·로켓모터용 구성부품의 가공을 위한 재료",
+      "branches": [
+        {
+          "label": "a. 텅스텐 미립자",
+          "thresholds": [
+            {
+              "subject": "순도",
+              "operator": "ge",
+              "value": "97",
+              "unit": "%",
+              "quote": "순도 97%이상, 50 × 10-6 m (50 µm) 이하의 크기를 가지는 텅스텐과 텅스텐 합금 미립자",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "크기",
+              "operator": "le",
+              "value": "50",
+              "unit": "µm",
+              "quote": "(50 µm) 이하의 크기를 가지는 텅스텐과 텅스텐 합금 미립자",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 몰리브덴 미립자",
+          "thresholds": [
+            {
+              "subject": "순도",
+              "operator": "ge",
+              "value": "97",
+              "unit": "%",
+              "quote": "순도 97% 이상, 50 × 10-6 m (50 µm) 이하의 크기를 가지는 몰리브덴과 몰리브덴 합금 미립자",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "크기",
+              "operator": "le",
+              "value": "50",
+              "unit": "µm",
+              "quote": "(50 µm) 이하의 크기를 가지는 몰리브덴과 몰리브덴 합금 미립자",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.a. + c.2.a.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량",
+              "operator": "ge",
+              "value": "97",
+              "unit": "%",
+              "quote": "텅스텐과 텅스텐 합금으로 텅스텐 함량이 97% 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "직경",
+              "operator": "ge",
+              "value": "120",
+              "unit": "mm",
+              "quote": "직경이 120 mm 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 실린더",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.a. + c.2.b.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량",
+              "operator": "ge",
+              "value": "97",
+              "unit": "%",
+              "quote": "텅스텐과 텅스텐 합금으로 텅스텐 함량이 97% 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "65",
+              "unit": "mm",
+              "quote": "내경이 65 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "ge",
+              "value": "25",
+              "unit": "mm",
+              "quote": "벽 두께(wall thickness)가 25 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b. + c.2.a.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량(구리 침투)",
+              "operator": "ge",
+              "value": "80",
+              "unit": "%",
+              "quote": "구리 침투(Copper infiltrated) 텅스텐으로 텅스텐 함량이 80% 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "직경",
+              "operator": "ge",
+              "value": "120",
+              "unit": "mm",
+              "quote": "직경이 120 mm 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 실린더",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b. + c.2.b.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량(구리 침투)",
+              "operator": "ge",
+              "value": "80",
+              "unit": "%",
+              "quote": "구리 침투(Copper infiltrated) 텅스텐으로 텅스텐 함량이 80% 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "65",
+              "unit": "mm",
+              "quote": "내경이 65 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "ge",
+              "value": "25",
+              "unit": "mm",
+              "quote": "벽 두께(wall thickness)가 25 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.c. + c.2.a.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량(은 침투)",
+              "operator": "ge",
+              "value": "80",
+              "unit": "%",
+              "quote": "은 침투(Silver infiltrated) 텅스텐으로 텅스텐 함량이 80% 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "직경",
+              "operator": "ge",
+              "value": "120",
+              "unit": "mm",
+              "quote": "직경이 120 mm 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 실린더",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.c. + c.2.b.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량(은 침투)",
+              "operator": "ge",
+              "value": "80",
+              "unit": "%",
+              "quote": "은 침투(Silver infiltrated) 텅스텐으로 텅스텐 함량이 80% 이상인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "ge",
+              "value": "65",
+              "unit": "mm",
+              "quote": "내경이 65 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "ge",
+              "value": "25",
+              "unit": "mm",
+              "quote": "벽 두께(wall thickness)가 25 mm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "길이",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mm",
+              "quote": "길이가 50 mm 이상인 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9A004의 우주발사체, 9A012의 UAV(무인항공기) 또는 9A104의 로켓모터(미사일)용 구성부품의 가공을 위한 재료",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "120 mm × 120 mm × 50 mm 이상의 규격을 갖는 블록",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C118",
+      "title": "티타늄-안정화된 듀플렉스 스텐레스강(Ti-DSS)",
+      "branches": [
+        {
+          "label": "a. + b.1. 주괴 또는 봉강",
+          "thresholds": [
+            {
+              "subject": "티타늄 성분(중량)",
+              "operator": "gt",
+              "value": "0.10",
+              "unit": "%",
+              "quote": "티타늄 성분이 0.10%(중량) 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각 면 크기",
+              "operator": "ge",
+              "value": "100",
+              "unit": "mm",
+              "quote": "각 면이 100 mm 이상의 크기를 갖는 주괴 또는 봉강",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. + b.2. 박판",
+          "thresholds": [
+            {
+              "subject": "티타늄 성분(중량)",
+              "operator": "gt",
+              "value": "0.10",
+              "unit": "%",
+              "quote": "티타늄 성분이 0.10%(중량) 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "폭",
+              "operator": "ge",
+              "value": "600",
+              "unit": "mm",
+              "quote": "폭 600 mm 이상이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "두께",
+              "operator": "le",
+              "value": "3",
+              "unit": "mm",
+              "quote": "두께가 3 mm 이하인 박판",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. + b.3. 튜브",
+          "thresholds": [
+            {
+              "subject": "티타늄 성분(중량)",
+              "operator": "gt",
+              "value": "0.10",
+              "unit": "%",
+              "quote": "티타늄 성분이 0.10%(중량) 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "외경",
+              "operator": "ge",
+              "value": "600",
+              "unit": "mm",
+              "quote": "외경이 600 mm 이상이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "벽 두께",
+              "operator": "le",
+              "value": "3",
+              "unit": "mm",
+              "quote": "벽 두께가 3 mm 이하인 튜브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "크롬 17.0~23.0%(중량) 및 니켈 4.5～7.0%(중량)을 함유",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "오스테나이트가 부피로 최소한 10%인 것(ASTM E-1181-87 또는 동등 국가규격에 의함)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C202",
+      "title": "1C002.b.3. 또는 b.4.에 명시된 것 이외의 합금",
+      "branches": [
+        {
+          "label": "a. 알루미늄 합금",
+          "thresholds": [
+            {
+              "subject": "최대인장강도(293 K)",
+              "operator": "ge",
+              "value": "460",
+              "unit": "MPa",
+              "quote": "온도 293 K (20°C)에서 최대인장강도 460 MPa 이상을 '견딜 수 있는' 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "외경",
+              "operator": "gt",
+              "value": "75",
+              "unit": "mm",
+              "quote": "외경 75 mm 초과의 튜브나 원통(단조품 포함) 형태의 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 티타늄 합금",
+          "thresholds": [
+            {
+              "subject": "최대인장강도(293 K)",
+              "operator": "ge",
+              "value": "900",
+              "unit": "MPa",
+              "quote": "온도 293 K (20°C)에서 최대인장강도 900 MPa 이상을 '견딜 수 있는' 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "외경",
+              "operator": "gt",
+              "value": "75",
+              "unit": "mm",
+              "quote": "외경 75 mm 초과의 튜브나 원통(단조품 포함) 형태의 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'견딜 수 있는' 합금은 열처리 전 또는 후의 합금을 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C210",
+      "title": "1C010.a,b, 또는 e에 명시된 것 이외의 '섬유상 또는 필라멘트 소재' 또는 프리프레그",
+      "branches": [
+        {
+          "label": "c. 프리프레그 \"테이프\"",
+          "thresholds": [
+            {
+              "subject": "\"테이프\" 폭",
+              "operator": "le",
+              "value": "15",
+              "unit": "mm",
+              "quote": "15 mm 이하의 폭을 갖는 \"테이프\" (prepregs)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 프리프레그 방적사·조방사·섬유다발",
+          "thresholds": [],
+          "text": "열경화성 수지가 함침되어 있는 연속적인 \"방적사\"(yarns), \"조방사\"(rovings), \"섬유다발\"(tows)"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "12.7 × 106 m 이상의 \"비탄성률\" (specific modulus); 또는 \n   2. 23.5 x 104 m 이상의 \"비인장강도\" (specific tensile strength)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3.18 × 106 m 이상의 \"비탄성률\" (specific modulus); 그리고 \n   2. 7.62 x 104 m 이상의 \"비인장강도\" (specific tensile strength)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "에스테르(ester)를 기초로 한 섬유 표면 조정제(modifier)가 무게로 0.25%이상 포함된 아라미드 '섬유상 또는 필라멘트 소재'는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'섬유상 또는 필라멘트 소재'는 연속적인 \"모노필라멘트\", \"방적사\"(yarns), \"조방사(rovings)\", \"섬유다발\"(tows), 또는 \"테이프\"(tapes)로 한정된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C216",
+      "title": "마레이징강(maraging steel)으로서 1C116에 명시된 것을 제외한 것",
+      "branches": [
+        {
+          "label": "",
+          "thresholds": [
+            {
+              "subject": "최대인장강도(293 K)",
+              "operator": "ge",
+              "value": "1950",
+              "unit": "MPa",
+              "quote": "293 K (20°C) 에서 1,950 MPa 이상의 최대인장강도를 '견딜 수 있는' 마레이징강(maraging steel)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C216에서 75mm이하의 모든 선형차원 치수는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C225",
+      "title": "농축보론",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "보론(붕소)-10(10B) 동위원소의 농도가 천연상태에서의 농도보다 높은 농축보론",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "boron-10의 천연 동위원소 농도는 약 18.5wt% (20at%)이다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C226",
+      "title": "텅스텐, 텅스텐 카바이드 및 중량으로 90% 이상의 텅스텐을 포함하는 합금",
+      "branches": [
+        {
+          "label": "a. 그리고 b.",
+          "thresholds": [
+            {
+              "subject": "텅스텐 함량(중량, 합금)",
+              "operator": "ge",
+              "value": "90",
+              "unit": "%",
+              "quote": "중량으로 90% 이상의 텅스텐을 포함하는 합금",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "질량",
+              "operator": "gt",
+              "value": "20",
+              "unit": "kg",
+              "quote": "20 kg 을 초과하는 질량의 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "100 mm ~ 300 mm 사이의 내경을 갖고, 속이 빈 실린더 형태의 대칭성을 갖는",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C226에서는 중량 또는 감마선 시준기(collimator)로 사용하기 위해 전용 설계된 제품은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C227",
+      "title": "칼슘",
+      "branches": [
+        {
+          "label": "a. 그리고 b.",
+          "thresholds": [
+            {
+              "subject": "마그네슘 이외 금속불순물(중량)",
+              "operator": "lt",
+              "value": "1000",
+              "unit": "ppm",
+              "quote": "마그네슘 이외의 금속불순물이 중량으로 1000 ppm 미만의 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "보론(중량)",
+              "operator": "lt",
+              "value": "10",
+              "unit": "ppm",
+              "quote": "보론(붕소)이 중량으로 10 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C228",
+      "title": "마그네슘",
+      "branches": [
+        {
+          "label": "a. 그리고 b.",
+          "thresholds": [
+            {
+              "subject": "칼슘 이외 금속불순물(중량)",
+              "operator": "lt",
+              "value": "200",
+              "unit": "ppm",
+              "quote": "칼슘 이외의 금속불순물이 중량으로 200 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "보론(중량)",
+              "operator": "lt",
+              "value": "10",
+              "unit": "ppm",
+              "quote": "보론(붕소)이 중량으로 10 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C229",
+      "title": "비스무스(Bismuth)",
+      "branches": [
+        {
+          "label": "a. 그리고 b.",
+          "thresholds": [
+            {
+              "subject": "순도(중량)",
+              "operator": "ge",
+              "value": "99.99",
+              "unit": "%",
+              "quote": "중량으로 순도 99.99% 이상의 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "은 함량(중량)",
+              "operator": "lt",
+              "value": "10",
+              "unit": "ppm",
+              "quote": "은이 중량으로 10ppm (parts per million) 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C230",
+      "title": "베릴륨 금속, 베릴륨 합금, 베릴륨 화합물 및 그 제조물",
+      "branches": [
+        {
+          "label": "베릴륨 합금",
+          "thresholds": [
+            {
+              "subject": "베릴륨 함량(중량)",
+              "operator": "gt",
+              "value": "50",
+              "unit": "%",
+              "quote": "중량으로 50% 초과의 베릴륨을 포함하는 합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "베릴륨 금속·화합물·제조물",
+          "thresholds": [],
+          "text": "베릴륨 금속, 중량으로 50% 초과의 베릴륨을 포함하는 합금, 베릴륨 화합물 및 그 제조물과 이들의 폐기물 또는 부산물"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "X-ray 기계용 또는 bore-hole logging 장치용 금속창",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "전자 구성부품이나 회로용으로 전용 설계되어 조립되거나 반조립된 산화물형태(oxide shapes)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "에머랄드 또는 아쿠아마린 형태의 베릴 (베릴륨과 알루미늄의 실리케이트)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C231",
+      "title": "하프늄금속, 하프늄 합금, 하프늄 화합물",
+      "branches": [
+        {
+          "label": "하프늄 합금",
+          "thresholds": [
+            {
+              "subject": "하프늄 함량(중량)",
+              "operator": "gt",
+              "value": "60",
+              "unit": "%",
+              "quote": "중량기준으로 60%를 초과하는 하프늄을 함유한 하프늄 합금 (alloy)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "하프늄 화합물",
+          "thresholds": [
+            {
+              "subject": "하프늄 함량(중량)",
+              "operator": "gt",
+              "value": "60",
+              "unit": "%",
+              "quote": "중량기준으로 60%를 초과하는 하프늄을 포함하는 하프늄 화합물 (compound)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "하프늄금속",
+          "thresholds": [],
+          "text": "하프늄금속"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C232",
+      "title": "헬륨-3(3He), 헬륨-3을 포함하는 혼합물 및 이들을 포함하는 제품이나 장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1C232에서는 1g미만의 헬륨-3을 포함하는 제품이나 장치는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C233",
+      "title": "리튬-6 농축 리튬 및 농축된 리튬을 포함하는 제품 또는 장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "자연에 존재하는 리튬-6(6Li) 동위원소보다 초과하여 농축한 리튬",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C233에서는 열형광 선량계를 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "자연에 존재하는 동위원소 Li-6의 농도는 약 6.5wt% (7.5at%)이다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C234",
+      "title": "하프늄 함량이 낮은 지르코늄",
+      "branches": [
+        {
+          "label": "지르코늄 합금",
+          "thresholds": [
+            {
+              "subject": "지르코늄 함량(중량)",
+              "operator": "gt",
+              "value": "50",
+              "unit": "%",
+              "quote": "중량기준으로 지르코늄을 50% 초과하여 포함하고 있는 합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "지르코늄 금속·화합물·제품",
+          "thresholds": [],
+          "text": "지르코늄 금속, 중량기준으로 지르코늄을 50% 초과하여 포함하고 있는 합금, 화합물, 그 제품 및 이들의 폐기물이나 부산물"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "하프늄 대 지르코늄의 비율이 1:500(중량기준) 미만의 하프늄을 갖는 지르코늄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C234에서는 두께가 0.10 mm 이하의 foil형태의 지르코늄은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C235",
+      "title": "삼중수소, 삼중수소 화합물, 삼중수소 혼합물 및 이들을 포함하는 제품이나 장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "삼중수소 대 수소의 원자비율이 1/1,000을 초과하는 혼합물",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C235에서는 1.48×103GBq(40Ci) 미만의 삼중수소를 포함하는 제품이나 장치를 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C236",
+      "title": "알파-중성자 반응(α-n reaction)을 기반으로 중성자 선원 생성에 적합한 방사성 핵종",
+      "branches": [
+        {
+          "label": "b. 화합물",
+          "thresholds": [
+            {
+              "subject": "총 방사능",
+              "operator": "ge",
+              "value": "37",
+              "unit": "GBq/kg",
+              "quote": "37 GBq/kg 이상의 총 방사능을 갖는 화합물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 혼합물",
+          "thresholds": [
+            {
+              "subject": "총 방사능",
+              "operator": "ge",
+              "value": "37",
+              "unit": "GBq/kg",
+              "quote": "37 GBq/kg 이상의 총 방사능을 갖는 혼합물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.",
+          "thresholds": [],
+          "text": "원소"
+        },
+        {
+          "label": "d.",
+          "thresholds": [],
+          "text": "상기의 것을 포함하는 제품이나 장치"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C236에서는 3.7 GBq 미만의 방사능을 포함하는 제품이나 장치는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C237",
+      "title": "라듐-226(226Ra), 라듐-226 합금, 라듐-226 화합물, 또는 라듐-226을 함유하고 있는 혼합물",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "의료기기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "방사능량이 0.37 GBq(10 millicuries) 미만인 라듐-226을 함유하고 있는 제품 또는 장치",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C238",
+      "title": "삼불화염소(CIF3)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "삼불화염소(CIF3)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C239",
+      "title": "고폭발물 또는 고폭발물의 함유량이 중량으로 2%를 초과하는 물질 또는 혼합물",
+      "branches": [
+        {
+          "label": "",
+          "thresholds": [
+            {
+              "subject": "고폭발물 함유량(중량)",
+              "operator": "gt",
+              "value": "2",
+              "unit": "%",
+              "quote": "고폭발물의 함유량이 중량으로 2%를 초과하는 물질 또는 혼합물",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "결정 밀도",
+              "operator": "gt",
+              "value": "1.8",
+              "unit": "g/cm3",
+              "quote": "1.8 g/cm3 를 초과하는 결정(crystal) 밀도와",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "폭굉속도",
+              "operator": "gt",
+              "value": "8000",
+              "unit": "m/s",
+              "quote": "8,000 m/s를 초과하는 폭굉속도를 갖는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "군용물자 통제목록에 명시된 것을 제외한 고폭발물",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C240",
+      "title": "0B001.c.1.에 명시된 것 이외의 니켈 분말 및 다공성의 니켈금속",
+      "branches": [
+        {
+          "label": "a. 니켈 분말",
+          "thresholds": [
+            {
+              "subject": "니켈 순도(중량)",
+              "operator": "ge",
+              "value": "99.0",
+              "unit": "%",
+              "quote": "중량기준 니켈 순도가 99.0% 이상의 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균 입자 크기(ASTM B 330)",
+              "operator": "lt",
+              "value": "10",
+              "unit": "µm",
+              "quote": "평균 입자 크기가 10 µm 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "1C240.a에 명시된 소재로부터 제조된 다공성 니켈금속"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "필라멘트형태의 니켈분말",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "박판(sheet)당 1000 ㎠이하의 단일 다공성 니켈 금속 판",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C241",
+      "title": "레늄, 레늄 합금 및 레늄과 텅스텐을 포함하고 있는 합금",
+      "branches": [
+        {
+          "label": "a. 그리고 b.",
+          "thresholds": [
+            {
+              "subject": "레늄(또는 레늄+텅스텐) 함량(중량, 합금)",
+              "operator": "ge",
+              "value": "90",
+              "unit": "%",
+              "quote": "중량으로 90% 이상의 레늄을 포함하는 합금",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "질량",
+              "operator": "gt",
+              "value": "20",
+              "unit": "kg",
+              "quote": "20 kg 을 초과하는 질량의 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "100 mm ~ 300 mm 사이의 내경을 갖고, 속이 빈 실린더 형태의 대칭성을 갖는",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C350",
+      "title": "독성화학작용제의 전구체로 사용될 수 있는 화학물질 및 이들을 하나 이상 함유하고 있는 \"화학 혼합물\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "같은 구조식의 화학물질들(예, 수화물, 동위원소로 표지된 형태 또는 가능한 모든 입체 이성질체)은 물질명 또는 CAS번호에 관계없이 통제된다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"화학무기금지협약 비가입국\"으로의 수출에 있어서, 1C350.1, .3, .5, .11, .12, .13, .17, .18, .21, .22, .26, .27, .28, .31, .32, .33, .34, .35, .36, .54, .55, .56, .57, .63, .65상에 명시된 화학물질을 하나 이상 함유하고 있는 \"화학 혼합물\"로서, 이에 명시된 각각의 화학물질이 화학혼합물 중량의 10%이하일 때는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"화학무기금지협약 가입국\"으로의 수출에 있어서 1C350.1, .3, .5, .11, .12, .13, .17, .18, .21, .22, .26, .27, .28, .31, .32, .33, .34, .35, .36, .54, .55, .56, .57, .63, .65상에 명시된 화학물질을 하나 이상 함유하고 있는 \"화학 혼합물\"로서, 이에 명시된 각각의 화학물질이 화학혼합물 중량의 30%이하일 때는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "이에 명시된 각각의 화학물질이 화학혼합물 중량의 30%이하일 때는 통제하지 않는다.\n주 4: 1C350은 개인사용 목적 또는 소매용도의 소비재로 확인된 물품에 대해서는 적용하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C351",
+      "title": "인체 및 동물 병원체 및 \"독소\"",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [],
+          "text": "바이러스로서 다음의 것"
+        },
+        {
+          "label": "c.",
+          "thresholds": [],
+          "text": "박테리아로서 다음의 것"
+        },
+        {
+          "label": "d.",
+          "thresholds": [],
+          "text": "\"독소\" 및 그 하위단위로서 다음의 것"
+        },
+        {
+          "label": "e.",
+          "thresholds": [],
+          "text": "진균으로 다음의 것"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C352",
+      "title": "삭제 (Not used)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "삭제 (Not used)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C353",
+      "title": "'유전변형생물' 또는 '유전물질'",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [],
+          "text": "1C351.a 또는 1C354.a의 바이러스에 특이적인 유전자, 유전자들, 번역 산물, 또는 번역 산물들"
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "1C351.c 또는 1C354.b의 박테리아에, 또는 1C351.e 또는 1C354.c의 진균에 특이적인 유전자 혹은 유전자들"
+        },
+        {
+          "label": "c.",
+          "thresholds": [],
+          "text": "1C351.d의 \"독소\" 또는 그 \"독소의 하위단위\""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'병원성 부여 또는 향상'시킬 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C351과 1C353은 \"백신\"을 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "6주된 닭에서 1.2보다 큰  IVPI (intravenous pathogenicity index, 정맥 내 병원성지수)를 갖는 A형 바이러스",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C351.d는 \"면역독소\"를 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C354",
+      "title": "식물병원체",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [],
+          "text": "바이러스로서, 자연적이든 개량 또는 변형되었든 간에, \"분리되어 살아있는 배양체\""
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "박테리아로서, 자연적이든 개량 또는 변형되었든 간에, \"분리되어 살아있는 배양체\""
+        },
+        {
+          "label": "c.",
+          "thresholds": [],
+          "text": "진균(Fungi)으로서, 자연적이든 개량 또는 변형되었든 간에, \"분리되어 살아있는 배양체\""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:1C450",
+      "title": "독성 화학물질과 독성화학물질 전구체 및 이를 하나 이상 포함하고 있는 \"화학 혼합물\"",
+      "branches": [
+        {
+          "label": "a.",
+          "thresholds": [],
+          "text": "독성 화학물로서 다음의 것"
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "독성화학물 전구체(precursors)로서 다음의 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C450.a.1 및 a.2 도입부에 명시된 화학물질을 하나 이상 포함하고 있는 \"화학 혼합물\"로서, 각각의 명시된 화학물질이 혼합물 중량의 1% 이하일 때는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C450.a.4, .a.5, .a.6, .a.7 도입부에 명시된 화학물질을 하나 이상 포함하고 있는 \"화학 혼합물\"로서, 각각의 명시된 화학물질이 혼합물 중량의 30% 이하일 때는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C450.b.1, .b.2, .b.3, .b.4, .b.5, .b.6에 명시된 화학물질을 하나 이상 포함하고 있는 \"화학 혼합물\"로서, 각각의 명시된 화학물질이 혼합물 중량의 10% 이하일 때는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C450.b.1은 포노포스(Fonofos)를 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1C450은 개인사용 목적 또는 소매용도의 소비재로 확인된 물품에 대해서는 적용하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C513",
+      "title": "'고엔트로피 합금' 또는 \"내화성 금속 및 합금\" 분말로, '접종제'로 변형된 표면을 포함하는 것",
+      "branches": [
+        {
+          "label": "'고엔트로피 합금' 분말",
+          "thresholds": [
+            {
+              "subject": "주요 금속 원소 수",
+              "operator": "ge",
+              "value": "5",
+              "unit": "",
+              "quote": "최소 5개 이상의 주요 금속 원소를 갖는 합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "\"내화성 금속 및 합금\" 분말",
+          "thresholds": [],
+          "text": "\"내화성 금속 및 합금\" 분말로, '접종제'로 변형된 표면을 포함하는 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'접종제'로 변형된 표면을 포함하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "각각의 원소가 5~35 원자% 범위 내의 농도에",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1C901",
+      "title": "우해면양 뇌병증 병원체",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "우해면양 뇌병증 병원체(Bovine Spongiform encephalophathy agent)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1D001",
+      "title": "1B001부터 1B003에서 명시된 장비의 \"개발\", \"생산\", \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1B001부터 1B003에서 명시된 장비의 \"개발\", \"생산\", \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1D002",
+      "title": "적층구조물(laminates) 또는 \"복합재료\"를 \"개발\"하기 위한 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "유기\"모재\", 금속\"모재\" 또는 탄소\"모재\"의 적층구조물(laminates) 또는 \"복합재료\"를 \"개발\"하기 위한 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1D003",
+      "title": "1A004.c 또는 1A004.d 항에서 통제되는 장비의 기능을 수행할 수 있도록 하는 장비를 위한 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1A004.c 또는 1A004.d 항에서 통제되는 장비의 기능을 수행할 수 있도록 하는 장비를 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1D101",
+      "title": "1B101, 1B102, 1B115, 1B117, 1B118 또는 1B119에서 명시된 물품의 운용 혹은 유지를 위한 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1B101, 1B102, 1B115, 1B117, 1B118 또는 1B119에서 명시된 물품의 운용 혹은 유지를 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1D103",
+      "title": "감소된 관찰물의 분석을 위해 전용 설계된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "레이더 전파 반사, 자외선/적외선 흔적(signatures) 및 음향 흔적과 같은 감소된 관찰물의 분석을 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1D201",
+      "title": "1B201에서 명시된 물품의 \"사용\"을 위해 전용 설계된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1B201에서 명시된 물품의 \"사용\"을 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E001",
+      "title": "1A002부터 1A005까지, 1A006.b, 1A007, 1B 또는 1C에 명시된 장비 및 소재의 \"개발\" 및 \"생산\"에 대한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1A002부터 1A005까지, 1A006.b, 1A007, 1B 또는 1C에 명시된 장비 및 소재의 \"개발\" 및 \"생산\"에 대한 일반기술해설에 규정되어 있는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E002",
+      "title": "기타 \"기술\"",
+      "branches": [
+        {
+          "label": "c.1. 세라믹 분말: b.1. + c.1.",
+          "thresholds": [
+            {
+              "subject": "총 금속 불순물(단일 산화물·카바이드)",
+              "operator": "lt",
+              "value": "1000",
+              "unit": "ppm",
+              "quote": "단일 산화물 또는 카바이드가 1,000 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균입자 크기(지르코니아)",
+              "operator": "le",
+              "value": "1",
+              "unit": "μm",
+              "quote": "평균입자 크기가 1 μm 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "5 μm 초과 입자 비율(지르코니아)",
+              "operator": "le",
+              "value": "10",
+              "unit": "%",
+              "quote": "5 μm 를 초과하는 입자가 10% 이하인 지르코니아",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1. 세라믹 분말: b.1. + c.2.",
+          "thresholds": [
+            {
+              "subject": "총 금속 불순물(단일 산화물·카바이드)",
+              "operator": "lt",
+              "value": "1000",
+              "unit": "ppm",
+              "quote": "단일 산화물 또는 카바이드가 1,000 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균입자 크기(기타 세라믹 분말)",
+              "operator": "le",
+              "value": "5",
+              "unit": "μm",
+              "quote": "평균입자 크기가 5 μm 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "10 μm 초과 입자 비율(기타 세라믹 분말)",
+              "operator": "le",
+              "value": "10",
+              "unit": "%",
+              "quote": "10 μm를 초과하는 입자가 10% 이하인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1. 세라믹 분말: b.2. + c.1.",
+          "thresholds": [
+            {
+              "subject": "총 금속 불순물(복합 화합물·단일 질화물)",
+              "operator": "lt",
+              "value": "5000",
+              "unit": "ppm",
+              "quote": "복합 화합물 또는 단일 질화물이 5,000 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균입자 크기(지르코니아)",
+              "operator": "le",
+              "value": "1",
+              "unit": "μm",
+              "quote": "평균입자 크기가 1 μm 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "5 μm 초과 입자 비율(지르코니아)",
+              "operator": "le",
+              "value": "10",
+              "unit": "%",
+              "quote": "5 μm 를 초과하는 입자가 10% 이하인 지르코니아",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1. 세라믹 분말: b.2. + c.2.",
+          "thresholds": [
+            {
+              "subject": "총 금속 불순물(복합 화합물·단일 질화물)",
+              "operator": "lt",
+              "value": "5000",
+              "unit": "ppm",
+              "quote": "복합 화합물 또는 단일 질화물이 5,000 ppm 미만인 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균입자 크기(기타 세라믹 분말)",
+              "operator": "le",
+              "value": "5",
+              "unit": "μm",
+              "quote": "평균입자 크기가 5 μm 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "10 μm 초과 입자 비율(기타 세라믹 분말)",
+              "operator": "le",
+              "value": "10",
+              "unit": "%",
+              "quote": "10 μm를 초과하는 입자가 10% 이하인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.",
+          "thresholds": [],
+          "text": "폴리벤조티아졸류(polybenzothiazoles) 또는 폴리벤조옥사졸류 (polybenzoxazoles)의 \"개발\" 및 \"생산\"을 위한 \"기술\""
+        },
+        {
+          "label": "b.",
+          "thresholds": [],
+          "text": "최소 한 개의 비닐 에테르 모노머(vinylether monomer)를 함유한 불소 탄성체 화합물의 \"개발\" 및 \"생산\"을 위한 \"기술\""
+        },
+        {
+          "label": "c.2.",
+          "thresholds": [],
+          "text": "1E002.c.1.에서 기술한 소재로 구성된 비-\"복합재료\" 세라믹소재"
+        },
+        {
+          "label": "e.",
+          "thresholds": [],
+          "text": "1C001에 명시되는 소재의 장치, 유지 및 보수를 위한 \"기술\""
+        },
+        {
+          "label": "f.",
+          "thresholds": [],
+          "text": "1A002 또는 1C007.c에 명시된 \"복합재료\" 구조물과 적층구조물(laminates) 또는 소재의 보수를 위한 \"기술\""
+        },
+        {
+          "label": "g.",
+          "thresholds": [],
+          "text": "1A004.c. 또는 1A004.d 항에서 통제되는 장비의 기능을 수행할 수 있도록 하는 장비를 위해 특별히 제작되거나 개조된 \"라이브러리\""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1E002.c.2에서 연마제를 위한 \"기술\"은 제외",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1E002.f.는 \"항공기\" 제작자의 매뉴얼에 포함된 탄소 \"섬유상 또는 필라멘트 소재\"와 에폭시수지를 사용한 \"민간 항공기\" 구조물의 보수를 위한 \"기술\"은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E101",
+      "title": "1A102, 1B001, 1B101 등에 의해 명시된 물품의 \"사용\"에 대한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1A102, 1B001, 1B101, 1B102, 1B115에서 1B119까지, 1C001, 1C101, 1C107, 1C111에서 1C118까지, 1D101 또는 1D103에 의해 명시된 물품의 \"사용\"에 대해 일반기술해설에 규정되어 있는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E102",
+      "title": "1D001, 1D101, 또는 1D103에 명시된 \"소프트웨어\"의 \"개발\"에 대한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1D001, 1D101, 또는 1D103에 명시된 \"소프트웨어\"의 \"개발\"에 대해 기술일반사항에 규정되어 있는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E103",
+      "title": "압력솥(autoclaves) 또는 유체압력솥(hydroclaves)속에서 온도, 압력 및 환경을 조절하기 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"복합재료\"나 부분적으로 처리된 \"복합재료\"의 \"생산\"에 사용되는 경우, 압력솥(autoclaves) 또는 유체압력솥(hydroclaves)속에서 온도, 압력 및 환경을 조절하기 위한 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E104",
+      "title": "열분해 형성소재를 \"생산\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "130 Pa (1 mmHg) ~ 20 kPa (150 mmHg) 의 압력으로 1,300°C ~ 2,900°C (1,573 K ~ 3,173 K) 온도 범위에서 분해되는 전구체가스(precursor gas)로부터",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1E104는 전구체가스의 조성기술, 유동률․공정제어순서 및 공정 제어변수에 관한 \"기술\"을 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E201",
+      "title": "1A002, 1A007, 1A202 등에 기술된 품목의 \"사용\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1D201에 기술된 품목의 \"사용\"을 위한 일반 기술 해설에 적용되는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E202",
+      "title": "1A202 또는 1A225부터 1A227까지에서 기술된 품목의 \"개발\", \"생산\", 또는 \"사용\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1A202 또는 1A225부터 1A227까지에서 기술된 품목의 \"개발\", \"생산\", 또는 \"사용\"을 위한 일반기술해설에 적용되는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:1E203",
+      "title": "1D201에 기술된 품목의 \"개발\", \"생산\", 또는 \"사용\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "1D201에 기술된 품목의 \"개발\", \"생산\", 또는 \"사용\"을 위한 일반기술해설에 적용되는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    }
+  ]
+}

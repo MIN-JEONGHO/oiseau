@@ -1,0 +1,25 @@
+# 이 저장소에는 분류기준(고시) 검토 프로그램(고시판정v1)만 올린다.
+# 다른 폴더와 PC 전용 지침·문서는 PC에서만 관리한다.
+/dev/*
+!/dev/고시해당 판정 프로그램/
+CLAUDE.local.md
+docs-local/
+
+# 키·비밀 값이 들어갈 수 있는 파일
+embedded_key.py
+**/_secrets.py
+.env
+
+# 도구 작업 폴더·로컬 설정
+.dryforge/
+.bkit/
+**/.claude/settings.local.json
+.venv/
+
+# 빌드 결과물
+build/
+dist/
+*.exe
+*.zip
+__pycache__/
+*.py[cod]

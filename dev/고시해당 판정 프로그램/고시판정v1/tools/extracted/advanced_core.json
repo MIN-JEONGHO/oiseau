@@ -1,0 +1,504 @@
+{
+  "scope": {"families": ["advanced", "core"]},
+  "items": [
+    {
+      "clause_id": "advanced:item:006",
+      "branches": [],
+      "checks": [
+        {"quote": "디스플레이 패널 구동을 위한 OLED용 DDI(Display Driver IC) 설계 기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "advanced:item:008",
+      "branches": [],
+      "checks": [
+        {"quote": "시스템반도체용 첨단 패키지에 해당하는 FO-WLP, FO-PLP, FO-PoP, SiP 등", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "advanced:item:009",
+      "branches": [
+        {
+          "label": "초소형",
+          "thresholds": [
+            {"subject": "화소밀도", "operator": "ge", "value": "3000", "unit": "ppi", "quote": "3,000ppi 이상의 초소형", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "중소형",
+          "thresholds": [
+            {"subject": "화소밀도", "operator": "ge", "value": "500", "unit": "ppi", "quote": "500ppi 이상의 중소형", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "중대형", "thresholds": [], "text": "FHD 이상의 중대형"},
+        {"label": "대형", "thresholds": [], "text": "4K 이상의 대형 디스플레이"}
+      ],
+      "checks": [
+        {"quote": "AMOLED 패널 설계ㆍ제조ㆍ공정ㆍ구동 기술", "source": "항목 본문"},
+        {"quote": "FHD 이상의 중대형, 4K 이상의 대형 디스플레이", "source": "항목 본문"},
+        {"quote": "모듈 공정 기술은 제외", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "advanced:item:010",
+      "branches": [],
+      "checks": [
+        {"quote": "친환경 QD 소재 적용 디스플레이 패널 설계ㆍ제조ㆍ공정 ㆍ구동 기술", "source": "항목 본문"},
+        {"quote": "LCD와 모듈기술은 제외", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "advanced:item:011",
+      "branches": [
+        {
+          "label": "초대형",
+          "thresholds": [
+            {"subject": "마이크로 LED 칩크기", "operator": "le", "value": "30", "unit": "㎛", "quote": "초대형 칩크기 30㎛ 이하", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "모바일",
+          "thresholds": [
+            {"subject": "마이크로 LED 칩크기", "operator": "le", "value": "20", "unit": "㎛", "quote": "모바일 칩크기 20㎛ 이하", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "초소형",
+          "thresholds": [],
+          "text": "초소형 칩크기 5㎛ 이\n\n  하"
+        }
+      ],
+      "checks": [
+        {"quote": "크기 30㎛ 이하 마이크로 LED를 적용한 디스플레이 패널", "source": "항목 본문"},
+        {"quote": "초소형 칩크기 5㎛ 이\n\n  하", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "advanced:item:012",
+      "branches": [],
+      "checks": [
+        {"quote": "모듈기술은 제외", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "advanced:item:015",
+      "branches": [
+        {
+          "label": "초고성능 전극",
+          "thresholds": [
+            {"subject": "전극 용량", "operator": "ge", "value": "600", "unit": "mAh/g", "quote": "600mAh/g 이상 초고성능 전극", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "차세대 리튬이차전지",
+          "thresholds": [],
+          "text": "차세대 리튬이차전지(전고체전지, 리튬황전지, 리튬금속전지)"
+        }
+      ],
+      "checks": [
+        {"quote": "초고성능 전극(실리콘그라파이트 복합음극, 황 양극, 리튬금 속 음극)", "source": "항목 본문"},
+        {"quote": "설계, 공정, 제조 및 평가기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:002",
+      "branches": [],
+      "checks": [{"quote": "D램에 해당되는 적층조립기술 및 검사 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:004",
+      "branches": [],
+      "checks": [{"quote": "낸드플래시에해당되는 적층조립기술 및 검사 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:006",
+      "branches": [],
+      "checks": [{"quote": "모바일 Application Processor SoC 설계ㆍ공정 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:007",
+      "branches": [],
+      "checks": [{"quote": "LTE/LTE_adv/5G/5G_adv Baseband Modem 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:010",
+      "branches": [],
+      "checks": [{"quote": "시스템반도체용 첨단 패키지 (FO-WLP, FO-PLP, FO-PoP 등) 조립ㆍ검사 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:011",
+      "branches": [],
+      "checks": [{"quote": "디스플레이 패널 구동을 위한 OLED용 DDI(Display Driver IC) 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:012",
+      "branches": [
+        {
+          "label": "8세대급 이상",
+          "thresholds": [
+            {"subject": "기판 가로 크기", "operator": "ge", "value": "2200", "unit": "mm", "quote": "8세대급(2200x2500mm) 이상", "quote_source": "항목 본문"},
+            {"subject": "기판 세로 크기", "operator": "ge", "value": "2500", "unit": "mm", "quote": "8세대급(2200x2500mm) 이상", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {"quote": "8세대급(2200x2500mm) 이상 TFT-LCD 패널", "source": "항목 본문"},
+        {"quote": "모듈조립 공정 기술은 제외", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:013",
+      "branches": [],
+      "checks": [
+        {"quote": "AMOLED 패널 설계ㆍ공정ㆍ제조", "source": "항목 본문"},
+        {"quote": "모듈조립 공정 기술은 제외", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:014",
+      "branches": [
+        {
+          "label": "파우치형",
+          "thresholds": [
+            {"subject": "에너지밀도", "operator": "ge", "value": "265", "unit": "Wh/kg", "quote": "파우치형 265Wh/kg이상", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "각형",
+          "thresholds": [],
+          "text": "각형은\n파우치형의 90%"
+        }
+      ],
+      "checks": [
+        {"quote": "전기자동차用 등 중대형 고에너지밀도", "source": "항목 본문"},
+        {"quote": "각형은 파우치형의 90%", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:015",
+      "branches": [],
+      "checks": [{"quote": "양극소재(전구체 포함)", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:017",
+      "branches": [
+        {
+          "label": "차세대 리튬 이차전지",
+          "thresholds": [],
+          "text": "차세대 리튬 이차전지"
+        },
+        {
+          "label": "초고성능 전극",
+          "thresholds": [
+            {"subject": "전극 용량", "operator": "ge", "value": "600", "unit": "mAh/g", "quote": "600mAh/g 이상의 초고성능 전극", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [{"quote": "차세대 리튬 이차전지(600mAh/g 이상의 초고성능 전극 포함)", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:019",
+      "branches": [],
+      "checks": [{"quote": "가솔린 직접분사식(GDI) 연료분사시스템 설계 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:020",
+      "branches": [],
+      "checks": [
+        {"quote": "하이브리드 및 전력기반 자동차(xEV) 시스템 설계 및 제조 기술", "source": "항목 본문"},
+        {"quote": "제어시스템, 배터리관리 시스템, 회생제동시스템, 전기구동시스템(모터, 인버터) 및 공조시스템에 한함", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:021",
+      "branches": [],
+      "checks": [{"quote": "수소전기자동차 연료전지시스템(수소저장ㆍ공급, 스택 및 BOP) 설계 및 공정ㆍ제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:022",
+      "branches": [],
+      "checks": [{"quote": "LPG 직접분사식(LPDi) 연료분사시스템 설계 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:023",
+      "branches": [],
+      "checks": [
+        {"quote": "Euro 6 기준 이상의 디젤엔진", "source": "항목 본문"},
+        {"quote": "연료분사시스템, 과급시스템 및 배기가스 후처리 시스템 설계 및 제조 기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:025",
+      "branches": [],
+      "checks": [{"quote": "복합소재를 이용한 일체성형 철도차량 차체 설계 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:026",
+      "branches": [],
+      "checks": [
+        {"quote": "고속철도차량의 동력시스템, 제어진단 설계 및 제조 기술", "source": "항목 본문"},
+        {"quote": "견인전동기ㆍ주전력변환장치ㆍ대차ㆍ차량종합제어장치 기술에 한함", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:027",
+      "branches": [],
+      "checks": [{"quote": "고속철도차량의 차체 설계, 해석 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:028",
+      "branches": [],
+      "checks": [{"quote": "상용화 3년 이내의 카메라, 레이더, 라이더, 정밀측위모듈 및 제어시스템에 한함", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:029",
+      "branches": [],
+      "checks": [{"quote": "FINEX 유동로 조업 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:030",
+      "branches": [
+        {
+          "label": "철근",
+          "thresholds": [
+            {"subject": "항복강도", "operator": "ge", "value": "700", "unit": "MPa", "quote": "항복강도 700MPa급 이상 철근", "quote_source": "항목 본문"},
+            {"subject": "탄소 함량", "operator": "le", "value": "0.4", "unit": "wt.%", "quote": "저탄소강(0.4wt.% C이하)", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "형강",
+          "thresholds": [
+            {"subject": "인장강도", "operator": "ge", "value": "650", "unit": "MPa", "quote": "인장강도 650MPa급 이상 형강", "quote_source": "항목 본문"},
+            {"subject": "탄소 함량", "operator": "le", "value": "0.4", "unit": "wt.%", "quote": "저탄소강(0.4wt.% C이하)", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [{"quote": "전기로방식에 의해 제조된 것에 한함", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:035",
+      "branches": [],
+      "checks": [{"quote": "초정밀 도금(분해능 0.1㎛급) 설비 및 설계ㆍ제어 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:036",
+      "branches": [],
+      "checks": [{"quote": "딥러닝 인공지능 기반의 고로 조업 자동제어 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:038",
+      "branches": [],
+      "checks": [{"quote": "아연제련공정에서의 저온 저압 헤마타이트 공정 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:039",
+      "branches": [],
+      "checks": [
+        {"quote": "고부가가치 선박(저온액화탱크선, 빙해화물선, 전기 추진선, WIG선 등)", "source": "항목 본문"},
+        {"quote": "해양시스템(해양작업선, 해양구조물 및 해양플랜트 등) 설계 기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:040",
+      "branches": [],
+      "checks": [
+        {"quote": "액화가스 화물창, 연료탱크의 설계 및 제조 기술", "source": "항목 본문"},
+        {"quote": "방벽, 단열시스템 그리고 펌프타워의 설계, 제조 및 유지ㆍ보수ㆍ수리 기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:042",
+      "branches": [
+        {
+          "label": "디젤엔진ㆍ크랭크샤프트",
+          "thresholds": [
+            {"subject": "디젤엔진 출력", "operator": "ge", "value": "5000", "unit": "마력", "quote": "5,000마력 이상 디젤엔진ㆍ크랭크샤프트", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "프로펠러",
+          "thresholds": [
+            {"subject": "프로펠러 직경", "operator": "ge", "value": "5", "unit": "m", "quote": "직경 5m이상 프로펠러", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "core:item:043",
+      "branches": [],
+      "checks": [
+        {"quote": "선박 자율운항(상황인식, 지능항해, 디지털브릿지 및 통합플랫폼, 선내외 통신 및 보안 등)", "source": "항목 본문"},
+        {"quote": "통합제어관리 시스템 기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:044",
+      "branches": [],
+      "checks": [{"quote": "조선용 ERP/PLM시스템 및 CAD기반 설계ㆍ생산지원 프로그램", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:045",
+      "branches": [],
+      "checks": [
+        {"quote": "선박용 핵심기자재 제조 기술", "source": "항목 본문"},
+        {"quote": "BWMS 제조 기술, WHRS 제조 기술, SCR, EGCS, OCCUS 등 대기오염원 배출저감 기자재 제조 기술", "source": "항목 본문"}
+      ]
+    },
+    {
+      "clause_id": "core:item:046",
+      "branches": [],
+      "checks": [{"quote": "친환경연료(저탄소 및 무탄소) 운반 및 추진선박용 연료공급장치, 화물·BOG 운영시스템의 설계와 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:047",
+      "branches": [],
+      "checks": [{"quote": "원전 구조물 설계초과지진력 저감용 고무계열 면진장치 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:048",
+      "branches": [],
+      "checks": [{"quote": "TRISO-SiC 핵연료의 상압소결 및 고온산화 저항성 향상 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:049",
+      "branches": [],
+      "checks": [{"quote": "중성자 거울 및 중성자 유도관 개발 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:050",
+      "branches": [],
+      "checks": [{"quote": "연구용원자로 U-Mo 합금핵연료 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:051",
+      "branches": [],
+      "checks": [{"quote": "LTE/LTE_adv 시스템 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:052",
+      "branches": [],
+      "checks": [{"quote": "무선장치에 활용 가능한 전력증폭기 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:053",
+      "branches": [],
+      "checks": [{"quote": "LTE/LTE_adv/5G/5G_adv 계측기기 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:054",
+      "branches": [],
+      "checks": [{"quote": "초고속 데이터 송-수신이 가능한 기가급이동무선백홀(Backhaul) 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:055",
+      "branches": [],
+      "checks": [{"quote": "차세대 패킷 광 전달망 구현을위한 광통신 핵심 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:056",
+      "branches": [],
+      "checks": [{"quote": "통신장비에 적용을 위한 양자이론 기반 퀀텀(Quantum) 리피터 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:057",
+      "branches": [],
+      "checks": [{"quote": "5G 및 5G_adv 시스템(빔포밍/MIMO 및 이동통신망) 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:058",
+      "branches": [],
+      "checks": [{"quote": "고성능 극저온 터보펌프 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:059",
+      "branches": [],
+      "checks": [{"quote": "극저온/고압 다이아프램 구동방식 개폐밸브 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:064",
+      "branches": [],
+      "checks": [{"quote": "보툴리눔 독소제제 생산 기술(보툴리눔 독소를 생산하는 균주 포함)", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:065",
+      "branches": [
+        {"label": "True non-contact mode", "thresholds": [], "text": "True  non-contact mode 기술"},
+        {"label": "Narrow Trench", "thresholds": [], "text": "Narrow Trench 측정 기술"},
+        {
+          "label": "반도체소자 3차원 분석",
+          "thresholds": [
+            {"subject": "반도체소자 공정노드", "operator": "le", "value": "30", "unit": "nm", "quote": "30nm급 이하 반도체소자 3차원 분석 기술", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {
+          "label": "대면적 시료 나노계측",
+          "thresholds": [
+            {"subject": "시료 크기", "operator": "ge", "value": "300", "unit": "mm", "quote": "300mm 이상의 대면적 시료", "quote_source": "항목 본문"}
+          ],
+          "text": ""
+        },
+        {"label": "SPM 융합", "thresholds": [], "text": "SPM 융합 기술"}
+      ],
+      "checks": [{"quote": "원자현미경 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:067",
+      "branches": [],
+      "checks": [{"quote": "다축복합가공 터닝센터의 설계 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:070",
+      "branches": [],
+      "checks": [{"quote": "Off-road용 Tier 4F, Stage-V 배기규제를 만족하는 산업용 디젤엔진 및 후처리 시스템 설계 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:071",
+      "branches": [],
+      "checks": [{"quote": "트랙터용 부하감응형 자동변속기설계 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:072",
+      "branches": [],
+      "checks": [{"quote": "Low GWP 냉매용 무급유 터보압축기 기반 산업용 고온 히트펌프 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:073",
+      "branches": [],
+      "checks": [{"quote": "인간 친화적 초고속 승강기 설계 및 운영 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:074",
+      "branches": [],
+      "checks": [{"quote": "발전용 가스터빈 수소 연소 설계 및 제조 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:075",
+      "branches": [],
+      "checks": [{"quote": "복강경, 내시경 및 영상유도 수술로봇 시스템의 설계, 제조 및 제어 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:076",
+      "branches": [],
+      "checks": [{"quote": "제조 및 물류 환경에서 다중의 로봇을 운영하는 소프트웨어 기술", "source": "항목 본문"}]
+    },
+    {
+      "clause_id": "core:item:077",
+      "branches": [],
+      "checks": [{"quote": "이동형 감시·정찰 로봇 통합통제 기술", "source": "항목 본문"}]
+    }
+  ]
+}

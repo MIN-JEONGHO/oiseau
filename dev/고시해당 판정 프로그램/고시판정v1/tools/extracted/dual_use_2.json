@@ -1,0 +1,2861 @@
+{
+ "scope": {
+  "families": [
+   "dual_use"
+  ],
+  "code_prefixes": [
+   "2"
+  ]
+ },
+ "items": [
+  {
+   "clause_id": "dual_use:control:2A001",
+   "branches": [
+    {
+     "label": "a. 볼베어링·롤러베어링(ISO 492 공차등급)",
+     "thresholds": [],
+     "text": "볼베어링 및 롤러 베어링으로서, ISO 492 공차등급 4 또는 2 (또는 국내 동등 규격) 이상의 공차를 갖고, 모넬 또는 베릴륨으로 제작된"
+    },
+    {
+     "label": "c.1 재료(자속밀도·항복강도)",
+     "thresholds": [
+      {
+       "subject": "항복강도",
+       "operator": "gt",
+       "value": "414",
+       "unit": "MPa",
+       "quote": "항복강도가 414 MPa을 초과하고",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "자속밀도",
+       "operator": "ge",
+       "value": "2.0",
+       "unit": "T",
+       "quote": "자속밀도(Flux density)가 2.0 T 이상인 재료",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 전-전자식 3차원 단극편향 여자방식 액츄에이터",
+     "thresholds": [],
+     "text": "전(全)-전자식의 3차원 단극편향 여자(勵磁)방식의 액츄에이터"
+    },
+    {
+     "label": "c.3 고온 위치센서",
+     "thresholds": [
+      {
+       "subject": "위치센서 사용온도",
+       "operator": "ge",
+       "value": "450",
+       "unit": "K",
+       "quote": "450 K (177 °C) 이상의 고온 위치센서를 사용한 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "저마찰 베어링, 베어링 시스템 및 구성품으로서 다음과 같은 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2A001.a에서 테이퍼 롤러베어링은 통제하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "능동마그네틱 베어링 시스템으로 다음 중 하나를 이용한 것과 이를 위해 전용 설계된 구성품",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2A101",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "ISO 492 공차등급 2(또는 ANSI/ABMA Std 20 공차등급 ABEC-9 또는 다른 동등한 국가 표준), 또는 그 이상의 공차를 갖고",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "a. 내부링 보어 직경이 12에서 50 mm 사이",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. 외부링 외경이 25에서 100 mm 사이",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "c. 폭이 10에서 20 mm 사이",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2A225",
+   "branches": [
+    {
+     "label": "a.2 불순도",
+     "thresholds": [
+      {
+       "subject": "불순도",
+       "operator": "le",
+       "value": "2",
+       "unit": "wt%",
+       "quote": "2wt% 이하의 불순도를 갖는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.2 탄탈륨 순도",
+     "thresholds": [
+      {
+       "subject": "탄탈륨 순도",
+       "operator": "ge",
+       "value": "99.9",
+       "unit": "wt%",
+       "quote": "99.9wt% 이상의 순도를 가지는 탄탈륨",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 탄탈륨 순도",
+     "thresholds": [
+      {
+       "subject": "탄탈륨 순도",
+       "operator": "ge",
+       "value": "98",
+       "unit": "wt%",
+       "quote": "98wt% 이상의 순도를 가지는 탄탈륨",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "액체 악티나이드(actinide) 금속에 대해 내구성을 지닌 물질로 만들어진 도가니(crucible)로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. 체적이 150cm3 (150 ㎖) ～ 8,000cm3 (8ℓ)의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. 체적 50cm3 (50㎖) ～ 2,000cm3 (2ℓ)",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "3. 탄탈륨 카바이드(tantalum carbide), 질화물(nitride), 붕소화물(boride) 또는 이들의 혼합물로 코팅된 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2A226",
+   "branches": [
+    {
+     "label": "a·c (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "호칭치수",
+       "operator": "ge",
+       "value": "5",
+       "unit": "mm",
+       "quote": "'호칭치수'가 5mm 이상인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "니켈 함유량",
+       "operator": "gt",
+       "value": "60",
+       "unit": "wt%",
+       "quote": "60wt% 초과의 니켈을 함유한 니켈합금",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "밸브 중 다음의 특성을 모두 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. 벨로우즈 밀봉(bellows seal)을 갖고 있는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "입구와 출구의 직경이 서로 다른 밸브에 대해서 2A226의 '호칭치수'는 가장 작은 직경을 적용한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B001",
+   "branches": [
+    {
+     "label": "a.1 터닝(이송거리 1.0 m 미만)",
+     "thresholds": [
+      {
+       "subject": "이송거리",
+       "operator": "lt",
+       "value": "1.0",
+       "unit": "m",
+       "quote": "이송거리가 1.0 m 미만일 때",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "0.9",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 0.9 μm이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "a.2 터닝(이송거리 1.0 m 이상)",
+     "thresholds": [
+      {
+       "subject": "이송거리",
+       "operator": "ge",
+       "value": "1.0",
+       "unit": "m",
+       "quote": "이송거리가 1.0 m 이상일 때",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "1.1",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 1.1 μm이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.1 밀링(직선 3축+회전 1축)",
+     "thresholds": [
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "0.9",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 0.9 μm이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.2 밀링(동시제어 축 5개 이상)",
+     "thresholds": [
+      {
+       "subject": "동시제어 축 수",
+       "operator": "ge",
+       "value": "5",
+       "unit": "",
+       "quote": "\"윤곽제어\"를 위해 동시에 제어될 수 있는 축이 5개 이상인 것 중 다음 어느 하나의 특성을 갖는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "1.4",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 1.4 μm이하 (보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.2.c 밀링(이송거리 4.0 m 이상)",
+     "thresholds": [
+      {
+       "subject": "이송거리",
+       "operator": "ge",
+       "value": "4.0",
+       "unit": "m",
+       "quote": "이송거리가 4.0 m 이상일 때",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "6.0",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 6.0 μm이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.3 지그보링머신",
+     "thresholds": [
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "1.1",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 1.1 μm이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.4 플라이 컷팅 머신",
+     "thresholds": [
+      {
+       "subject": "스핀들 캐밍",
+       "operator": "lt",
+       "value": "0.0004",
+       "unit": "mm",
+       "quote": "'캐밍' ('camming') 이 0.0004 mm TIR 미만(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "이송거리",
+       "operator": "gt",
+       "value": "300",
+       "unit": "mm",
+       "quote": "300 mm 초과 이송거리",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.1 연삭(반복정밀도)",
+     "thresholds": [
+      {
+       "subject": "단방향 위치결정 반복정밀도",
+       "operator": "le",
+       "value": "1.1",
+       "unit": "μm",
+       "quote": "\"단방향 위치결정 반복정밀도\"가 1.1 μm이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 연삭(동시제어 축 5개 이상)",
+     "thresholds": [
+      {
+       "subject": "동시제어 축 수",
+       "operator": "ge",
+       "value": "5",
+       "unit": "",
+       "quote": "\"윤곽제어\"를 위해 동시에 제어될 수 있는 축이 5개 이상인  것 중 다음 어느 하나의 특성을 갖는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d. 방전가공기(EDM) 회전축 2개 이상",
+     "thresholds": [
+      {
+       "subject": "동시제어 회전축 수",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "\"윤곽제어\"를 위해 동시에 제어할 수 있는 회전축이 2개 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "e. 제거가공기 위치 정확정밀도",
+     "thresholds": [
+      {
+       "subject": "위치 정확정밀도",
+       "operator": "lt",
+       "value": "0.003",
+       "unit": "°",
+       "quote": "위치 \"정확정밀도\"가 0.003° 미만(보다 우수한)의 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 심공드릴머신 가공깊이",
+     "thresholds": [
+      {
+       "subject": "최대 가공(천공) 깊이",
+       "operator": "gt",
+       "value": "5",
+       "unit": "m",
+       "quote": "최대 가공(천공) 깊이가 5 m를 초과하는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "금속, 세라믹 또는 \"복합재료\"를 제거 또는 절삭하기 위한 다음의 공작기계와 이들의 결합으로 이루어진 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주 1: 2B001은 기어 제조용으로 국한된 특수목적의 공작기계는 통제하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주 2: 2B001은 다음 중 어느 하나의 부품제조용으로 국한된 특수목적의 공작기계는 통제하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "c. 표면 연삭기",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B002",
+   "branches": [
+    {
+     "label": "a~c (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "형태 다듬질 정밀도",
+       "operator": "lt",
+       "value": "1.0",
+       "unit": "μm",
+       "quote": "1.0 µm 미만(보다 우수한)인 형태로 다듬질",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "거칠기",
+       "operator": "lt",
+       "value": "100",
+       "unit": "nm",
+       "quote": "100 nm rms 미만(보다 우수한)인 거칠기로 다듬질",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "동시제어 축 수",
+       "operator": "ge",
+       "value": "4",
+       "unit": "",
+       "quote": "동시제어될 수 있는 축의 수가 4개 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "비구면 광학표면 가공을 위해 선택적으로 소재를 제거할 수 있는 광학다듬질(optical finishing) 공작기계로, 다음의 특징을 모두 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. '자기유동다듬질'('Magnetorheological Finishing' ('MRF'))",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B003",
+   "branches": [
+    {
+     "label": "a~c (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "기어 경도(Rc)",
+       "operator": "ge",
+       "value": "40",
+       "unit": "",
+       "quote": "경화된(Rc=40 이상)",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "피치 직경",
+       "operator": "gt",
+       "value": "1250",
+       "unit": "mm",
+       "quote": "피치 직경이 1,250 mm 를 초과하는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "치폭(피치 직경 대비)",
+       "operator": "ge",
+       "value": "15",
+       "unit": "%",
+       "quote": "치폭이 피치 직경의 15% 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "쉐이빙(shaving), 다듬질(finishing), 연삭(grinding), 호닝(honing)하기 위해 전용 설계된 \"수치제어\" 공작기계",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "c. AGMA 14 (ISO 1328 등급 3과 동등한 것)와 같거나 보다 정밀한 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B004",
+   "branches": [
+    {
+     "label": "a+b.1 최대 작동압력",
+     "thresholds": [
+      {
+       "subject": "챔버 내경",
+       "operator": "ge",
+       "value": "406",
+       "unit": "mm",
+       "quote": "내경이 406 mm 이상인 챔버 공간을 갖는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "최대 작동압력",
+       "operator": "gt",
+       "value": "207",
+       "unit": "MPa",
+       "quote": "최대 작동압력이 207 MPa 초과",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "a+b.2 온도환경제어",
+     "thresholds": [
+      {
+       "subject": "챔버 내경",
+       "operator": "ge",
+       "value": "406",
+       "unit": "mm",
+       "quote": "내경이 406 mm 이상인 챔버 공간을 갖는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "온도환경제어",
+       "operator": "gt",
+       "value": "1773",
+       "unit": "K",
+       "quote": "1,773 K (1,500°C) 를 초과하는 온도환경제어가 가능한 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "a+b.3 탄화수소 주입·퇴화 기체 제거장치",
+     "thresholds": [],
+     "text": "탄화수소의 주입 및 퇴화된 기체 생성물 제거장치"
+    }
+   ],
+   "checks": [
+    {
+     "quote": "열간 \"정수압 프레스\"로서 다음 특성을 모두 갖는 것과 이를 위해 특별히 설계된 구성품과 부속품",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B004에서 챔버 내부크기란 가공온도와 가공압력이 도달될 수 있는 크기로서 고정장치는 포함하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B005",
+   "branches": [
+    {
+     "label": "a. CVD 생산장비(고진공 회전 실)",
+     "thresholds": [
+      {
+       "subject": "회전 실 진공도",
+       "operator": "le",
+       "value": "0.01",
+       "unit": "Pa",
+       "quote": "고진공(0.01 Pa 이하) 회전 실(seal)을 구비",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 이온주입 생산장비 빔 전류",
+     "thresholds": [
+      {
+       "subject": "빔 전류",
+       "operator": "ge",
+       "value": "5",
+       "unit": "mA",
+       "quote": "빔 전류 크기가 5 mA 이상인 이온주입 생산 장비",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c. EB-PVD 생산장비 전원",
+     "thresholds": [
+      {
+       "subject": "전원장치 출력",
+       "operator": "gt",
+       "value": "80",
+       "unit": "kW",
+       "quote": "80 kW 를 초과한 전원장치를 가진 전자빔 물리기상증착(EB-PVD) 생산 장비",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d.1 플라즈마 분사(감압조절 환경)",
+     "thresholds": [
+      {
+       "subject": "노즐 출구 근처 압력",
+       "operator": "le",
+       "value": "10",
+       "unit": "kPa",
+       "quote": "측정된 압력이 10 kPa 이하",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "e. 스퍼터증착 생산장비",
+     "thresholds": [
+      {
+       "subject": "전류 밀도",
+       "operator": "ge",
+       "value": "0.1",
+       "unit": "mA/mm²",
+       "quote": "전류 밀도가 0.1 mA/mm² 이상인 스퍼터(sputter)증착 생산장비",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "증착속도",
+       "operator": "ge",
+       "value": "15",
+       "unit": "µm/h",
+       "quote": "15 µm/h 이상의 증착속도",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "a. 화학기상증착(CVD) 생산 장비로서 다음 특성을 모두 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "f. 음극아크의 방향을 조절할 수 있는 전자기(電磁) 그리드를 갖춘 음극아크 증착 생산장비",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "공구를 절삭하거나 가공하기 위해 전용 설계된 화학기상증착장비(CVD), 음극아크, 스퍼터증착, 이온도금 또는 이온 주입장비를 통제하지는 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B006",
+   "branches": [
+    {
+     "label": "b.1 비접촉형 측정 시스템 분해능",
+     "thresholds": [
+      {
+       "subject": "분해능",
+       "operator": "le",
+       "value": "0.2",
+       "unit": "μm",
+       "quote": "\"분해능\"이 0.2 μm 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.3 레이저 측정 시스템 분해능",
+     "thresholds": [
+      {
+       "subject": "분해능",
+       "operator": "le",
+       "value": "0.200",
+       "unit": "nm",
+       "quote": "\"분해능\"이 0.200 nm 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c. 회전 위치 피드백장치 각 위치 정확정밀도",
+     "thresholds": [
+      {
+       "subject": "각 위치 정확정밀도",
+       "operator": "le",
+       "value": "0.9",
+       "unit": "arcsec",
+       "quote": "각 위치 \"정확정밀도\"가 0.9 arcsec 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d. 표면거칠기 측정장비 감도",
+     "thresholds": [
+      {
+       "subject": "감도",
+       "operator": "le",
+       "value": "0.5",
+       "unit": "nm",
+       "quote": "0.5 nm 이하(같거나 더 우수한)의 감도",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "치수검사 또는 치수측정 시스템과 장치, 선형 위치 피드백장치",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "ISO 10360-2 (2009)에 따라 1.7+L/1,000µm 이하(같거나 우수한)인 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "\"정확정밀도\"가 (800+(600×L/1000))nm 미만(보다 우수한)인 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B006.c는 거울의 각 변위를 검출하기 위해 시준된(collimate) 빛 (예, 레이저 광선)을 사용하는 광학기구(Auto-Collimater와 같은 장비)는 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B007",
+   "branches": [
+    {
+     "label": "d. 작동 고도",
+     "thresholds": [
+      {
+       "subject": "작동 고도",
+       "operator": "gt",
+       "value": "30000",
+       "unit": "m",
+       "quote": "고도 30,000 m 초과에서 작동되도록 특별히 설계된 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 폭발가능한 군수품 환경용",
+     "thresholds": [],
+     "text": "폭발가능한 군수품 환경에 적용되도록 국가안전규격에 맞추어 특수 설계된 것"
+    }
+   ],
+   "checks": [
+    {
+     "quote": "\"로봇\"으로 다음 중 하나의 특성을 갖는 것과, 이를 위해 특별히 설계된 제어장치와 \"엔드이펙터\"를 가진 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "작업성능의 저하없이 5 × 103 Gy(si) 초과의 방사능에 견딜 수 있도록 특별히 설계되거나 방사능적으로 경화된 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B007.b는 페인트 도장용으로 전용 설계된 \"로봇\"은 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B008",
+   "branches": [
+    {
+     "label": "c. 복합 회전테이블(동시제어 회전축 2개)",
+     "thresholds": [],
+     "text": "\"윤곽제어\"를 위해 동시에 제어될 수 있도록 설계된 2개의 회전축"
+    }
+   ],
+   "checks": [
+    {
+     "quote": "공작기계를 위해 특별히 설계된 성 '복합 회전테이블', \"틸팅 스핀들\"로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. 터닝, 밀링 또는 연삭가공 공작기계를 위해 설계된 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B009",
+   "branches": [
+    {
+     "label": "a+b (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "제어축 수",
+       "operator": "ge",
+       "value": "3",
+       "unit": "",
+       "quote": "3개 이상의 제어축을 가지고 있고 \"윤곽제어\"를 위해 동시에 제어될 수 있는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "롤러 힘",
+       "operator": "gt",
+       "value": "60",
+       "unit": "kN",
+       "quote": "한 개의 롤러의 힘이 60 kN을 초과하는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "\"수치제어\" 유닛 또는 컴퓨터제어기가 장착될 수 있는 회전성형기, 유동성형기로서 다음 모두를 가지고 있는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B009에서 회전성형과 유동성형 기능을 겸하고 있는 기계는 유동성형기로 간주한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B104",
+   "branches": [
+    {
+     "label": "a~c (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "최대 작동압력",
+       "operator": "ge",
+       "value": "69",
+       "unit": "MPa",
+       "quote": "최대 작동압력이 69 MPa 이상",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "유지 온도",
+       "operator": "ge",
+       "value": "873",
+       "unit": "K",
+       "quote": "873 K (600 °C) 이상의 온도환경을 유지할 수 있도록 설계된 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "챔버 내부직경",
+       "operator": "ge",
+       "value": "254",
+       "unit": "mm",
+       "quote": "챔버 내부직경이 254 mm 이상",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "2B004에서 통제하지 않는 \"정수압 프레스\"로 다음 특징을 모두 갖는 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B105",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "탄소-탄소 복합재료의 고밀도화를 위해 설계되거나 개조된 화학기상증착로(CVD furnace)로서 2B005에서 통제하지 않는 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B109",
+   "branches": [
+    {
+     "label": "a. 유동성형기(동시제어 축 수)",
+     "thresholds": [
+      {
+       "subject": "동시제어 축 수",
+       "operator": "ge",
+       "value": "3",
+       "unit": "",
+       "quote": "\"윤곽제어\"를 위해 동시제어 가능한 축이 3개 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "추진제 구성품 및 장비(예, 모터 케이스와 중간단)의 \"생산\"에 사용가능한 유동성형기",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. 2B009 또는 2B109.a의 유동성형기를 위하여 전용 설계된 구성품",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B116",
+   "branches": [
+    {
+     "label": "a. 진동시험 시스템",
+     "thresholds": [
+      {
+       "subject": "전달력",
+       "operator": "ge",
+       "value": "50",
+       "unit": "kN",
+       "quote": "50 kN 이상의 힘을 전달하는 동안",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "가속도(g rms)",
+       "operator": "ge",
+       "value": "10",
+       "unit": "",
+       "quote": "10 g rms 이상의 가속도로 진동시킬 수 있는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 디지털 제어기 실시간 제어 대역폭",
+     "thresholds": [
+      {
+       "subject": "실시간 제어 대역폭",
+       "operator": "gt",
+       "value": "5",
+       "unit": "kHz",
+       "quote": "'실시간 제어 대역폭'(bandwidth)이 5 kHz 초과",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c. 가진기 힘",
+     "thresholds": [
+      {
+       "subject": "가진력",
+       "operator": "ge",
+       "value": "50",
+       "unit": "kN",
+       "quote": "피진동체에 미치는 힘이 '평면테이블' 측정에서 50 kN 이상",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d. 시험체 지지구조물 유효결합력",
+     "thresholds": [
+      {
+       "subject": "유효결합력",
+       "operator": "ge",
+       "value": "50",
+       "unit": "kN",
+       "quote": "유효결합력 50 kN 이상을 가할 수 있는 완전한 가진 장치",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "진동시험 시스템, 장비와 그 구성품으로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주파수범위 20 Hz ~ 2,000 Hz 사이의 전 영역에서",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B116에서, '평면테이블'이란 고정구나 fitting이 없는 평평한 테이블 또는 표면을 말한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B117",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "복합재료 로켓 노즐과 재진입체 첨두(nose tip)의 고밀도화와 열분해를 위하여 설계되거나 개조된 장비와 공정제어기술",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B119",
+   "branches": [
+    {
+     "label": "a. 밸런싱 머신(회전속도·평면 수)",
+     "thresholds": [
+      {
+       "subject": "밸런싱 회전속도",
+       "operator": "gt",
+       "value": "12500",
+       "unit": "rpm",
+       "quote": "12,500 rpm 초과하는 속도로 회전하는 로터/조립체를 밸런싱 할 수 있는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "교정 평면 수",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "2개 평면 이상의 불균형을 교정할 수 있는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "밸런싱 머신과 관련 장비로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. 3 kg 을 초과하는 로터/조립체를 밸런싱 할 수 없는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "4. 로터 질량 1kg 당 0.2g mm까지의 잔류 비불평형을 밸런싱 할 수 있는 장비",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B119.a는 치과 또는 기타 의료장비용으로 설계되거나 개조된 밸런싱 머신은 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B120",
+   "branches": [
+    {
+     "label": "c.1 각속도·분해능",
+     "thresholds": [
+      {
+       "subject": "축 수",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "a. 2축 이상",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "각속도",
+       "operator": "ge",
+       "value": "400",
+       "unit": "도/초",
+       "quote": "각속도 400도/초 이상",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "각속도 분해능",
+       "operator": "le",
+       "value": "6",
+       "unit": "도/초",
+       "quote": "각속도 분해능 6도/초 이하",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 각속도 안정성",
+     "thresholds": [
+      {
+       "subject": "각속도 안정 범위",
+       "operator": "ge",
+       "value": "10",
+       "unit": "도",
+       "quote": "10도 이상의 범위에서",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "각속도 안정성",
+       "operator": "le",
+       "value": "0.05",
+       "unit": "%",
+       "quote": "각속도 안정성이 평균적으로 ±0.05% 이하인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.3 위치제어 정확도",
+     "thresholds": [
+      {
+       "subject": "위치제어 정확도",
+       "operator": "le",
+       "value": "5",
+       "unit": "아크 초",
+       "quote": "위치제어 정확도가 5 아크 초 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "다음 특성을 모두 갖는 모션 시뮬레이터 및 각속도(rate) 테이블",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. 슬립링 또는 전압이나 신호정보를 전달할 수 있는 통합 비접촉장치를 갖추도록 설계되거나 개조된 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주 1: 2B120은 공작기계 또는 의료장비용으로  설계되거나 개조된 회전테이블은 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B121",
+   "branches": [
+    {
+     "label": "a+b (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "축 수",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "a. 2축 이상인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "위치제어 정확도",
+       "operator": "le",
+       "value": "5",
+       "unit": "아크 초",
+       "quote": "위치제어 정확도가 5 아크 초 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "위치제어 테이블(어느 한 개의 축이라도 정밀 회전 위치제어가 가능한 장비)로서 다음 특성을 모두 갖으며 2B120에서 통제하지 않는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B121은 공작기계 또는 의료장비용으로 설계되거나 개조된 회전테이블은 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B122",
+   "branches": [
+    {
+     "label": "가속도",
+     "thresholds": [
+      {
+       "subject": "발생 가속도(g)",
+       "operator": "gt",
+       "value": "100",
+       "unit": "",
+       "quote": "100 g 초과의 가속도를 발생시킬 수 있고",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "원심가속도 시험기(Centrifuges)로 100 g 초과의 가속도를 발생시킬 수 있고",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B122에서 통제하는 원심가속도 시험기는 수출 당시 슬립링 또는 통합비접촉 장치의 장착여부와 관계없이 통제된다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B201",
+   "branches": [
+    {
+     "label": "a.1 밀링 위치결정 정확정밀도",
+     "thresholds": [
+      {
+       "subject": "위치결정 정확정밀도",
+       "operator": "le",
+       "value": "4.5",
+       "unit": "µm",
+       "quote": "위치결정 정확정밀도가 ISO 230/2 (2006)이나 국내 동등 규격에 따라 4.5 µm 이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "a.2 밀링 윤곽 회전축 2개 이상",
+     "thresholds": [
+      {
+       "subject": "윤곽 회전축 수",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "2. 2개 이상의 윤곽 회전축을 갖는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "a.3/b.3 동시제어 축 5개 이상",
+     "thresholds": [
+      {
+       "subject": "동시제어 축 수",
+       "operator": "ge",
+       "value": "5",
+       "unit": "",
+       "quote": "\"윤곽제어\"를 위해 동시에 제어될 수 있는 축이 5개 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.1 연삭 위치결정 정확정밀도",
+     "thresholds": [
+      {
+       "subject": "위치결정 정확정밀도",
+       "operator": "le",
+       "value": "3",
+       "unit": "µm",
+       "quote": "위치결정 정확정밀도가 ISO 230/2 (2006)이나 국내 동등 규격에 따라 3 µm 이하(보다 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c. 터닝(가공직경·위치결정 정확정밀도)",
+     "thresholds": [
+      {
+       "subject": "가공직경 능력",
+       "operator": "gt",
+       "value": "35",
+       "unit": "mm",
+       "quote": "35 mm 초과 가공직경 능력을 가지고",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "위치결정 정확정밀도",
+       "operator": "le",
+       "value": "4.5",
+       "unit": "μm",
+       "quote": "어느 한 개의 직선축(전체 위치결정)이라도 4.5 μm 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "금속, 세라믹 또는 \"복합재료\"를 절삭 또는 제거하기 위한 다음의 공작기계와 이들의 결합으로 이루어진 것으로서 2B001에서 통제하지 않는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "a. x축 이송이 2m를 초과",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. ISO 230/2(2006)에 따라 x축의 위치결정 정확정밀도가 22.5㎛를 초과(우수하지 않은) 하는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주 1: 2B201은 다음 중 어느 하나의 부품제조용으로 국한된 특수목적의 공작기계는 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B204",
+   "branches": [
+    {
+     "label": "a. 정수압 프레스(압력·챔버 내경)",
+     "thresholds": [
+      {
+       "subject": "최대운전압력",
+       "operator": "ge",
+       "value": "69",
+       "unit": "MPa",
+       "quote": "최대운전압력 69 MPa 이상인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "챔버 내경",
+       "operator": "gt",
+       "value": "152",
+       "unit": "mm",
+       "quote": "내경이 152 mm 를 초과하는 챔버",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "\"정수압 프레스\"와 그 관련 장비로 2B004 또는 2B104에서 통제하지 않는 것으로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. 2B204.a에서 통제하는 \"정수압 프레스\"를 위하여 특별히 설계된 금형, 주형 및 제어장치",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B206",
+   "branches": [
+    {
+     "label": "b. Hemishell 검사 시스템",
+     "thresholds": [
+      {
+       "subject": "직선축 측정불확도",
+       "operator": "le",
+       "value": "3.5",
+       "unit": "µm",
+       "quote": "\"측정불확도\"가 5 mm 당 3.5 µm 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "각도 위치 편차",
+       "operator": "le",
+       "value": "0.02",
+       "unit": "°",
+       "quote": "\"각도 위치 편차\"가 0.02° 이하인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.1 LVDT 선형성·편류",
+     "thresholds": [
+      {
+       "subject": "선형성",
+       "operator": "le",
+       "value": "0.1",
+       "unit": "%",
+       "quote": "0.1% 이하(같거나 더 우수한)인 \"선형성\"",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "편류(1일당)",
+       "operator": "le",
+       "value": "0.1",
+       "unit": "%",
+       "quote": "편류(drift)이 1일당 0.1% 이하(같거나 더 우수한)인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 레이저 측정 시스템 분해능",
+     "thresholds": [
+      {
+       "subject": "분해능",
+       "operator": "le",
+       "value": "0.1",
+       "unit": "µm",
+       "quote": "\"분해능\"이 0.1 µm 이하",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "치수검사기계, 장치, 또는 시스템으로 2B006에서 통제하지 않는 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "ISO 10360-2 (2009)에 따라 1.25+L/1,000µm 이하(같거나 우수한)인 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "ISO 10360-2 (2009)에 따라 1.7+L/800 µm 이하(같거나 우수한)인 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "\"측정불확도\"가 (0.2+L/2,000) µm 이하일 수 있는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B206내의 측정기준 값은 총 범위가 아닌 +/-(플러스/마이너스)를 의미한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B207",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "다음과 같은 \"로봇\", \"엔드이펙터\" 및 제어장치로서 2B007에서 통제하지 않는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "a. 고성능 폭탄처리 국가 안전규격에 맞추어 특별히 설계된 \"로봇\" 또는 \"엔드이펙터\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B209",
+   "branches": [
+    {
+     "label": "a. 롤러 수(세 개 또는 그 이상)",
+     "thresholds": [],
+     "text": "세 개 또는 그 이상의 롤러(능동형이나 안내형)를 가진 것"
+    }
+   ],
+   "checks": [
+    {
+     "quote": "유동성형기, 유동성형기능이 가능한 회전성형기, 그리고 맨드릴로서 다음의 기능을 가지면서 2B009 또는 2B109에서 통제하지 않는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "b. 75 mm ~ 650 mm 내경의 실린더형 회전자를 만들 수 있도록 설계된 회전자 성형(rotor-forming) 맨드릴",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B219",
+   "branches": [
+    {
+     "label": "a. 유연회전자용 원심밸런싱머신",
+     "thresholds": [
+      {
+       "subject": "유연회전자 길이",
+       "operator": "ge",
+       "value": "600",
+       "unit": "mm",
+       "quote": "600 mm 이상 길이의 유연회전자를 밸런싱하기 위한 원심밸런싱머신",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "스윙/저널 직경",
+       "operator": "gt",
+       "value": "75",
+       "unit": "mm",
+       "quote": "스윙(swing) 또는 저널(journal) 직경이 75 mm를 초과하는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "밸런싱 속도",
+       "operator": "gt",
+       "value": "5000",
+       "unit": "rpm",
+       "quote": "5,000 rpm 을 초과하는 밸런싱 속도를 갖는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 공동실린더 회전자용 원심밸런싱머신",
+     "thresholds": [
+      {
+       "subject": "저널 직경",
+       "operator": "gt",
+       "value": "75",
+       "unit": "mm",
+       "quote": "저널(journal) 직경이 75 mm를 초과하고",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "최소 달성가능 잔류 비불평형",
+       "operator": "le",
+       "value": "10",
+       "unit": "g-mm/kg",
+       "quote": "최소 달성가능 잔류 비불평형이 평면당 10 g-mm/kg 이하",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "고정형 또는 이동형, 수평형 또는 수직형에 관계없이 다면 원심밸런싱 머신으로 다음의 특징을 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2. 0.9 ~ 23 kg의 무게용량",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "4. 벨트 전동 타입의 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B225",
+   "branches": [
+    {
+     "label": "a. 핫셀벽 통과 운전",
+     "thresholds": [
+      {
+       "subject": "핫셀벽 두께",
+       "operator": "ge",
+       "value": "0.6",
+       "unit": "m",
+       "quote": "0.6 m 이상의 핫셀벽을 통과하여 운전할 수 있는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 핫셀 윗부분 넘어 운전",
+     "thresholds": [
+      {
+       "subject": "핫셀 윗부분 두께",
+       "operator": "ge",
+       "value": "0.6",
+       "unit": "m",
+       "quote": "두께 0.6 m 이상의 핫셀 윗부분을 넘어 운전할 수 있는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "방사화학 분리실 또는 핫셀(hot cell)에서 원격조작을 할 때 사용할 수 있는 원격조작기로서 다음 특성 중 하나를 갖는 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B226",
+   "branches": [
+    {
+     "label": "a. 유도로(온도·코일 직경·전력)",
+     "thresholds": [
+      {
+       "subject": "운전 온도",
+       "operator": "gt",
+       "value": "1123",
+       "unit": "K",
+       "quote": "1,123K (850°C) 초과의 온도에서 운전할 수 있는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "유도코일 직경",
+       "operator": "le",
+       "value": "600",
+       "unit": "mm",
+       "quote": "유도코일은 직경이 600mm 이하인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "설계 전력",
+       "operator": "ge",
+       "value": "5",
+       "unit": "kW",
+       "quote": "전력은 5kW 또는 그 이상으로 설계된 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 전력공급장치 정격출력",
+     "thresholds": [
+      {
+       "subject": "정격출력",
+       "operator": "ge",
+       "value": "5",
+       "unit": "kW",
+       "quote": "정격출력 5kW 또는 그 이상의 전력공급장치",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "제어된 환경(진공 또는 불활성기체)의 유도로와 이를 위한 전력공급장치로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B226.a는 반도체 웨이퍼의 공정을 위해 설계된 로를 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B227",
+   "branches": [
+    {
+     "label": "a. 아크 재용융·용융·주조로",
+     "thresholds": [
+      {
+       "subject": "용융온도",
+       "operator": "gt",
+       "value": "1973",
+       "unit": "K",
+       "quote": "1,973 K (1,700°C) 초과의 용융온도에서 작동하는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 전자빔·플라즈마 용융로",
+     "thresholds": [
+      {
+       "subject": "전력",
+       "operator": "ge",
+       "value": "50",
+       "unit": "kW",
+       "quote": "50 kW 이상의 전력",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "용융온도",
+       "operator": "gt",
+       "value": "1473",
+       "unit": "K",
+       "quote": "1,473 K (1,200°C) 초과의 용융온도에서 작동하는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d. 플라즈마 토치",
+     "thresholds": [
+      {
+       "subject": "운전 전력",
+       "operator": "gt",
+       "value": "50",
+       "unit": "kW",
+       "quote": "50 kW 보다 큰 전력에서 운전하는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "운전 온도",
+       "operator": "gt",
+       "value": "1473",
+       "unit": "K",
+       "quote": "1473 K (1200°C) 를 초과하여 운전할 수 있는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "e. 전자 빔 건",
+     "thresholds": [
+      {
+       "subject": "운전 전력",
+       "operator": "gt",
+       "value": "50",
+       "unit": "kW",
+       "quote": "50 kW 보다 큰 전력에서 운전하는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "진공 또는 기타 제어된 환경의 금속용융로, 주조로 및 관련 장비로 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. 1,000 cm3 ~ 20,000 cm3 사이의 소비전극용량",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "c. 2B227.a 또는 b에서 통제하는 로를 위해 특별히 제조된 컴퓨터 제어 및 감시시스템",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B228",
+   "branches": [
+    {
+     "label": "c. 벨로우즈(길이·단일회선 깊이)",
+     "thresholds": [
+      {
+       "subject": "벨로우즈 길이",
+       "operator": "ge",
+       "value": "12.7",
+       "unit": "mm",
+       "quote": "2. 길이 12.7 mm 이상",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "단일회선 깊이",
+       "operator": "gt",
+       "value": "2",
+       "unit": "mm",
+       "quote": "3. 단일회선의 깊이 2 mm 초과",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "회전자 제조 또는 조립장비, 회전자 직선화 장비, 벨로우즈 성형  맨드렐과 금형(다이)으로 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1. 내경 75 mm ~ 650 mm 사이",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "4. 고강도 알루미늄 합금, 마레이징강 또는 고강도의 \"섬유상 또는 필라멘트 소재\"로 만들어진 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B230",
+   "branches": [
+    {
+     "label": "c.1 full scale 13 kPa 미만",
+     "thresholds": [
+      {
+       "subject": "full scale",
+       "operator": "lt",
+       "value": "13",
+       "unit": "kPa",
+       "quote": "13 kPa 미만의 full scale을 가지면서",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "정확정밀도(full scale 대비)",
+       "operator": "lt",
+       "value": "1",
+       "unit": "%",
+       "quote": "full scale의 1% 미만의 \"정확정밀도\"를 가진 변환기",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 full scale 13 kPa 이상",
+     "thresholds": [
+      {
+       "subject": "full scale",
+       "operator": "ge",
+       "value": "13",
+       "unit": "kPa",
+       "quote": "13 kPa 이상의 full scale을 가지면서",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "정확정밀도",
+       "operator": "lt",
+       "value": "130",
+       "unit": "Pa",
+       "quote": "130 Pa 미만의 \"정확정밀도\"를 가진 변환기",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "모든 형태의 '압력변환기'로 절대압력을 측정할 수 있고 다음의 특성을 모두 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "니켈이 60% 중량을 초과하는 니켈합금",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B230에서 '압력변환기'란 압력측정값을 신호로 변환하는 장치를 말한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B231",
+   "branches": [
+    {
+     "label": "a~c (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "투입구 직경",
+       "operator": "ge",
+       "value": "380",
+       "unit": "mm",
+       "quote": "380 mm 이상의 투입구를 가지는 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "펌핑속도",
+       "operator": "ge",
+       "value": "15",
+       "unit": "m3/s",
+       "quote": "펌핑속도 15 m3/s 이상인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "극진공",
+       "operator": "lt",
+       "value": "13.3",
+       "unit": "mPa",
+       "quote": "13.3 mPa 미만의 극진공을 만들어 낼 수 있는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "진공펌프 중 다음의 특성을 모두 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "극진공(ultimate vacuum)은 막힌 상태의 펌프 입구에서 측정하여 결정한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B232",
+   "branches": [
+    {
+     "label": "가속투사능력",
+     "thresholds": [
+      {
+       "subject": "투사체 가속 속도",
+       "operator": "ge",
+       "value": "1.5",
+       "unit": "km/s",
+       "quote": "accelerating projectiles to 1.5 km/s or greater",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "고속도 건(gun) 시스템 (추진제, 가스, 코일형태, 전자기형태, 전자열형태 및 다른 진보된 시스템)으로 초당 1.5 km 이상의 가속투사능력을 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2B232는 고속도 무기 시스템을 위하여 특별히 설계된 건(gun)은 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B233",
+   "branches": [
+    {
+     "label": "a~c (모두 만족)",
+     "thresholds": [
+      {
+       "subject": "유입 체적 유량",
+       "operator": "ge",
+       "value": "50",
+       "unit": "m3/h",
+       "quote": "유입 체적 유량이 50m3/h 이상인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "압력비",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "압력비가 2:1 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "벨로우즈밀봉 스크롤형 컴프레서 및 벨로우즈 밀봉 스크롤타입 진공 펌프로서 다음의 모든 특성을 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "c. 공정 가스와 접촉하는 모든 면이 다음의 소재로 이루어진 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B510",
+   "branches": [
+    {
+     "label": "b.2 진공 공정환경",
+     "thresholds": [
+      {
+       "subject": "공정환경 진공도",
+       "operator": "le",
+       "value": "100",
+       "unit": "Pa",
+       "quote": "진공(100 Pa 이하)",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.1 이미징 카메라 파장범위",
+     "thresholds": [
+      {
+       "subject": "최대응답 파장(하한)",
+       "operator": "gt",
+       "value": "380",
+       "unit": "nm",
+       "quote": "380 nm 초과",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "최대응답 파장(상한)",
+       "operator": "le",
+       "value": "14000",
+       "unit": "nm",
+       "quote": "14,000 nm 이하의 파장범위",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.2 고온계 측정온도",
+     "thresholds": [
+      {
+       "subject": "측정 온도",
+       "operator": "gt",
+       "value": "1273.15",
+       "unit": "K",
+       "quote": "1,273.15 K (1,000 °C)를 초과하는 온도를 측정하도록 설계된 고온계",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "c.3 라디오 미터·분광기 파장범위",
+     "thresholds": [
+      {
+       "subject": "최대응답 파장(상한)",
+       "operator": "le",
+       "value": "3000",
+       "unit": "nm",
+       "quote": "3,000 nm 이하의 파장범위",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "금속 또는 금속 합금 부품을 생산하도록 설계된 적층 제조장비로서 다음의 사항을 모두 갖춘 장비와 이를 위해 전용 설계된 부품",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "a. 다음 중 하나 이상의 용착 소스를 갖는 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "d. 2B510.c에 의해 통제되는 '공정 중(in-process) 모니터링' 장비의 피드백에 따라",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B350",
+   "title": "화학물질 제조설비, 장비 및 구성품",
+   "branches": [
+    {
+     "label": "a. 반응용기·반응기(총 용적)",
+     "thresholds": [
+      {
+       "subject": "반응용기 총 용적",
+       "operator": "gt",
+       "value": "0.1",
+       "unit": "m3",
+       "quote": "총 용적(기하학상의)이 0.1 m3 (100ℓ)을 초과하고",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "반응용기 총 용적",
+       "operator": "lt",
+       "value": "20",
+       "unit": "m3",
+       "quote": "20 m3 (20,000ℓ)미만이며",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 교반기·임펠러·날·축(2B350.a 반응용기용, 소재 조건)",
+     "thresholds": [],
+     "text": "2B350.a에 명시된 반응용기 또는 반응기에 사용을 위해 설계된 교반기, 그리고 이러한 교반기를 위해 설계된 임펠러(impellers), 날, 또는 축으로"
+    },
+    {
+     "label": "c. 저장탱크·콘테이너·수집조(총 용적)",
+     "thresholds": [
+      {
+       "subject": "저장탱크 총 용적",
+       "operator": "gt",
+       "value": "0.1",
+       "unit": "m3",
+       "quote": "저장탱크, 콘테이너 또는 수집조로 총 용적(기하학상의)이 0.1 m3 (100ℓ)을 초과하고",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d. 열교환기·컨덴서(열교환 표면적)",
+     "thresholds": [
+      {
+       "subject": "열교환 표면적",
+       "operator": "gt",
+       "value": "0.15",
+       "unit": "m2",
+       "quote": "열교환 표면적이 0.15 m2를 초과하고",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "열교환 표면적",
+       "operator": "lt",
+       "value": "20",
+       "unit": "m2",
+       "quote": "0.15 m2를 초과하고 20 m2 미만인 열교환기",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "e. 증류탑·흡수탑(내경)",
+     "thresholds": [
+      {
+       "subject": "증류탑 내경",
+       "operator": "gt",
+       "value": "0.1",
+       "unit": "m",
+       "quote": "내경이 0.1 m 를 초과하는 증류탑 또는 흡수탑",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 원격 조정 충전장비(소재 조건)",
+     "thresholds": [],
+     "text": "원격 조정이 가능한 충전장비로서 화학물질과 직접적으로  접촉하는 모든 표면이 다음의 소재로 만들어진 것"
+    },
+    {
+     "label": "g.1 밸브(호칭치수 DN 10 초과)",
+     "thresholds": [
+      {
+       "subject": "밸브 호칭치수(DN)",
+       "operator": "gt",
+       "value": "10",
+       "unit": "",
+       "quote": "'호칭치수'가 DN 10 또는 NPS 3/8 를 초과하는 밸브",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "g.2 밸브(호칭치수 DN 25 이상 DN 100 이하, 케이싱·교체 가능 개폐부품)",
+     "thresholds": [
+      {
+       "subject": "밸브 호칭치수(DN)",
+       "operator": "ge",
+       "value": "25",
+       "unit": "",
+       "quote": "'호칭치수'가 DN 25 또는 NPS 1 이상이면서",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "밸브 호칭치수(DN)",
+       "operator": "le",
+       "value": "100",
+       "unit": "",
+       "quote": "DN 100 또는 NPS 4 이하인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "h. 누출 탐지 포트 다중벽 파이프(소재 조건)",
+     "thresholds": [],
+     "text": "누출 탐지 포트가 포함되어 있는 다중벽 파이프로서 화학물질과 직접적으로 접촉하는 모든 표면이 다음의 소재로 만들어진 것"
+    },
+    {
+     "label": "i. 다 밀봉·비 밀봉 펌프(최대유량)",
+     "thresholds": [
+      {
+       "subject": "펌프 최대유량",
+       "operator": "gt",
+       "value": "0.6",
+       "unit": "m3/h",
+       "quote": "제조자의 규정 최대유량이 0.6 m3/h 을 초과하는 다 밀봉 펌프, 비 밀봉 펌프",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "i. 진공펌프(최대유량)",
+     "thresholds": [
+      {
+       "subject": "진공펌프 최대유량",
+       "operator": "gt",
+       "value": "5",
+       "unit": "m3/h",
+       "quote": "최대유량이 5 m3/h (표준온도 273 K (0°C), 표준압력 101.3 kPa에서)을 초과하는 진공펌프",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "j. 소각장치(소각실 평균연소온도)",
+     "thresholds": [],
+     "text": "소각실의 평균연소온도가 1,273 K (1000 °C) 를 넘으며"
+    },
+    {
+     "label": "k. 보수 조립체(유리피막 용기용, 탄탈륨 접액부)",
+     "thresholds": [],
+     "text": "화학물질과 직접적으로 접촉하는 모든 금속 표면이 탄탈륨 또는 탄탈륨 '합금'으로 만들어진 것"
+    }
+   ],
+   "checks": [
+    {
+     "quote": "화학물질과 직접적으로 접촉하는 모든 표면이 다음의 소재로 만들어진 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "니켈 또는 중량기준으로 니켈 40%를 초과하는 '합금'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "중량기준으로 25%를 초과하는 니켈과 20%를 초과하는 크롬이 포함된 '합금'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "불소고분자(중량기준으로 35%를 초과하는 불소가 포함된 중합체 또는 탄성 소재)",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "유리 또는 유리피막(유리화 또는 에나멜화된 코팅 포함)",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "탄탈륨 또는 탄탈륨 '합금'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "티타늄 또는 티타늄 '합금'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "지르코늄 또는 지르코늄 '합금'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "나이오븀(콜럼븀) 또는 나이오븀 '합금'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "흑연 또는 '탄소흑연'",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "가스켓, 패킹, 실, 스크류, 와셔 또는 밀봉 역할을 하는 소재는 이러한 구성품이 교환이 가능하도록 설계된 경우, 2B350의 통제여부 판단(접액부 재질)시 고려하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B350의 '탄소흑연'은 중량기준으로 8% 이상의 흑연과 비결정질의 탄소로 구성된 혼합물",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "'합금'이라는 용어는 판정의 기준이 되는 금속이 다른 원소보다 높은 중량비율인 경우를 뜻한다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "중량기준으로 순도 80%이상의 실리콘 카바이드",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "중량기준으로 순도 99.9%이상의 알루미늄 옥사이드(알루미나)",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "'호칭치수'는 투입구와 배출구의 직경 중 작은 것으로 정의 된다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "화학무기 작용제, 1C350에서 명시된 화학물질 또는 화학탄을   폐기하기 위한 소각장치로 전용 설계된 폐기물 공급 시스템과 전용 조작시설을 가지고 있고",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B351",
+   "title": "독성가스 모니터·모니터링 시스템·탐지 구성품",
+   "branches": [
+    {
+     "label": "a. 연속작동 설계, 화학전 작용제·1C350 화학물질 탐지('최소 검출 한계')",
+     "thresholds": [
+      {
+       "subject": "최소 검출 한계",
+       "operator": "lt",
+       "value": "0.3",
+       "unit": "mg/m3",
+       "quote": "0.3 mg/m3 미만의 '최소 검출 한계'",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b. 콜린에스테라아제 억제 작용 감지",
+     "thresholds": [],
+     "text": "콜린에스테라아제(cholinesterase) 억제 작용을 감지할 수 있도록 설계된 것"
+    }
+   ],
+   "checks": [
+    {
+     "quote": "연속작동을 위해 설계되고",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "화학전 작용제 또는 1C350에 명시된 화학물질의 탐지를 위해 사용 가능하도록 설계된 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "'최소 검출 한계'는 바탕시료를 측정할 때 독성가스 모니터 또는 모니터링 시스템의 신호의 표준 편차의 세 배보다 큰 신호를 생성하는데 필요한 분석물질의 최소 검출 가능 농도이다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2B352",
+   "title": "생물학적 물질 취급에 사용 가능한 장비",
+   "branches": [
+    {
+     "label": "a. 차단시설(P3·P4 봉쇄기준)과 고정 설치 장비",
+     "thresholds": [],
+     "text": "WHO의 실험실-생물안전 지침서(제네바2004, 개정3판)에 명시된 P3 또는 P4(BL3, BL4, L3, L4) 봉쇄기준을 만족하는 완전차단시설"
+    },
+    {
+     "label": "b.1 발효조(총 용적)",
+     "thresholds": [
+      {
+       "subject": "발효조 총 용적",
+       "operator": "ge",
+       "value": "20",
+       "unit": "리터",
+       "quote": "20리터 이상의 총 용적을 가진 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "b.2 발효조 구성품(배양 챔버·지지 장치·공정 제어 장치)",
+     "thresholds": [],
+     "text": "2B352.b.1에 명시된 발효조를 위해 설계된 다음과 같은 구성품"
+    },
+    {
+     "label": "c. 원심분리장치(유량, 시간당 리터)",
+     "thresholds": [
+      {
+       "subject": "원심분리 유량(시간당)",
+       "operator": "gt",
+       "value": "100",
+       "unit": "리터",
+       "quote": "유량이 시간당 100리터를 초과하는 원심분리장치",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d.1 교차흐름 여과장비(총 여과면적)",
+     "thresholds": [
+      {
+       "subject": "총 여과면적",
+       "operator": "ge",
+       "value": "1",
+       "unit": "m2",
+       "quote": "총 여과면적이 1 m2 이상의 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "d.2 교차흐름 여과 구성품(여과면적)",
+     "thresholds": [
+      {
+       "subject": "여과면적(구성품)",
+       "operator": "ge",
+       "value": "0.2",
+       "unit": "m2",
+       "quote": "여과면적이 0.2 m2 이상인 교차(접선)흐름 여과 구성품들",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "e. 동결건조장비(24시간 응축 용량)",
+     "thresholds": [
+      {
+       "subject": "응축 용량(24시간, 얼음)",
+       "operator": "ge",
+       "value": "10",
+       "unit": "kg",
+       "quote": "24시간이내에 얼음 10 kg 이상",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "응축 용량(24시간, 얼음)",
+       "operator": "lt",
+       "value": "1000",
+       "unit": "kg",
+       "quote": "1,000 kg 미만의 응축 용량을 가진 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 보호 및 봉쇄 장비(보호복·생물안전작업대)",
+     "thresholds": [],
+     "text": "생물학적봉쇄(biocontainment) 챔버, 분리대(isolator) 또는 생물안전작업대(biological safety cabinets, BSC)로서 정상작동(normal operation)시 다음의 모든 특성을 갖는 것"
+    },
+    {
+     "label": "g.1 전신노출 챔버(용량)",
+     "thresholds": [
+      {
+       "subject": "전신노출 챔버 용량",
+       "operator": "ge",
+       "value": "1",
+       "unit": "m3",
+       "quote": "1 m3 이상의 용량을 가지는 전신노출 (whole-body exposure) 챔버",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "g.2 비부 전용 노출 장치(설치류 노출 용량)",
+     "thresholds": [
+      {
+       "subject": "노출 용량(설치류)",
+       "operator": "ge",
+       "value": "12",
+       "unit": "",
+       "quote": "설치류의 경우 12 이상",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "g.2 비부 전용 노출 장치(설치류 이외 노출 용량)",
+     "thresholds": [
+      {
+       "subject": "노출 용량(설치류 이외)",
+       "operator": "ge",
+       "value": "2",
+       "unit": "",
+       "quote": "설치류 이외의 동물의 경우 2 이상의 노출 용량을 갖는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "h.1 항공기·무인항공기용 분무·연무 시스템(유량, 분당 리터·VMD)",
+     "thresholds": [
+      {
+       "subject": "분무 유량(분당)",
+       "operator": "gt",
+       "value": "2",
+       "unit": "리터",
+       "quote": "분당 2리터 초과의 유량으로",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "초기 유적 VMD",
+       "operator": "lt",
+       "value": "50",
+       "unit": "마이크론",
+       "quote": "50마이크론 미만의 초기 유적 VMD를 분산할 수 있는 용량을 지니는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "h.2 항공기·무인항공기용 스프레이붐·에어로졸 발생기 어레이",
+     "thresholds": [],
+     "text": "비행기, 경비행기(비행선) 또는 무인항공기에 알맞도록 특별히 설계된 분무용 스프레이붐 또는 에어로졸 발생기 어레이(array)로 분당 2리터 초과의 유량으로 50마이크론 미만의 초기 유적 VMD를 분산할 수 있는 용량을 지니는 것"
+    },
+    {
+     "label": "i. 분무건조 장비(수분 증발 용량·평균 입자크기·현장 살균)",
+     "thresholds": [
+      {
+       "subject": "수분 증발 용량",
+       "operator": "ge",
+       "value": "0.4",
+       "unit": "kg/h",
+       "quote": "수분 증발 용량이 0.4 kg/h 이상이며",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "수분 증발 용량",
+       "operator": "le",
+       "value": "400",
+       "unit": "kg/h",
+       "quote": "400 kg/h 이하인 것",
+       "quote_source": "항목 본문"
+      },
+      {
+       "subject": "평균 입자크기",
+       "operator": "le",
+       "value": "10",
+       "unit": "μm",
+       "quote": "10 μm 이하의 평균 입자크기를 생성가능한 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "j. 핵산 합성기(0.5 킬로베이스보다 긴 핵산)",
+     "thresholds": [],
+     "text": "0.5 킬로베이스보다 길이가 긴 연속적인 핵산을 만들어낼 수 있도록 제작된 핵산 합성기 또는 합성 및 조립 장비"
+    },
+    {
+     "label": "k. 펩타이드 합성기('장치 합성 스케일')",
+     "thresholds": [
+      {
+       "subject": "장치 합성 스케일",
+       "operator": "ge",
+       "value": "1",
+       "unit": "mmol",
+       "quote": "'장치 합성 스케일'이 1mmol 이상인 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "에어로졸(aerosols)의 전파 없이 \"미생물\", 또는 바이러스나 독소의 생산에 필요한 살아있는 세포의 배양이 가능한 발효조",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "에어로졸의 전파 없이 연속분리가 가능하고",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B352.d는 제조업자에 의해 명시된 역 삼투압 장비 또는 의료용 혈액 필터 (예: 혈액투석 또는 혈장분리)를 위해 설계된 장비는 통제하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "스팀, 가스 또는 증기멸균이 가능한 동결건조장비",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2B352.f.1은 호흡장치를 내장해서 착용하도록 설계된 의복은 통제하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "h항에 명기된 분무 또는 연무 시스템 및 구성품중 전염성 에어로졸 형태로 생물작용제를 운반할 수 없는 것으로 증명된 것은 통제되지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "현장에 살균 또는 소독이 가능한 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "부분적으로 또는 전체적으로 자동화되고",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D001",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "\"소프트웨어\"로서 2A001, 2B001부터 2B009 또는 2B510에 기술된 장비의 \"개발\", \"생산\"을 위해 전용 설계되거나 개조된 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2D001은 다양한 부품들을 가공하기 위한 \"수치제어\" 코드를 생성하는 파트프로그래밍 \"소프트웨어\"에는 적용되지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D002",
+   "branches": [
+    {
+     "label": "동시제어 축 수",
+     "thresholds": [
+      {
+       "subject": "동시제어 축 수",
+       "operator": "gt",
+       "value": "4",
+       "unit": "축",
+       "quote": "\"윤곽제어\"를 위해 4축 초과를 동시제어 할 수 있는 \"수치제어\" 유닛",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "주 1: 2D002는 제2부에 기술되지 않은 품목의 작동을 위해 전용설계되거나 개조된 \"소프트웨어\"는 통제하지 않는다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D003",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B002에 기술된 장비의 \"작동\"을 위해 설계되거나 개조된 \"소프트웨어\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D101",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B104, 2B105, 2B109, 2B116, 2B117 또는 2B119에서 2B122까지에 기술된 장비의 \"사용\"을 위해 전용설계되거나 개조된 \"소프트웨어\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D201",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B204, 2B206, 2B207, 2B209, 2B219 또는 2B227에 기술된 장비의 \"사용\"을 위해 전용설계되거나 개조된 \"소프트웨어\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D202",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B201에 기술된 장비의 \"개발\", \"생산\", \"사용\"을 위해 전용설계되거나 개조된 \"소프트웨어\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D351",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "1D003에서 규정된 것을 제외한 \"소프트웨어\"로서, 2B351에서 규정된 장치의 \"사용\"을 위하여 특별히 설계된 것",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2D352",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B352.j에 의해 통제되는 핵산 조립기와 합성기를 위해 설계된 \"소프트웨어\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E001",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2A, 2B 또는 2D에 기술된 \"소프트웨어\" 또는 장비의 \"개발\"에 대한 일반기술해설에 따른 \"기술\"",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "주: 2E001은 2B006.a에 의해서 정의된 3차원측정기(CMM)에 탐침 시스템을 통합하기 위한 \"기술\"을 포함한다",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E002",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2A 또는 2B에 기술된 장비의 \"생산\"에 대해서 일반기술해설에 따른 \"기술\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E003",
+   "branches": [
+    {
+     "label": "f. 기술해설 6 '알루미늄 합금' 인장강도",
+     "thresholds": [
+      {
+       "subject": "최대인장강도",
+       "operator": "ge",
+       "value": "190",
+       "unit": "MPa",
+       "quote": "최대인장강도가 190MPa 이상인 합금",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 기술해설 13 '티타늄 합금' 인장강도",
+     "thresholds": [
+      {
+       "subject": "최대 인장강도",
+       "operator": "ge",
+       "value": "900",
+       "unit": "MPa",
+       "quote": "최대 인장강도가 900 MPa 이상인 항공우주합금",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 기술해설 9 '센서 창 재료' 직경",
+     "thresholds": [
+      {
+       "subject": "센서 창 직경",
+       "operator": "gt",
+       "value": "40",
+       "unit": "mm",
+       "quote": "직경이 40 mm 초과의 센서 창 재료",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 기술해설 15 '유전체층' 층 수",
+     "thresholds": [
+      {
+       "subject": "유전체층 수",
+       "operator": "gt",
+       "value": "4",
+       "unit": "",
+       "quote": "4개를 초과한 유전체층",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 기술해설(고속) 노즐-출구 가스 속도",
+     "thresholds": [
+      {
+       "subject": "노즐-출구 가스 속도",
+       "operator": "gt",
+       "value": "750",
+       "unit": "m/s",
+       "quote": "노즐-출구 가스 속도가 750m/s를 초과하는 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    },
+    {
+     "label": "f. 기술해설(TE-PVD) 공정 압력",
+     "thresholds": [
+      {
+       "subject": "공정 압력",
+       "operator": "lt",
+       "value": "0.1",
+       "unit": "Pa",
+       "quote": "압력이 0.1 Pa 미만인 진공상태",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "b. 금속의 가공, 제조공정을 위한 \"기술\"로서 다음의 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "c. 비행기 기체 구조물의 제조에 쓰이는 유압 인장성형기(stretch-forming machine)와 다이의 \"개발\" 또는 \"생산\"을 위한 \"기술\"",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "점토 또는 시멘트 성분을 중량 기준으로 5% 이상 함유한 세라믹 소재는 포함하지 않는다",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "1×10-7 K-1 이하의 열팽창 계수를 가지는 유리",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E101",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B004, 2B009, 2B104, 2B109, 2B116, 2B119에서 2B122 또는 2D101까지에 기술된 \"소프트웨어\" 또는 장비의 \"사용\"에 대한 일반기술해설에 따른 \"기술\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E201",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2D201 또는 2D202에 기술된 장비의 \"사용\" 또는 \"소프트웨어\" \"사용\"에 대한 일반 기술 해설에 따른 \"기술\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E301",
+   "branches": [],
+   "checks": [
+    {
+     "quote": "2B350에서 2B352까지의 기술된 제품의 \"사용\"에 대한 일반기술해설에 따른 \"기술\"",
+     "source": "항목 본문"
+    }
+   ]
+  },
+  {
+   "clause_id": "dual_use:control:2E503",
+   "branches": [
+    {
+     "label": "g.2 코팅 시스템 작동온도",
+     "thresholds": [
+      {
+       "subject": "작동 온도",
+       "operator": "gt",
+       "value": "1373.15",
+       "unit": "K",
+       "quote": "1,373.15 K (1,100 ℃)를 초과하는 온도에서 작동하도록 설계된 것",
+       "quote_source": "항목 본문"
+      }
+     ],
+     "text": ""
+    }
+   ],
+   "checks": [
+    {
+     "quote": "1C007에 명시된 세라믹 \"모재\" \"복합\" 소재를 부식으로부터 보호하도록 설계된 것",
+     "source": "항목 본문"
+    },
+    {
+     "quote": "2E503.g에서, '코팅 시스템'은 기판에 증착된 소재가 하나 이상의 층(예: 본드, 중간층, 탑 코트)으로 구성된다",
+     "source": "항목 본문"
+    }
+   ]
+  }
+ ]
+}

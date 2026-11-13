@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "name": "potion-multilingual-128M (낱말 줄임·int8)",
+  "kind": "static_word_embedding",
+  "source": {
+    "repo": "minishlab/potion-multilingual-128M",
+    "revision": "73908c3438cf03b6a01bcb9611d62b23d0726f08",
+    "repo_url": "https://huggingface.co/minishlab/potion-multilingual-128M/tree/73908c3438cf03b6a01bcb9611d62b23d0726f08",
+    "files": [
+      {
+        "path": "model.safetensors",
+        "url": "https://huggingface.co/minishlab/potion-multilingual-128M/resolve/73908c3438cf03b6a01bcb9611d62b23d0726f08/model.safetensors",
+        "sha256": "14b5eb39cb4ce5666da8ad1f3dc6be4346e9b2d601c073302fa0a31bf7943397",
+        "size": 512361560,
+        "verified_against": "lfs_sha256"
+      },
+      {
+        "path": "tokenizer.json",
+        "url": "https://huggingface.co/minishlab/potion-multilingual-128M/resolve/73908c3438cf03b6a01bcb9611d62b23d0726f08/tokenizer.json",
+        "sha256": "19f1909063da3cfe3bd83a782381f040dccea475f4816de11116444a73e1b6a1",
+        "size": 18616131,
+        "verified_against": "lfs_sha256"
+      },
+      {
+        "path": "config.json",
+        "url": "https://huggingface.co/minishlab/potion-multilingual-128M/resolve/73908c3438cf03b6a01bcb9611d62b23d0726f08/config.json",
+        "sha256": "595e4cab2093732efd5dbe084fd5c1826b5eea693b73b4c1fd971672867d2e54",
+        "size": 271,
+        "verified_against": "git_blob_sha1"
+      },
+      {
+        "path": "README.md",
+        "url": "https://huggingface.co/minishlab/potion-multilingual-128M/resolve/73908c3438cf03b6a01bcb9611d62b23d0726f08/README.md",
+        "sha256": "9505454b6a3efbb25257124de875cb73e02bd663a822528525a3c29b1c4d91ac",
+        "size": 5575,
+        "verified_against": "git_blob_sha1"
+      }
+    ],
+    "fetched_by": "tools/fetch_search_model.py --only potion_128m"
+  },
+  "license": {
+    "spdx": "MIT",
+    "file": "LICENSE.txt",
+    "card_license": "mit",
+    "holders": "Minish Lab (Stephan Tulkens, Thomas van Dongen)",
+    "tokenizer_origin": "BAAI/bge-m3 (MIT)",
+    "training_data_note": "모델 카드: C4 데이터셋(101개 언어 문장 200만 개)으로 학습. 모델 자체 라이선스는 MIT."
+  },
+  "derivation": {
+    "tool": "tools/pack_search_model.py",
+    "source_tensor": "embeddings",
+    "source_rows": 500353,
+    "dims": 256,
+    "kept_rows": 241882,
+    "corpus_tokens_all_kept": 11810,
+    "keep_rule": "한글·ASCII·한자·문자가 아닌 글자(숫자·기호·구두점)로만 된 낱말, 한 글자 낱말, 고시 원문 507개 항목 토큰화에 나온 낱말 전부",
+    "quantization": "행별 대칭 int8: scale = max(|row|)/127, q = round(row/scale) ∈ [-127,127], 복원 = q × scale",
+    "unchanged": [
+      "tokenizer.json",
+      "config.json",
+      "MODEL_CARD.md"
+    ]
+  },
+  "files": {
+    "embeddings_int8.npy": {
+      "sha256": "683063f2873482d4d6ae4085842b5e37e64ceb6ecd1b8424efe17ea569a0f3fc",
+      "size": 61921920
+    },
+    "scales_float32.npy": {
+      "sha256": "048792717431e241d6b752016d89f3d8dc36b1b582efa10cf2e9e511938beb2f",
+      "size": 967656
+    },
+    "token_ids_int32.npy": {
+      "sha256": "58959172c651bbee1768a2b724424e418316ba343b24645eca0ef915f2a5bbeb",
+      "size": 967656
+    },
+    "tokenizer.json": {
+      "sha256": "19f1909063da3cfe3bd83a782381f040dccea475f4816de11116444a73e1b6a1",
+      "size": 18616131
+    },
+    "config.json": {
+      "sha256": "595e4cab2093732efd5dbe084fd5c1826b5eea693b73b4c1fd971672867d2e54",
+      "size": 271
+    },
+    "MODEL_CARD.md": {
+      "sha256": "9505454b6a3efbb25257124de875cb73e02bd663a822528525a3c29b1c4d91ac",
+      "size": 5575
+    },
+    "LICENSE.txt": {
+      "sha256": "7657d94bdfd3e501b396448ef6ffea9f815794c0d10b3303ba1a84950a99ce42",
+      "size": 1966
+    }
+  },
+  "runtime": {
+    "libraries": {
+      "numpy": "BSD-3-Clause (2.5.1)",
+      "tokenizers": "Apache-2.0 (0.23.3)"
+    },
+    "embedding_dim": 256,
+    "similarity": "cosine (벡터를 L2 정규화한 뒤 내적)",
+    "query_prefix": "",
+    "document_prefix": "",
+    "encode": [
+      "tok = tokenizers.Tokenizer.from_file('tokenizer.json'); tok.no_truncation(); tok.no_padding()",
+      "ids = tok.encode(text, add_special_tokens=False).ids",
+      "[UNK](id 1)와 token_ids_int32.npy에 없는 id는 건너뛴다(row_of[id] = -1)",
+      "row_of = np.full(tok.get_vocab_size(with_added_tokens=True), -1); row_of[token_ids] = arange(len(token_ids))",
+      "vec = mean(embeddings_int8[rows].astype(float32) * scales_float32[rows, None]); 남은 낱말이 없으면 영벡터(점수 0)",
+      "vec = vec / ||vec||  (config.json normalize=true)"
+    ],
+    "load": "np.load(path, allow_pickle=False) — 세 .npy 파일. 불러오기 전에 files의 sha256을 확인하고 다르면 의미 검색을 끈다.",
+    "document_chunks": "조항 글을 줄 단위로 모아 최대 300자 조각으로 나누고 각 조각 앞에 '통제번호 제목 분야' 머리 줄을 붙인다. 조항 점수 = 가장 비슷한 조각의 점수 (tools/compare_search_models.clause_chunks와 같게)",
+    "suggested_min_similarity": 0.32,
+    "suggested_min_similarity_basis": "김치찌개 최고 0.3022, 통과 질의 기대 조항 최고 순위 유사도 최저 0.3376(디스플레이 advanced:item:009). 참고: 된장국 최고 0.3554(0.32 이상 5건)",
+    "offline": {
+      "network": "실행 중 인터넷 접속 없음. Tokenizer.from_file과 np.load만 쓰며 from_pretrained·huggingface_hub를 쓰지 않는다.",
+      "huggingface_hub": "tokenizers를 import해도 huggingface_hub는 import되지 않음(확인). 방어로 import 전에 환경변수 HF_HUB_OFFLINE=1, HF_HUB_DISABLE_TELEMETRY=1, HF_HUB_DISABLE_IMPLICIT_TOKEN=1을 두고, 빌드에서 huggingface_hub·hf_xet는 제외한다.",
+      "telemetry": "numpy·tokenizers는 사용 통계 전송 기능이 없다. onnxruntime은 쓰지 않는다(넣지 않음).",
+      "verified_by": "소켓 차단(socket.socket·create_connection·getaddrinfo를 막음) 상태에서 로딩·질의 벡터·조항 점수 계산 성공 — tools/output/모델_비교.md"
+    }
+  },
+  "comparison": "tools/output/모델_비교.md"
+}

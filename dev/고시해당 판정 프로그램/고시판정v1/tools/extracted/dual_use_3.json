@@ -1,0 +1,6208 @@
+{
+  "scope": {
+    "families": [
+      "dual_use"
+    ],
+    "code_prefixes": [
+      "3"
+    ]
+  },
+  "items": [
+    {
+      "clause_id": "dual_use:control:3A001",
+      "title": "전자 품목으로 다음의 것",
+      "branches": [
+        {
+          "label": "a.2.a 주위 온도 398 K 초과 정격",
+          "thresholds": [
+            {
+              "subject": "동작 정격 주위 온도(상한)",
+              "operator": "gt",
+              "value": "398",
+              "unit": "K",
+              "quote": "398 K (125 °C) 초과의 주위 온도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.b 주위 온도 218 K 미만 정격",
+          "thresholds": [
+            {
+              "subject": "동작 정격 주위 온도(하한)",
+              "operator": "lt",
+              "value": "218",
+              "unit": "K",
+              "quote": "218 K (-55 °C) 미만의 주위 온도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.c 218 K~398 K 전 범위 동작",
+          "thresholds": [],
+          "text": "218 K (-55 °C) ~ 398 K (125 °C) 의 주위 온도 전 범위에서 동작하도록 정격화된 것"
+        },
+        {
+          "label": "a.3 화합물반도체 마이크로프로세서 클락 주파수",
+          "thresholds": [
+            {
+              "subject": "클락 주파수",
+              "operator": "gt",
+              "value": "40",
+              "unit": "MHz",
+              "quote": "40MHz 초과의 클락 주파수",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.a.2 ADC 10~12 bit",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "10",
+              "unit": "bit",
+              "quote": "분해능력이 10 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "12",
+              "unit": "bit",
+              "quote": "12 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "600",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 600 MSPS (mega samples per second)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.a.3 ADC 12~14 bit",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "분해능력이 12 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "14",
+              "unit": "bit",
+              "quote": "14 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "400",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 400 MSPS를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.a.4 ADC 14~16 bit",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "14",
+              "unit": "bit",
+              "quote": "분해능력이 14 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "16",
+              "unit": "bit",
+              "quote": "16 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "250",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 250 MSPS를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.a.5 ADC 16 bit 이상",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "16",
+              "unit": "bit",
+              "quote": "분해능력이 16 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "65",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 65 MSPS를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.b.1 DAC 10~12 bit",
+          "thresholds": [
+            {
+              "subject": "DAC 분해능력",
+              "operator": "ge",
+              "value": "10",
+              "unit": "bit",
+              "quote": "분해능력이 10 bit 이상, 12 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "DAC 분해능력",
+              "operator": "lt",
+              "value": "12",
+              "unit": "bit",
+              "quote": "12 bit 미만이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "조정 갱신속도",
+              "operator": "gt",
+              "value": "3500",
+              "unit": "MSPS",
+              "quote": "'조정 갱신속도'가 3,500 MSPS를 초과하는 것; 또는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.b.2.a.1 DAC 12 bit 이상·안정화 시간",
+          "thresholds": [
+            {
+              "subject": "DAC 분해능력",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "분해능력이 12 bit 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "조정 갱신속도",
+              "operator": "gt",
+              "value": "1250",
+              "unit": "MSPS",
+              "quote": "'조정 갱신속도'가 1,250 MSPS를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "조정 갱신속도",
+              "operator": "le",
+              "value": "3500",
+              "unit": "MSPS",
+              "quote": "3,500 MSPS 이하이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "안정화 시간",
+              "operator": "lt",
+              "value": "9",
+              "unit": "ns",
+              "quote": "안정화 시간 (settling time)이 9 ns 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.b.2.a.2 DAC 12 bit 이상·SFDR",
+          "thresholds": [
+            {
+              "subject": "DAC 분해능력",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "분해능력이 12 bit 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "조정 갱신속도",
+              "operator": "gt",
+              "value": "1250",
+              "unit": "MSPS",
+              "quote": "'조정 갱신속도'가 1,250 MSPS를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "조정 갱신속도",
+              "operator": "le",
+              "value": "3500",
+              "unit": "MSPS",
+              "quote": "3,500 MSPS 이하이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "SFDR",
+              "operator": "gt",
+              "value": "68",
+              "unit": "dBc",
+              "quote": "'SFDR' (Spurious Free Dynamic Range) 값이 68 dBc(반송파)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5.b.2.b DAC 12 bit 이상·갱신속도",
+          "thresholds": [
+            {
+              "subject": "DAC 분해능력",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "분해능력이 12 bit 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "조정 갱신속도",
+              "operator": "gt",
+              "value": "3500",
+              "unit": "MSPS",
+              "quote": "'조정 갱신속도'가 3,500 MSPS를 초과하는 것\n      기술해설",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.6 신호처리용 광전 집적회로",
+          "thresholds": [],
+          "text": "1개 이상의 내부 \"레이저\" 다이오드를 갖는 것"
+        },
+        {
+          "label": "a.7.a 필드프로그래머블 로직 디바이스 입/출력단자",
+          "thresholds": [
+            {
+              "subject": "단일 디지털 입/출력단자 최대수",
+              "operator": "gt",
+              "value": "700",
+              "unit": "",
+              "quote": "최대수가 700개를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.7.b 단방향 직렬 송수신기 전송속도",
+          "thresholds": [
+            {
+              "subject": "단방향 직렬 송수신기 총 피크 데이터 전송속도",
+              "operator": "ge",
+              "value": "500",
+              "unit": "Gb/s",
+              "quote": "500 Gb/s 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.9 신경회로망 집적회로",
+          "thresholds": [],
+          "text": "신경회로망 집적회로"
+        },
+        {
+          "label": "a.10.a 주문형 집적회로 단자 수",
+          "thresholds": [
+            {
+              "subject": "단자 수",
+              "operator": "gt",
+              "value": "1500",
+              "unit": "",
+              "quote": "단자(terminal) 수가 1,500개를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.10.b 기본게이트 전파지연시간",
+          "thresholds": [
+            {
+              "subject": "기본게이트 전파지연시간",
+              "operator": "lt",
+              "value": "0.02",
+              "unit": "ns",
+              "quote": "'기본게이트 전파지연시간'이 0.02 ns 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.10.c 동작주파수",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3",
+              "unit": "GHz",
+              "quote": "동작주파수가 3 GHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.11.a 화합물반도체 디지털 집적회로 등가게이트",
+          "thresholds": [
+            {
+              "subject": "등가게이트 수(2입력 게이트)",
+              "operator": "gt",
+              "value": "3000",
+              "unit": "",
+              "quote": "등가게이트 수가 3,000개(2입력 게이트)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.11.b 토글 주파수",
+          "thresholds": [
+            {
+              "subject": "토글 주파수",
+              "operator": "gt",
+              "value": "1.2",
+              "unit": "GHz",
+              "quote": "토글 주파수가 1.2 GHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.12 FFT 프로세서(실행시간 수식)",
+          "thresholds": [],
+          "text": "N-point 복소(complex) FFT의 정격 실행시간이 (N×log₂N)/20,480 ms 미만인 것"
+        },
+        {
+          "label": "a.13.a 직접 디지털 주파수합성기 DAC 3.5 GHz",
+          "thresholds": [
+            {
+              "subject": "DAC 클락주파수",
+              "operator": "ge",
+              "value": "3.5",
+              "unit": "GHz",
+              "quote": "3.5 GHz 이상의 디지털-아날로그 변환기(DAC) 클락주파수",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "DAC 분해능",
+              "operator": "ge",
+              "value": "10",
+              "unit": "bit",
+              "quote": "10 bit 이상 12 bit 이하의 DAC 분해능",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "DAC 분해능",
+              "operator": "le",
+              "value": "12",
+              "unit": "bit",
+              "quote": "12 bit 이하의 DAC 분해능",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.13.b 직접 디지털 주파수합성기 DAC 1.25 GHz",
+          "thresholds": [
+            {
+              "subject": "DAC 클락주파수",
+              "operator": "ge",
+              "value": "1.25",
+              "unit": "GHz",
+              "quote": "1.25 GHz 이상의 DAC 클락주파수",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "DAC 분해능",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "12 bit 이상의 DAC 분해능",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.14.a.2 집적회로 ADC 10~12 bit(저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "10",
+              "unit": "bit",
+              "quote": "분해능력이 10 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "12",
+              "unit": "bit",
+              "quote": "12 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "1.0",
+              "unit": "GSPS",
+              "quote": "\"샘플 속도\"가 1.0 GSPS를 초과하는 것;",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.14.a.3 집적회로 ADC 12~14 bit(저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "분해능력이 12 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "14",
+              "unit": "bit",
+              "quote": "14 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "1.0",
+              "unit": "GSPS",
+              "quote": "\"샘플 속도\"가 1.0 GSPS를 초과하는 것\n        4.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.14.a.4 집적회로 ADC 14~16 bit(저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "14",
+              "unit": "bit",
+              "quote": "분해능력이 14 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "16",
+              "unit": "bit",
+              "quote": "16 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "400",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 400 MSPS를 초과하는 것; 또는\n        5.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.14.a.5 집적회로 ADC 16 bit 이상(저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "16",
+              "unit": "bit",
+              "quote": "분해능력이 16 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "180",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 180 MSPS를 초과하는 것; 그리고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a.1 진행파 진공전자소자 동작주파수",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 31.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a.2 정격 RF 출력 도달 시간",
+          "thresholds": [
+            {
+              "subject": "정격 RF 출력 도달 시간",
+              "operator": "lt",
+              "value": "3",
+              "unit": "초",
+              "quote": "정격 RF 출력에 도달할 때까지의 시간이 3 초 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a.3 결합 공동 소자 비대역폭",
+          "thresholds": [
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "7",
+              "unit": "%",
+              "quote": "\"비대역폭\"(fractional bandwidth)이 7% 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a.3 결합 공동 소자 첨두 전력",
+          "thresholds": [
+            {
+              "subject": "첨두 전력",
+              "operator": "gt",
+              "value": "2.5",
+              "unit": "kW",
+              "quote": "첨두 전력(peak power)이 2.5 kW를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a.4 나선형·접힘 도파로 소자(순시 대역폭·출력×주파수 곱)",
+          "thresholds": [],
+          "text": "\"순시 대역폭\"(instantaneous bandwidth)이 1옥타브를 초과하고, 평균출력(kW)과 주파수(GHz)의 곱이 0.5를 초과하는 것"
+        },
+        {
+          "label": "b.1.a.5 비대역폭 10% 이상 소자(고리형·비 축대칭·다중 전자빔)",
+          "thresholds": [
+            {
+              "subject": "비대역폭",
+              "operator": "ge",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\" (fractional bandwidth)이 10% 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.b 교차장 증폭 진공전자소자 이득",
+          "thresholds": [
+            {
+              "subject": "이득",
+              "operator": "gt",
+              "value": "17",
+              "unit": "dB",
+              "quote": "이득이 17 dB를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.c 열음극 연속방사전류밀도",
+          "thresholds": [
+            {
+              "subject": "연속방사전류밀도",
+              "operator": "gt",
+              "value": "5",
+              "unit": "A/cm²",
+              "quote": "연속방사전류밀도(continuous emission current density)가 5 A/cm²를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.c 열음극 펄스형 전류밀도",
+          "thresholds": [
+            {
+              "subject": "펄스형 전류밀도",
+              "operator": "gt",
+              "value": "10",
+              "unit": "A/cm²",
+              "quote": "펄스형 (비연속적인) 전류밀도가 10 A/cm²를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.d 이중 모드 진공전자소자",
+          "thresholds": [],
+          "text": "'이중 모드'로 동작할 수 있는 \"진공전자소자\""
+        },
+        {
+          "label": "b.2.a.1 MMIC 2.7~2.9 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "2.7",
+              "unit": "GHz",
+              "quote": "동작주파수가 2.7 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "2.9",
+              "unit": "GHz",
+              "quote": "2.9 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "75",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력(peak saturated power output)이 75 W (48.75 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.a.2 MMIC 2.9~3.2 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "2.9",
+              "unit": "GHz",
+              "quote": "동작주파수가 2.9 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "3.2",
+              "unit": "GHz",
+              "quote": "3.2 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "55",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 55 W (47.4 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.a.3 MMIC 3.2~3.7 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3.2",
+              "unit": "GHz",
+              "quote": "동작주파수가 3.2 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "3.7",
+              "unit": "GHz",
+              "quote": "3.7 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "40",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 40 W (46 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.a.4 MMIC 3.7~6.8 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3.7",
+              "unit": "GHz",
+              "quote": "동작주파수가 3.7 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "6.8",
+              "unit": "GHz",
+              "quote": "6.8 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "20",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 20 W (43 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.b.1 MMIC 6.8~8.5 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "6.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 6.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "8.5 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "10",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 10 W (40 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.b.2 MMIC 8.5~16 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "동작주파수가 8.5 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "16",
+              "unit": "GHz",
+              "quote": "16 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "5",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 5 W (37 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.c MMIC 16~31.8 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "16",
+              "unit": "GHz",
+              "quote": "동작주파수가 16 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "3",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 3 W (34.77 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.d MMIC 31.8~37 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 31.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "nW",
+              "quote": "최대 포화 전력 출력이 0.1 nW (-70 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.e MMIC 37~43.5 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "동작주파수가 37 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "43.5 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "1",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 1 W (30 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.f MMIC 43.5~75 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "동작주파수가 43.5 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "31.62",
+              "unit": "mW",
+              "quote": "최대 포화 전력 출력이 31.62 mW (15 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.g MMIC 75~90 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "동작주파수가 75 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "90 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "5",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 5%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "10",
+              "unit": "mW",
+              "quote": "최대 포화 전력 출력이 10 mW (10 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2.h MMIC 90 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "동작주파수가 90 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "nW",
+              "quote": "최대 포화 전력 출력이 0.1 nW (-70 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.a.1 트랜지스터 2.7~2.9 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "2.7",
+              "unit": "GHz",
+              "quote": "동작주파수가 2.7 GHz 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "400",
+              "unit": "W",
+              "quote": "최대 포화 출력(peak saturated power output)이 400 W (56 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.a.2 트랜지스터 2.9~3.2 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "2.9",
+              "unit": "GHz",
+              "quote": "동작주파수가 2.9 GHz 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "205",
+              "unit": "W",
+              "quote": "최대 포화 출력이 205 W (53.12 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.a.3 트랜지스터 3.2~3.7 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3.2",
+              "unit": "GHz",
+              "quote": "동작주파수가 3.2 GHz 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "115",
+              "unit": "W",
+              "quote": "최대 포화 출력이 115 W (50.61 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.a.4 트랜지스터 3.7~6.8 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3.7",
+              "unit": "GHz",
+              "quote": "동작주파수가 3.7 GHz 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "60",
+              "unit": "W",
+              "quote": "최대 포화 출력이 60 W (47.78 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.b.1 트랜지스터 6.8~8.5 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "6.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 6.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "8.5 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "50",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 50 W (47 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.b.2 트랜지스터 8.5~12 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "동작주파수가 8.5 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "12",
+              "unit": "GHz",
+              "quote": "12 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "15",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 15 W (41.76 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.b.3 트랜지스터 12~16 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "12",
+              "unit": "GHz",
+              "quote": "동작주파수가 12 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "16",
+              "unit": "GHz",
+              "quote": "16 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "40",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 40 W (46 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.b.4 트랜지스터 16~31.8 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "16",
+              "unit": "GHz",
+              "quote": "동작주파수가 16 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "7",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 7 W (38.45 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.c 트랜지스터 31.8~37 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 31.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "0.5",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 0.5 W (27 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.d 트랜지스터 37~43.5 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "동작주파수가 37 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "43.5 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 출력",
+              "operator": "gt",
+              "value": "1",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 1 W (30 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.e 트랜지스터 43.5 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "동작주파수가 43.5 GHz를 초과하고,",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "nW",
+              "quote": "최대 포화 전력 출력이 0.1 nW (-70 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3.f 트랜지스터 8.5~31.8 GHz(기타)",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "모든 동작주파수가 8.5 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하이며, 최대",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "5",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 5 W (37.0 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.a.1 반도체 증폭기 2.7~2.9 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "2.7",
+              "unit": "GHz",
+              "quote": "동작주파수가 2.7 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "2.9",
+              "unit": "GHz",
+              "quote": "2.9 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "500",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력(peak saturated power output)이 500 W (57 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.a.2 반도체 증폭기 2.9~3.2 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "2.9",
+              "unit": "GHz",
+              "quote": "동작주파수가 2.9 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "3.2",
+              "unit": "GHz",
+              "quote": "3.2 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "270",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 270 W (54.3 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.a.3 반도체 증폭기 3.2~3.7 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3.2",
+              "unit": "GHz",
+              "quote": "동작주파수가 3.2 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "3.7",
+              "unit": "GHz",
+              "quote": "3.7 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "200",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 200 W (53 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.a.4 반도체 증폭기 3.7~6.8 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3.7",
+              "unit": "GHz",
+              "quote": "동작주파수가 3.7 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "6.8",
+              "unit": "GHz",
+              "quote": "6.8 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "15",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 15%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "90",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 90 W (49.54 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.b.1 반도체 증폭기 6.8~8.5 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "6.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 6.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "8.5 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "70",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 70 W (48.45 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.b.2 반도체 증폭기 8.5~12 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "8.5",
+              "unit": "GHz",
+              "quote": "동작주파수가 8.5 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "12",
+              "unit": "GHz",
+              "quote": "12 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "50",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 50 W (47 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.b.3 반도체 증폭기 12~16 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "12",
+              "unit": "GHz",
+              "quote": "동작주파수가 12 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "16",
+              "unit": "GHz",
+              "quote": "16 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "30",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 30 W (44.77 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.b.4 반도체 증폭기 16~31.8 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "16",
+              "unit": "GHz",
+              "quote": "동작주파수가 16 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "20",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 20 W (43 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.c 반도체 증폭기 31.8~37 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "동작주파수가 31.8 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "0.5",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 0.5 W (27 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.d 반도체 증폭기 37~43.5 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "동작주파수가 37 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "43.5 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "2",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 2W (33 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.e.1 반도체 증폭기 43.5~75 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "동작주파수가 43.5 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "10",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 10%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "0.2",
+              "unit": "W",
+              "quote": "최대 포화 전력 출력이 0.2 W (23 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.e.2 반도체 증폭기 75~90 GHz",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "동작주파수가 75 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수",
+              "operator": "le",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "90 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비대역폭",
+              "operator": "gt",
+              "value": "5",
+              "unit": "%",
+              "quote": "\"비대역폭\"이 5%를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "20",
+              "unit": "mW",
+              "quote": "최대 포화 전력 출력이 20 mW (13 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4.e.3 반도체 증폭기 90 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "동작주파수가 90 GHz를 초과하며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 포화 전력 출력",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "nW",
+              "quote": "최대 포화 전력 출력이 0.1 nW (-70 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5.a 가변 필터 통과 대역폭",
+          "thresholds": [
+            {
+              "subject": "가변 공진기 수",
+              "operator": "gt",
+              "value": "5",
+              "unit": "",
+              "quote": "가변 공진기(resonator)가 5개를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동조 시간",
+              "operator": "lt",
+              "value": "10",
+              "unit": "μs",
+              "quote": "10 μs 미만의 시간이내",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "통과 대역폭(중심주파수 대비)",
+              "operator": "gt",
+              "value": "0.5",
+              "unit": "%",
+              "quote": "통과 대역폭이 중심주파수(Center frequency)의 0.5%를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5.b 가변 필터 저지 대역폭",
+          "thresholds": [
+            {
+              "subject": "가변 공진기 수",
+              "operator": "gt",
+              "value": "5",
+              "unit": "",
+              "quote": "가변 공진기(resonator)가 5개를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동조 시간",
+              "operator": "lt",
+              "value": "10",
+              "unit": "μs",
+              "quote": "10 μs 미만의 시간이내",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "저지 대역폭(중심주파수 대비)",
+              "operator": "lt",
+              "value": "0.5",
+              "unit": "%",
+              "quote": "저지 대역폭이 중심주파수의 0.5% 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.a 신호분석기 주파수 범위 확장 변환기",
+          "thresholds": [
+            {
+              "subject": "확장 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz를 초과하여 \"신호분석기\"의 주파수 범위를 확장",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.b.1 신호발생기 확장 110 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "확장 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "신호발생기의 동작 범위를 확장할 수 있도록 설계된 것:\n        1. 110 GHz 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.b.2 신호발생기 확장 43.5~110 GHz 출력",
+          "thresholds": [
+            {
+              "subject": "확장 주파수",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "43.5 GHz 초과 110 GHz 이하의 주파수 범위 내 어디서나 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "확장 주파수",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하의 주파수 범위 내 어디서나 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "100",
+              "unit": "mW",
+              "quote": "출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.c.1 회로망분석기 확장 110 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "확장 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "회로망분석기의 동작 범위를 확장할 수 있도록 설계된 것:\n        1. 110 GHz 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.c.2 회로망분석기 확장 43.5~110 GHz 출력",
+          "thresholds": [
+            {
+              "subject": "확장 주파수",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "43.5 GHz 초과 110 GHz 이하의 주파수 범위 내 어디서나 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "확장 주파수",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하의 주파수 범위 내 어디서나 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "100",
+              "unit": "mW",
+              "quote": "출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.d 마이크로파 측정 수신기 확장",
+          "thresholds": [
+            {
+              "subject": "확장 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz를 초과하여 마이크로파 측정 수신기의 주파수 범위를 확장",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.8 진공전자소자 포함 마이크로웨이브 전력증폭기",
+          "thresholds": [
+            {
+              "subject": "동작주파수",
+              "operator": "gt",
+              "value": "3",
+              "unit": "GHz",
+              "quote": "동작주파수가 3 GHz 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균 질량대 출력비",
+              "operator": "gt",
+              "value": "80",
+              "unit": "W/kg",
+              "quote": "평균 질량대 출력비(output power to mass ratio)가 80 W/kg 을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "체적",
+              "operator": "lt",
+              "value": "400",
+              "unit": "cm3",
+              "quote": "체적이 400 cm3 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.9.c.1 마이크로웨이브 전력 모듈(MPM) 18 GHz 이하 RF 출력",
+          "thresholds": [
+            {
+              "subject": "턴-온 시간",
+              "operator": "lt",
+              "value": "10",
+              "unit": "초",
+              "quote": "'턴-온 시간'이 10초 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수",
+              "operator": "le",
+              "value": "18",
+              "unit": "GHz",
+              "quote": "18 GHz 이하의 주파수에서 RF 출력이 100 W 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "RF 출력",
+              "operator": "gt",
+              "value": "100",
+              "unit": "W",
+              "quote": "RF 출력이 100 W 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.9.c.2 마이크로웨이브 전력 모듈(MPM) 18 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "턴-온 시간",
+              "operator": "lt",
+              "value": "10",
+              "unit": "초",
+              "quote": "'턴-온 시간'이 10초 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수",
+              "operator": "gt",
+              "value": "18",
+              "unit": "GHz",
+              "quote": "주파수가 18 GHz 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.10 발진기 단측파대 위상잡음비(수식)",
+          "thresholds": [],
+          "text": "단측파대(SSB) 위상잡음비(dBc/Hz 단위)가 10 Hz <F<10kHz 범위 내의 임의의 주파수에서 －(126 + 20log10F - 20log10f) 미만(보다 우수한)인 것"
+        },
+        {
+          "label": "b.11.a 주파수 합성기 전환시간",
+          "thresholds": [
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "143",
+              "unit": "ps",
+              "quote": "143 ps 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11.b 주파수 합성기 4.8~31.8 GHz",
+          "thresholds": [
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "gt",
+              "value": "4.8",
+              "unit": "GHz",
+              "quote": "4.8 GHz 초과 31.8 GHz 이하의 합성 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하의 합성 주파수 범위 내에서 2.2 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "2.2",
+              "unit": "GHz",
+              "quote": "2.2 GHz를 초과하는 주파수 변화에 대해 100 μs 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "100",
+              "unit": "μs",
+              "quote": "100 μs 미만인 것\n      c.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11.d 주파수 합성기 31.8~37 GHz",
+          "thresholds": [
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 초과 37 GHz 이하의 합성 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하의 합성 주파수 범위 내에서 550 MHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "550",
+              "unit": "MHz",
+              "quote": "550 MHz를 초과하는 주파수 변화",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "500",
+              "unit": "μs",
+              "quote": "500 μs 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11.e 주파수 합성기 37~75 GHz",
+          "thresholds": [
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "gt",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 초과 75 GHz 이하의 합성 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "le",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 이하의 합성 주파수 범위 내에서 2.2 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "2.2",
+              "unit": "GHz",
+              "quote": "2.2 GHz를 초과하는 주파수 변화에 대해 100 µs 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "100",
+              "unit": "µs",
+              "quote": "100 µs 미만인 것\n      f.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11.f 주파수 합성기 75~90 GHz",
+          "thresholds": [
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "gt",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 초과 90 GHz 이하의 합성 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "le",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "90 GHz 이하의 합성 주파수 범위 내에서 5.0 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "5.0",
+              "unit": "GHz",
+              "quote": "5.0 GHz를 초과하는 주파수 변화",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "100",
+              "unit": "µs",
+              "quote": "100 µs 미만인 것; 또는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11.g 주파수 합성기 90 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "합성 주파수 범위",
+              "operator": "gt",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "90 GHz 초과의 합성 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "1",
+              "unit": "ms",
+              "quote": "1 ms 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.12 송수신 모듈·송신 MMIC(2.7 GHz 초과, 출력·크기 수식)",
+          "thresholds": [
+            {
+              "subject": "동작 주파수",
+              "operator": "gt",
+              "value": "2.7",
+              "unit": "GHz",
+              "quote": "2.7 GHz 보다 높은 주파수에서 동작가능한",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.a 표면탄성파 장치 반송 주파수 6 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "gt",
+              "value": "6",
+              "unit": "GHz",
+              "quote": "반송 주파수(carrier frequency)가 6 GHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b.1 반송 주파수 1~6 GHz·주파수 부엽 제거",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "gt",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1 GHz 초과 6 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "6",
+              "unit": "GHz",
+              "quote": "6 GHz 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 부엽 제거",
+              "operator": "gt",
+              "value": "65",
+              "unit": "dB",
+              "quote": "'주파수 부엽 제거'(frequency side-lobe rejection)가 65 dB를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b.2 반송 주파수 1~6 GHz·지연시간×대역폭 곱",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "gt",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1 GHz 초과 6 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "6",
+              "unit": "GHz",
+              "quote": "6 GHz 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 지연시간(μs)×대역폭(MHz) 곱",
+              "operator": "gt",
+              "value": "100",
+              "unit": "",
+              "quote": "최대 지연시간(μs)과 대역폭(MHz)의 곱이 100을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b.3 반송 주파수 1~6 GHz·대역폭",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "gt",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1 GHz 초과 6 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "6",
+              "unit": "GHz",
+              "quote": "6 GHz 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "대역폭",
+              "operator": "gt",
+              "value": "250",
+              "unit": "MHz",
+              "quote": "대역폭이 250 MHz 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.b.4 반송 주파수 1~6 GHz·분산지연시간",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "gt",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1 GHz 초과 6 GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "6",
+              "unit": "GHz",
+              "quote": "6 GHz 이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "분산지연시간",
+              "operator": "gt",
+              "value": "10",
+              "unit": "μs",
+              "quote": "분산지연시간(dispersive delay)이 10 μs 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.c.1 반송 주파수 1 GHz 이하·지연시간×대역폭 곱",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 지연시간(μs)×대역폭(MHz) 곱",
+              "operator": "gt",
+              "value": "100",
+              "unit": "",
+              "quote": "최대 지연시간(μs)과 대역폭(MHz)의 곱이 100을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.c.2 반송 주파수 1 GHz 이하·분산지연시간",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "분산지연시간",
+              "operator": "gt",
+              "value": "10",
+              "unit": "μs",
+              "quote": "분산지연시간(dispersive delay)이 10μs 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1.c.3 반송 주파수 1 GHz 이하·부엽 제거와 대역폭",
+          "thresholds": [
+            {
+              "subject": "반송 주파수",
+              "operator": "le",
+              "value": "1",
+              "unit": "GHz",
+              "quote": "반송 주파수가 1GHz 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 부엽 제거",
+              "operator": "gt",
+              "value": "65",
+              "unit": "dB",
+              "quote": "'주파수 부엽 제거'(frequency side-lobe rejection)가 65 dB을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "대역폭",
+              "operator": "gt",
+              "value": "100",
+              "unit": "MHz",
+              "quote": "대역폭이 100 MHz 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2 체적 음파장치",
+          "thresholds": [
+            {
+              "subject": "직접처리 주파수",
+              "operator": "gt",
+              "value": "6",
+              "unit": "GHz",
+              "quote": "6GHz초과의 주파수에서 신호의 직접처리",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.3 음파-광학 신호처리장치",
+          "thresholds": [],
+          "text": "음파(체적음파나 표면탄성파)와 광파 사이의 상호작용을 이용한 음파-광학(Acoustic-optic) \"신호처리\"장치로서 신호나 영상을 직접 처리하는 것"
+        },
+        {
+          "label": "d.1 초전도 디지털회로(지연시간×소비전력 곱)",
+          "thresholds": [],
+          "text": "게이트당 지연시간(초 단위)과 게이트당 소비전력(와트 단위)의 곱이 10-14 J 미만인 것"
+        },
+        {
+          "label": "d.2 초전도 공진회로 Q값",
+          "thresholds": [
+            {
+              "subject": "Q값",
+              "operator": "gt",
+              "value": "10000",
+              "unit": "",
+              "quote": "Q값이 10,000을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.1.a.1 1차 셀 에너지 밀도 550 Wh/kg",
+          "thresholds": [
+            {
+              "subject": "에너지 밀도",
+              "operator": "gt",
+              "value": "550",
+              "unit": "Wh/kg",
+              "quote": "'에너지 밀도'가 550 Wh/kg을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "연속 출력 밀도",
+              "operator": "gt",
+              "value": "50",
+              "unit": "W/kg",
+              "quote": "'연속 출력 밀도'가 50 W/kg을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.1.a.2 1차 셀 에너지 밀도 50 Wh/kg",
+          "thresholds": [
+            {
+              "subject": "에너지 밀도",
+              "operator": "gt",
+              "value": "50",
+              "unit": "Wh/kg",
+              "quote": "'에너지 밀도'가 50 Wh/kg을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "연속 출력 밀도",
+              "operator": "gt",
+              "value": "350",
+              "unit": "W/kg",
+              "quote": "'연속 출력 밀도'가 350 W/kg을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.1.b 2차 셀 에너지 밀도",
+          "thresholds": [
+            {
+              "subject": "에너지 밀도",
+              "operator": "gt",
+              "value": "500",
+              "unit": "Wh/kg",
+              "quote": "'에너지 밀도'가 500 Wh/kg을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.2.a 고에너지 저장 커패시터(단발)",
+          "thresholds": [
+            {
+              "subject": "반복률",
+              "operator": "lt",
+              "value": "10",
+              "unit": "Hz",
+              "quote": "반복률(repetition rate)이 10 Hz 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "정격 전압",
+              "operator": "ge",
+              "value": "5",
+              "unit": "kV",
+              "quote": "정격 전압이 5 kV 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "에너지밀도",
+              "operator": "ge",
+              "value": "250",
+              "unit": "J/kg",
+              "quote": "에너지밀도가 250 J/kg 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "총 에너지",
+              "operator": "ge",
+              "value": "25",
+              "unit": "kJ",
+              "quote": "총 에너지가 25 kJ 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.2.b 고에너지 저장 커패시터(반복)",
+          "thresholds": [
+            {
+              "subject": "반복률",
+              "operator": "ge",
+              "value": "10",
+              "unit": "Hz",
+              "quote": "반복률이 10 Hz 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "정격 전압",
+              "operator": "ge",
+              "value": "5",
+              "unit": "kV",
+              "quote": "정격 전압이 5 kV 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "에너지밀도",
+              "operator": "ge",
+              "value": "50",
+              "unit": "J/kg",
+              "quote": "에너지밀도가 50 J/kg 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "총 에너지",
+              "operator": "ge",
+              "value": "100",
+              "unit": "J",
+              "quote": "총 에너지가 100 J 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "충전/방전 사이클 수명",
+              "operator": "ge",
+              "value": "10000",
+              "unit": "",
+              "quote": "충전/방전 사이클 수명이 10,000 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.3 초전도 전자석·솔레노이드(정격 자기유도)",
+          "thresholds": [
+            {
+              "subject": "자계 충방전 시간",
+              "operator": "le",
+              "value": "1",
+              "unit": "초",
+              "quote": "1초 이내에 자계를 완전히 충전",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "방전 최초 1초간 방출 에너지",
+              "operator": "gt",
+              "value": "10",
+              "unit": "kJ",
+              "quote": "방전시 방출되는 에너지가 최초 1초간 10 kJ 을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "권선 내경",
+              "operator": "gt",
+              "value": "250",
+              "unit": "mm",
+              "quote": "권선의 내경이 250 mm 를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "정격 자기유도",
+              "operator": "gt",
+              "value": "8",
+              "unit": "T",
+              "quote": "정격 자기유도(magnetic induction)가 8 T 를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.3 초전도 전자석·솔레노이드(총 전류밀도)",
+          "thresholds": [
+            {
+              "subject": "자계 충방전 시간",
+              "operator": "le",
+              "value": "1",
+              "unit": "초",
+              "quote": "1초 이내에 자계를 완전히 충전",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "방전 최초 1초간 방출 에너지",
+              "operator": "gt",
+              "value": "10",
+              "unit": "kJ",
+              "quote": "방전시 방출되는 에너지가 최초 1초간 10 kJ 을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "권선 내경",
+              "operator": "gt",
+              "value": "250",
+              "unit": "mm",
+              "quote": "권선의 내경이 250 mm 를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "총 전류밀도",
+              "operator": "gt",
+              "value": "300",
+              "unit": "A/mm2",
+              "quote": "'총 전류밀도'(overall current density)가 300 A/mm2를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.4 우주용 태양 전지 효율",
+          "thresholds": [
+            {
+              "subject": "AM0 최소 평균 효율",
+              "operator": "gt",
+              "value": "20",
+              "unit": "%",
+              "quote": "최소 평균 효율이 20%를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f. 회전입력형 절대위치 엔코더",
+          "thresholds": [
+            {
+              "subject": "정확정밀도",
+              "operator": "le",
+              "value": "1.0",
+              "unit": "arcsec",
+              "quote": "\"정확정밀도\"가 1.0 arcsec 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g.1 사이리스터 di/dt 30,000 A/μs",
+          "thresholds": [
+            {
+              "subject": "최대 턴-온 상승 전류율(di/dt)",
+              "operator": "gt",
+              "value": "30000",
+              "unit": "A/μs",
+              "quote": "최대 턴-온 상승 전류율(di/dt)이 30,000 A/μs를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "오프-상태 전압",
+              "operator": "gt",
+              "value": "1100",
+              "unit": "V",
+              "quote": "오프-상태 전압이 1,100 V를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g.2 사이리스터 di/dt 2,000 A/μs",
+          "thresholds": [
+            {
+              "subject": "최대 턴-온 상승 전류율(di/dt)",
+              "operator": "gt",
+              "value": "2000",
+              "unit": "A/μs",
+              "quote": "최대 턴-온 상승 전류율(di/dt)이 2,000 A/μs를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "오프-상태 최대 전압",
+              "operator": "ge",
+              "value": "3000",
+              "unit": "V",
+              "quote": "오프-상태의 최대 전압이 3,000 V 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대(써지) 전류",
+              "operator": "ge",
+              "value": "3000",
+              "unit": "A",
+              "quote": "최대(써지) 전류가 3,000 A 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h. 전력 반도체 스위치·다이오드·모듈",
+          "thresholds": [
+            {
+              "subject": "최대 작동 접합 온도",
+              "operator": "gt",
+              "value": "488",
+              "unit": "K",
+              "quote": "최대 작동 접합 온도(junction temperature)가 488 K (215oC)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "피크 반복 오프 전압",
+              "operator": "gt",
+              "value": "300",
+              "unit": "V",
+              "quote": "피크 반복 오프 전압(저지 전압)이 300 V를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "상시 전류",
+              "operator": "gt",
+              "value": "1",
+              "unit": "A",
+              "quote": "상시 전류가 1 A를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.1.a 전자-광학변조기 10~20 GHz·Vπ(1 GHz 이하 측정)",
+          "thresholds": [
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "gt",
+              "value": "10",
+              "unit": "GHz",
+              "quote": "최대 동작 주파수가 10 GHz 초과 20 GHz 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "lt",
+              "value": "20",
+              "unit": "GHz",
+              "quote": "20 GHz 미만이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "광 삽입 손실",
+              "operator": "le",
+              "value": "3",
+              "unit": "dB",
+              "quote": "광 삽입 손실이 3 dB 이하이며 다음 중 하나를 갖는 것: \n     a.",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반파 전압(Vπ)",
+              "operator": "lt",
+              "value": "2.7",
+              "unit": "V",
+              "quote": "2.7 V 미만의 '반파 전압'('Vπ')",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.1.b 전자-광학변조기 10~20 GHz·Vπ(1 GHz 초과 측정)",
+          "thresholds": [
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "gt",
+              "value": "10",
+              "unit": "GHz",
+              "quote": "최대 동작 주파수가 10 GHz 초과 20 GHz 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "lt",
+              "value": "20",
+              "unit": "GHz",
+              "quote": "20 GHz 미만이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "광 삽입 손실",
+              "operator": "le",
+              "value": "3",
+              "unit": "dB",
+              "quote": "광 삽입 손실이 3 dB 이하이며 다음 중 하나를 갖는 것: \n     a.",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반파 전압(Vπ)",
+              "operator": "lt",
+              "value": "4",
+              "unit": "V",
+              "quote": "4 V 미만의 'Vπ'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.2.a 전자-광학변조기 20 GHz 이상·Vπ(1 GHz 이하 측정)",
+          "thresholds": [
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "ge",
+              "value": "20",
+              "unit": "GHz",
+              "quote": "최대 동작 주파수가 20 GHz 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "광 삽입 손실",
+              "operator": "le",
+              "value": "3",
+              "unit": "dB",
+              "quote": "광 삽입 손실이 3 dB 이하이며 다음 중 하나를 갖는 것: \n     a. 1 GHz 이하의 주파수에서 측정시 3.3 V 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반파 전압(Vπ)",
+              "operator": "lt",
+              "value": "3.3",
+              "unit": "V",
+              "quote": "3.3 V 미만의 'Vπ'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.2.b 전자-광학변조기 20 GHz 이상·Vπ(1 GHz 초과 측정)",
+          "thresholds": [
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "ge",
+              "value": "20",
+              "unit": "GHz",
+              "quote": "최대 동작 주파수가 20 GHz 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "광 삽입 손실",
+              "operator": "le",
+              "value": "3",
+              "unit": "dB",
+              "quote": "광 삽입 손실이 3 dB 이하이며 다음 중 하나를 갖는 것: \n     a. 1 GHz 이하의 주파수에서 측정시 3.3 V 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반파 전압(Vπ)",
+              "operator": "lt",
+              "value": "5",
+              "unit": "V",
+              "quote": "5 V 미만의 'Vπ'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "a. 범용 집적회로로서 다음의 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "총흡수선량(Total Dose)이 실리콘 기준으로 5×103 Gy이상",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "흡수선량 비율 상한치(Dose Rate Upset)가 실리콘 기준으로 5×106 Gy/s 이상",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "중성자(1 MeV equivalent)의 총플럭스(integrated flux) 가 5×1013 n/㎠ 이상",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.a.2는 민간 차량 또는 철도용으로 설계된 집적회로에는 적용되지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.b.1은 다음의 모든 특성을 갖는 주파수 대역에서 작동되도록 설계되거나 정격화된 \"진공전자소자\"를 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"MMIC\"가 전기통신, 레이더, 자동차와 같은 용도로 전용 설계된 경우에는 3A001.b.2.에 의해 통제되지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "피크 포화 출력 (단위:　W), Psat 가 어떠한 채널에 대해서도 505.62/(최대 동작주파수[GHz])2",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "어떠한 채널에서도 \"비대역폭\"이 5% 혹은 그보다 큰 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.c에서는 단일대역통과, 저역통과, 고역통과, 노치(notch)필터링 또는 공진기능에 한정된 음파장치는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.e는 축전지(battery)(단일 셀 축전지를 포함)는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "의료용 자기공명영상장치(magnetic resonance imaging, MRI)를 위해 전용 설계된 \"초전도\" 전자석이나 솔레노이드는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.g. 는 민간용 철도 및 \"민간 항공기\" 용도로 설계된 장비에 사용되는 사이리스터 장치와 '사이리스터 모듈'은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.h에서는 민간 차량, 민간 철도 또는 \"민간 항공기\" 용으로 설계된 장비에 포함되는 스위치, 다이오드, '모듈'에는 적용되지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A002",
+      "title": "일반용도의 \"전자 조립체\", 모듈과 장비로서 다음의 것",
+      "branches": [
+        {
+          "label": "a.6 디지털 데이터 기록계",
+          "thresholds": [
+            {
+              "subject": "연속 처리량",
+              "operator": "gt",
+              "value": "6.4",
+              "unit": "Gbit/s",
+              "quote": "'연속 처리량'이 6.4 Gbit/s를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.7 실시간 오실로스코프",
+          "thresholds": [
+            {
+              "subject": "수직 실효 잡음 전압(전체 대비)",
+              "operator": "lt",
+              "value": "2",
+              "unit": "%",
+              "quote": "전체 대비 2% 미만의 수직 실효 잡음 전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "상위 3dB 주파수",
+              "operator": "gt",
+              "value": "90",
+              "unit": "GHz",
+              "quote": "90 GHz를 초과하는 '상위 3dB 주파수'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 신호 분석기 31.8~37 GHz 분해 대역폭",
+          "thresholds": [
+            {
+              "subject": "주파수",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 초과 37 GHz 이하의 주파수 내에서",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하의 주파수 내에서",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "3 dB 분해 대역폭(RBW)",
+              "operator": "gt",
+              "value": "40",
+              "unit": "MHz",
+              "quote": "3 dB의 분해 대역폭(RBW)이 40 MHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2 신호 분석기 43.5~110 GHz 표시 평균 노이즈 레벨",
+          "thresholds": [
+            {
+              "subject": "주파수",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "43.5 GHz 초과 110 GHz 이하의 주파수 내에서, 표시",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하의 주파수 내에서, 표시 평균 노이즈 레벨(DANL)이 -160 dBm/Hz 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.3 신호 분석기 110 GHz 초과",
+          "thresholds": [
+            {
+              "subject": "분석 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 초과의 주파수를 분석",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.b.1 신호 분석기 실시간 대역폭·100% POD",
+          "thresholds": [
+            {
+              "subject": "실시간 대역폭",
+              "operator": "gt",
+              "value": "520",
+              "unit": "MHz",
+              "quote": "520 MHz를 초과하는 '실시간 대역폭'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "신호 지속시간",
+              "operator": "le",
+              "value": "8",
+              "unit": "μs",
+              "quote": "8 μs 이하의 지속시간을 갖는 신호에 대하여 100% POD",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전체 진폭으로부터의 감소",
+              "operator": "lt",
+              "value": "3",
+              "unit": "dB",
+              "quote": "전체 진폭으로부터의 감소가 3 dB 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.b.2 신호 분석기 실시간 대역폭·주파수 마스크 트리거",
+          "thresholds": [
+            {
+              "subject": "실시간 대역폭",
+              "operator": "gt",
+              "value": "520",
+              "unit": "MHz",
+              "quote": "520 MHz를 초과하는 '실시간 대역폭'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "신호 지속시간",
+              "operator": "le",
+              "value": "8",
+              "unit": "μs",
+              "quote": "8 μs 이하의 지속시간을 갖는 신호에 대하여 100% 트리거",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1 신호발생기 31.8~37 GHz 펄스 변조",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "주파수 범위가 31.8 GHz 초과 37 GHz 이하에서 펄스",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하에서 펄스 변조된",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "펄스 지속시간",
+              "operator": "lt",
+              "value": "25",
+              "unit": "ns",
+              "quote": "'펄스 지속시간'이 25 ns 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "On/off ratio",
+              "operator": "gt",
+              "value": "65",
+              "unit": "dB",
+              "quote": "On/off ratio가 65dB을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2 신호발생기 43.5~110 GHz 출력",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "주파수 범위가 43.5 GHz 초과 110 GHz 이하에서 출력이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하에서 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "100",
+              "unit": "mW",
+              "quote": "출력이 100 mW (20 dBm)를 초과하는 것\n  3.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3.b 신호발생기 주파수 전환시간 4.8~31.8 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "4.8",
+              "unit": "GHz",
+              "quote": "4.8 GHz 초과 31.8 GHz 이하의 주파수 범위 내에서 2.2 GHz를 초과하는 주파수 변화에 대해 100 µs 미만인 것;",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하의 주파수 범위 내에서 2.2 GHz를 초과하는 주파수 변화에 대해 100 µs 미만인 것;",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "2.2",
+              "unit": "GHz",
+              "quote": "2.2 GHz를 초과하는 주파수 변화에 대해 100 µs 미만인 것;",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "100",
+              "unit": "µs",
+              "quote": "100 µs 미만인 것;\n    c.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3.d 신호발생기 주파수 전환시간 31.8~37 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 초과 37 GHz 이하의 주파수 범위 내에서 550 MHz",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하의 주파수 범위 내에서 550 MHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "550",
+              "unit": "MHz",
+              "quote": "550 MHz를 초과하는 주파수 변화에 대해 500 µs 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "500",
+              "unit": "µs",
+              "quote": "500 µs 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3.e 신호발생기 주파수 전환시간 37~75 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 초과 75 GHz 이하의 주파수 범위 내에서 2.2 MHz",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 이하의 주파수 범위 내에서 2.2 MHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "2.2",
+              "unit": "MHz",
+              "quote": "2.2 MHz를 초과하는 주파수 변화",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "100",
+              "unit": "μs",
+              "quote": "100 μs 미만인 것; 또는\n    f.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3.g 신호발생기 주파수 전환시간 75~110 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 초과 110GHz 이하의 주파수 범위 내에서 5.0 GHz",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110GHz 이하의 주파수 범위 내에서 5.0 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 변화 폭",
+              "operator": "gt",
+              "value": "5.0",
+              "unit": "GHz",
+              "quote": "5.0 GHz를 초과하는 주파수 변화에 대해 100 μs 미만인 것;\n  4.",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 전환시간",
+              "operator": "lt",
+              "value": "100",
+              "unit": "μs",
+              "quote": "100 μs 미만인 것;\n  4.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.4 신호발생기 단측파대 위상잡음비(수식)",
+          "thresholds": [],
+          "text": "주파수 범위가 3.2 GHz 초과 110 GHz 이하이며, 10 kHz < F ≤ 100 kHz에서 범위내의 임의의 주파수에서 -(206 - 20log10f) 미만(보다 우수한)인 것"
+        },
+        {
+          "label": "d.5.a RF 변조 대역폭 4.8~31.8 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "4.8",
+              "unit": "GHz",
+              "quote": "4.8 GHz 초과 31.8 GHz 이하인 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이하인 주파수 범위 내에서 2.2 GHz를 초과하는 것\n    b.",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "RF 변조 대역폭",
+              "operator": "gt",
+              "value": "2.2",
+              "unit": "GHz",
+              "quote": "2.2 GHz를 초과하는 것\n    b.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.5.b RF 변조 대역폭 31.8~37 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 초과 37 GHz 이하인 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 이하인 주파수 범위 내에서 550 MHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "RF 변조 대역폭",
+              "operator": "gt",
+              "value": "550",
+              "unit": "MHz",
+              "quote": "550 MHz를 초과하는 것; 또는\n    c.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.5.c RF 변조 대역폭 37~75 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "37",
+              "unit": "GHz",
+              "quote": "37 GHz 초과 75 GHz 이하인 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 이하인 주파수 범위 내에서 2.2 GHz를 초과하는 것; 또는\n    d.",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "RF 변조 대역폭",
+              "operator": "gt",
+              "value": "2.2",
+              "unit": "GHz",
+              "quote": "2.2 GHz를 초과하는 것; 또는\n    d.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.5.d RF 변조 대역폭 75~110 GHz",
+          "thresholds": [
+            {
+              "subject": "주파수 범위",
+              "operator": "gt",
+              "value": "75",
+              "unit": "GHz",
+              "quote": "75 GHz 초과 110 GHz 이하인 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 범위",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하인 주파수 범위 내에서 5.0 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "RF 변조 대역폭",
+              "operator": "gt",
+              "value": "5.0",
+              "unit": "GHz",
+              "quote": "5.0 GHz를 초과하는 것; 또는\n    기술해설",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.6 신호발생기 최대 주파수",
+          "thresholds": [
+            {
+              "subject": "최대 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "최대 주파수가 110 GHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.1 회로망 분석기 43.5~110 GHz 출력",
+          "thresholds": [
+            {
+              "subject": "동작주파수 범위",
+              "operator": "gt",
+              "value": "43.5",
+              "unit": "GHz",
+              "quote": "동작주파수의 범위가 43.5 GHz 를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수 범위",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하이며 동작주파수 범위에서 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "100",
+              "unit": "mW",
+              "quote": "동작주파수 범위에서 출력이 100 mW (20 dBm)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.3 회로망 분석기 50~110 GHz 비선형 벡터 측정",
+          "thresholds": [
+            {
+              "subject": "동작주파수 범위",
+              "operator": "gt",
+              "value": "50",
+              "unit": "GHz",
+              "quote": "동작주파수의 범위가 50 GHz를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동작주파수 범위",
+              "operator": "le",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "110 GHz 이하이며 동작주파수 범위에서 '비선형 벡터 측정 기능'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.4 회로망 분석기 최대 동작주파수",
+          "thresholds": [
+            {
+              "subject": "최대 동작주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "최대 동작주파수가 110 GHz를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f. 마이크로웨이브용 시험수신기",
+          "thresholds": [
+            {
+              "subject": "최대 동작 주파수",
+              "operator": "gt",
+              "value": "110",
+              "unit": "GHz",
+              "quote": "최대 동작 주파수가 110 GHz 를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g.1 우주용 원자 주파수 표준기",
+          "thresholds": [],
+          "text": "\"우주용\"\n  2. 루비듐 주파수 표준기가 아니며"
+        },
+        {
+          "label": "g.2 비루비듐 원자 주파수 표준기 장기 안정도",
+          "thresholds": [],
+          "text": "루비듐 주파수 표준기가 아니며, 장기 안정도(에이징)가 1×10-11/month미만(보다 우수)인 것"
+        },
+        {
+          "label": "g.3 비우주용 루비듐 주파수 표준기",
+          "thresholds": [
+            {
+              "subject": "총 소비전력",
+              "operator": "lt",
+              "value": "1",
+              "unit": "W",
+              "quote": "총 소비전력이 1 W 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.1.b ADC 10~12 bit(출력·저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "10",
+              "unit": "bit",
+              "quote": "분해능력이 10 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "12",
+              "unit": "bit",
+              "quote": "12 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "1.0",
+              "unit": "GSPS",
+              "quote": "\"샘플 속도\"가 1.0 GSPS를 초과하는 것\n     c.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.1.c ADC 12~14 bit(출력·저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "12",
+              "unit": "bit",
+              "quote": "분해능력이 12 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "14",
+              "unit": "bit",
+              "quote": "14 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "1.0",
+              "unit": "GSPS",
+              "quote": "\"샘플 속도\"가 1.0 GSPS를 초과하는 것\n     d.",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.1.d ADC 14~16 bit(출력·저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "14",
+              "unit": "bit",
+              "quote": "분해능력이 14 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "ADC 분해능력",
+              "operator": "lt",
+              "value": "16",
+              "unit": "bit",
+              "quote": "16 bit 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "400",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 400 MSPS(Mega Sampes Per Second)를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.1.e ADC 16 bit 이상(출력·저장·처리)",
+          "thresholds": [
+            {
+              "subject": "ADC 분해능력",
+              "operator": "ge",
+              "value": "16",
+              "unit": "bit",
+              "quote": "분해능력이 16 bit 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "샘플 속도",
+              "operator": "gt",
+              "value": "180",
+              "unit": "MSPS",
+              "quote": "\"샘플 속도\"가 180 MSPS를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "데이터가 기록되는 동안 무선 주파수 신호 데이터의 \"신호처리\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A002.a.7은 등가 시간 샘플링 오실로스코프에는 적용되지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "표시 평균 노이즈 레벨(DANL)이 -160 dBm/Hz 미만인 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "2개 이상의 수정발진기 주파수의 가감(addition or subtraction) 또는 그 결과의 곱(multiplication)의 가감에 의해 출력 주파수를 생성하는 장비는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "진폭(amplitude)과 위상(phase)을 동시에 측정할 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "장기 안정도(에이징)가 1×10-11/month 미만(보다 우수)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A003",
+      "title": "스프레이냉각 열관리시스템",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "폐쇄 유체(closed fluid)를 사용한 스프레이냉각 열관리시스템, 그리고 이를 위해 전용 설계된 구성품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A101",
+      "title": "3A001에서 규정된 것 이외의 전자장비, 장치 및 구성품",
+      "branches": [
+        {
+          "label": "a. 미사일용 견고한 아날로그/디지털 변환기",
+          "thresholds": [],
+          "text": "아날로그/디지털 변환기(Analog-to-digital converter)로서 견고한 장비(ruggedized equipment)를 위한 군사적 규격에 맞게 설계되며 \"미사일\"에 사용될 수 있는 것"
+        },
+        {
+          "label": "b. 제동복사 전자기파 방사 가속기",
+          "thresholds": [
+            {
+              "subject": "전자 가속 에너지",
+              "operator": "ge",
+              "value": "2",
+              "unit": "MeV",
+              "quote": "2 MeV 이상으로 가속된 전자",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3A101.b에서 의료용으로 전용 설계된 장비는 제외한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A102",
+      "title": "'미사일'용으로 설계되거나 개조된 '열전지'",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "'미사일'용으로 설계되거나 개조된 '열전지'(thermal batteries)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A201",
+      "title": "3A001에서 규정된 것 이외의 전자부품",
+      "branches": [
+        {
+          "label": "a.1 펄스 방전 커패시터",
+          "thresholds": [
+            {
+              "subject": "정격전압",
+              "operator": "gt",
+              "value": "1.4",
+              "unit": "kV",
+              "quote": "1.4 kV를 초과하는 정격전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "에너지 저장",
+              "operator": "gt",
+              "value": "10",
+              "unit": "J",
+              "quote": "10 J를 초과하는 에너지 저장",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "커패시턴스",
+              "operator": "gt",
+              "value": "0.5",
+              "unit": "μF",
+              "quote": "0.5 μF를 초과하는 커패시턴스",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "직렬 인덕턴스",
+              "operator": "lt",
+              "value": "50",
+              "unit": "nH",
+              "quote": "50 nH 미만의 직렬 인덕턴스",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2 펄스 방전 커패시터",
+          "thresholds": [
+            {
+              "subject": "정격전압",
+              "operator": "gt",
+              "value": "750",
+              "unit": "V",
+              "quote": "750 V를 초과하는 정격전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "커패시턴스",
+              "operator": "gt",
+              "value": "0.25",
+              "unit": "μF",
+              "quote": "0.25 μF를 초과하는 커패시턴스",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "직렬 인덕턴스",
+              "operator": "lt",
+              "value": "10",
+              "unit": "nH",
+              "quote": "10 nH 미만의 직렬 인덕턴스",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 초전도체 솔레노이드 전자석",
+          "thresholds": [
+            {
+              "subject": "자기장",
+              "operator": "gt",
+              "value": "2",
+              "unit": "T",
+              "quote": "2T(tesla)를 초과하는 자기장",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경에 대한 길이의 비율",
+              "operator": "gt",
+              "value": "2",
+              "unit": "",
+              "quote": "내경에 대한 길이의 비율이 2를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "내경",
+              "operator": "gt",
+              "value": "300",
+              "unit": "㎜",
+              "quote": "300㎜를 초과하는 내경",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "자기장 균일도(내부 체적 중앙 50%)",
+              "operator": "lt",
+              "value": "1",
+              "unit": "%",
+              "quote": "1% 미만의 균일한 자기장",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 섬광 X선 발생기·펄스 전자가속기(500 keV~25 MeV)",
+          "thresholds": [
+            {
+              "subject": "최대 전자 에너지",
+              "operator": "ge",
+              "value": "500",
+              "unit": "keV",
+              "quote": "최대(peak) 전자 에너지가 500 keV를 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대 전자 에너지",
+              "operator": "lt",
+              "value": "25",
+              "unit": "MeV",
+              "quote": "25 MeV 미만인 가속기",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "성능지수(K)",
+              "operator": "ge",
+              "value": "0.25",
+              "unit": "",
+              "quote": "0.25 이상의 '성능지수(figure of merit)'(K)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2 섬광 X선 발생기·펄스 전자가속기(25 MeV 이상)",
+          "thresholds": [
+            {
+              "subject": "최대 전자 에너지",
+              "operator": "ge",
+              "value": "25",
+              "unit": "MeV",
+              "quote": "최대(peak) 전자 에너지가 25 MeV 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "첨두전력",
+              "operator": "gt",
+              "value": "50",
+              "unit": "MW",
+              "quote": "50 MW를 초과하는 '첨두전력'(peak power)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "의료용 핵자기공명(nuclear magnetic resonance (NMR)) 영상시스템을 위하여 전용 설계되고 '그 부품'으로 수출되는 자성체(magnet)는 포함되지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A201.c는 전자빔이나 X선(예: 전자현미경 검사)이외의 목적 및 의료목적으로 설계된 장치의 구성부품으로 사용되는 가속기는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A225",
+      "title": "주파수 변환기 또는 발생기",
+      "branches": [
+        {
+          "label": "a.~c. 모두 충족",
+          "thresholds": [
+            {
+              "subject": "다상출력 전력",
+              "operator": "ge",
+              "value": "40",
+              "unit": "VA",
+              "quote": "40 VA 이상의 전력",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "작동 주파수",
+              "operator": "ge",
+              "value": "600",
+              "unit": "Hz",
+              "quote": "600 Hz 이상의 주파수",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수제어",
+              "operator": "lt",
+              "value": "0.2",
+              "unit": "%",
+              "quote": "주파수제어가 0.2% 보다 우수한(미만인) 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0B001.b.14에서 명시된 것을 제외한 주파수 변환기 또는 발생기로서 가변 주파수 또는 고정 주파수 모터 드라이브로 이용 가능하며",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A226",
+      "title": "고전력(High-power) 직류 전력공급기",
+      "branches": [
+        {
+          "label": "a.·b. 모두 충족",
+          "thresholds": [
+            {
+              "subject": "출력 전압",
+              "operator": "ge",
+              "value": "100",
+              "unit": "V",
+              "quote": "100 V 이상의 전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력 전류",
+              "operator": "ge",
+              "value": "500",
+              "unit": "A",
+              "quote": "500 A 이상의 전류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "8시간 동안 지속적으로 공급할 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "전류나 전압의 안정도가 8시간 동안 0.1% 보다 우수한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0B001.j.6에서 명시된 것을 제외한",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A227",
+      "title": "고전압(High-voltage) 직류 전력공급기",
+      "branches": [
+        {
+          "label": "a.·b. 모두 충족",
+          "thresholds": [
+            {
+              "subject": "출력 전압",
+              "operator": "ge",
+              "value": "20",
+              "unit": "kV",
+              "quote": "20 kV 이상의 전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력 전류",
+              "operator": "ge",
+              "value": "1",
+              "unit": "A",
+              "quote": "1 A 이상의 전류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "8시간 동안 지속적으로 공급할 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "전류나 전압의 안정도가 8시간 동안 0.1% 보다 우수한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0B001.j.5에서 명시된 것을 제외한",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A228",
+      "title": "스위칭 장치로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 냉 음극관",
+          "thresholds": [
+            {
+              "subject": "전극 수",
+              "operator": "ge",
+              "value": "3",
+              "unit": "",
+              "quote": "3개 이상의 전극",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "양극 최대 전압 정격",
+              "operator": "ge",
+              "value": "2.5",
+              "unit": "kV",
+              "quote": "2.5 kV 이상의 양극 최대 전압 정격",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "양극 최대 전류 정격",
+              "operator": "ge",
+              "value": "100",
+              "unit": "A",
+              "quote": "100 A 이상의 양극 최대 전류 정격",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "양극지연시간",
+              "operator": "le",
+              "value": "10",
+              "unit": "μs",
+              "quote": "10 μs이하의 양극지연시간",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 격발형 불꽃간극",
+          "thresholds": [
+            {
+              "subject": "양극지연시간",
+              "operator": "le",
+              "value": "15",
+              "unit": "μs",
+              "quote": "15 μs 이하의 양극지연시간",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최대정격전류",
+              "operator": "ge",
+              "value": "500",
+              "unit": "A",
+              "quote": "최대정격전류가 500 A 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 빠른 스위칭 모듈·조립체",
+          "thresholds": [
+            {
+              "subject": "양극 최대 전압 정격",
+              "operator": "gt",
+              "value": "2",
+              "unit": "kV",
+              "quote": "2 kV를 초과하는 양극 최대 전압 정격",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "양극 최대 전류 정격",
+              "operator": "ge",
+              "value": "500",
+              "unit": "A",
+              "quote": "500 A 이상의 양극 최대 전류 정격",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3A228은 기체 크라이트론(krytron)관 및 진공 스프라이트론(sprytron)관을 포함한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.g에서 통제되는 것 이외의 빠른 스위칭 기능을 갖는 모듈 또는 조립체",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A229",
+      "title": "고전류 펄스 발생기로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 뇌관 점화세트",
+          "thresholds": [],
+          "text": "1A007.b에서 명시된 다중 통제 뇌관의 구동을 위해 설계된 것"
+        },
+        {
+          "label": "b. 모듈형 전기펄스 발생기(펄서)",
+          "thresholds": [
+            {
+              "subject": "부하 저항",
+              "operator": "lt",
+              "value": "40",
+              "unit": "Ω",
+              "quote": "40 옴(Ω) 미만의 부하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "에너지 전송 시간",
+              "operator": "lt",
+              "value": "15",
+              "unit": "μs",
+              "quote": "15μs 미만의 시간에 에너지를 전송",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력 전류",
+              "operator": "gt",
+              "value": "100",
+              "unit": "A",
+              "quote": "100 A를 초과하는 출력",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "무게",
+              "operator": "lt",
+              "value": "30",
+              "unit": "kg",
+              "quote": "30 kg 미만의 무게",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 마이크로-점화기",
+          "thresholds": [
+            {
+              "subject": "전압 정격",
+              "operator": "ge",
+              "value": "1",
+              "unit": "kV",
+              "quote": "전압 정격이 1 kV 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "정전용량",
+              "operator": "ge",
+              "value": "100",
+              "unit": "nF",
+              "quote": "100 nF 이상의 정전용량",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "운반가능하거나 충격에 견딜 수 있는 용도로 (ruggedized-use) 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "30 cm를 초과하는 치수가 없는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "35 mm 를 초과하는 치수가 없는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "223 ~ 373 K (-50 °C ~ 100 °C)의 전 온도범위에서 사용하도록 특정화되었거나 우주에서 사용하도록 특정화된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A229.b는 제논 섬광등 드라이버(xenon flashlamp drivers)를 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A230",
+      "title": "고속펄스발생기와 그를 위한 펄스 헤드",
+      "branches": [
+        {
+          "label": "a.·b. 모두 충족",
+          "thresholds": [
+            {
+              "subject": "저항성 부하",
+              "operator": "lt",
+              "value": "55",
+              "unit": "Ω",
+              "quote": "55 옴(Ω) 미만의 저항성 부하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "출력전압",
+              "operator": "gt",
+              "value": "6",
+              "unit": "V",
+              "quote": "6 V를 초과하는 출력전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "펄스변이 시간",
+              "operator": "lt",
+              "value": "500",
+              "unit": "ps",
+              "quote": "500 ps 미만의 '펄스변이 시간'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'펄스변이 시간'은 10%에서 90%사이의 전압 폭(voltage amplitude)에서의 시간 간격으로 정의된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A231",
+      "title": "튜브를 포함한 중성자 발생시스템",
+      "branches": [
+        {
+          "label": "b.1 삼중수소-중수소 핵반응 정전기적 가속",
+          "thresholds": [],
+          "text": "삼중수소-중수소(tritium-deuterium) 핵반응을 유도하기 위해 정전기적 가속(electrostatic acceleration)을 이용하는 것"
+        },
+        {
+          "label": "b.2 중수소-중수소 핵반응(중성자 속 수식 표기)",
+          "thresholds": [],
+          "text": "중수소-중수소(deuterium-deuterium) 핵반응을 유도하기 위해 정전기적 가속(electrostatic acceleration)을 이용하며 3 x 109 neutrons/s 이상의 중성자 속을 갖는 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "외부 진공시스템 없이 작동하도록 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A232",
+      "title": "다분기점 발화시스템",
+      "branches": [
+        {
+          "label": "b. 단일·다중 뇌관 장치",
+          "thresholds": [
+            {
+              "subject": "폭발신호 전파 시간",
+              "operator": "lt",
+              "value": "2.5",
+              "unit": "μs",
+              "quote": "2.5 μs 미만의 시간에 표면으로 퍼지는",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "폭발면",
+              "operator": "gt",
+              "value": "5000",
+              "unit": "mm2",
+              "quote": "5,000 mm2 초과하는 폭발면",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3A232에서는 납 아지드(lead azide)와 같은 1차 폭발에만 사용하는 뇌관은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1A007에서 규정된 것을 제외한",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A233",
+      "title": "질량분석계와 여기에 사용되는 이온원",
+      "branches": [
+        {
+          "label": "공통: 230 원자질량단위 이상 이온 측정",
+          "thresholds": [
+            {
+              "subject": "측정 가능 이온 질량",
+              "operator": "ge",
+              "value": "230",
+              "unit": "원자질량단위",
+              "quote": "230 원자질량단위 이상의 이온을 측정",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2 전자충격 질량분석기 냉각트랩",
+          "thresholds": [
+            {
+              "subject": "측정 가능 이온 질량",
+              "operator": "ge",
+              "value": "230",
+              "unit": "원자질량단위",
+              "quote": "230 원자질량단위 이상의 이온을 측정",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "냉각트랩 온도",
+              "operator": "le",
+              "value": "193",
+              "unit": "K",
+              "quote": "193 K (-80 °C) 이하로 냉각",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "2/230보다 우수한 분해능을 보유한",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0B002.g에 명시된 것을 제외",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "악티늄족(actinides) 또는 악티늄족 불화물(actinide fluorides)을 위해 설계된 미세불소화(microfluorination) 이온원를 장착한 질량분석계",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A234",
+      "title": "기폭 장치용 스트립 라인",
+      "branches": [
+        {
+          "label": "a. 정격 전압",
+          "thresholds": [
+            {
+              "subject": "정격 전압",
+              "operator": "gt",
+              "value": "2",
+              "unit": "kV",
+              "quote": "2 kV 초과의 정격 전압",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "기폭 장치에 낮은 인덕턱스(inductance) 경로를 제공하기 위한 스트립 라인",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A501",
+      "title": "전자 품목으로서 다음의 것",
+      "branches": [
+        {
+          "label": "a.15 극저온 CMOS 집적회로",
+          "thresholds": [
+            {
+              "subject": "설계 작동 주변 온도",
+              "operator": "le",
+              "value": "4.5",
+              "unit": "K",
+              "quote": "4.5 K (-268.65 °C) 이하의 주변 온도에서 작동",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.16 총 처리 성능(TPP) 집적회로",
+          "thresholds": [
+            {
+              "subject": "총 처리 성능(TPP)",
+              "operator": "ge",
+              "value": "6000",
+              "unit": "",
+              "quote": "'총 처리 성능(TPP)'이 6,000 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.13 파라메트릭 신호 증폭기",
+          "thresholds": [
+            {
+              "subject": "설계 작동 주변 온도",
+              "operator": "lt",
+              "value": "1",
+              "unit": "K",
+              "quote": "1 K (-272.15°C) 미만의 주변 온도에서 작동",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "작동 주파수 범위",
+              "operator": "ge",
+              "value": "2",
+              "unit": "GHz",
+              "quote": "2 GHz 이상 ~ 15 GHz 이하의 주파수 범위",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "작동 주파수 범위",
+              "operator": "le",
+              "value": "15",
+              "unit": "GHz",
+              "quote": "15 GHz 이하의 주파수 범위 내에서 작동하도록 설계된 것; 그리고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "잡음지수",
+              "operator": "lt",
+              "value": "0.015",
+              "unit": "dB",
+              "quote": "잡음지수가 0.015 dB 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3A001.a.2에서 통제되지 않는 상보성 금속 산화물 반도체(CMOS) 집적회로",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'총 처리 성능'('TPP')은 집적회로 상의 모든 처리 장치에 대한 2 × 'MacTOPS' × '연산의 비트 길이'의 총 합계 값이다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A502",
+      "title": "범용 \"전자 조립체\", 모듈과 장비",
+      "branches": [
+        {
+          "label": "i. 사용자 구성 가능 FPLD 포함 조립체",
+          "thresholds": [
+            {
+              "subject": "룩업 테이블 입력 수 총합",
+              "operator": "ge",
+              "value": "1800000",
+              "unit": "",
+              "quote": "'룩업 테이블 입력 수 총합'이 1,800,000 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "하나 이상의 '사용자 구성 가능' 필드 프로그래머블 로직 디바이스(FPLD)를 포함하고",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3A504",
+      "title": "극저온 냉각 시스템 및 구성품",
+      "branches": [
+        {
+          "label": "a. 극저온 냉각 시스템",
+          "thresholds": [
+            {
+              "subject": "냉각 온도",
+              "operator": "le",
+              "value": "0.1",
+              "unit": "K",
+              "quote": "0.1 K (-273.05 °C) 이하의 온도",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "냉각 지속 기간",
+              "operator": "gt",
+              "value": "48",
+              "unit": "시간",
+              "quote": "48 시간 초과의 기간",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "냉각 전력",
+              "operator": "ge",
+              "value": "600",
+              "unit": "µW",
+              "quote": "600 µW 이상의 냉각 전력",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 2단계 펄스 튜브 냉각 쿨러",
+          "thresholds": [
+            {
+              "subject": "유지 온도",
+              "operator": "lt",
+              "value": "4",
+              "unit": "K",
+              "quote": "4 K(-269.15°C) 미만의 온도를 유지",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "냉각 전력 제공 온도",
+              "operator": "le",
+              "value": "4.2",
+              "unit": "K",
+              "quote": "4.2 K (-268.95°C) 이하의 온도",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "냉각 전력",
+              "operator": "ge",
+              "value": "1.5",
+              "unit": "W",
+              "quote": "1.5 W 이상의 냉각 전력",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:3B001",
+      "title": "반도체 장치나 재료의 생산 용도로 제작된 장비",
+      "branches": [
+        {
+          "label": "a.1 비실리콘 에피텍셜성장 장비",
+          "thresholds": [
+            {
+              "subject": "성장 영역",
+              "operator": "ge",
+              "value": "75",
+              "unit": "mm",
+              "quote": "75 mm 이상의 영역",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "층 두께 허용오차",
+              "operator": "lt",
+              "value": "2.5",
+              "unit": "%",
+              "quote": "층 두께 허용오차를 ±2.5% 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2 MOCVD 반응기",
+          "thresholds": [],
+          "text": "유기금속화학증착(Metal organic chemical vapour deposition; MOCVD)반응기로서 알루미늄, 갈륨, 인듐, 비소, 인, 안티몬, 산소 또는 질소 중 두 개 이상의 물질로 구성된 화합물 반도체의 에피텍셜성장을 위해 설계된 것"
+        },
+        {
+          "label": "a.3 분자 빔 에피텍셜성장 장치",
+          "thresholds": [],
+          "text": "가스 또는 고체원료를 이용한 분자 빔 에피텍셜성장(MBE) 장치"
+        },
+        {
+          "label": "b.2 수소·중수소·헬륨 이온주입",
+          "thresholds": [
+            {
+              "subject": "빔 에너지",
+              "operator": "ge",
+              "value": "20",
+              "unit": "keV",
+              "quote": "20 keV 이상의 빔 에너지",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "빔 전류",
+              "operator": "ge",
+              "value": "10",
+              "unit": "mA",
+              "quote": "10 mA 이상의 빔 전류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3 직접기록 능력 이온주입",
+          "thresholds": [],
+          "text": "직접기록 능력(direct write capability)이 있는 것"
+        },
+        {
+          "label": "b.4 고에너지 산소주입",
+          "thresholds": [
+            {
+              "subject": "빔 전압",
+              "operator": "ge",
+              "value": "65",
+              "unit": "keV",
+              "quote": "65 keV 이상의 빔 전압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "빔 전류",
+              "operator": "ge",
+              "value": "45",
+              "unit": "mA",
+              "quote": "45 mA 이상의 빔 전류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5 가열 기판 실리콘 주입",
+          "thresholds": [
+            {
+              "subject": "기판 가열 온도",
+              "operator": "ge",
+              "value": "600",
+              "unit": "°C",
+              "quote": "600 °C 이상에서 가열된",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "빔 에너지",
+              "operator": "ge",
+              "value": "20",
+              "unit": "keV",
+              "quote": "20 keV 이상의 빔 에너지와 10 mA이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "빔 전류",
+              "operator": "ge",
+              "value": "10",
+              "unit": "mA",
+              "quote": "10 mA이상의 빔 전류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e. 자동로드 멀티-챔버 중앙 웨이퍼처리시스템",
+          "thresholds": [
+            {
+              "subject": "연결 가능 반도체 처리 장치 수",
+              "operator": "gt",
+              "value": "2",
+              "unit": "",
+              "quote": "2개 초과의 '반도체 처리 장치'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.1.a 스텝-반복·스텝-스캔 리소그래피 광원 파장",
+          "thresholds": [
+            {
+              "subject": "광원 파장",
+              "operator": "lt",
+              "value": "193",
+              "unit": "nm",
+              "quote": "광원의 파장이 193 nm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.1.b 스텝-반복·스텝-스캔 리소그래피 최소 분해 선폭",
+          "thresholds": [
+            {
+              "subject": "최소 분해 선폭(MRF)",
+              "operator": "le",
+              "value": "45",
+              "unit": "nm",
+              "quote": "'최소 분해 선폭'(MRF)이 45 nm 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.2 임프린트 리소그래피",
+          "thresholds": [
+            {
+              "subject": "선폭",
+              "operator": "le",
+              "value": "45",
+              "unit": "nm",
+              "quote": "선폭이 45 nm 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.3.b.1 마스크 제조 장비 초점 크기·이미지 위치",
+          "thresholds": [
+            {
+              "subject": "FWHM 초점 크기",
+              "operator": "lt",
+              "value": "65",
+              "unit": "nm",
+              "quote": "반치 전폭(FWHM) 초점 크기(spot size)가 65 nm 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "이미지 위치",
+              "operator": "lt",
+              "value": "17",
+              "unit": "nm",
+              "quote": "이미지 위치가 17 nm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.3.b.3 마스크 제조 장비 중첩 오차",
+          "thresholds": [
+            {
+              "subject": "2번째 층 중첩 오차",
+              "operator": "lt",
+              "value": "23",
+              "unit": "nm",
+              "quote": "2번째 층의 중첩 오차가 23 nm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.4.b.1 직접기록 장비 최소 빔 크기",
+          "thresholds": [
+            {
+              "subject": "최소 빔 크기",
+              "operator": "le",
+              "value": "15",
+              "unit": "nm",
+              "quote": "최소 빔 크기(beam size)가 15 nm 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.4.b.2 직접기록 장비 중첩 오차",
+          "thresholds": [
+            {
+              "subject": "중첩 오차",
+              "operator": "lt",
+              "value": "27",
+              "unit": "nm",
+              "quote": "중첩 오차가 27 nm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g. 3A001 집적회로용 마스크·망선",
+          "thresholds": [],
+          "text": "3A001에 해당하는 집적회로를 위해 설계된 마스크 또는 망선(reticles)"
+        },
+        {
+          "label": "h. 위상 변이 층 다층 마스크",
+          "thresholds": [
+            {
+              "subject": "리소그래피 광원 파장",
+              "operator": "lt",
+              "value": "245",
+              "unit": "nm",
+              "quote": "245 nm 미만 파장의 광원",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i. 임프린트 리소그래피 템플릿",
+          "thresholds": [],
+          "text": "임프린트 리소그래피 템플릿(template)으로 3A001.에서 통제되는 집적회로를 위해 설계된 것"
+        },
+        {
+          "label": "j. EUV 마스크 블랭크 기판",
+          "thresholds": [],
+          "text": "몰리브덴 및 실리콘으로 구성된 다중박막 반사경 구조를 가진 마스크 \"블랭크 기판\""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3B001.e은 병렬 웨이퍼 처리를 위해 전용 설계된 자동로봇(automatic robotic) 웨이퍼처리시스템은 제외",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001의 통제를 받지 않는 메모리 소자의 제조를 위해 설계된 위상 변이 층을 가진 다층 마스크는 3B001.h.의 통제를 받지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"극자외선\" (\"EUV\") 리소그라피를 위해 전용 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3B002",
+      "title": "반도체 장치 시험장비",
+      "branches": [
+        {
+          "label": "a. 3A001.b.3 품목 S-파라미터 시험",
+          "thresholds": [],
+          "text": "3A001.b.3.에 명시된 품목의 S-파라미터를 시험하기 위한 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "완성품 혹은 비완성품 반도체 장치를 시험하기 위해 전용 설계된 시험장비와 그 구성품 및 부속품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3B501",
+      "title": "반도체 기기나 재료의 제조를 위한 장비",
+      "branches": [
+        {
+          "label": "a.1 Si·SiGe 에피택셜 성장 장비",
+          "thresholds": [
+            {
+              "subject": "에피택셜 증착 챔버 작동 온도",
+              "operator": "lt",
+              "value": "958",
+              "unit": "K",
+              "quote": "958K(685°C) 미만의 온도에서 작동",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.1.a 리소그래피 광원 파장",
+          "thresholds": [
+            {
+              "subject": "광원 파장",
+              "operator": "lt",
+              "value": "193",
+              "unit": "nm",
+              "quote": "광원의 파장이 193 nm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.1.b 리소그래피 MRF·전용 척 오버레이",
+          "thresholds": [
+            {
+              "subject": "광원 파장",
+              "operator": "ge",
+              "value": "193",
+              "unit": "nm",
+              "quote": "광원의 파장이 193 nm 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "최소 분해 선폭(MRF)",
+              "operator": "le",
+              "value": "45",
+              "unit": "nm",
+              "quote": "'최소 분해 선폭'('MRF')이 45 nm 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전용 척 오버레이 최대값",
+              "operator": "le",
+              "value": "1.50",
+              "unit": "nm",
+              "quote": "'전용 척 오버레이' 최대값이 1.50 nm 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "k.1 등방성 건식식각(식각 선택비 100:1 이상)",
+          "thresholds": [],
+          "text": "등방성 건식식각을 위해 설계 또는 개조된 장비로서 최대 '실리콘-게르마늄 대 실리콘 식각 선택비'가 100:1 이상인 것"
+        },
+        {
+          "label": "k.2 이방성 건식식각",
+          "thresholds": [
+            {
+              "subject": "고속 가스 스위칭 밸브 스위칭 시간",
+              "operator": "lt",
+              "value": "300",
+              "unit": "ms",
+              "quote": "300ms 미만의 스위칭 시간",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "정전척 개별 제어 가변 온도 요소 수",
+              "operator": "ge",
+              "value": "20",
+              "unit": "",
+              "quote": "20개 이상의 개별 제어 가능 가변 온도 요소",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "l. EUV 마스크·레티클",
+          "thresholds": [],
+          "text": "집적회로용으로 설계된 \"극자외선\" (\"EUV\") 마스크와 \"EUV\" 레티클로서, 3B001.g에서 통제되지 않으며, 3B001.j에 의해 통제되는 마스크 블랭크 기판을 갖는 것"
+        },
+        {
+          "label": "m. EUV 펠리클",
+          "thresholds": [],
+          "text": "\"EUV\" 리소그래피를 위해 전용 설계된 '펠리클'"
+        },
+        {
+          "label": "n.1.a ALD 텅스텐 채움",
+          "thresholds": [
+            {
+              "subject": "채널·인터커넥트 너비",
+              "operator": "lt",
+              "value": "40",
+              "unit": "nm",
+              "quote": "40 nm 미만 너비의 채널",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.1.b ALD 영역 선택적 증착",
+          "thresholds": [],
+          "text": "유기금속 화합물 전구체를 사용하여 금속 또는 금속 질화물의 측벽 장벽을 '영역 선택적 증착'하기 위해 설계된 장비"
+        },
+        {
+          "label": "n.1.c ALD 일함수 금속(TiAlC)",
+          "thresholds": [
+            {
+              "subject": "일함수",
+              "operator": "gt",
+              "value": "4.0",
+              "unit": "eV",
+              "quote": "일함수(work function)가 4.0 eV를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전구체 용기 작동 온도",
+              "operator": "ge",
+              "value": "303.15",
+              "unit": "K",
+              "quote": "303.15 K (30 °C) 이상의 온도에서 작동",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.2 코발트 전해·무전해 도금",
+          "thresholds": [],
+          "text": "코발트 전해도금(electroplating) 또는 코발트 무전해 도금(electroless-plating) 증착 공정을 위해 설계된 장비"
+        },
+        {
+          "label": "n.3 코발트 충진 CVD",
+          "thresholds": [],
+          "text": "코발트 충진 금속의 화학 기상 증착(CVD)을 위해 설계된 장비"
+        },
+        {
+          "label": "n.4 텅스텐 선택적 상향식 CVD",
+          "thresholds": [],
+          "text": "텅스텐 충진 금속의 '선택적 상향식'('selective bottom-up') 화학 기상 증착(CVD)을 위해 설계된 장비"
+        },
+        {
+          "label": "n.5 저유전율 무공극 플라즈마 강화 증착",
+          "thresholds": [
+            {
+              "subject": "갭 너비",
+              "operator": "lt",
+              "value": "25",
+              "unit": "nm",
+              "quote": "너비가 25 nm 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "유전율",
+              "operator": "lt",
+              "value": "3.3",
+              "unit": "",
+              "quote": "유전율이 3.3 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.6 루테늄 층 증착",
+          "thresholds": [
+            {
+              "subject": "웨이퍼 기판 온도(하한)",
+              "operator": "gt",
+              "value": "293.15",
+              "unit": "K",
+              "quote": "293.15 K (20°C) 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "웨이퍼 기판 온도(상한)",
+              "operator": "lt",
+              "value": "773.15",
+              "unit": "K",
+              "quote": "773.15 K (500°C) 미만으로 유지하면서 유기금속 화합물 전구체를 사용하여 루테늄 층",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.7.a 다중 챔버 금속 접합부(수소·산소 플라즈마·텅스텐)",
+          "thresholds": [
+            {
+              "subject": "웨이퍼 기판 온도(상한)",
+              "operator": "lt",
+              "value": "773.15",
+              "unit": "K",
+              "quote": "773.15 K (500°C) 미만으로 유지하면서 수소",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.7.b 다중 챔버 금속 접합부(원격 플라즈마·코발트)",
+          "thresholds": [],
+          "text": "원격 플라즈마 발생기 및 이온 필터를 사용하는 표면 처리 플라즈마 공정"
+        },
+        {
+          "label": "n.7.c 다중 챔버 금속 접합부(TiN/WC·코발트 스퍼터·코발트 CVD)",
+          "thresholds": [
+            {
+              "subject": "웨이퍼 기판 온도(상한)",
+              "operator": "lt",
+              "value": "773.15",
+              "unit": "K",
+              "quote": "773.15 K (500°C) 미만으로 유지하면서 유기금속 화합물 전구체를 사용하여 티타늄",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.7.d 다중 챔버 구리 인터커넥트",
+          "thresholds": [
+            {
+              "subject": "웨이퍼 기판 온도(상한)",
+              "operator": "lt",
+              "value": "773.15",
+              "unit": "K",
+              "quote": "773.15 K (500°C) 미만으로 유지하면서 1.33×10-1 Pa (1 mTorr)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "n.8 단일 챔버 금속 접합부(텅스텐·플라즈마)",
+          "thresholds": [
+            {
+              "subject": "웨이퍼 기판 온도(상한)",
+              "operator": "lt",
+              "value": "773.15",
+              "unit": "K",
+              "quote": "773.15 K (500°C) 미만으로 유지하면서 유기금속 화합물 전구체를 사용하여 텅스텐 층",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "웨이퍼 표면 세정을 위한 표면 전처리 기능을 제공하도록 설계된 사전 세정챔버를 적어도 하나 포함하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "최소 1개 이상의 펄스 RF 출력을 갖는 무선 주파수(RF) 전력 공급원",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'실리콘-게르마늄 대 실리콘 식각 선택비'는 30 % 이상의 게르마늄 농축도(Si0.70Ge0.30)에 대해 측정된다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'종횡비'가 1:1 이상인 '갭'",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1.33×10-1 Pa (1 mTorr) 초과 및 1.33×101 Pa (100 mTorr) 미만의 공정 압력에서 물리 스퍼터 증착을 사용해 코발트 층을 증착하는 공정",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1.33×102 Pa (1 Torr) 초과 및 1.33×104 Pa (100 Torr) 미만의 공정 압력에서 유기금속 화합물 전구체를 사용하여 코발트 층을 증착하는 공정",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3B503",
+      "title": "주사전자현미경 (SEM) 장비",
+      "branches": [
+        {
+          "label": "a.~g. 모두 충족",
+          "thresholds": [
+            {
+              "subject": "스테이지 배치 정확도",
+              "operator": "lt",
+              "value": "30",
+              "unit": "nm",
+              "quote": "스테이지 배치 정확도가 30nm 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "FOV 오버랩",
+              "operator": "lt",
+              "value": "5",
+              "unit": "%",
+              "quote": "FOV 오버랩이 수직 및 수평 방향으로 5% 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "FOV 스티칭 오버랩",
+              "operator": "lt",
+              "value": "50",
+              "unit": "nm",
+              "quote": "FOV 스티칭 오버랩이 50nm 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "가속 전압",
+              "operator": "gt",
+              "value": "21",
+              "unit": "kV",
+              "quote": "가속 전압이 21kV를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "레이저 간섭법을 사용하여 스테이지 위치 측정을 수행하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "2x108 픽셀을 초과하는 이미지의 수집 및 저장이 가능한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3B503은 200mm 이상의 전면 개방형 통합 포드(FOUP)와 같은 반도체장비 및 재료 국제(SEMI) 표준웨이퍼 캐리어를 수용하도록 설계된 SEM 장비를 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3B504",
+      "title": "극저온 웨이퍼 탐침 장비",
+      "branches": [
+        {
+          "label": "a.·b. 모두 충족",
+          "thresholds": [
+            {
+              "subject": "테스트 온도",
+              "operator": "le",
+              "value": "4.5",
+              "unit": "K",
+              "quote": "4.5K(-268.65°C) 이하의 온도에서 장치를 테스트",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "수용 웨이퍼 직경",
+              "operator": "ge",
+              "value": "100",
+              "unit": "mm",
+              "quote": "직경 100 mm 이상의 웨이퍼 크기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:3C001",
+      "title": "헤테로 적층 결정을 가지는 \"기판\"",
+      "branches": [
+        {
+          "label": "a.~e. 소재",
+          "thresholds": [],
+          "text": "다음 중 하나에 해당하는 소재의 다층막(multiple layer)으로 된 헤테로 적층(hetero-epitaxial) 결정을 가지는 \"기판\"(substrate)"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "갈륨(Ga) 또는 인듐(In)의 \"III/V족 화합물\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "GaP, GaAs, AlGaAs, InP, InGaP, AlInP or InGaAlP으로 구성된 1층 이상의 P타입 에피텍셜층을 갖는 \"기판\"은 통제하지 않는다. 단, N타입 층 사이에 에피텍셜층이 있는 경우는 통제한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C002",
+      "title": "레지스트, 또는 이들 레지스트를 도포한 \"기판\"",
+      "branches": [
+        {
+          "label": "a.1 양성 레지스트(15 nm 이상 193 nm 미만 파장)",
+          "thresholds": [],
+          "text": "15 nm 보다 크거나 같고 193 nm 보다 작은 파장에서 사용할 수 있도록 최적화된 양성 레지스트"
+        },
+        {
+          "label": "a.2 레지스트(1 nm 초과 15 nm 미만 파장)",
+          "thresholds": [],
+          "text": "1 nm 보다 크고 15 nm 보다 작은 파장에서 사용할 수 있도록 최적화된 레지스트"
+        },
+        {
+          "label": "b. 전자빔·이온빔용 레지스트 감도",
+          "thresholds": [
+            {
+              "subject": "감도",
+              "operator": "ge",
+              "value": "0.01",
+              "unit": "µC/mm2",
+              "quote": "0.01 µC/mm2 이상의 감도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 표면 영상기술 레지스트",
+          "thresholds": [],
+          "text": "표면 영상기술(surface imaging technology)을 이용할 수 있도록 최적화된 모든 레지스트"
+        },
+        {
+          "label": "e. 임프린트 리소그래피용 레지스트",
+          "thresholds": [],
+          "text": "3B001.f.2에서 규정된 임프린트(imprint) 리소그래피 장비와 함께 사용하기 위해 설계되거나 최적화된 모든 레지스트로 열경화 또는 광경화 프로세스를 이용하는 것"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:3C003",
+      "title": "유기-무기화합물",
+      "branches": [
+        {
+          "label": "a. Al·Ga·In 유기-금속화합물",
+          "thresholds": [
+            {
+              "subject": "순도(금속 기준)",
+              "operator": "gt",
+              "value": "99.999",
+              "unit": "%",
+              "quote": "99.999%를 초과하는(보다 우수한) 순도(금속을 기준)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 유기-As·Sb·P 화합물",
+          "thresholds": [
+            {
+              "subject": "순도(무기물 기준)",
+              "operator": "gt",
+              "value": "99.999",
+              "unit": "%",
+              "quote": "99.999%를 초과하는(보다 우수한) 순도(무기물 기준)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "알루미늄, 갈륨 또는 인듐 원소가 분자의 유기부분 내 탄소와 직접 결합되어 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "비소, 안티몬 또는 인 원소가 분자의 분자의 유기부분 내 탄소와 직접 결합되어 있는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C004",
+      "title": "인, 비소 또는 안티몬의 수소화물",
+      "branches": [
+        {
+          "label": "순도",
+          "thresholds": [
+            {
+              "subject": "순도",
+              "operator": "gt",
+              "value": "99.999",
+              "unit": "%",
+              "quote": "99.999%를 초과하는(보다 우수한) 순도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3C004는 20% mol 이상의 불활성가스(inert gases) 또는 수소(H)를 포함하는 수소화물은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C005",
+      "title": "고저항 재료",
+      "branches": [
+        {
+          "label": "a. SiC·GaN·AlN·AlGaN·Ga2O3·다이아몬드 반도체 기판·주괴·불·모재",
+          "thresholds": [
+            {
+              "subject": "저항(20°C)",
+              "operator": "gt",
+              "value": "10000",
+              "unit": "ohm-cm",
+              "quote": "20°C에서 10,000 ohm-cm보다 큰 저항",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 다결정·다결정 세라믹 기판(단결정 층 포함)",
+          "thresholds": [
+            {
+              "subject": "저항(20°C)",
+              "operator": "gt",
+              "value": "10000",
+              "unit": "ohm-cm",
+              "quote": "20°C에서 10,000 ohm-cm보다 큰 저항을 가지는 다결정",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3C005에 명시된 \"기판\"으로 구성되고 하나 이상의 에피텍셜 층을 포함하는 재료에 대해서는 3C001 또는 3C006 참조",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C006",
+      "title": "3C005 \"기판\" 위 에피택셜 층 재료",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3C005에 규정된 \"기판\" 위에 실리콘 카바이드(SiC), 갈륨 나이트라이드(GaN), 알루미늄 나이트라이드(AlN), 알루미늄 갈륨 나이트라이드(AlGaN), 갈륨 옥사이드(Ga2O3) 또는 다이아몬드 중 하나 이상의 에피택셜 층을 갖는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C507",
+      "title": "동위원소 농축 에피택셜 재료",
+      "branches": [
+        {
+          "label": "a. 실리콘 동위원소 불순물",
+          "thresholds": [
+            {
+              "subject": "실리콘-28·30 이외 동위원소 비율",
+              "operator": "lt",
+              "value": "0.08",
+              "unit": "%",
+              "quote": "실리콘 동위원소가 0.08% 미만인 동위원소 불순물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 게르마늄 동위원소 불순물",
+          "thresholds": [
+            {
+              "subject": "게르마늄-70·72·74·76 이외 동위원소 비율",
+              "operator": "lt",
+              "value": "0.08",
+              "unit": "%",
+              "quote": "게르마늄 동위원소가 0.08% 미만인 동위원소 불순물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "에피택셜 성장층을 적어도 하나 가지는 \"기판\"으로 구성되는 에피택셜 재료",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C508",
+      "title": "동위원소 농축 실리콘·게르마늄 불화물·수소화물·염화물",
+      "branches": [
+        {
+          "label": "a. 실리콘 동위원소 불순물",
+          "thresholds": [
+            {
+              "subject": "실리콘-28·30 이외 동위원소 비율",
+              "operator": "lt",
+              "value": "0.08",
+              "unit": "%",
+              "quote": "실리콘 동위원소가 0.08 % 미만인 동위원소 불순물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 게르마늄 동위원소 불순물",
+          "thresholds": [
+            {
+              "subject": "게르마늄-70·72·74·76 이외 동위원소 비율",
+              "operator": "lt",
+              "value": "0.08",
+              "unit": "%",
+              "quote": "게르마늄 동위원소가 0.08% 미만인 동위원소 불순물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "실리콘 또는 게르마늄의 불화물, 수소화물 또는 염화물",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3C509",
+      "title": "동위원소 농축 실리콘·실리콘 산화물·게르마늄·게르마늄 산화물",
+      "branches": [
+        {
+          "label": "a. 실리콘 동위원소 불순물",
+          "thresholds": [
+            {
+              "subject": "실리콘-28·30 이외 동위원소 비율",
+              "operator": "lt",
+              "value": "0.08",
+              "unit": "%",
+              "quote": "실리콘 동위원소가 0.08% 미만인 동위원소 불순물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 게르마늄 동위원소 불순물",
+          "thresholds": [
+            {
+              "subject": "게르마늄-70·72·74·76 이외 동위원소 비율",
+              "operator": "lt",
+              "value": "0.08",
+              "unit": "%",
+              "quote": "게르마늄 동위원소가 0.08% 미만인 동위원소 불순물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3C509는 \"기판\", 덩어리, 주괴, 불(boule) 및 모재를 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D001",
+      "title": "3A001.b~3A002.h·3A501.b.13·3B 장비의 \"개발\"·\"생산\" 전용 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"소프트웨어\"로서 3A001.b에서 3A002.h., 3A501.b.13 혹은 3B에서 통제되는 장비의 \"개발\" 또는 \"생산\" 전용으로 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D002",
+      "title": "3B001.a.~f.·3B002·3B501 장비의 \"사용\" 전용 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3B001.a.~f., 3B002, 3B501.a.1, 3B501.f.1, 3B501.k 혹은 3B501.n에서 규정하는 장비의 \"사용\"을 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D003",
+      "title": "극자외선 리소그라피 마스크·망선 패턴 \"개발\"용 '컴퓨터 리소그라피' \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "극자외선 리소그라피 마스크 또는 망선(reticles) 패턴 \"개발\"을 위해 전용 설계된 '컴퓨터 리소그라피' \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D004",
+      "title": "3A003 장비의 \"개발\" 전용 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A003에 의해 통제되는 장비의 \"개발\"을 위해 전용으로 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D005",
+      "title": "EMP·ESD 후 정상 작동 회복 전용 \"소프트웨어\"",
+      "branches": [
+        {
+          "label": "정상 작동 회복 시간",
+          "thresholds": [
+            {
+              "subject": "정상 작동 회복 시간",
+              "operator": "le",
+              "value": "1",
+              "unit": "ms",
+              "quote": "1 ms 이내 정상 작동 회복",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "전자기 펄스(Electromagnetic Pulse (EMP))나 정전기 방출(Electrostatic Discharge (ESD))로 인한 마이크로컴퓨터, \"마이크로 프로세서 마이크로회로\" 또는 \"마이크로컴퓨터 마이크로회로\"의 작동 중단 후",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D006",
+      "title": "GAAFET 집적 회로 \"개발\" 전용 '전자 CAD' \"소프트웨어\"",
+      "branches": [
+        {
+          "label": "a. GDSII로 RTL 구현",
+          "thresholds": [],
+          "text": "\"기하학적 데이터베이스 표준 II\" (\"GDSII\") 또는 이에 상응하는 표준으로 '레지스터 전송 레벨' ('RTL')을 구현하기 위해 전용 설계된 것"
+        },
+        {
+          "label": "b. 전력·타이밍 규칙 최적화",
+          "thresholds": [],
+          "text": "전력이나 타이밍 규칙을 최적화하기 위해 전용설계된 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"게이트올어라운드 전계 효과 트랜지스터\"(\"GAAFET\") 구조를 갖고 집적 회로의 \"개발\"을 위해 전용 설계된 '전자 CAD' ('ECAD') \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D101",
+      "title": "3A101.b 장비의 \"사용\" 전용 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A101.b.에서 규정된 장비의 \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D201",
+      "title": "3A225 장비의 \"사용\" 전용 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A225에서 규정하는 장비의 \"사용\"을 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D202",
+      "title": "3A225 특성 충족을 위한 성능 강화 \"소프트웨어\"·암호화 키",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A225에서 통제되지 않는 장비의 성능 특성을 강화하거나 구현하여 3A225에 규정된 특성을 만족 또는 초과하도록 하기 위해 전용 설계된 \"소프트웨어\" 또는 암호화 키/코드",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D203",
+      "title": "3A225 장비의 동작 특성 강화 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A225에서 통제하는 장비의 동작 특성을 강화하거나 구현하기 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3D507",
+      "title": "GDSII 레이아웃 추출·SEM 이미지 정렬·넷리스트 생성 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"GDSII\" 또는 이와 동등한 표준 레이아웃 데이터를 추출하고 주사전자현미경(SEM) 이미지에서 레이어 간 정렬을 수행하며 다층 \"GDSII\" 데이터 또는 회로 넷리스트(netlist)를 생성하도록 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E001",
+      "title": "3A·3B·3C 장비·재료의 \"개발\"·\"생산\" \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A, 3B 또는 3C에서 통제되는 장비, 재료의 \"개발\" 또는 \"생산\"을 위한 [일반기술해설]에 따른 \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3A001.a.3~12에서 통제되고 다음의 모든 특성을 갖는 집적회로를 위한 \"기술\"은 3E001의 통제를 받지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0.130 µm 이상 \"기술\"을 사용하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3층 이하의 금속층이 있는 다층 구조를 채용한 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E002",
+      "title": "32 bit 이상 논리연산장치 마이크로프로세서 \"개발\"·\"생산\" \"기술\"",
+      "branches": [
+        {
+          "label": "a. 벡터 처리 장치",
+          "thresholds": [
+            {
+              "subject": "논리연산장치 처리 길이",
+              "operator": "ge",
+              "value": "32",
+              "unit": "bit",
+              "quote": "32 bit 이상의 처리 길이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "동시 연산 부동소수점 벡터 수",
+              "operator": "gt",
+              "value": "2",
+              "unit": "",
+              "quote": "2개를 초과하는 '부동소수점' 벡터",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 사이클당 부동소수점 연산",
+          "thresholds": [
+            {
+              "subject": "논리연산장치 처리 길이",
+              "operator": "ge",
+              "value": "32",
+              "unit": "bit",
+              "quote": "32 bit 이상의 처리 길이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "부동소수점 연산 폭",
+              "operator": "ge",
+              "value": "64",
+              "unit": "bits",
+              "quote": "64 bits 이상의 '부동소수점' 연산",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "사이클당 부동소수점 연산 횟수",
+              "operator": "ge",
+              "value": "5",
+              "unit": "",
+              "quote": "5번 이상 수행하도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 사이클당 고정소수점 곱셈-누산 연산",
+          "thresholds": [
+            {
+              "subject": "논리연산장치 처리 길이",
+              "operator": "ge",
+              "value": "32",
+              "unit": "bit",
+              "quote": "32 bit 이상의 처리 길이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "사이클당 16 bits 고정소수점 곱셈-누산 횟수",
+              "operator": "ge",
+              "value": "9",
+              "unit": "",
+              "quote": "9번 이상 수행하도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "3E002는 멀티미디어 기능 확장(multimedia extension)을 위한 \"기술\"은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0.130 μm 이상의 \"기술\"을 사용하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "5층 이하의 금속층을 가지는 다층 구조를 채용한 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E003",
+      "title": "기타 \"기술\"로서 다음의 \"개발\"이나 \"생산\"용 \"기술\"",
+      "branches": [
+        {
+          "label": "a. 진공 마이크로 전자 소자",
+          "thresholds": [],
+          "text": "진공 마이크로 전자 소자(vacuum micro electronic device)"
+        },
+        {
+          "label": "b. 헤테로 구조 반도체 전자 소자",
+          "thresholds": [],
+          "text": "고전자이동도 트랜지스터(HEMTs), 이종접합 양극성 트랜지스터(HBTs), 양자우물(quantum well) 또는 초격자 소자(super lattice device)와 같은 헤테로 구조의 반도체 전자 소자"
+        },
+        {
+          "label": "c. 초전도 전자 소자",
+          "thresholds": [],
+          "text": "\"초전도\" 전자 소자"
+        },
+        {
+          "label": "d. 다이아몬드 회로기판",
+          "thresholds": [],
+          "text": "전자 구성품용 다이아몬드 회로기판(substrate)"
+        },
+        {
+          "label": "e. SOI 회로기판",
+          "thresholds": [],
+          "text": "절연체가 이산화규소(SiO2)인 집적회로를 위한 silicon-on-insulator (SOI)의 회로기판"
+        },
+        {
+          "label": "f. 탄화규소 회로기판",
+          "thresholds": [],
+          "text": "전자 구성품을 위한 탄화규소(SiC)의 회로기판"
+        },
+        {
+          "label": "g. 진공전자소자",
+          "thresholds": [
+            {
+              "subject": "작동 주파수",
+              "operator": "ge",
+              "value": "31.8",
+              "unit": "GHz",
+              "quote": "31.8 GHz 이상에서 작동하는 \"진공전자소자\"",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "31.8 GHz미만의 주파수에서 작동하는 고전자이동도 트랜지스터(HEMTs)와 31.8 GHz 미만의 주파수에서 작동하는 이종접합양극성 트랜지스터(HBTs)에 사용되는 \"기술\"은 3E003.b의 통제를 받지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E004",
+      "title": "300 mm 실리콘 웨이퍼 슬라이싱·그라인딩·폴리싱 \"기술\"",
+      "branches": [
+        {
+          "label": "SFQR·에지 제외부",
+          "thresholds": [
+            {
+              "subject": "SFQR",
+              "operator": "le",
+              "value": "20",
+              "unit": "nm",
+              "quote": "20 nm 이하의 'SFQR'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "에지 제외부",
+              "operator": "le",
+              "value": "2",
+              "unit": "mm",
+              "quote": "2 mm 이하의 에지 제외부",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "300 mm 직경의 실리콘 웨이퍼를 슬라이싱, 그라인딩 및 폴리싱하는데 \"필요한\" \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "웨이퍼 전면의 26 mm x 8 mm 면적 내 임의의 사이트에서",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E101",
+      "title": "3A001.a.1·a.2·3A101·3A102·3D101 \"사용\" \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A001.a.1 또는 3A001.a.2, 3A101, 3A102 또는 3D101에서 규정된 장비 또는 \"소프트웨어\"의 \"사용\"을 위한 [일반기술해설]에 의한 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E102",
+      "title": "3D101 \"소프트웨어\"의 \"개발\" \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3D101.에서 규정된 \"소프트웨어\"의 \"개발\"을 위한 [일반기술해설]에 의한 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E201",
+      "title": "3A001.e.2·e.3·g·3A201·3A225~3A234·3D201~3D203 품목의 \"개발\"·\"생산\"·\"사용\" \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "3A001.e.2., 3A001.e.3., 3A001.g., 3A201, 3A225에서 3A234, 3D201, 3D202, 3D203에서 기술된 품목의 \"개발\", \"생산\" 또는 \"사용\"을 위한 일반 기술 해설에 의한 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:3E505",
+      "title": "GAAFET 집적회로·장치의 \"개발\"·\"생산\" \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"게이트올어라운드 전계 효과 트랜지스터\"(\"GAAFET\") 구조를 사용하는 집적회로 또는 장치의 \"개발\" 또는 \"생산\"을 위한 일반 기술 해설에 따른 \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3E505는 '공정 레시피'를 포함한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3E505는 툴 사용 자격 또는 유지 관리 \"기술\"은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    }
+  ]
+}

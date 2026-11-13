@@ -1,0 +1,12 @@
+# 빌드 결과물·실행 산출물·키는 커밋하지 않는다(자체 확인 결과 파일에는 PC 경로가 들어간다).
+build/
+dist/
+__pycache__/
+*.py[cod]
+build-selfcheck-*.json
+*.exe
+*.zip
+*.log
+.env
+.venv/
+*_결과*.xlsx

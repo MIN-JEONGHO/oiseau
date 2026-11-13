@@ -1,0 +1,1153 @@
+{
+  "scope": {
+    "families": [
+      "military"
+    ]
+  },
+  "items": [
+    {
+      "clause_id": "military:control:ML1",
+      "title": "구경이 20mm 미만인 활강무기와 구경 12.7mm 이하의 화기 및 자동무기",
+      "branches": [
+        {
+          "label": "활강무기",
+          "thresholds": [
+            {
+              "subject": "활강무기 구경",
+              "operator": "lt",
+              "value": "20",
+              "unit": "mm",
+              "quote": "구경이 20mm 미만인 활강무기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "화기 및 자동무기",
+          "thresholds": [
+            {
+              "subject": "화기 구경",
+              "operator": "le",
+              "value": "12.7",
+              "unit": "mm",
+              "quote": "구경 12.7mm (0.50 in.) 이하의 화기 및 자동무기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "발사체를 발포할 수 없는 모의탄용으로 전용 설계된 화기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "고폭장약 혹은 통신링크가 없는 연결형(tethered) 발사체를 발사하도록 전용        설계된 사거리 500m 이하의 화기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "중앙격발식이 아닌 탄약을 사용하고, 완전 자동 발사식이 아닌 무기류",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "사냥이나 스포츠용으로 사용되는 활강무기: 군용 혹은 완전 자동발사형           활강무기로 전용 설계되지 않아야 한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "압축공기나 이산화탄소로 비활성 발사체를 발사하기 위해 전용 설계된            소총 또는 권총",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML2",
+      "title": "구경이 20 mm 이상인 활강무기, 구경 12.7mm를 초과하는 무기",
+      "branches": [
+        {
+          "label": "활강무기",
+          "thresholds": [
+            {
+              "subject": "활강무기 구경",
+              "operator": "ge",
+              "value": "20",
+              "unit": "mm",
+              "quote": "구경이 20 mm 이상인 활강무기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "무기(Armament or Weapon)",
+          "thresholds": [
+            {
+              "subject": "무기 구경",
+              "operator": "gt",
+              "value": "12.7",
+              "unit": "mm",
+              "quote": "구경 12.7mm(0.50 in.)를 초과하는 무기(Armament or Weapon)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 발사기",
+          "thresholds": [],
+          "text": "발사기, 군용으로 전용 설계 되거나 개조된 다음의 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "사냥과 스포츠 목적으로 사용되는 활강무기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "고폭 장약 혹은 통신링크가 없는 연결형(tethered) 발사체를 발사하도록              전용 설계된 사거리 500m 이하의 휴대형 발사기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML2.b.항은 신호용 권총에 적용되지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML3",
+      "title": "다음의 탄약과 신관장입기 및 이의 전용 설계된 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "ML1, ML2, ML12에 의해 명시되는 무기류의 탄약",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "탄자없이 탄피가 크림핑된 공포탄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "실탄용으로 설계된 구성품을 포함하지 않는 공포탄과 모의탄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML3.a.은 다음의 목적을 위하여 전용 설계된 탄약은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML4",
+      "title": "폭탄, 어뢰, 로켓, 미사일, 기타 폭발장치와 장약 및 관련 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계된 폭탄, 어뢰, 수류탄, 연막통, 로켓, 지뢰, 미사일, 폭뢰, 폭파장약과 폭파장치, 폭파키트, 파이로테크닉 장치, 카트리지",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML4.b.항은 금속 탐지만을 할 수 있고 지뢰와 다른 금속물질을 구분할           수 없는 제한적인 소형 휴대용 장비는 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "100-400nm 사이의 최대응답을 갖는 수동 센서",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML4.c는 다음의 모든 특징을 갖는 AMPS는 제외한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML5",
+      "title": "군용으로 전용 설계된 사격 통제 장비, 감시·경고장치와 관련 시스템",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계된 사격 통제 장비, 감시·경고장치와 관련 시스템 및 시험, 정렬, 대응장비 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "표적 인식, 표적지시, 사거리 판별, 감시 또는 추적 시스템",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML6",
+      "title": "지상차량과, 이의 구성품으로 다음의 것",
+      "branches": [
+        {
+          "label": "b.1. 전륜구동 차량(모든 조건)",
+          "thresholds": [
+            {
+              "subject": "최대허용중량(GVWR)",
+              "operator": "ge",
+              "value": "4500",
+              "unit": "kg",
+              "quote": "4,500kg 이상의 최대허용중량(GVWR)용 트랜스미션",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계되거나 개조된 지상차량과 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "level III (NIJ 0108.01, 1985년 9월 제정된 규정) 또는“동등기준”이상인\n          방탄 특성을 갖는 재료로 제조되거나 이를 장착한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML6은 돈이나 귀중품의 수송을 위하여 설계되거나 개조된 일반 차량은 \n        제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1946년 이전에 생산된 차량",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML7",
+      "title": "화학 작용제, “생물학 작용제”, “폭동진압 작용제”, 방사성물질",
+      "branches": [
+        {
+          "label": "b.1.a. 신경 작용제(사린·소만 계열)",
+          "thresholds": [
+            {
+              "subject": "O-알킬 탄소수",
+              "operator": "le",
+              "value": "10",
+              "unit": "",
+              "quote": "사이클로 알킬을 포함한 탄소수 10개 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.b. 신경 작용제(타분 계열)",
+          "thresholds": [
+            {
+              "subject": "O-알킬 탄소수",
+              "operator": "le",
+              "value": "10",
+              "unit": "",
+              "quote": "탄소수 10개 이하로 사이클로알킬 포함",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.c. 신경 작용제(VX 계열)",
+          "thresholds": [
+            {
+              "subject": "O-알킬 탄소수",
+              "operator": "le",
+              "value": "10",
+              "unit": "",
+              "quote": "수소 혹은 탄소수 10개 이하로 사이클로 알킬 포함",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2. 이원화 전구체(QL 계열)",
+          "thresholds": [
+            {
+              "subject": "O-알킬 탄소수",
+              "operator": "le",
+              "value": "10",
+              "unit": "",
+              "quote": "O-알킬(수소 혹은 탄소수 10개 이하로 사이클로 알킬 포함)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "사람이나 동물 살상용, 장비성능 저하용 또는 농작물 및 환경 손상용으로 효과를     증가시키기 위해 선택되거나 개조된 “생물학 작용제” 또는 방사성 물질",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML7.d.항은 개별적으로 포장되어 개인 방어용으로 사용되는 “폭동진압 작용제”를 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML7.g.항은 개인적 방사선량계를 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML7.a 및 ML7.c항은 다음을 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "농업용, 의약용, 수의용, 환경용, 식품산업과 같은 민간목적의 세포 또는 생물시스템은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML8",
+      "title": "다음의“에너지 물질”및 관련 물질",
+      "branches": [
+        {
+          "label": "a.19. Polynitrocubanes",
+          "thresholds": [
+            {
+              "subject": "니트로기 수",
+              "operator": "ge",
+              "value": "4",
+              "unit": "",
+              "quote": "4개 이상의 니트로기(基)로 된 Polynitrocubanes",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.33.a. 기타 폭약(기폭속도)",
+          "thresholds": [
+            {
+              "subject": "기폭속도(최대 밀도)",
+              "operator": "gt",
+              "value": "8700",
+              "unit": "m/s",
+              "quote": "최대 밀도에서의 기폭속도가 8,700 m/s을 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.33.b. 기타 폭약(기폭압력)",
+          "thresholds": [
+            {
+              "subject": "기폭압력",
+              "operator": "gt",
+              "value": "34",
+              "unit": "GPa",
+              "quote": "기폭압력이 34GPa (340 kbar)를 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.39. 활성 이온 물질(기폭속도)",
+          "thresholds": [
+            {
+              "subject": "기폭속도",
+              "operator": "gt",
+              "value": "6800",
+              "unit": "m/s",
+              "quote": "기폭속도가             6,800 m/s을 초과하거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.39. 활성 이온 물질(기폭압력)",
+          "thresholds": [
+            {
+              "subject": "기폭압력",
+              "operator": "gt",
+              "value": "18",
+              "unit": "GPa",
+              "quote": "기폭압력이 18 GPa (180 kbar)를 초과하는 활성          이온 물질",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.a. 비금속·비할로겐 고체 추진제(비추력)",
+          "thresholds": [
+            {
+              "subject": "이론 비추력",
+              "operator": "gt",
+              "value": "240",
+              "unit": "초",
+              "quote": "표준조건하에서 이론적으로 다음보다 높은 고체 “추진제”:\n      a. 비금속, 비할로겐 “추진제”의 경우 240초",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.b. 비금속·할로겐 고체 추진제(비추력)",
+          "thresholds": [
+            {
+              "subject": "이론 비추력",
+              "operator": "gt",
+              "value": "250",
+              "unit": "초",
+              "quote": "표준조건하에서 이론적으로 다음보다 높은 고체 “추진제”:\n      a. 비금속, 비할로겐 “추진제”의 경우 240초;\n      b. 비금속, 할로겐 “추진제”의 경우 250초",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1.c. 금속 고체 추진제(비추력)",
+          "thresholds": [
+            {
+              "subject": "이론 비추력",
+              "operator": "gt",
+              "value": "260",
+              "unit": "초",
+              "quote": "표준조건하에서 이론적으로 다음보다 높은 고체 “추진제”:\n      a. 비금속, 비할로겐 “추진제”의 경우 240초;\n      b. 비금속, 할로겐 “추진제”의 경우 250초; 또는\n      c. 금속 “추진제”의 경우 260초",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3. 추진제(추력 상수)",
+          "thresholds": [
+            {
+              "subject": "추력 상수",
+              "operator": "gt",
+              "value": "1200",
+              "unit": "kJ/kg",
+              "quote": "추력 상수가 1,200 kJ/kg를 초과하는 “추진제”",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4. 추진제(선형연소율)",
+          "thresholds": [
+            {
+              "subject": "정상상태 선형연소율(연소 속도)",
+              "operator": "ge",
+              "value": "38",
+              "unit": "mm/s",
+              "quote": "연소 속도가 38mm/s 이상의 정상상태 선형연소율",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5. EMCDB 추진제(인장성)",
+          "thresholds": [
+            {
+              "subject": "최대응력 인장성(233 K)",
+              "operator": "ge",
+              "value": "5",
+              "unit": "%",
+              "quote": "233 K(-40°C)에서 5% 이상의 최대응력 (인가) 인장성",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.a. 하이드라진",
+          "thresholds": [
+            {
+              "subject": "하이드라진 농도",
+              "operator": "ge",
+              "value": "70",
+              "unit": "%",
+              "quote": "농도 70% 이상의 하이드라진",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.5.a.1. 금속연료(베릴륨)",
+          "thresholds": [
+            {
+              "subject": "해당 물질 함유율",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "99% 또는 그 이상 포함된 재료에서 조성된 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "베릴륨 입자크기",
+              "operator": "lt",
+              "value": "60",
+              "unit": "μm",
+              "quote": "60 μm미만 입자크기의 베릴륨",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.5.a.2. 금속연료(철분말)",
+          "thresholds": [
+            {
+              "subject": "해당 물질 함유율",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "99% 또는 그 이상 포함된 재료에서 조성된 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "철분말 입자크기",
+              "operator": "lt",
+              "value": "3",
+              "unit": "μm",
+              "quote": "3 μm미만 입자크기의 철분말",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.5.b.1. 혼합물(지르코늄·마그네슘·합금)",
+          "thresholds": [
+            {
+              "subject": "해당 물질 함유율",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "99% 또는 그 이상 포함된 재료에서 조성된 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "합금 입자크기",
+              "operator": "lt",
+              "value": "60",
+              "unit": "μm",
+              "quote": "입자 크기가 \n            60 μm 미만인 이들의 합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.5.b.2. 혼합물(보론카바이드 순도)",
+          "thresholds": [
+            {
+              "subject": "해당 물질 함유율",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "99% 또는 그 이상 포함된 재료에서 조성된 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "보론카바이드 순도",
+              "operator": "ge",
+              "value": "85",
+              "unit": "%",
+              "quote": "순도가 85% 이상이거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.5.b.2. 혼합물(보론카바이드 입자크기)",
+          "thresholds": [
+            {
+              "subject": "해당 물질 함유율",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "99% 또는 그 이상 포함된 재료에서 조성된 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "보론카바이드 입자크기",
+              "operator": "lt",
+              "value": "60",
+              "unit": "μm",
+              "quote": "입자 크기가 \n            60 μm 미만인 보론카바이드",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.8. 알루미늄 분말",
+          "thresholds": [
+            {
+              "subject": "알루미늄 분말 입자크기",
+              "operator": "le",
+              "value": "60",
+              "unit": "μm",
+              "quote": "입자크기가 60 μm이하이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "알루미늄 함량",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "알루미늄 함량이  99% 이상인 물질로 제조한",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.10.a. 혼합 연료(질량당 에너지밀도)",
+          "thresholds": [
+            {
+              "subject": "질량당 에너지밀도",
+              "operator": "ge",
+              "value": "40",
+              "unit": "MJ/kg",
+              "quote": "질량 당 에너지 밀도가 40MJ/kg 이상인 고체와 액체 연료를 혼합한",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.10.b. 기타 고에너지 연료(체적당 에너지밀도, 세제곱미터당)",
+          "thresholds": [
+            {
+              "subject": "체적당 에너지밀도(세제곱미터당)",
+              "operator": "ge",
+              "value": "37.5",
+              "unit": "GJ",
+              "quote": "체적당 에너지 밀도가 세제곱미터당 \n         37.5GJ이상인 기타 고에너지 연료 또는 첨가제",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.12. 연료 혼합물·에너지 물질(모든 성질)",
+          "thresholds": [
+            {
+              "subject": "금속 입자 함유율",
+              "operator": "ge",
+              "value": "0.5",
+              "unit": "%",
+              "quote": "입자를 0.5%이상 포함",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자 크기",
+              "operator": "le",
+              "value": "200",
+              "unit": "nm",
+              "quote": "방향에 상관없이 크기가 200nm           이하인 입자",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자 금속함량",
+              "operator": "ge",
+              "value": "60",
+              "unit": "%",
+              "quote": "금속함량이 60% 이상인 입자",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.12. HTPB",
+          "thresholds": [
+            {
+              "subject": "수산기 관능기 수",
+              "operator": "ge",
+              "value": "2.2",
+              "unit": "",
+              "quote": "수산기의  관능기 수가 2.2 이상에서",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "수산기 관능기 수",
+              "operator": "le",
+              "value": "2.4",
+              "unit": "",
+              "quote": "2.4 이하이고, 수산기 지수가",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "수산기 지수",
+              "operator": "lt",
+              "value": "0.77",
+              "unit": "meq/g",
+              "quote": "수산기 지수가 0.77 meq/g \n      미만이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "점도(30℃)",
+              "operator": "lt",
+              "value": "47",
+              "unit": "poise",
+              "quote": "점도가 30℃에서 47 poise 미만인 HTPB",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.13. 폴리에피클로로히드린",
+          "thresholds": [
+            {
+              "subject": "분자량",
+              "operator": "lt",
+              "value": "10000",
+              "unit": "",
+              "quote": "분자량이 10,000미만인 알콜 기능기를 가진 폴리에피클로로히드린",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.19. 초미립 산화철",
+          "thresholds": [
+            {
+              "subject": "비표면적",
+              "operator": "ge",
+              "value": "250",
+              "unit": "m2/g",
+              "quote": "비(比)표면적 250 m2/g 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균 입자크기",
+              "operator": "le",
+              "value": "3.0",
+              "unit": "nm",
+              "quote": "평균 입자크기가 3.0nm이하인 초미립 산화철",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.1. 반응성 물질 분말",
+          "thresholds": [
+            {
+              "subject": "입자크기",
+              "operator": "lt",
+              "value": "250",
+              "unit": "μm",
+              "quote": "입자크기가 어떠한 방향으로도 250 μm 미만이고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "ML8 sub-item에 수록된 물질은 지정된 용도외에 사용되더라도 이 목록에 \n       의해 통제된다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "343 K (70°C)와 373 K (100°C) 사이 온도에서 용해되고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML8.c.1.은 다음의 “항공기” 연료에는 적용하지 않는다. : JP-4, JP-5, \n          그리고, JP-8",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "화학당량 n=0.65-1.68의 차수소화 티타늄(Titanium subhydride (TiHn))",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML8.c.5.b.2.은 보론과 boron-10 (boron-10의 총 함량이 20%이상인)이 \n          첨가된 보론카바이드(boron carbide)에 적용하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML8.c.10.b는 정제된 화석연료 또는 바이오 연료, 또는 공인된 민간              항공기 연료에는 적용하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML8은 ML8.a.에 명시된 “에너지 물질” 또는 ML8.c에 명시된 분말 금속과      합성 또는 혼합되지 않는다면 다음의 물질에 적용되지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "질량이 250g 이하이고 비활성 열경화성 결합제 또는 가소제와 혼합 또는          합성된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "NTO(ML8.a.18)가 4 g 이하인 것; 그리고\n     e. catocene (ML8.f.4.b.)가 1 g 이하인 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML9",
+      "title": "함정(수상용 또는 수중용), 해군 특수장비, 부속품, 구성품과 그 외 수상함",
+      "branches": [
+        {
+          "label": "a.2.a. 수상함의 무기 마운트·고정 장착대",
+          "thresholds": [
+            {
+              "subject": "설치 무기 구경",
+              "operator": "ge",
+              "value": "12.7",
+              "unit": "mm",
+              "quote": "구경 12.7mm 이상인 무기를 설치하기 위한 ‘마운트(mountings)’나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2. 잠수함용 전동기(모든 특성)",
+          "thresholds": [
+            {
+              "subject": "전동기 출력",
+              "operator": "ge",
+              "value": "0.75",
+              "unit": "MW",
+              "quote": "출력 0.75MW(1,000hp) 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3. 디젤 엔진(모든 특성)",
+          "thresholds": [
+            {
+              "subject": "디젤 엔진 출력",
+              "operator": "ge",
+              "value": "37.3",
+              "unit": "kW",
+              "quote": "출력 37.3 kW(50hp) 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비자성 구성품 중량 비율",
+              "operator": "gt",
+              "value": "75",
+              "unit": "%",
+              "quote": "‘비자성’구성품이 총 중량의 75%를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계되거나 개조된 함정(수상용 또는 수중용)과 그 함정의 선체 또는 선체 부분품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML9.b.3.의 목적상 ‘비자성’은 비투자율 2보다 낮은 것을 의미한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML9.b.4는 원자력을 포함하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "이 커넥터와 관통구는 수심 100m 이상에서도 외부로부터 수밀이 되고 요구 성능을 유지할 수 있어야 한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML9.f는 통상적인 추진축과 제어판 구동축(hydrodynamic control-rod)용 선체 관통구는 제외한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML10",
+      "title": "“항공기”, “공기보다 가벼운 항공기”, “무인 항공기”, “항공기” 엔진, “준궤도비행체”",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "ML10.a.항은 군용으로 전용 설계되고 다음의 조건을 모두 만족하는 “항공기“와 “공기보다 가벼운 항공기(lighter-than-air vehicles)” 또는 “항공기”의 이형(Variants)에는 적용되지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1946년 이전에 처음 제조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "“무인항공기” 전용으로 설계된 것들을 제외한, 왕복엔진과 그 전용으로 설계된 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "군용은 다음을 포함한다;\n     전투, 군사정찰, 공격, 군사훈련, 군수 지원, 병력 또는 군용장비의 수송과 공중투하",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML11",
+      "title": "군용물자 목록(ML)에서 명시되지 않은 전자장비, “우주비행체” 및 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계된 전자장비 및 이의 전용 설계된 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "“위성항법시스템”이 제공하는 위치, 항법 및 시간서비스의 수신, 작동 및 효과를     방해하도록 전용설계되거나 개조된 전파방해장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "군용으로 전용 설계 또는 개조된 “우주비행체”와 군용으로 전용 설계된 \n  “우주비행체” 구성품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML12",
+      "title": "고속 운동에너지를 이용한 무기체계와 관련 장비",
+      "branches": [
+        {
+          "label": "주 1 a. 발사 추진 시스템",
+          "thresholds": [
+            {
+              "subject": "가속 질량",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "g",
+              "quote": "0.1g보다 큰 질량을",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "가속 속도",
+              "operator": "gt",
+              "value": "1.6",
+              "unit": "km/s",
+              "quote": "1.6km/s를         초과하는 속도로 가속시킬 수 있는 발사 추진 시스템",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "표적의 파괴나 임무중지 효과를 목적으로 설계된 운동에너지 무기체계",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "축소구경 탄약을 사용하거나 화학추진제만을 이용한 무기체계와 그에 따른       탄약은 ML1.에서 ML4.를 참조",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML13",
+      "title": "장갑 또는 보호 장비, 시설물, 구성품 및 부속품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용표준 또는 군용규격에 부합하게 제조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "III등급(NIJ 0101.06, 2008년 7월) 또는 “동등기준” 이상인 방탄 능력을 갖는       경성방호복 용 플레이트",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML13.c.와 d.항은 개인 보호용 헬멧, 방호복, 혹은 방탄조끼에는 적용되지          않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1970년 이전 생산품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML14",
+      "title": "‘군사 훈련용 특수 장비’ 또는 군 시나리오의 시뮬레이션용 특수 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "ML1과 ML2에서 명시된 화기 혹은 무기의 사용을 훈련시키기 위하여 전용으로 설계된 시뮬레이터",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML14.항은 사냥이나 스포츠 무기의 사용을 훈련하는 목적으로 전용설계된        장치에는 적용되지 아니한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML15",
+      "title": "군용으로 전용 설계된 영상 또는 방해 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계된 영상 또는 방해 장비로서 다음의 것과, 이의 전용 설계된 구성품과 부속품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML15.는 “1세대(first generation) 영상 증폭관\"이나 “1세대 영상증폭관\"을       통합하기 위해 전용 설계된 장비에는 적용되지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML16",
+      "title": "ML1.에서 ML4., ML6., ML9., ML10., ML12. 또는 ML19에 명시된 품목을 위해 전용으로 설계된 단조품, 주조품, 기타 미완성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "ML16.항은 물질 구성성분, 모양, 기능으로 식별 가능한 미완성품에 적용된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML17",
+      "title": "다음의 기타 장비, 재료 및 “라이브러리”와 이의 전용 설계된 구성품",
+      "branches": [
+        {
+          "label": "e.2. 로봇(수압관 수용액 인화점)",
+          "thresholds": [
+            {
+              "subject": "수용액 인화점",
+              "operator": "gt",
+              "value": "839",
+              "unit": "K",
+              "quote": "839K(566℃)를 초과하는        인화점을 갖는 수용액",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "군용으로 전용 설계된 피탐지 감소 목적의 조립, 코팅과 표면처리",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "‘전자기펄스’(‘EMP’) 환경에서 작동되도록 전용으로 설계 되거나 작동        할 수 있다고 평가된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML17에서의‘개조된’(modified)은 비군용 물품을 구조적, 전기적, 기계적 또는 \n   기타 변화를 줘 군용 물품으로 사용할 수 있게 하는 것을 의미한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML18",
+      "title": "‘생산’장비 및 환경시험시설과 그 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용물자목록(ML)에 의해 명시된 품목의 ‘생산’을 위해 전용 설계된 장비 및 이의 전용 설계된 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML18의 ‘생산’이라는 용어는 설계, 검사, 제조, 시험 및 점검을 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML19",
+      "title": "지향성 에너지 무기(DEW) 체계 및 관련 방어 장비, 시험 모델",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "재래식 탄약과 비슷한 파괴효과가 있는 충분한 연속출력 혹은 펄스출력을          가진 “레이저”",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "“레이저” 시스템으로서 나안 또는 보정 시야장비에 영구적 실명을 일으키기     위하여 전용으로 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML19.에서의 '무기체계’는 표적의 손상, 파괴 또는 무능화 목적으로 설계된   것이다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML20",
+      "title": "극저온 및 “초전도” 장비",
+      "branches": [
+        {
+          "label": "a. 극저온 장비",
+          "thresholds": [
+            {
+              "subject": "발생·유지 온도",
+              "operator": "lt",
+              "value": "103",
+              "unit": "K",
+              "quote": "103K(-170℃) 미만의 온도를 발생 또는 유지할 수 있도록     전용으로 설계된 극저온 장비",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "군용의 지상, 해상, 공중이나 우주에 적용을 위해서 운반체에 설치될 수 있고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "이들의 와인딩          장치(winding)가 발전기 내의 유일한 초전도 구성품일 경우 제외한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML21",
+      "title": "“소프트웨어”로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용물자 목록(ML)에 의해 명시된 장비의 “개발”, “생산”, 운용 또는 관리",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "군용으로 전용 설계되고 군용 무기체계를 모델링, 모의실험 또는 평가하기        위해 전용 설계된 “소프트웨어”",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ML21.b.5.는 비군사적 방어형 사이버 보안준비 또는 대응과 한정된 \n         “취약성 공개”또는“사이버 사건대응”에는 적용하지 않음",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "military:control:ML22",
+      "title": "“기술”로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "군용물자 목록에서 명시된 품목의 “개발”, \n  “생산”, 운용, 설치, 유지(점검), 수리, 계획예방정비 또는 재정비에“필요한”“기술”",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "통제 대상이 아니거나 수출 허가된 품목의 설치, 운용, 유지(점검) 또는            보수를 위한 최소한의 \"기술“",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "“일반에 공개된 정보”, “기초과학연구” 또는 특허 출원을 위한 최소한의         필요정보인 “기술”",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "민간 수송차량의 연속 추진을 위한 자력 유도(magnetic induction)를 위한 “기술”",
+          "source": "항목 본문"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4466 @@
+{
+  "scope": {
+    "families": [
+      "dual_use"
+    ],
+    "code_prefixes": [
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  "items": [
+    {
+      "clause_id": "dual_use:control:7A001",
+      "title": "가속도계(Accelerometer)로서 다음의 것과 이를 위해 전용 설계된 구성품",
+      "branches": [
+        {
+          "label": "a.1.a 선형 가속도계 15 g 이하, 바이어스 안정성",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "15",
+              "unit": "g",
+              "quote": "15 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "바이어스 안정성(1년)",
+              "operator": "lt",
+              "value": "130",
+              "unit": "micro g",
+              "quote": "1년의 기간에 걸쳐 130 micro g 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.1.b 선형 가속도계 15 g 이하, 척도계수 안정성",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "15",
+              "unit": "g",
+              "quote": "15 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "척도계수 안정성(1년)",
+              "operator": "lt",
+              "value": "130",
+              "unit": "ppm",
+              "quote": "1년의 기간에 걸쳐 130 ppm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2 선형 가속도계 15 g 초과 100 g 이하",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "gt",
+              "value": "15",
+              "unit": "g",
+              "quote": "15 g 를 초과하되",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "바이어스 반복도(1년)",
+              "operator": "lt",
+              "value": "1250",
+              "unit": "micro g",
+              "quote": "1년의 기간에 걸쳐 1,250 micro g 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "척도계수 반복도(1년)",
+              "operator": "lt",
+              "value": "1250",
+              "unit": "ppm",
+              "quote": "1년의 기간에 걸쳐 1,250 ppm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3 관성항법·유도시스템용 선형 가속도계",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "gt",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g를 초과하는 선형 가속 수준",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 각 또는 회전 가속도계",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "gt",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g 를 초과하는 선형 가속 수준에서 제 기능을 발휘하는 각 또는 회전 가속도계",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "관성항법 또는 유도시스템에서의 사용을 위해 설계되고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A001.a.1과 7A001.a.2는 진동 또는 충격 측정에 국한되는 가속도계는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A002",
+      "title": "다음 중 하나로서 자이로(gyros) 또는 각속도 센서 및 이를 위해 전용 설계된 구성품",
+      "branches": [
+        {
+          "label": "a.1.a 각속도 범위 500°/s 미만, 바이어스 안정성",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각속도 범위(°/s)",
+              "operator": "lt",
+              "value": "500",
+              "unit": "",
+              "quote": "범위가 초당 500° 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "바이어스 안정성(1개월)",
+              "operator": "lt",
+              "value": "0.5",
+              "unit": "°/h",
+              "quote": "0.5°/h 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.1.b 각속도 범위 500°/s 미만, 각도 랜덤 워크",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각속도 범위(°/s)",
+              "operator": "lt",
+              "value": "500",
+              "unit": "",
+              "quote": "범위가 초당 500° 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각도 랜덤 워크(°/√h)",
+              "operator": "le",
+              "value": "0.0035",
+              "unit": "",
+              "quote": "0.0035°/⟦원문 수식: sqrt {h}⟧ 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.a 각속도 범위 500°/s 이상, 바이어스 안정성",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각속도 범위(°/s)",
+              "operator": "ge",
+              "value": "500",
+              "unit": "",
+              "quote": "범위가 초당 500° 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "바이어스 안정성(3분)",
+              "operator": "lt",
+              "value": "4",
+              "unit": "°/h",
+              "quote": "4°/h 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.b 각속도 범위 500°/s 이상, 각도 랜덤 워크",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "le",
+              "value": "100",
+              "unit": "g",
+              "quote": "100 g 이하의 선형 가속 수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각속도 범위(°/s)",
+              "operator": "ge",
+              "value": "500",
+              "unit": "",
+              "quote": "범위가 초당 500° 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "각도 랜덤 워크(°/√h)",
+              "operator": "le",
+              "value": "0.1",
+              "unit": "",
+              "quote": "0.1°/⟦원문 수식: sqrt {h}⟧ 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 100 g 초과",
+          "thresholds": [
+            {
+              "subject": "선형 가속 수준",
+              "operator": "gt",
+              "value": "100",
+              "unit": "g",
+              "quote": "100g를 초과하는 선형 가속 수준",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "7A002.a.1.b는 \"회전질량 자이로\"(spinning mass gyros)를 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A002.a.2.b는 \"회전질량 자이로\"(spinning mass gyros)를 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "1 g 의 환경에서 측정했을 때 고정된 교정 값에 대해",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A003",
+      "title": "다음과 같은 '관성 측정 장비 또는 시스템'",
+      "branches": [
+        {
+          "label": "a.1 CEP 시간당",
+          "thresholds": [
+            {
+              "subject": "원형공산오차(CEP)",
+              "operator": "lt",
+              "value": "0.8",
+              "unit": "nm/hr",
+              "quote": "시간당 0.8해리(nm/hr) 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2 CEP 이동 거리 비율",
+          "thresholds": [
+            {
+              "subject": "원형공산오차(CEP) 이동 거리 비율",
+              "operator": "lt",
+              "value": "0.5",
+              "unit": "%",
+              "quote": "거리의 0.5% 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3 CEP 24시간",
+          "thresholds": [
+            {
+              "subject": "원형공산오차(CEP) 24시간 이동",
+              "operator": "lt",
+              "value": "1",
+              "unit": "해리",
+              "quote": "24시간 동안 총 1해리 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 위치 보조 기준장치 내장",
+          "thresholds": [
+            {
+              "subject": "원형공산오차(CEP) 정확정밀도(보조장치 손상 후 최대 4분)",
+              "operator": "lt",
+              "value": "10",
+              "unit": "m",
+              "quote": "10 m 미만(우수한)의 \"원형공산오차\"",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 기수 방위, 각속도 500 deg/s 미만",
+          "thresholds": [
+            {
+              "subject": "최대 동작 각속도",
+              "operator": "lt",
+              "value": "500",
+              "unit": "deg/s",
+              "quote": "최대 동작 각속도가 500 deg/s 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "기수방위 정확정밀도",
+              "operator": "le",
+              "value": "0.07",
+              "unit": "deg sec",
+              "quote": "0.07 deg sec(경위도) 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2 기수 방위, 각속도 500 deg/s 이상",
+          "thresholds": [
+            {
+              "subject": "최대 동작 각속도",
+              "operator": "ge",
+              "value": "500",
+              "unit": "deg/s",
+              "quote": "최대 동작 각속도가 500 deg/s 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "기수방위 정확정밀도",
+              "operator": "le",
+              "value": "0.2",
+              "unit": "deg sec",
+              "quote": "0.2 deg sec(경위도) 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1 모든 축에서 7A001 또는 7A002 성능",
+          "thresholds": [],
+          "text": "어떠한 보조 기준장치 사용 없이 모든 축에서 7A001 또는 7A002에 명시된 성능을 갖는 것"
+        },
+        {
+          "label": "d.2 우주용 각도 랜덤 워크",
+          "thresholds": [
+            {
+              "subject": "각도 랜덤 워크(°/√h)",
+              "operator": "le",
+              "value": "0.1",
+              "unit": "",
+              "quote": "0.1°/⟦원문 수식: sqrt {h}⟧ 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "7A003은 \"민간 항공기\" (civil aircraft)의 사용을 위해 1개 이상의 바세나르체제 회원국의 민간 감독 당국(civil aviation authorities)에 의해 허가를 받은 '관성 측정 장비 또는 시스템'은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'위치 보조 기준장치'의 사용 없이 위치를 제공하며, \"항공기\", 지상 차량 또는 선박을 위해 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A003.d.2는 단지 자이로의 형태로서 \"회전질량 자이로\"를 포함한 '관성 측정 장비 또는 시스템'에는 적용되지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A004",
+      "title": "'별 추적기' 및 이의 구성품으로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 별 추적기",
+          "thresholds": [
+            {
+              "subject": "방위각 정확정밀도",
+              "operator": "le",
+              "value": "20",
+              "unit": "초(원호상)",
+              "quote": "20초(원호상) 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 전용 설계된 구성품",
+          "thresholds": [],
+          "text": "7A004.a에 명시된 장비를 위해 전용 설계된 구성품으로서 다음의 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "광학 헤드 또는 배플",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "데이터 처리장치",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A005",
+      "title": "\"위성항법시스템\" 수신장치로 다음 중 하나의 것과 전용 설계된 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "암호해독 알고리즘 기능을 가진 것으로서, 위치 및 시간 정보를 알 수 있는 레인징 코드(ranging code)에 접근할 수 있는 정부사용을 위해 전용 설계되거나 개조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'적응형 안테나 시스템'(adaptive antenna systems)을 갖는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "적응형 안테나 기술을 사용하지 않는 다중 전 방향 안테나로부터의 신호를 걸러내고, 변환 또는 결합하기 위해 설계된 구성품만을 사용하는 \"위성항법시스템\" 수신장치는   통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A006",
+      "title": "4.2 ~ 4.4 GHz 이외의 주파수에서 작동되는 항공용 탑재고도계",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "4.2 ~ 4.4 GHz 이외의 주파수에서 작동되는 항공용 탑재고도계",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'전력 관리'('Power Management)'",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "위상 변위 키 변조방식을 사용하는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A008",
+      "title": "방향소스가 통합된 도플러 속도 측정기 또는 상대속도 측정기를 사용하는 수중음파탐지 항법시스템",
+      "branches": [
+        {
+          "label": "위치 정확정밀도",
+          "thresholds": [
+            {
+              "subject": "원형공산오차(CEP) 이동 거리 비율",
+              "operator": "le",
+              "value": "3",
+              "unit": "%",
+              "quote": "거리의 3% 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "방향소스가 통합된 도플러 속도 측정기 또는 상대속도 측정기를  사용하고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A008은 위치 데이터를 제공하는 음향 비이컨이나 부표를 필요로 하는 수상 선박이나 시스템에의 설치를 위해 전용 설계된 시스템은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A101",
+      "title": "선형 가속도계로서 관성항법장치 또는 모든 형태의 유도장치에 사용 가능하게 설계된 것",
+      "branches": [
+        {
+          "label": "a.·b. 모두 만족",
+          "thresholds": [
+            {
+              "subject": "바이어스 반복도",
+              "operator": "lt",
+              "value": "1250",
+              "unit": "micro g",
+              "quote": "1250 micro g 미만(보다 우수한) \"바이어스\" \"반복도\"",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "척도계수 반복도",
+              "operator": "lt",
+              "value": "1250",
+              "unit": "ppm",
+              "quote": "1250 ppm 미만(보다 우수한) \"척도계수\" \"반복도\"",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "관성항법장치 또는 모든 형태의 유도장치에 사용 가능하게 설계된 것으로, '미사일'에 사용 가능하고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A101은 심저드릴작업을 위한 Measurement While Drilling (MWD)센서로 개발되고 설계된 가속도계를 포함하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A101에서 '미사일'은 사거리 300km를 초과하는 완성로켓 시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A102",
+      "title": "'미사일'에 사용 가능한 모든 형태의 자이로 및 이를 위해 전용 설계된 구성품",
+      "branches": [
+        {
+          "label": "편차율 안정도",
+          "thresholds": [
+            {
+              "subject": "편차율 안정도(1 g 조건)",
+              "operator": "lt",
+              "value": "0.5",
+              "unit": "°/hr",
+              "quote": "0.5°/hr (1 시그마 또는 rms) 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'미사일'에 사용 가능한 모든 형태의 자이로 및 이를 위해 전용 설계된 구성품으로서(7A002에 명시된 것 제외)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A102에서 '미사일'은 사거리 300km를 초과하는 완성 로켓시스템과 무인 항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A103",
+      "title": "계기, 항법 장비 및 시스템(7A003에 명시된 것을 제외)",
+      "branches": [
+        {
+          "label": "a.1 명시된 가속도계·자이로 사용",
+          "thresholds": [],
+          "text": "7A001.a.3, 7A001.b 또는 7A101에 명시된 가속도계 또는 7A002나 7A102에 명시된 자이로"
+        },
+        {
+          "label": "a.2 7A001.a.1·a.2 가속도계로서 미사일 사용 가능",
+          "thresholds": [
+            {
+              "subject": "바이어스 반복도",
+              "operator": "lt",
+              "value": "1250",
+              "unit": "micro g",
+              "quote": "1250 micro g 미만(보다 우수한) \"바이어스\" \"반복도\"",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "척도계수 반복도",
+              "operator": "lt",
+              "value": "1250",
+              "unit": "ppm",
+              "quote": "1250 ppm 미만(보다 우수한) \"척도계수\" \"반복도\"",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 통합비행계기시스템",
+          "thresholds": [],
+          "text": "자이로안정화장치(gyrostabilisers) 또는 자동조종 비행장치를 포함하고 있는 통합비행계기시스템"
+        },
+        {
+          "label": "c. 통합항법시스템",
+          "thresholds": [
+            {
+              "subject": "원형공산오차(CEP) 항법 정밀도",
+              "operator": "le",
+              "value": "200",
+              "unit": "m",
+              "quote": "'원형공산오차'('CEP') 200 m 이하의 항법 정밀도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 3축 자기방위센서",
+          "thresholds": [
+            {
+              "subject": "방위각 정밀도(±80° 위도, rms)",
+              "operator": "lt",
+              "value": "0.5",
+              "unit": "degree",
+              "quote": "0.5 degree rms 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "7A103.a는 7A001에 명시된 심저드릴작업을 위한 MWD (Measurement While Drilling)센서로 전용 설계되고 개발된   가속도계를 포함한 장비는 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "피치(±90°)와 롤(±180°)축으로 내부 기울기 보정이 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A103에서 '미사일'은 사거리 300 km를 초과하는 완성 로켓시스템과 무인 항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A104",
+      "title": "7A004에 명시된 것을 제외한 자이로-천축 나침반(Gyro-astro compass) 및 기타 장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "천체 또는 인공위성을 자동으로 추적하여 위치 또는 방향을 산출하는 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A105",
+      "title": "'위성항법시스템'의 수신장치로서 다음 중 하나 이상의 특성을 가진 것",
+      "branches": [
+        {
+          "label": "a. 우주발사체·관측로켓·무인항공기용",
+          "thresholds": [],
+          "text": "9A004에 명시된 우주발사체, 9A104에 명시된 관측로켓 및  9A012 또는 9A112.a에 명시된 무인항공기로의 사용을 위해   설계되거나 개조된 것"
+        },
+        {
+          "label": "b.1 항공용 고속 항법정보",
+          "thresholds": [
+            {
+              "subject": "항법정보 제공 속도",
+              "operator": "gt",
+              "value": "600",
+              "unit": "m/s",
+              "quote": "600 m/s를 초과하는 속도에서 항법정보를 제공할 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2 암호해독 기능",
+          "thresholds": [],
+          "text": "'위성항법시스템'의 보안 신호/자료를 접근하기 위해 암호해독 기능이 있는 것으로 군사 또는 정부용으로 설계되거나 개조된 것"
+        },
+        {
+          "label": "b.3 반 전파방해 장치",
+          "thresholds": [],
+          "text": "능동적 또는 수동적 대응상황(countermeasure environment)에서 작동하는 반 전파방해 장치"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "7A105.b.2 및 7A105.b.3은 상업용, 민간용 또는 생명의 안전(예: 데이터 보존, 비행안전)을 위한 '위성항법시스템' 서비스 제어장비는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A106",
+      "title": "7A006에 명시된 것을 제외한 우주발사체나 관측로켓용 레이더 또는 레이저 레이더 형태의 고도계",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A004에 명시된 우주발사체나 9A104에 명시된 관측로켓에의 사용을 위해 설계되거나 개조된 레이더 또는 레이저 레이더 형태의 고도계",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A115",
+      "title": "우주발사체나 관측로켓에의 사용을 위해 설계되거나 개조된 수동센서",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "특정 전자기파의 발원지 추적(방향탐지기) 또는 지형의 특성을 파악할 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "지형윤곽 대조(TERCOM)장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A116",
+      "title": "비행제어시스템과 서보밸브로서, 우주발사체나 관측로켓에의 사용을 위해 설계되거나 개조된 것",
+      "branches": [
+        {
+          "label": "a. 비행제어시스템",
+          "thresholds": [],
+          "text": "공압식, 유압식, 기계식, 전자광학식 또는 전자기계식 비행제어시스템(fly-by-wire 타입과 fly-by-light 시스템 포함)"
+        },
+        {
+          "label": "b. 자세제어장비",
+          "thresholds": [],
+          "text": "자세제어장비"
+        },
+        {
+          "label": "c. 비행제어 서보밸브(진동환경)",
+          "thresholds": [
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "gt",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms를 초과하는 진동환경",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9A004에 명시된 우주발사체나 9A104에 명시된 관측로켓에의 사용을 위해 설계되거나 개조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "20 Hz ~ 2 kHz의  주파수 범위에서",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7A117",
+      "title": "\"미사일\"에 사용 가능한 \"유도장치\"로 시스템 정밀도가 사거리의 3.33% 이하인 것",
+      "branches": [
+        {
+          "label": "시스템 정밀도",
+          "thresholds": [
+            {
+              "subject": "시스템 정밀도(사거리 대비)",
+              "operator": "le",
+              "value": "3.33",
+              "unit": "%",
+              "quote": "시스템 정밀도가 사거리의 3.33% 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "예: 사거리 300 km 에서 10 km 이하의 '원형공산오차' ('CEP')",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7B001",
+      "title": "7A에 명시된 장비를 위해 전용 설계된 시험, 교정 또는 정렬장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7B001은 \"정비수준 I\" 또는 \"정비수준 II\"를 위해 사용되는 시험, 교정 또는 정렬 장비는 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7B002",
+      "title": "링 \"레이저\" 자이로용 거울의 특성을 갖추게 하기 위하여 전용 설계된 장비",
+      "branches": [
+        {
+          "label": "a. 산란측정계",
+          "thresholds": [
+            {
+              "subject": "측정 정확정밀도",
+              "operator": "le",
+              "value": "10",
+              "unit": "ppm",
+              "quote": "10 ppm 이하(보다 우수한)인 측정 \"정확정밀도\"를 가진 산란측정계",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 프로필러미터",
+          "thresholds": [
+            {
+              "subject": "측정 정확정밀도",
+              "operator": "le",
+              "value": "0.5",
+              "unit": "nm",
+              "quote": "0.5 nm (5Å) 이하(보다 우수한)인 측정 \"정확정밀도\"",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:7B003",
+      "title": "7A에 명시된 장비의 \"생산\"을 위해 전용 설계된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "자이로 동조시험 장치",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "광섬유 자이로 코일 와인딩 장치",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7B102",
+      "title": "거울의 특성화를 위해 전용 설계된 반사측정기로서, \"레이저\" 자이로용",
+      "branches": [
+        {
+          "label": "측정 정밀도",
+          "thresholds": [
+            {
+              "subject": "측정 정밀도",
+              "operator": "le",
+              "value": "50",
+              "unit": "ppm",
+              "quote": "측정 정밀도가 50 ppm 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:7B103",
+      "title": "\"생산 설비\" 및 \"생산 장비\"로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A117에 규정된 장비를 위해 전용 설계된 \"생산 설비\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A에 명시된 장비용으로 사용하기 위해 설계되거나 개조된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D001",
+      "title": "7A 또는 7B에 명시된 장비의 \"개발\" 또는 \"생산\"을 위하여 전용 설계되거나 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A 또는 7B에 명시된 장비의 \"개발\" 또는 \"생산\"을 위하여 전용  설계되거나 개조된  \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D002",
+      "title": "관성항법장치(INS) 또는 비행자세 방위측정 표시장치('AHRS')의 운용 또는 정비를 위한 \"소스코드\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A003 또는 7A004에 명시되지 않는 관성 장비를 포함하는",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7D002는 짐벌(gimbal) 방식 비행자세 방위측정 표시장치('AHRS')의 운용 또는 정비를 위한 \"소스코드\"는 통제하지 않음",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D003",
+      "title": "기타의 \"소프트웨어\"로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A003, 7A004 또는 7A008에서 규정된 수준으로 시스템의 항법오차를 감소시키거나 동작성능을 개선하기 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "하이브리드 통합시스템용 \"소스코드\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"개발\"을 위해 전용 설계된 CAD \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D004",
+      "title": "7E004에서 명시된 \"개발\" \"기술\"을 사용하는 \"소스코드\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"통합비행제어\" 디지털 비행관리시스템",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"전기신호방식 비행조종 시스템\" 또는 \"광신호방식 비행조종 시스템\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7D004는 특정 비행 제어시스템 기능에 적용되지 않는 일반적인 컴퓨터 요소와 유틸리티",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D005",
+      "title": "정부 사용을 위해 설계된 \"위성항법시스템\" 레인징 코드(ranging code) 해독을 위해 전용 설계된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "정부 사용을 위해 설계된 \"위성항법시스템\" 레인징 코드(ranging code) 해독을 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D101",
+      "title": "7A·7B에 명시된 장비의 \"사용\"을 위해 전용설계 또는 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비의 \"사용\"을 위해 전용설계 또는 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D102",
+      "title": "다음과 같은 통합 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A103.b.에 명시된 장비용 통합 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A003 또는 7A103.a에 명시된 장비용으로 전용 설계된 통합 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7A103.c.에 명시된 장비용으로 전용 설계되거나 개조된 통합 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D103",
+      "title": "7A117상에 명시된 \"유도장치\"의 모델링, 모의시험(시뮬레이션)을 위해 전용 설계된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A117상에 명시된 \"유도장치\"의 모델링, 모의시험(시뮬레이션)을 위해",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7D103의 \"소프트웨어\"는 4A102의 전용 설계된 하드웨어가 내장될 때에도 수출이 통제된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7D104",
+      "title": "7A117에 명시된 \"유도장치\"의 운영 또는 보수를 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A117에 명시된 \"유도장치\"의 운영 또는 보수를 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E001",
+      "title": "7A, 7B, 7D001, 7D002, 7D003 또는 7D005에 의해 수출 통제되는 장비 또는 \"소프트웨어\"의 \"개발\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비 또는 \"소프트웨어\"의 \"개발\"을 위한 일반기술해설에 의거한 \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7E001은 7A005.a에 명시된 장치 전용의 키 관리 \"기술\"을 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E002",
+      "title": "7A 또는 7B에 의해 수출 통제되는 장비의 \"생산\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A 또는 7B에 의해 수출 통제되는 장비의 \"생산\"을 위한 일반기술해설에 의거한 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E003",
+      "title": "7A001～7A004에 의해 수출 통제되는 장비의 수리, 개조 또는 분해 조립검사를 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "7A001～7A004에 의해 수출 통제되는 장비의 수리, 개조 또는 분해 조립검사를 위한 일반기술해설에 의거한 \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "라인교체가능유닛(LRU) 및 창교체가능 결합체의 교정, 제거 또는 교체와 직접적으로 관련 있는 정비를 위한 \"기술\"은 제외함",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E004",
+      "title": "그 밖의 \"기술\"로서 다음의 것",
+      "branches": [
+        {
+          "label": "a.2 항공데이터 시스템",
+          "thresholds": [],
+          "text": "지상의 정적 데이터에만 기초한 항공데이터 시스템, 즉 재래식 항공데이터 탐침(probe) 없이 운용되는 항공데이터 시스템"
+        },
+        {
+          "label": "a.3 3차원 디스플레이",
+          "thresholds": [],
+          "text": "\"항공기\"용의 3차원 디스플레이"
+        },
+        {
+          "label": "a.5 주 비행제어 전기구동장치",
+          "thresholds": [],
+          "text": "'주 비행제어' 전용으로 설계된 전기구동장치(예: 전기기계식, 전기유압식, 통합된 구동장치 패키지)"
+        },
+        {
+          "label": "a.6 비행제어 광학센서 어레이",
+          "thresholds": [],
+          "text": "\"능동 비행제어시스템\" 구현을 위해 전용 설계된 '비행제어 광학센서 어레이'"
+        },
+        {
+          "label": "a.7 수중 DBRN 시스템",
+          "thresholds": [
+            {
+              "subject": "위치 정확정밀도",
+              "operator": "le",
+              "value": "0.4",
+              "unit": "해리",
+              "quote": "0.4해리(nautical mile) 이하(우수한)의 위치 \"정확정밀도\"",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1 광신호방식 광학 기반 기술",
+          "thresholds": [],
+          "text": "\"광신호방식 비행조종 시스템\" \"능동 비행제어시스템\"에 \"필요한\" \"항공기\" 또는 비행제어 구성품 상태 감지, 비행제어 데이터 전송, 또는 액추에이터 이동명령을 위한 광학 기반(Photonic-based)의 \"기술\""
+        },
+        {
+          "label": "b.3 악화·고장 예측 실시간 알고리즘",
+          "thresholds": [],
+          "text": "\"능동 비행제어시스템\" 내에서 구성품의 임박한 악화 및 고장을 예측하고 예방적으로 완화하기 위한 구성품 센서 정보를 분석하기 위한 실시간 알고리즘"
+        },
+        {
+          "label": "b.4 고장 인식·제어 변경 실시간 알고리즘",
+          "thresholds": [],
+          "text": "\"능동 비행제어시스템\"의 악화 및 고장을 완화하기 위해 구성품의 고장을 인식하고 힘과 모멘트 제어를 변경하기 위한 실시간 알고리즘"
+        },
+        {
+          "label": "b.5 통합비행제어",
+          "thresholds": [],
+          "text": "\"통합비행제어\"를 위해 디지털 비행제어, 항법 그리고 추진제어 데이터를 디지털 비행관리시스템으로 통합하는 기술"
+        },
+        {
+          "label": "b.7 전기신호방식 기능 요구사항(b.7.a + b.7.b.1~3)",
+          "thresholds": [
+            {
+              "subject": "내부 루프 결합률",
+              "operator": "ge",
+              "value": "40",
+              "unit": "Hz",
+              "quote": "40 Hz 이상의 루프 결합률",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7 전기신호방식 기능 요구사항(b.7.a + b.7.b.4 받음각)",
+          "thresholds": [
+            {
+              "subject": "내부 루프 결합률",
+              "operator": "ge",
+              "value": "40",
+              "unit": "Hz",
+              "quote": "40 Hz 이상의 루프 결합률",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "받음각(이륙·착륙 외)",
+              "operator": "gt",
+              "value": "18",
+              "unit": "도",
+              "quote": "18도 초과 받음각",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.8 이중 고장 허용 전기신호방식",
+          "thresholds": [],
+          "text": "\"전기신호방식 비행조종 시스템\"에서 두 종류의 개별적인 고장이 연속해서 순차적으로 발생하는 경우에도 \"항공기\"의 조종 장애가 없을 것"
+        },
+        {
+          "label": "c.1 헬리콥터 결합 비행조종제어",
+          "thresholds": [],
+          "text": "다음 중 두 개 이상의 기능을 하나의 제어요소를 가진 기능으로 결합한 전기신호식 비행조종제어(fly-by-wire) 또는 광신호식 비행조종제어(fly-by-light) 시스템"
+        },
+        {
+          "label": "c.2 순환 제어 방식 반 토크·방향 제어",
+          "thresholds": [],
+          "text": "\"순환 제어 방식의 반 토크 시스템 또는 순환 제어 방식의 방향 제어시스템\""
+        },
+        {
+          "label": "c.3 가변 기하학적 익형 회전익",
+          "thresholds": [],
+          "text": "개별날개제어를 사용한 시스템에 사용하기 위한 '가변 기하학적 익형'을 채용한 회전익(rotor blade)"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0.5초 이내에 정정되지 않으면 제어 기능을 상실할 수 있는 공기역학적으로 불안정한 기체의 정정",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "15도의 옆 미끄럼 (side slip), 초당 15도의 피치 (pitch) 또는 요 (yaw) 각속도, 또는 초당 90도의 롤 (roll) 각속도에서 안정된 제어 비행이 가능하도록 하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"항공기\"의 조종 장애 확률이 비행시간당 1x10-9 미만(보다 더 좋을)일 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7E004.b.3는 오프라인 정비를 목적으로 하는 알고리즘은 포함하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7E004.b는 특정 비행 제어 시스템 기능에 적용되지 않는 일반적인 컴퓨터 요소와 유틸리티",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E101",
+      "title": "7A·7B·7D101~7D103에서 명시된 장비의 \"사용\"에 관하여 일반기술해설에 규정되어 있는 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비의 \"사용\"에 관하여 일반기술해설에 규정되어 있는 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E102",
+      "title": "외부 전자기 충격(EMP)과 전자기 간섭(EMI)의 위험으로부터 항공전자장비와 전기장치를 보호하기 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "차폐 시스템 설계\"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "강화된 전자회로 및 서브시스템의 형상용 설계 \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "7E102.a~b의 강화된 상한선을 결정하기 위한 설계 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:7E104",
+      "title": "비행제어, 유도 및 추진 데이터를 비행관리체계에 통합하기 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "로켓 시스템의 비행궤도를 최적화하기 위한 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8A001",
+      "title": "잠수정 및 수상선으로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 유인, 밧줄이 달린 잠수정",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "수심 1,000m를 초과하는 깊이에서 작동하도록 설계된 유인, 밧줄이 달린 잠수정",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1 유인 밧줄 없는 잠수정, 자체 작동·인양능력",
+          "thresholds": [
+            {
+              "subject": "자체무게 대비 비율(대기 측정)",
+              "operator": "ge",
+              "value": "10",
+              "unit": "%",
+              "quote": "자체무게(대기에서 측정 시)의 10% 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "인양능력",
+              "operator": "ge",
+              "value": "15",
+              "unit": "kN",
+              "quote": "인양능력이 15 kN 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2 유인 밧줄 없는 잠수정, 작동 수심",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "1,000 m 를 초과하는 깊이에서 작동할 수 있도록 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3 유인 밧줄 없는 잠수정, 자체 작동 시간·항해거리",
+          "thresholds": [
+            {
+              "subject": "연속 자체 작동 시간",
+              "operator": "ge",
+              "value": "10",
+              "unit": "시간",
+              "quote": "10시간 이상 연속적으로 '자체적으로 작동'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "항해거리",
+              "operator": "ge",
+              "value": "25",
+              "unit": "해리",
+              "quote": "25해리 이상의 '항해거리'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 무인잠수정(자율 항로 결정·음향 송수신)",
+          "thresholds": [],
+          "text": "실시간으로 사람의 도움 없이 어떤 지리적 참조물에 대하여도 항로를 결정할 수 있도록 설계된 것"
+        },
+        {
+          "label": "c.2 밧줄 작동 무인잠수정",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "1,000 m를 초과하는 깊이에서 작동할 수 있도록 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.1 해양구조 시스템, 자동위치유지장치",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "250",
+              "unit": "m",
+              "quote": "수심 250 m 를 초과하는 깊이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "인양 용량",
+              "operator": "gt",
+              "value": "5",
+              "unit": "MN",
+              "quote": "5 MN 을 초과하는 용량",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.2 해양구조 시스템, 해저항해 및 통합항해시스템",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "250",
+              "unit": "m",
+              "quote": "수심 250 m 를 초과하는 깊이",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "인양 용량",
+              "operator": "gt",
+              "value": "5",
+              "unit": "MN",
+              "quote": "5 MN 을 초과하는 용량",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "위치 정확정밀도",
+              "operator": "le",
+              "value": "10",
+              "unit": "m",
+              "quote": "10 m 이내의 위치 \"정확정밀도\"",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "사용 가능 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "수심 1,000 m 를 초과하는 깊이에서 사용가능한 해저항해 및 통합항해시스템",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "음향 데이터 또는 지령을 송수신할 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "밧줄로 작동되도록 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "8A002.a.2항에서 통제되는 추진 모터 및 스러스터(thruster)를 사용하여 자체 추진력으로 기동할 수 있도록 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "광섬유 데이터를 송수신할 수 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "항해시스템에 의해서 주어진 한 지점으로부터 20 m 내에서 자기 위치를 유지시킬 수 있는 자동위치유지장치(DPS)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8B001",
+      "title": "수관(water tunnel)으로서 추진 장치 주위의 유체흐름에 의해 발생되는 음향장을 측정하기 위해 설계된 것",
+      "branches": [
+        {
+          "label": "배경소음",
+          "thresholds": [
+            {
+              "subject": "배경소음(1 μPa, 1 Hz 기준)",
+              "operator": "lt",
+              "value": "100",
+              "unit": "dB",
+              "quote": "100 dB (1 μPa, 1 Hz 기준) 미만의 배경소음",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0 Hz를 초과하고 500 Hz 이하인 주파수 범위에서",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8C001",
+      "title": "수중용의 'Syntactic foam'으로 다음의 특성을 모두 가진 것",
+      "branches": [
+        {
+          "label": "a.·b. 모두 만족",
+          "thresholds": [
+            {
+              "subject": "사용 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "수심이 1,000 m 를 초과하는 곳에서 사용하기 위해 설계된 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "밀도",
+              "operator": "lt",
+              "value": "561",
+              "unit": "kg/m3",
+              "quote": "밀도가 561 kg/m3 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "8C001에서 'Syntactic foam'은 수지(resin)의 \"모재\"(matrix)내에 플라스틱이나 유리로 제조된 중공구(Hollow sphere)가 박힌 형태를 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8D001",
+      "title": "8A, 8B 및 8C에 의해 수출이 통제되는 장비 또는 재료의 \"개발\", \"생산\" 또는 \"사용\"을 위해 전용 설계․개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비 또는 재료의 \"개발\", \"생산\" 또는 \"사용\"을 위해 전용 설계․개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8D002",
+      "title": "수중소음 감소용으로 전용 설계된 프로펠러의 \"개발\", \"생산\", 수리, 재생 또는 분해정비를 위해 전용 설계․개조된 특정 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "수중소음 감소용으로 전용 설계된 프로펠러의 \"개발\", \"생산\", 수리, 재생 (re-machining) 또는 분해정비를 위해",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8E001",
+      "title": "상기 8A, 8B, 8C에 의해 수출 통제되는 장비 또는 재료의 \"개발\", \"생산\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비 또는 재료의 \"개발\", \"생산\"을 위한 [일반기술해설]에 의한 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8E002",
+      "title": "기타의 \"기술\"로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 수중소음 감소 프로펠러 기술",
+          "thresholds": [],
+          "text": "수중소음 감소를 위해 전용 설계된 프로펠러의 \"개발\", \"생산\", 수리, 분해정비 또는 재생을 위한 \"기술\""
+        },
+        {
+          "label": "b. 수리·재생 기술",
+          "thresholds": [],
+          "text": "8A001, 8A002.b, 8A002.j, 8A002.o 또는 8A002.p에 의해 수출 통제되는 장비의 수리, 재생을 위한 \"기술\""
+        },
+        {
+          "label": "c.1 표면효과선(스커트형)",
+          "thresholds": [
+            {
+              "subject": "유의파고",
+              "operator": "ge",
+              "value": "1.25",
+              "unit": "m",
+              "quote": "1.25 m (해상상태 3) 이상의 유의파고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 시 최고 설계 속도",
+              "operator": "gt",
+              "value": "30",
+              "unit": "노트",
+              "quote": "최고 설계 속도가 30 노트를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "쿠션압력",
+              "operator": "gt",
+              "value": "3830",
+              "unit": "Pa",
+              "quote": "쿠션압력이 3,830 Pa 을 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "적재비(경하 대 최대 적재)",
+              "operator": "lt",
+              "value": "0.70",
+              "unit": "",
+              "quote": "0.70 미만의 적재비",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2 표면효과선(강성 측벽)",
+          "thresholds": [
+            {
+              "subject": "유의파고",
+              "operator": "ge",
+              "value": "3.25",
+              "unit": "m",
+              "quote": "3.25 m (해상상태 5) 이상의 유의파고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 시 최고 설계 속도",
+              "operator": "gt",
+              "value": "40",
+              "unit": "노트",
+              "quote": "최고 설계 속도가 40 노트를 초과하는 표면효과선",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.3 수중익선",
+          "thresholds": [
+            {
+              "subject": "유의파고",
+              "operator": "ge",
+              "value": "3.25",
+              "unit": "m",
+              "quote": "3.25 m (해상상태 5) 이상의 유의파고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 시 최고 설계 속도",
+              "operator": "ge",
+              "value": "40",
+              "unit": "노트",
+              "quote": "최고 설계속도가 40 노트 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.a 최소 수선 면적 선박",
+          "thresholds": [
+            {
+              "subject": "유의파고",
+              "operator": "ge",
+              "value": "3.25",
+              "unit": "m",
+              "quote": "3.25 m (해상상태 5) 이상의 유의파고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 시 최고 설계 속도",
+              "operator": "gt",
+              "value": "35",
+              "unit": "노트",
+              "quote": "최고 설계속도가 35 노트를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 배수량",
+              "operator": "gt",
+              "value": "500",
+              "unit": "톤",
+              "quote": "만재 배수량이 500톤을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4.b 최소 수선 면적 선박",
+          "thresholds": [
+            {
+              "subject": "유의파고",
+              "operator": "ge",
+              "value": "4",
+              "unit": "m",
+              "quote": "4 m (해상상태 6) 이상의 유의파고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 시 최고 설계 속도",
+              "operator": "gt",
+              "value": "25",
+              "unit": "노트",
+              "quote": "최고 설계속도가 25 노트를 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "만재 배수량",
+              "operator": "gt",
+              "value": "1500",
+              "unit": "톤",
+              "quote": "만재 배수량이 1,500톤을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "자동제어 foil 시스템용 능동시스템을 갖는 수중익선",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "설계운항 홀수에서의 수선 면적이 2×(설계운항 홀수에서의 배수용적)2/3 미만인 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:8A002",
+      "title": "해양 시스템, 장비 및 구성품으로서 다음과 같은 것",
+      "branches": [
+        {
+          "label": "a.1 압력격납고·내압선각",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "1,000 m를 초과하는 깊이에서 작동하도록 설계되고 잠수정을 위해 전용 설계되거나 개조된 시스템",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "격납실 최대 내경",
+              "operator": "gt",
+              "value": "1.5",
+              "unit": "m",
+              "quote": "격납실 최대 내경이 1.5m를 초과하는 압력격납고 또는 내압선각",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2~a.4 잠수정용 스러스터·엄빌리컬 케이블·8C001 소재 구성품",
+          "thresholds": [
+            {
+              "subject": "작동 수심",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "m",
+              "quote": "1,000 m를 초과하는 깊이에서 작동하도록 설계되고 잠수정을 위해 전용 설계되거나 개조된 시스템",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1 자동제어 이동",
+          "thresholds": [
+            {
+              "subject": "미리 정해진 지점까지 이동 정밀도(수두 기준)",
+              "operator": "le",
+              "value": "10",
+              "unit": "m",
+              "quote": "미리 정해진 지점의 10 m 이내까지 잠수정을 움직일 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2 자동제어 위치 유지",
+          "thresholds": [
+            {
+              "subject": "위치 유지 정밀도(수두 기준)",
+              "operator": "le",
+              "value": "10",
+              "unit": "m",
+              "quote": "미리 정해진 지점의 10 m 이내에서 잠수정의 위치를 유지시킬 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3 케이블 추종 위치 유지",
+          "thresholds": [
+            {
+              "subject": "케이블 추종 위치 유지 정밀도",
+              "operator": "le",
+              "value": "10",
+              "unit": "m",
+              "quote": "케이블을 뒤따르는 동안 10 m 이내에서 잠수정의 위치를 유지시킬 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 광섬유 압력 선체 관통구",
+          "thresholds": [],
+          "text": "광섬유 압력 선체 관통구(fibre optic pressure hull penetrators)"
+        },
+        {
+          "label": "h.1 수중 로봇, 센서 기반 제어",
+          "thresholds": [],
+          "text": "\"로봇\"과 외부물체간의 촉각, 외부물체로부터의 거리 및 외부물체에 가해지는 힘, 토크를 측정하는 센서로부터 받은 정보를 이용하여 \"로봇\"을 제어하는 시스템을 가진 것"
+        },
+        {
+          "label": "h.2 수중 로봇, 힘",
+          "thresholds": [
+            {
+              "subject": "힘",
+              "operator": "ge",
+              "value": "250",
+              "unit": "N",
+              "quote": "250 N 이상의 힘",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.2 수중 로봇, 토크",
+          "thresholds": [
+            {
+              "subject": "토크",
+              "operator": "ge",
+              "value": "250",
+              "unit": "Nm",
+              "quote": "250 Nm 이상의 토크",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.1 머니퓰레이터, 센서 기반 제어",
+          "thresholds": [],
+          "text": "다음의 하나의 것을 측정하는 센서로부터 받은 정보를 이용하여 제어하는 시스템"
+        },
+        {
+          "label": "i.2 머니퓰레이터, 주종기법",
+          "thresholds": [
+            {
+              "subject": "동작자유도",
+              "operator": "ge",
+              "value": "5",
+              "unit": "",
+              "quote": "'동작자유도'가 5 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.1.a~c 브레이톤·랭킨 사이클 공기불요동력장치",
+          "thresholds": [],
+          "text": "브레이톤(Brayton), 랭킨(Rankine) 사이클엔진 공기불요동력장치로 다음 하나의 특성을 갖는 것"
+        },
+        {
+          "label": "j.1.d 브레이톤·랭킨 사이클, 반응물질 방출",
+          "thresholds": [
+            {
+              "subject": "반응물질 방출 대응 압력",
+              "operator": "ge",
+              "value": "100",
+              "unit": "kPa",
+              "quote": "100 kPa 이상의 압력에 대응하여 반응물질을 방출시키도록 전용 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.2 디젤 사이클 공기불요장치",
+          "thresholds": [],
+          "text": "디젤 사이클 엔진공기불요장치로, 다음의 모든 특성을 가진 것"
+        },
+        {
+          "label": "j.3.a 연료전지 공기불요동력장치, 소음 감소",
+          "thresholds": [
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "2",
+              "unit": "kW",
+              "quote": "출력 2 kW 초과의 \"연료전지\" 공기불요동력장치",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.3.b 연료전지 공기불요동력장치, 반응물질 방출",
+          "thresholds": [
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "2",
+              "unit": "kW",
+              "quote": "출력 2 kW 초과의 \"연료전지\" 공기불요동력장치",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "반응물질 방출 대응 압력",
+              "operator": "ge",
+              "value": "100",
+              "unit": "kPa",
+              "quote": "100 kPa 이상의 압력에 대응하여 반응물질을 방출시키도록 전용 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.4 스터링 사이클 공기불요동력장치",
+          "thresholds": [
+            {
+              "subject": "연소물 방출 대응 압력",
+              "operator": "ge",
+              "value": "100",
+              "unit": "kPa",
+              "quote": "100 kPa 이상의 압력에 대응하여 연소물을 방출할 수 있도록 전용 설계된 배기시스템",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.2.a 가변피치 프로펠러와 허브 조립품",
+          "thresholds": [
+            {
+              "subject": "정격출력",
+              "operator": "gt",
+              "value": "30",
+              "unit": "MW",
+              "quote": "정격출력이 30 MW를 초과하는 가변피치 프로펠러와 허브 조립품",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.2.b 내부 액체냉각 전기추진 모터",
+          "thresholds": [
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "2.5",
+              "unit": "MW",
+              "quote": "2.5 MW를 초과하는 출력을 가진 내부 액체냉각 전기추진 모터",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.2.c 초전도 추진 모터",
+          "thresholds": [
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "MW",
+              "quote": "0.1 MW를 초과하는 출력을 가진 \"초전도\" 추진 모터",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.2.d 복합재료 축 동력전달 축계장치",
+          "thresholds": [
+            {
+              "subject": "전달 동력",
+              "operator": "gt",
+              "value": "10",
+              "unit": "MW",
+              "quote": "10 MW를 초과하는 초과의 동력을 전달할 수 있도록 설계되고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.2.e 공기공급 프로펠러 시스템",
+          "thresholds": [
+            {
+              "subject": "정격출력",
+              "operator": "gt",
+              "value": "2.5",
+              "unit": "MW",
+              "quote": "정격출력이 2.5 MW를 초과하는 공기공급 또는 저변공기공급 프로펠러 시스템",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.3.a 소음감소 시스템(복합음향차단 마운트)",
+          "thresholds": [
+            {
+              "subject": "선박 배수량",
+              "operator": "ge",
+              "value": "1000",
+              "unit": "톤",
+              "quote": "배수량 1,000톤급 이상의 선박",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "수중소음 약화 주파수",
+              "operator": "lt",
+              "value": "500",
+              "unit": "Hz",
+              "quote": "500Hz 미만에서 수중소음을 약화시킬 수 있는 소음감소 시스템",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "차단물질 중량(장비 중량 대비)",
+              "operator": "gt",
+              "value": "30",
+              "unit": "%",
+              "quote": "차단물질의 중량이 설치되는 장비 중량의 30%를 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.3.b 능동 소음 감소·제거 시스템 또는 마그네틱 베어링",
+          "thresholds": [
+            {
+              "subject": "선박 배수량",
+              "operator": "ge",
+              "value": "1000",
+              "unit": "톤",
+              "quote": "배수량 1,000톤급 이상의 선박",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "o.4 영구 자석 전기추진 모터(잠수정용)",
+          "thresholds": [
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "0.1",
+              "unit": "MW",
+              "quote": "0.1 MW를 초과하는 출력을 가진 잠수정을 위해 전용 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "p. 펌프제트 추진 시스템",
+          "thresholds": [
+            {
+              "subject": "출력",
+              "operator": "gt",
+              "value": "2.5",
+              "unit": "MW",
+              "quote": "출력이 2.5 MW 를 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "q. 수중유영 및 잠수 장비",
+          "thresholds": [],
+          "text": "폐쇄식 재호흡방식"
+        },
+        {
+          "label": "r. 잠수부 제지 음향시스템",
+          "thresholds": [
+            {
+              "subject": "주파수",
+              "operator": "le",
+              "value": "200",
+              "unit": "Hz",
+              "quote": "200 Hz 이하의 주파수",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "음압 레벨(1 m, 1 μPa 기준)",
+              "operator": "ge",
+              "value": "190",
+              "unit": "dB",
+              "quote": "190 dB (1 m 에서 1 μPa 기준) 이상인 음압 레벨",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "그 구조 부재에 티타늄 합금이나 \"복합재료\" \"섬유상 또는 필라멘트 소재\"를 사용한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "주파수 10 kHz 미만의 수중 소음을 감소시키기 위해 전용 설계된 장치, 밀폐함",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "추진효율을 향상시키거나 추진으로 인한 방출소음을 줄이기 위해 발산식 노즐과 분사노즐 흐름을 조절하는 기술을 이용하는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "8A002.q는 대인용으로 그 사용자가 휴대하는 개별 장비는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "8A002.r은 수중용 폭발 장치, 공기총 또는 가연성 발생원 기반 잠수부 제지 시스템에는 적용하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A001",
+      "title": "항공가스터빈 엔진으로서 다음 중 하나의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9E003.a, 9E003.h, 또는 9E003.i.에 명시된 \"기술\" 중 하나를 포함한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "하나 혹은 그 이상의 바세나르체제 회원국의 민간항공당국에 의해 승인된 경우",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A001은 바세나르체제 회원국의 민간항공당국에 의해 승인된 보조동력장치(APUs)를 위해 설계된 항공가스터빈엔진에 대해서는 적용하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A002",
+      "title": "액체 연료를 사용하도록 설계된 '선박용 가스터빈엔진'으로서, 다음의 모든 특성을 갖는 것",
+      "branches": [
+        {
+          "label": "a.·b. 모두 만족(b는 확인 조건)",
+          "thresholds": [
+            {
+              "subject": "최대 연속 출력(정상상태모드)",
+              "operator": "ge",
+              "value": "24245",
+              "unit": "kW",
+              "quote": "최대 연속 출력이 24,245 kW 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "액체 연료를 사용할 때 최대 연속 출력의 35%에서 '보정된 비연료소비량'이 0.219 kg/kWh를 초과하지 않는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "ISO 3977-2:1997 (또는 해당 국가의 동등 규정)에 명시된 정격 기준 조건에서 \"정상상태모드\"로 동작할 때",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'선박용 가스터빈엔진'은 선박추진 또는 선박 발전기용으로 개조된 산업용 또는 항공용 가스터빈엔진을 포함한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A003",
+      "title": "항공 가스터빈엔진으로 전용 설계된 조립품 또는 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9E003.a, 9E003.h, 9E003.i 또는 9E003.k에 명시된 \"기술\"에 해당하는 것을 사용하는",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "이들의 설계나 생산기술의 출처가 바세나르체제 회원국이 아니거나 제작자에게 알려져 있지 않는 경우",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A004",
+      "title": "우주발사체, \"우주비행체\", \"우주비행체 버스\", \"우주비행체 임무 장비\" 등으로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "우주발사체",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"우주비행체\"를 위해 전용 설계되고 다음 어느 하나의 기능을 갖는 탑재 시스템 또는 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"우주비행체\"를 위해 전용 설계된, 지상국(terrestrial) 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "우주발사체 또는 \"준궤도 비행체\"를 위한 공중발사 플랫폼으로 전용 설계되거나 개조된 \"항공기\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A005",
+      "title": "9A006에 명시된 시스템이나 구성품의 어느 하나를 포함하고 있는 액체로켓 추진시스템",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A006에 명시된 시스템이나 구성품의 어느 하나를 포함하고 있는  액체로켓 추진시스템",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A006",
+      "title": "액체로켓추진시스템을 위하여 전용 설계된 시스템 및 구성품으로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 초저온 시스템 누설율",
+          "thresholds": [
+            {
+              "subject": "초저온 액체 연간 누설율",
+              "operator": "lt",
+              "value": "30",
+              "unit": "%",
+              "quote": "누설율을 연간 30% 미만으로 제한하도록 설계된",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 초저온 컨테이너·폐 사이클 냉동시스템",
+          "thresholds": [
+            {
+              "subject": "유지 온도",
+              "operator": "le",
+              "value": "100",
+              "unit": "K",
+              "quote": "(100 K) 이하의 온도를 유지하거나 만들도록 설계된",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 출렁이는 수소 보관·이송",
+          "thresholds": [],
+          "text": "출렁이는 수소(slush hydrogen)의 보관 또는 이송 시스템"
+        },
+        {
+          "label": "d. 고압 터보 펌프",
+          "thresholds": [
+            {
+              "subject": "압력",
+              "operator": "gt",
+              "value": "17.5",
+              "unit": "MPa",
+              "quote": "고압(17.5 MPa 초과) 터보 펌프",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e. 고압 추력 챔버와 노즐",
+          "thresholds": [
+            {
+              "subject": "압력",
+              "operator": "gt",
+              "value": "10.6",
+              "unit": "MPa",
+              "quote": "고압(10.6 MPa 초과) 추력 챔버(thrust chamber)와 노즐",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f. 추진제 저장시스템",
+          "thresholds": [],
+          "text": "모세관 현상 억제 혹은 능동 배제 원리를 이용한 추진제 저장시스템(예, 가변형 블래더)"
+        },
+        {
+          "label": "g. 액체추진제 분사기",
+          "thresholds": [
+            {
+              "subject": "오리피스 직경",
+              "operator": "le",
+              "value": "0.381",
+              "unit": "mm",
+              "quote": "오리피스 직경이 0.381 mm 이하인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h. 일체형 탄소-탄소 추력 챔버·배기콘",
+          "thresholds": [
+            {
+              "subject": "밀도",
+              "operator": "gt",
+              "value": "1.4",
+              "unit": "g/cm3",
+              "quote": "밀도가 1.4 g/cm3를 초과하고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "인장강도",
+              "operator": "gt",
+              "value": "48",
+              "unit": "MPa",
+              "quote": "인장강도가 48 MPa을 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "단면이 비원형인 경우 1.14×10-3 cm2 이하의 면적을 가진 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "－173.15°C (100 K) 이하의 온도",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A007",
+      "title": "다음 중 하나의 것을 가진 고체 로켓 추진시스템",
+      "branches": [
+        {
+          "label": "a. 총 충격용량",
+          "thresholds": [
+            {
+              "subject": "총 충격용량",
+              "operator": "gt",
+              "value": "1.1",
+              "unit": "MNs",
+              "quote": "총 충격용량이 1.1 MNs를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 비추력",
+          "thresholds": [
+            {
+              "subject": "비추력(연소실 압력 7 MPa, 해수면 상태)",
+              "operator": "ge",
+              "value": "2.4",
+              "unit": "kNs/kg",
+              "quote": "비추력이 2.4 kNs/kg 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 단 질량부분·추진제 하중",
+          "thresholds": [
+            {
+              "subject": "단 질량부분",
+              "operator": "gt",
+              "value": "88",
+              "unit": "%",
+              "quote": "단 질량부분(stage mass fraction)이 88%를 초과하고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "고체 추진제 하중",
+              "operator": "gt",
+              "value": "86",
+              "unit": "%",
+              "quote": "고체 추진제의 하중이 86%를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 9A008 구성품",
+          "thresholds": [],
+          "text": "9A008에 명시된 구성품"
+        },
+        {
+          "label": "e. 절연체 및 추진제 접합시스템",
+          "thresholds": [],
+          "text": "직접 접합된 모터 설계를 사용한 절연체 및 추진제 접합시스템"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "연소실 압력이 7 MPa로 조절된 상태에서 주위 해수면 상태 하에 노즐유동이 분출될 때",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A008",
+      "title": "고체로켓 추진시스템을 위하여 전용 설계된 다음과 같은 구성품",
+      "branches": [
+        {
+          "label": "a. 절연체 및 추진제 접합시스템",
+          "thresholds": [],
+          "text": "라이닝(lining)을 사용한 절연체 및 추진제 접합시스템"
+        },
+        {
+          "label": "b. 복합재료 모터 케이스, 직경",
+          "thresholds": [
+            {
+              "subject": "직경",
+              "operator": "gt",
+              "value": "0.61",
+              "unit": "m",
+              "quote": "직경이 0.61 m 를 초과하거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 복합재료 모터 케이스, 구조 효율비",
+          "thresholds": [
+            {
+              "subject": "구조 효율비(PV/W)",
+              "operator": "gt",
+              "value": "25",
+              "unit": "km",
+              "quote": "'구조 효율비(PV/W)'가 25 km를 초과하는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 노즐, 추력수준",
+          "thresholds": [
+            {
+              "subject": "추력수준",
+              "operator": "gt",
+              "value": "45",
+              "unit": "kN",
+              "quote": "추력수준이 45 kN을 초과하거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 노즐, 목 침식율",
+          "thresholds": [
+            {
+              "subject": "노즐 목 침식율",
+              "operator": "lt",
+              "value": "0.075",
+              "unit": "mm/s",
+              "quote": "노즐 목의 침식율이 0.075 mm/s 미만인 노즐",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1 TVC 축 방향 총 움직임",
+          "thresholds": [
+            {
+              "subject": "축 방향 총 움직임",
+              "operator": "gt",
+              "value": "5",
+              "unit": "°",
+              "quote": "축 방향 총 움직임이 ±5°를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.2 TVC 각도벡터 회전",
+          "thresholds": [
+            {
+              "subject": "각도벡터 회전 속도",
+              "operator": "ge",
+              "value": "20",
+              "unit": "°/s",
+              "quote": "각도벡터의 회전이 20°/s 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.3 TVC 각도벡터 가속",
+          "thresholds": [
+            {
+              "subject": "각도벡터 가속",
+              "operator": "ge",
+              "value": "40",
+              "unit": "°/s²",
+              "quote": "각도벡터의 가속이 40°/s² 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "필라멘트가 감긴 \"복합재료\" 모터 케이스",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "유동노즐이나 이차유동분사(secondary fluid injection) 추력 벡터 제어(TVC)시스템",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A009",
+      "title": "하이브리드 로켓추진시스템으로서, 다음 중 하나의 것",
+      "branches": [
+        {
+          "label": "a. 총 충격용량",
+          "thresholds": [
+            {
+              "subject": "총 충격용량",
+              "operator": "gt",
+              "value": "1.1",
+              "unit": "MNs",
+              "quote": "총 충격용량이 1.1 MNs 을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 진공출구 추력수준",
+          "thresholds": [
+            {
+              "subject": "추력수준(진공출구상태)",
+              "operator": "gt",
+              "value": "220",
+              "unit": "kN",
+              "quote": "추력수준이 220 kN 을 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:9A010",
+      "title": "발사체, 발사체 추진시스템 또는 \"우주비행체\"용으로 전용 설계된 구성품, 시스템 그리고 구조물",
+      "branches": [
+        {
+          "label": "a. 복합재료 구성품·구조물",
+          "thresholds": [
+            {
+              "subject": "구성품·구조물 질량",
+              "operator": "gt",
+              "value": "10",
+              "unit": "kg",
+              "quote": "10 kg 을 초과하는 구성품과 구조물",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 추진시스템 전용 구성품·구조물",
+          "thresholds": [],
+          "text": "9A005∼9A009에 명시된 발사체 추진시스템 전용으로 설계된 구성품 또는 구조물로서 다음 중 하나를 이용해 제작된 것"
+        },
+        {
+          "label": "c. 능동 제어 구조구성품",
+          "thresholds": [],
+          "text": "\"우주비행체\" 구조물의 뒤틀림 또는 동적반응을 능동적으로 제어하기 위해 전용 설계된 구조구성품과 절연시스템"
+        },
+        {
+          "label": "d. 펄스식 액체로켓 엔진",
+          "thresholds": [
+            {
+              "subject": "질량에 대한 추력비",
+              "operator": "ge",
+              "value": "1",
+              "unit": "kN/kg",
+              "quote": "질량에 대한 추력비(Thrust to Weight ratios)가 1 kN/kg 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "응답시간",
+              "operator": "lt",
+              "value": "30",
+              "unit": "ms",
+              "quote": "'응답시간'이 30 ms 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C010.e에 명시된 \"섬유상 또는 필라멘트 소재\"와 1C008 또는 1C009.b에 명시된 수지로 구성된 \"복합재료\" 소재",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "노즈-콘(Nose-Cones)은 중량한도의 적용을 받지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A011",
+      "title": "램제트, 스크램제트, '복합(combined) 사이클 엔진'과 이를 위해 전용 설계된 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "램제트, 스크램제트, '복합(combined) 사이클 엔진'과 이를 위해 전용 설계된 구성품",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A012",
+      "title": "다음의 \"무인항공기\" (\"UAVs\"), 무인 \"비행선\" 및 이와 관련된 장비 및 구성품",
+      "branches": [
+        {
+          "label": "a.1 체공시간 30분 이상 한 시간 미만, 돌풍",
+          "thresholds": [
+            {
+              "subject": "최대 체공시간",
+              "operator": "ge",
+              "value": "30",
+              "unit": "분",
+              "quote": "최대 '체공시간'이 30분 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "이륙·제어 비행 가능 돌풍",
+              "operator": "ge",
+              "value": "46.3",
+              "unit": "km/h",
+              "quote": "46.3 km/h(25 knots) 이상의 돌풍",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2 체공시간 한 시간 이상",
+          "thresholds": [],
+          "text": "최대 '체공시간' 한 시간 이상인 것"
+        },
+        {
+          "label": "b.3 유인기 변환 장비",
+          "thresholds": [],
+          "text": "유인\"항공기\" 또는 유인\"비행선\"을 9A012.a에 명시된 \"무인항공기\" 또는 무인\"비행선\"으로 변환하기 위해 전용 설계된 장비 또는 구성품"
+        },
+        {
+          "label": "b.4 고고도 내연기관 엔진",
+          "thresholds": [
+            {
+              "subject": "추진 고도",
+              "operator": "gt",
+              "value": "15240",
+              "unit": "미터",
+              "quote": "15,240미터 (50,000feet) 보다 높은 고도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'운영자'의 직접적인 '자연스런 육안시계' 범위 밖에서 제어 비행을 할 수 있도록 설계되고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "최대 '체공시간'이 30분 이상 한 시간 미만인 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'체공시간'은 해면고도, 무풍인 상태에서 ISA 조건(ISO 2533:1975)에 따라 계산한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A101",
+      "title": "9A001에 명시된 것과 다른 터보제트 및 터보팬엔진으로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 모든 특징을 갖는 엔진",
+          "thresholds": [
+            {
+              "subject": "최대 추력",
+              "operator": "gt",
+              "value": "400",
+              "unit": "N",
+              "quote": "'최대 추력'이 400 N을 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "비연료소모율",
+              "operator": "le",
+              "value": "0.15",
+              "unit": "kgN-1h-1",
+              "quote": "비연료소모율이 0.15 kgN-1h-1 이하인 엔진",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "건조중량",
+              "operator": "lt",
+              "value": "750",
+              "unit": "kg",
+              "quote": "'건조중량' 750 kg 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "1단 로터 직경",
+              "operator": "lt",
+              "value": "1",
+              "unit": "m",
+              "quote": "'1단 로터 직경' 1 m 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 미사일·무인항공기용 엔진",
+          "thresholds": [],
+          "text": "추력, 비연료소모율, '건조중량' 또는 '1단 로터 직경'과 관계없이 \"미사일\", 9A012 또는 9A112.a에 명시된 무인항공기에서의 사용을 위해 설계 또는 개조된 엔진"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "단, '최대 추력'이 8.89 kN을 초과하는 민수용으로 인증된 엔진은 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "'최대 추력'은 ICAO 표준대기를 사용한 해수면 정적 상태에서 설치되지 않은 엔진 타입에 대해 제조자가 증명한 최대값을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A102",
+      "title": "무인항공기를 위해 전용 설계된 '최대출력' 10 kW를 초과하는 '터보프롭 엔진시스템'",
+      "branches": [
+        {
+          "label": "최대출력",
+          "thresholds": [
+            {
+              "subject": "최대출력",
+              "operator": "gt",
+              "value": "10",
+              "unit": "kW",
+              "quote": "'최대출력' 10 kW를 초과하는 '터보프롭 엔진시스템'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9A012 또는 9A112.a에 명시된 무인항공기를 위해 전용 설계된",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A102는 민간인증엔진은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A104",
+      "title": "사거리가 최소 300km인 관측로켓",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "사거리가 최소 300km인 관측로켓",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A105",
+      "title": "액체추진제 로켓엔진 또는 젤 추진제 로켓모터로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 미사일용, 총 충격용량 1.1 MNs 이상",
+          "thresholds": [
+            {
+              "subject": "추진시스템 총 충격용량",
+              "operator": "ge",
+              "value": "1.1",
+              "unit": "MNs",
+              "quote": "총 충격용량(total impulse capacity) 이 1.1 MNs 이상인",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 사거리 300 km 이상, 총 충격용량 0.841 MNs 이상 1.1 MNs 미만",
+          "thresholds": [
+            {
+              "subject": "사거리",
+              "operator": "ge",
+              "value": "300",
+              "unit": "km",
+              "quote": "사거리 300 km 이상이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "추진시스템 총 충격용량",
+              "operator": "ge",
+              "value": "0.841",
+              "unit": "MNs",
+              "quote": "총 충격용량이 0.841 MNs 이상이고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "추진시스템 총 충격용량",
+              "operator": "lt",
+              "value": "1.1",
+              "unit": "MNs",
+              "quote": "1.1 MNs 미만인 액체 추진제 혹은 젤 추진제 추진시스템",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"미사일\"에 사용될 수 있으며",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A005에 명시된 것을 제외한 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A106",
+      "title": "액체로켓 추진시스템 또는 젤 추진제 로켓시스템을 위해 전용 설계된 시스템 또는 구성품(9A006에 명시된 것 제외)",
+      "branches": [
+        {
+          "label": "c. 추력벡터제어(TVC) 서브시스템",
+          "thresholds": [],
+          "text": "\"미사일\"에 사용 가능한 추력벡터제어(TVC) 서브시스템"
+        },
+        {
+          "label": "d. 추진제 제어시스템(진동환경)",
+          "thresholds": [
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "gt",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms를 초과하는 진동환경",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 주 1 서보밸브",
+          "thresholds": [
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "gt",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms를 초과하는 진동환경",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "절대압력",
+              "operator": "ge",
+              "value": "7",
+              "unit": "MPa",
+              "quote": "절대압력 7 MPa 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "유동율(분당)",
+              "operator": "ge",
+              "value": "24",
+              "unit": "리터",
+              "quote": "분당 24리터 이상의 유동율(flow rate)",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "구동기 응답시간",
+              "operator": "le",
+              "value": "100",
+              "unit": "ms",
+              "quote": "구동기 (actuator)의 응답시간이 100ms 이내",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 주 2 펌프, 축 회전속도",
+          "thresholds": [
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "gt",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms를 초과하는 진동환경",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "축 회전속도(최대동작모드)",
+              "operator": "ge",
+              "value": "8000",
+              "unit": "rpm",
+              "quote": "축 회전속도(Shaft Speed)가  8000 rpm 이상이거나",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 주 2 펌프, 분사압력",
+          "thresholds": [
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "gt",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms를 초과하는 진동환경",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "분사압력(최대동작모드)",
+              "operator": "ge",
+              "value": "7",
+              "unit": "MPa",
+              "quote": "분사압력이 7 MPa 이상의 성능을 가진 펌프",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 주 3 가스터빈(액체추진제 터보펌프)",
+          "thresholds": [
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "gt",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms를 초과하는 진동환경",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "축 회전속도(최대동작모드)",
+              "operator": "ge",
+              "value": "8000",
+              "unit": "rpm",
+              "quote": "축 회전속도(Shaft Speed)가 8000 rpm 이상의 성능을 가진 가스터빈",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e. 연소실과 노즐",
+          "thresholds": [],
+          "text": "9A005 또는 9A105에서 명시된 액체추진제 로켓엔진 또는 젤 추진제 로켓모터를 위한 연소실과 노즐"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"미사일\"에 사용 가능한 액체, 슬러리(Slurry) 및 젤 추진제(산화제 포함) 제어시스템과 이의 전용 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "주파수 범위 20 Hz ~ 2 kHz 에서",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A107",
+      "title": "완성 로켓시스템 또는 무인항공기에 사용할 수 있는 고체추진제 로켓모터 (9A007에 명시된 것 제외)",
+      "branches": [
+        {
+          "label": "총 충격용량",
+          "thresholds": [
+            {
+              "subject": "총 충격용량",
+              "operator": "ge",
+              "value": "0.841",
+              "unit": "MNs",
+              "quote": "총 충격용량이 0.841 MNs 이상인 고체추진제 로켓모터",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "완성 로켓시스템 또는 무인항공기에 사용할 수 있으며, 사거리 300 km",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A108",
+      "title": "고체로켓 추진시스템 그리고 하이브리드 로켓 추진시스템을 위해 전용 설계된 구성품(9A008에 명시된 것 제외)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "로켓 모터 케이스 및 \"단열재\" 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A007, 9A009, 9A107 또는 9A109.a에 명시된 서브시스템에서 사용 가능한 로켓 노즐",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"미사일\"에 사용 가능한 추력벡터제어(TVC) 서브시스템",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A109",
+      "title": "하이브리드 로켓 모터와 전용 설계된 구성품으로서 다음의 것",
+      "branches": [
+        {
+          "label": "a. 하이브리드 로켓 모터",
+          "thresholds": [
+            {
+              "subject": "총충격용량",
+              "operator": "ge",
+              "value": "0.841",
+              "unit": "MNs",
+              "quote": "총충격용량이 0.841MNs 이상인 하이브리드 로켓 모터",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 미사일용 하이브리드 로켓 모터 전용 구성품",
+          "thresholds": [],
+          "text": "9A009에 명시된 '미사일'에 사용 가능한 하이브리드 로켓 모터를 위하여 전용 설계된 구성품"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "완성 로켓시스템 또는 300km 사정거리의 무인항공기에 사용 가능한",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A109.b에서 '미사일'은 사거리 300 km를 초과하는 완성 로켓시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A110",
+      "title": "'미사일' 또는 서브시스템의 사용을 위해 전용 설계된 복합재료 구조물, 적층구조물 및 그 제품(9A010에 명시된 것 제외)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A110에서 '미사일'은 사거리 300 km를 초과하는 완성로켓시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A111",
+      "title": "\"미사일\"이나 무인항공기에 사용될 수 있는 펄스제트 또는 데토네이션 엔진 및 이를 위해 전용 설계된 구성품",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"미사일\"이나 9A012 또는 9A112.a.에 명시된 무인항공기에 사용될 수 있는 펄스제트 또는 데토네이션 엔진",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A112",
+      "title": "9A012에 명시되지 않은 \"무인항공기\"(\"UAVs\")로서, 다음의 것",
+      "branches": [
+        {
+          "label": "a. 사거리 300 km 이상",
+          "thresholds": [
+            {
+              "subject": "사거리",
+              "operator": "ge",
+              "value": "300",
+              "unit": "km",
+              "quote": "사거리 300 km 이상인 \"무인항공기\"(\"UAVs\")",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 에어로졸 살포 무인항공기",
+          "thresholds": [
+            {
+              "subject": "에어로졸 살포시스템 용량",
+              "operator": "gt",
+              "value": "20",
+              "unit": "리터",
+              "quote": "20리터를 초과하는 용량의 에어로졸 살포시스템/메커니즘을 결합한 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "자율적인 비행제어와 항법 능력이 있는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "조종사의 직접적 시야 밖에서 제어 비행이 가능한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "20리터를 초과하는 용량의 에어로졸 살포시스템/메커니즘을 결합하기 위해 설계되거나 개조된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A115",
+      "title": "발사지원장비로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "취급, 제어, 작동 또는 발사용 기계장치로서 9A004의 우주발사체, 9A104의 관측로켓 또는 '미사일'을 위해 설계 또는 개조된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "수송, 취급, 제어, 작동 또는 발사용 운반체",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A115.a에서 '미사일'은 사거리 300 km를 초과하는 완성 로켓 시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A116",
+      "title": "\"미사일\"에 사용가능한 재진입 비행체 및 이를 위해 설계 또는 개조된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "재진입 비행체(Reentry vehicles)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "세라믹 또는 융제 소재로 만들어진 열 차폐 및 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "경량이고 높은 열용량 소재로 만들어진 열 싱크(Heat sink) 및 구성품",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "대기권 재진입 비행체를 위해 전용 설계된 전자장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A117",
+      "title": "\"미사일\"에 사용가능한 단(Stage)간의 결합, 분리 및 연결 메커니즘",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"미사일\"에 사용가능한 단(Stage)간의 결합, 분리 및 연결 메커니즘",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A118",
+      "title": "9A011 또는 9A111에 명시된 엔진에 쓰이는 연소조절장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"미사일\", 9A012 또는 9A112.a.에 명시된 무인항공기에 사용가능한 9A011 또는 9A111에 명시된 엔진에 쓰이는 연소조절장치",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A119",
+      "title": "사거리가 300 km인 완성로켓시스템 또는 무인항공기에 사용 가능한 각각의 로켓 단(stage)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "사거리가 300 km인 완성로켓시스템 또는 무인항공기에 사용 가능한 각각의 로켓 단(stage)",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A120",
+      "title": "로켓시스템에 사용되는 추진제를 위해 전용 설계된 액체 혹은 젤 추진제 탱크(9A006에 명시된 것 제외)",
+      "branches": [
+        {
+          "label": "탑재중량·사거리",
+          "thresholds": [
+            {
+              "subject": "탑재중량",
+              "operator": "ge",
+              "value": "500",
+              "unit": "Kg",
+              "quote": "탑재중량 500 Kg 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "사거리",
+              "operator": "ge",
+              "value": "300",
+              "unit": "Km",
+              "quote": "사거리 300 Km 이상 운반할 수 있는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1C111에 명시된 추진제 혹은 기타 액체 혹은 젤 추진제를 위해 전용 설계된 액체 혹은 젤 추진제 탱크",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A121",
+      "title": "\"미사일\", 우주발사체 또는 관측로켓을 위해 전용 설계된 엄빌리컬(Umbilical) 및 단간 전기 연결단자",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"미사일\", 9A004의 우주발사체 또는 9A104의 관측로켓을 위해 전용 설계된 엄빌리컬(Umbilical) 및 단간 전기 연결단자",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9A350",
+      "title": "비행기, \"경비행기(비행선)\" 또는 무인항공기에 알맞도록 전용 설계되거나 개조된 분무 또는 연무 시스템",
+      "branches": [
+        {
+          "label": "a. 완전한 분무 또는 연무 시스템",
+          "thresholds": [
+            {
+              "subject": "유량(분당)",
+              "operator": "gt",
+              "value": "2",
+              "unit": "리터",
+              "quote": "분당 2 리터를 초과하는 유량",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "초기 유적 VMD",
+              "operator": "lt",
+              "value": "50",
+              "unit": "μm",
+              "quote": "50 μm 미만의 초기 유적 'VMD'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 분무용 기중기 팔 또는 에어로졸 발생기 어레이",
+          "thresholds": [
+            {
+              "subject": "유량(분당)",
+              "operator": "gt",
+              "value": "2",
+              "unit": "리터",
+              "quote": "분당 2리터를 초과하는 유량",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "초기 유적 VMD",
+              "operator": "lt",
+              "value": "50",
+              "unit": "미크론",
+              "quote": "50 미크론 미만의 초기 유적 'VMD'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 에어로졸 발생장치",
+          "thresholds": [],
+          "text": "9A350.a 및 b항에 명시된 시스템에 알맞도록 전용 설계된 에어로졸 발생장치"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9A350에서 전염성 에어로졸 형태로 생물작용제를 취급할 수 없는 것으로 증명된 분무 또는 연무 시스템 및 구성품은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B001",
+      "title": "제조 장비, 공구 및 고정구로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"초합금\"을 위해 설계된 방향성 고형화 또는 단결정화에 의한 주조장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "내화 금속 또는 세라믹으로 만들어진 가스터빈 엔진 블레이드, 베인(vanes) 또는 \"팁 슈라우드\"(tip shrouds) 제작을 위해 전용 설계된 주조 공구",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"초합금\"을 위해 설계된 방향성 고형화 또는 단결정 적층 생산장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B002",
+      "title": "온라인(실시간) 제어시스템, 계측장치(센서포함) 또는 자동 데이터 획득 및 처리장치",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "가스터빈엔진, 조립품 또는 구성품의 \"개발\"을 위해 전용 설계된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9E003.h. 또는 9E003.i.에 명시된 \"기술\"을 사용한 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B003",
+      "title": "가스터빈 엔진 브러시 밀봉(seal)의 검사 또는 \"생산\"을 위해 전용 설계된 장비",
+      "branches": [
+        {
+          "label": "팁 속도·온도",
+          "thresholds": [
+            {
+              "subject": "팁 속도",
+              "operator": "gt",
+              "value": "335",
+              "unit": "m/s",
+              "quote": "335 m/s 를 초과하는 팁 속도(tip speed)",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "운용 온도",
+              "operator": "gt",
+              "value": "773",
+              "unit": "K",
+              "quote": "773 K (500 °C) 를   초과하는 온도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:9B004",
+      "title": "가스터빈 엔진용 에어포일-디스크 결합체의 고체상태 접합을 위한 치공구, 다이스 또는 고정구",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"초합금\", 티타늄, 혹은 금속간 에어포일-디스크 결합체의 고체상태 접합을 위한 치공구, 다이스 또는 고정구",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B005",
+      "title": "실시간 제어시스템, 계측장치(센서포함) 또는 자동화된 데이터 획득․처리장치",
+      "branches": [
+        {
+          "label": "a. 풍동",
+          "thresholds": [
+            {
+              "subject": "풍동 속도",
+              "operator": "ge",
+              "value": "1.2",
+              "unit": "마하",
+              "quote": "마하 1.2 이상의 속도가 가능하도록 설계된 풍동",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 유동환경 시뮬레이션 장치",
+          "thresholds": [
+            {
+              "subject": "시뮬레이션 속도",
+              "operator": "gt",
+              "value": "5",
+              "unit": "마하",
+              "quote": "마하 5를 초과하는 속도에서 유동환경을 시뮬레이션하는 장치",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c. 레이놀즈수 25×10^6 초과 풍동·장치",
+          "thresholds": [],
+          "text": "레이놀즈수 25×106을 초과하는 유체 흐름을 시뮬레이션 할 수 있는 2차원 단면 이상의 풍동 또는 장치"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9B005.a는 교육용으로 설계된 것과 '시험단면 크기'가 250 mm 미만인 풍동은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B006",
+      "title": "음향진동 시험장비와 이를 위해 전용 설계된 수정히터(quartz heaters)",
+      "branches": [
+        {
+          "label": "음압·시험실 온도·정격출력",
+          "thresholds": [
+            {
+              "subject": "음압(20 μPa 기준)",
+              "operator": "ge",
+              "value": "160",
+              "unit": "dB",
+              "quote": "160 dB (20 μPa 기준) 이상의 음압",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "시험실 온도",
+              "operator": "gt",
+              "value": "1273",
+              "unit": "K",
+              "quote": "1,273 K (1,000 °C) 를 초과하는 시험실",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "정격출력",
+              "operator": "ge",
+              "value": "4",
+              "unit": "kW",
+              "quote": "4 kW 이상의 정격출력",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:9B007",
+      "title": "비파괴시험(NDT)을 이용하여 로켓모터의 완결성을 검사하기 위해 전용 설계된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "평면 X-ray와 기본적인 물리․화학 분석이 아닌 비파괴시험(NDT, Non-Destructive Test)을 이용하여 로켓모터의 완결성을 검사하기 위해 전용 설계된 장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B008",
+      "title": "표면마찰을 직접 측정하는 표면마찰 변환기",
+      "branches": [
+        {
+          "label": "정체온도",
+          "thresholds": [
+            {
+              "subject": "시험유동 전 온도(정체온도)",
+              "operator": "gt",
+              "value": "833",
+              "unit": "K",
+              "quote": "833 K (560 °C) 를 초과하는 전 온도(정체온도)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:9B009",
+      "title": "가스터빈엔진의 분말야금 로터 구성품을 제조하기 위하여 전용 설계된 공구",
+      "branches": [
+        {
+          "label": "a.·b. 모두 만족",
+          "thresholds": [
+            {
+              "subject": "응력수준(873 K에서 UTS 대비)",
+              "operator": "ge",
+              "value": "60",
+              "unit": "%",
+              "quote": "최대인장강도(UTS)의 60% 이상의 응력수준",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "작동 온도",
+              "operator": "ge",
+              "value": "873",
+              "unit": "K",
+              "quote": "873 K (600°C) 이상에서 작동하도록 설계된 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9B009는 분말 \"생산\"을 위한 공구는 제외한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B010",
+      "title": "9A012에 명시된 품목의 \"생산\"을 위해 전용 설계된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A012에 명시된 품목의 \"생산\"을 위해 전용 설계된 장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B105",
+      "title": "'미사일'과 그 서브시스템에 사용될 수 있는 '공기역학 시험설비'",
+      "branches": [
+        {
+          "label": "속도",
+          "thresholds": [
+            {
+              "subject": "속도",
+              "operator": "ge",
+              "value": "0.9",
+              "unit": "마하",
+              "quote": "마하 0.9 이상의 속도를 낼 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "9B105는 '시험단면 크기'가 250 mm 이하이면서 마하 3 이하의 풍동은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9B105에서 '미사일'은 사거리 300 km를 초과하는 완성 로켓시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B106",
+      "title": "환경시험 챔버(chamber)와 무반향실로 다음의 것",
+      "branches": [
+        {
+          "label": "a. 환경시험 챔버(고도 + 진동)",
+          "thresholds": [
+            {
+              "subject": "모사 고도",
+              "operator": "ge",
+              "value": "15",
+              "unit": "km",
+              "quote": "15 km 이상의 고도",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "시험대상에 가하는 힘",
+              "operator": "ge",
+              "value": "5",
+              "unit": "kN",
+              "quote": "5 kN 이상의 힘",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "ge",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms 이상의 진동환경",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. 환경시험 챔버(온도범위 + 진동)",
+          "thresholds": [
+            {
+              "subject": "온도범위 최소",
+              "operator": "lt",
+              "value": "223",
+              "unit": "K",
+              "quote": "최소 223 K (-50 °C) 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "온도범위 최대",
+              "operator": "gt",
+              "value": "398",
+              "unit": "K",
+              "quote": "최대 398 K (+125 °C) 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "시험대상에 가하는 힘",
+              "operator": "ge",
+              "value": "5",
+              "unit": "kN",
+              "quote": "5 kN 이상의 힘",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "진동환경 가속도(rms, 20 Hz~2 kHz)",
+              "operator": "ge",
+              "value": "10",
+              "unit": "g",
+              "quote": "10g rms 이상의 진동환경",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 환경시험 챔버(음압 + 고도)",
+          "thresholds": [
+            {
+              "subject": "출력음압(20 μPa 기준)",
+              "operator": "ge",
+              "value": "140",
+              "unit": "dB",
+              "quote": "140 dB (20 μPa 기준) 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "모사 고도",
+              "operator": "ge",
+              "value": "15",
+              "unit": "km",
+              "quote": "15 km 이상의 고도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 환경시험 챔버(음압 + 온도범위)",
+          "thresholds": [
+            {
+              "subject": "출력음압(20 μPa 기준)",
+              "operator": "ge",
+              "value": "140",
+              "unit": "dB",
+              "quote": "140 dB (20 μPa 기준) 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "온도범위 최소",
+              "operator": "lt",
+              "value": "223",
+              "unit": "K",
+              "quote": "최소 223 K (-50 °C) 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "온도범위 최대",
+              "operator": "gt",
+              "value": "398",
+              "unit": "K",
+              "quote": "최대 398 K (+125 °C) 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 환경시험 챔버(정격 출력 + 고도)",
+          "thresholds": [
+            {
+              "subject": "음향환경 정격 출력",
+              "operator": "ge",
+              "value": "4",
+              "unit": "kW",
+              "quote": "4 kW 이상의 정격 출력",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "모사 고도",
+              "operator": "ge",
+              "value": "15",
+              "unit": "km",
+              "quote": "15 km 이상의 고도",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 환경시험 챔버(정격 출력 + 온도범위)",
+          "thresholds": [
+            {
+              "subject": "음향환경 정격 출력",
+              "operator": "ge",
+              "value": "4",
+              "unit": "kW",
+              "quote": "4 kW 이상의 정격 출력",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "온도범위 최소",
+              "operator": "lt",
+              "value": "223",
+              "unit": "K",
+              "quote": "최소 223 K (-50 °C) 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "온도범위 최대",
+              "operator": "gt",
+              "value": "398",
+              "unit": "K",
+              "quote": "최대 398 K (+125 °C) 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "20 Hz ~ 2 kHz 의 주파수 범위 내에서",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "가진기 혹은 기타 진동시험장비를 포함하거나 포함하기 위해 '설계되거나 개조된' 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B107",
+      "title": "'공기열역학 시험 설비'로서, 다음 중 하나의 특징을 만족하는 것",
+      "branches": [
+        {
+          "label": "a. 전력공급",
+          "thresholds": [
+            {
+              "subject": "전력공급",
+              "operator": "ge",
+              "value": "5",
+              "unit": "MW",
+              "quote": "전력공급이 5 MW 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 가스공급 전체압력",
+          "thresholds": [
+            {
+              "subject": "가스공급 전체압력",
+              "operator": "ge",
+              "value": "3",
+              "unit": "MPa",
+              "quote": "가스공급 전체압력이 3 MPa 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "'미사일', '미사일' 로켓 추진 시스템 및 9A116에 명시된 재진입 비행체와 장비에 사용할 수 있는 '공기열역학 시험 설비'",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B115",
+      "title": "시스템, 서브시스템 및 구성품을 위해 전용 설계된 \"생산 장비\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A005~9A009, 9A011, 9A101, 9A102, 9A105~9A109, 9A111, 9A116~9A120에서 명시된 시스템, 서브시스템 및 구성품을 위해 전용 설계된 \"생산 장비\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B116",
+      "title": "우주발사체, 명시된 시스템·서브시스템·구성품 혹은 '미사일'을 위해 전용 설계된 \"생산 설비\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9B116에서 '미사일'은 사거리 300 km를 초과하는 완성 로켓시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9B117",
+      "title": "고체 또는 액체 추진제 로켓 또는 로켓 모터를 위한 추진기관 시험대",
+      "branches": [
+        {
+          "label": "a. 추력",
+          "thresholds": [
+            {
+              "subject": "운용 추력",
+              "operator": "gt",
+              "value": "68",
+              "unit": "kN",
+              "quote": "68 kN을 초과하는 추력을 운용할 수 있는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b. 3축 추력 측정",
+          "thresholds": [],
+          "text": "3축 방향의 추력을 동시에 측정할 수 있는 구성품"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "clause_id": "dual_use:control:9C108",
+      "title": "고체 추진 로켓 엔진을 위해 전용 설계된 \"단열재\"와 \"내부 라이닝\" (9A008에 명시된 것 제외)",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"미사일\"에 사용 가능하거나 9A007 또는 9A107에 명시된 고체 추진 로켓 엔진을 위해 전용 설계된 \"단열재\"와 \"내부 라이닝\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9C110",
+      "title": "9A110에 명시된 복합재료 구조물 등을 위한 레진 포화 화이버 프리프레그 및 금속도금 화이버 프리폼",
+      "branches": [
+        {
+          "label": "주. 레진 유리전이온도(비인장강도·비탄성률은 확인 조건)",
+          "thresholds": [
+            {
+              "subject": "레진 유리전이온도(Tg, ASTM D4065)",
+              "operator": "gt",
+              "value": "418",
+              "unit": "K",
+              "quote": "유리전이온도(Tg)가 418 K (145 °C) 를 초과하는 레진",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "\"비인장강도\" 7.62 × 104 m 초과, \"비탄성률\" 3.18 × 106 m를 초과하는 필라멘트 보강기법을 이용한 유기모재 또는 금속모재로 만들어진 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D001",
+      "title": "9A001~9A119, 9B 또는 9E003에 명시된 장비 또는 \"기술\"의 \"개발\"을 위해 전용 설계 또는 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"개발\"을 위해 전용 설계 또는 개조된 \"소프트웨어\"로 9D003 또는 9D004에 명시되지 않은 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D002",
+      "title": "9A001~9A119 또는 9B에 명시된 장비의 \"생산\"을 위해 전용 설계 또는 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"생산\"을 위해 전용 설계 또는 개조된 \"소프트웨어\"로 9D003 또는 9D004에 명시되지 않은 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D003",
+      "title": "\"통합 디지털 전자 엔진제어시스템\"(\"FADEC Systems\")에 사용되는 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9E003.h에 명시된 \"기술\"을 사용하고",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D004",
+      "title": "기타 \"소프트웨어\"로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "상세 엔진유동 모델링에 필요한 풍동 또는 비행시험데이터로 검증된 2․3차원 점성 관련 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "항공용의 가스터빈엔진, 조립품 또는 구성품을 시험하는 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A012에 명시된 품목의 운용을 위해 전용 설계되거나 개조된   \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "항공가스터빈 블레이드, 베인(vanes), \"팁 슈라우드\"의 내부 냉각통로를 설계하기 위해 전용 설계된 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "항공가스터빈엔진의 공열(aero thermal) 상태, 항공역학적 상태 및 연소상태를 예측하기 위해 전용 설계된 것",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D005",
+      "title": "9A004.e 또는 9A004.f에 명시된 품목의 운용을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9A004.e 또는 9A004.f에 명시된 품목의 운용을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D101",
+      "title": "9B105, 9B106, 9B116이나 9B117에 명시된 제품의 \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9B105, 9B106, 9B116이나 9B117에 명시된 제품의 \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D103",
+      "title": "우주발사체·관측로켓·명시된 서브시스템의 모델링, 시뮬레이션 및 설계통합을 위해 전용 설계된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9D103에서 \"소프트웨어\"는 4A102에 명시된 전용 설계된 하드웨어와 결합한 경우에 통제된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D104",
+      "title": "\"소프트웨어\"로서 다음의 것",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "물품의 \"사용\"을 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9A008.d, 9A106.c, 9A108.c 또는 9A116.d에 명시된 서브시스템 또는 장비의 운영 또는 보수를 위해",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9D105",
+      "title": "우주발사체, 관측로켓 또는 '미사일'의 두 개 이상의 서브시스템 기능을 조정하기 위해 전용 설계되거나 개조된 \"소프트웨어\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "두 개 이상의 서브시스템 기능을 조정하기 위해 전용 설계되거나 개조된 \"소프트웨어\"(9D004.e에 명시된 것 제외)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9D105에서 '미사일'은 사거리 300 km를 초과하는 완성 로켓시스템과 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9E001",
+      "title": "9A004~9A012, 9A350, 9B 혹은 9D에 명시된 장비 또는 \"소프트웨어\"의 \"개발\"에 대한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비 또는 \"소프트웨어\"의 \"개발\"에 대한 일반기술해설에 따른 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9E002",
+      "title": "9A004~9A011, 9A350 혹은 9B에 명시된 장비의 \"생산\"을 위한 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "장비의 \"생산\"을 위한 일반기술해설에 따른 \"기술\"",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9E101",
+      "title": "다음과 같은 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "물품의 \"개발\"을 위한 것으로서, 일반기술해설에 따른 \"기술\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9E101.b에서 '무인항공기'는 사거리 300 km를 초과하는 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9E102",
+      "title": "명시된 물품의 \"사용\"을 위한 것으로서, 일반기술해설에 따른 \"기술\"",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "9E102에서 '무인항공기'는 사거리 300 km를 초과하는 무인항공기 시스템을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:9E003",
+      "title": "그 밖의 \"기술\"로서 다음의 것",
+      "branches": [
+        {
+          "label": "a.1 방향성 응고·단결정 합금 터빈 블레이드·베인·팁 슈라우드",
+          "thresholds": [
+            {
+              "subject": "응력파괴 수명(1,000°C, 200 MPa)",
+              "operator": "ge",
+              "value": "400",
+              "unit": "시간",
+              "quote": "400시간 이상의 응력파괴 수명",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.a 열충격 흡수 라이너",
+          "thresholds": [
+            {
+              "subject": "연소기 출구 온도",
+              "operator": "gt",
+              "value": "1883",
+              "unit": "K",
+              "quote": "1,883 K (1,610 °C) 를 초과하는 '연소기 출구 온도'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.2.b~c, e 비금속 라이너·비금속 셀·압력 증가 연소",
+          "thresholds": [],
+          "text": "비금속 라이너"
+        },
+        {
+          "label": "a.2.d 구멍을 가진 라이너",
+          "thresholds": [
+            {
+              "subject": "연소기 출구 온도",
+              "operator": "gt",
+              "value": "1883",
+              "unit": "K",
+              "quote": "1,883 K (1,610 °C) 를 초과하는 '연소기 출구 온도'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3.a 유기 복합재료 구성품",
+          "thresholds": [
+            {
+              "subject": "작동 온도",
+              "operator": "gt",
+              "value": "588",
+              "unit": "K",
+              "quote": "588 K (315°C)을 넘는 온도에서 작동되도록 설계된",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.3.b 금속·세라믹 모재 복합재료 구성품",
+          "thresholds": [],
+          "text": "1C007에 명시된 세라믹 \"모재\" \"복합재료\""
+        },
+        {
+          "label": "a.3.c 압축기·팬용 고정자·베인·블레이드 등",
+          "thresholds": [],
+          "text": "압축기 또는 팬을 위해 설계된 것"
+        },
+        {
+          "label": "a.4 비 냉각터빈 블레이드·베인·팁 슈라우드",
+          "thresholds": [
+            {
+              "subject": "가스통로 온도",
+              "operator": "ge",
+              "value": "1373",
+              "unit": "K",
+              "quote": "1,373 K (1,100 °C) 이상의 '가스통로 온도'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.5 냉각터빈 블레이드·베인·팁 슈라우드",
+          "thresholds": [
+            {
+              "subject": "가스통로 온도",
+              "operator": "ge",
+              "value": "1693",
+              "unit": "K",
+              "quote": "1,693 K (1,420°C) 이상의 '가스통로 온도'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.6 고상접합 에어포일-디스크 블레이드 조립품",
+          "thresholds": [],
+          "text": "고상접합을 이용한 에어포일-디스크 블레이드 조립품"
+        },
+        {
+          "label": "a.8 분말야금 손상허용 로터 구성품",
+          "thresholds": [],
+          "text": "1C002.b항에 명시된 분말야금소재를 사용한 '손상허용' 로터 구성품"
+        },
+        {
+          "label": "a.11 팬 블레이드",
+          "thresholds": [
+            {
+              "subject": "밀폐 공동 부피 비율",
+              "operator": "ge",
+              "value": "20",
+              "unit": "%",
+              "quote": "전체 부피의 20% 이상이 진공 또는 기체만을 포함하는",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "밀폐 공동 부피",
+              "operator": "ge",
+              "value": "5",
+              "unit": "cm3",
+              "quote": "부피가 5 cm3 이상인 밀폐 공동(cavity)",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.1 비 관입 센서 풍동용 모델",
+          "thresholds": [],
+          "text": "센서에서 데이터 획득시스템까지 데이터전송용 비 관입 센서 (non-intrusive sensor)가 설치된 풍동용 모델"
+        },
+        {
+          "label": "b.2 복합재료 프로펠러 블레이드 또는 팬",
+          "thresholds": [
+            {
+              "subject": "비행속도",
+              "operator": "gt",
+              "value": "0.55",
+              "unit": "마하",
+              "quote": "마하 0.55를 초과하는 비행속도",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "흡수 동력",
+              "operator": "gt",
+              "value": "2000",
+              "unit": "kW",
+              "quote": "2,000 kW 를 초과하는 동력을 흡수 가능한",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 냉각 홀 가공",
+          "thresholds": [
+            {
+              "subject": "최소 단면적",
+              "operator": "lt",
+              "value": "0.45",
+              "unit": "mm2",
+              "quote": "0.45 mm2 미만의 최소 '단면적'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "구멍 형상 비율",
+              "operator": "ge",
+              "value": "4.52",
+              "unit": "",
+              "quote": "4.52 이상의 '구멍 형상 비율'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "경사각",
+              "operator": "le",
+              "value": "25",
+              "unit": "°",
+              "quote": "25° 이하의 '경사각'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.2 냉각 홀 가공",
+          "thresholds": [
+            {
+              "subject": "최소 단면적",
+              "operator": "lt",
+              "value": "0.12",
+              "unit": "mm2",
+              "quote": "0.12 mm2 미만의 최소 '단면적'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "구멍 형상 비율",
+              "operator": "ge",
+              "value": "5.65",
+              "unit": "",
+              "quote": "5.65 이상의 '구멍 형상 비율'",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "경사각",
+              "operator": "gt",
+              "value": "25",
+              "unit": "°",
+              "quote": "25°를 초과하는 '경사각'",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d. 헬리콥터·틸트 로터·틸트 윙 동력전달시스템",
+          "thresholds": [],
+          "text": "헬리콥터 동력전달시스템 또는 틸트 로터(tilt rotor)나 틸트 윙(tilt wing) 또는 \"항공기\"의 동력전달시스템"
+        },
+        {
+          "label": "e. 지상 운반체 왕복디젤엔진",
+          "thresholds": [
+            {
+              "subject": "외형체적",
+              "operator": "le",
+              "value": "1.2",
+              "unit": "m3",
+              "quote": "'외형체적'이 1.2 m3 이하",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "총 출력",
+              "operator": "gt",
+              "value": "750",
+              "unit": "kW",
+              "quote": "국가동등규격상 750 kW 초과",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "외형체적 출력밀도",
+              "operator": "gt",
+              "value": "700",
+              "unit": "kW/m3",
+              "quote": "출력밀도가 700 kW/m3 를 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.1 세라믹소재 구성품 엔진시스템",
+          "thresholds": [],
+          "text": "1C007에 명시된 세라믹소재를 사용한 다음의 모든 구성품을 갖는 엔진시스템"
+        },
+        {
+          "label": "f.2 단일단 압축기 과급기 시스템",
+          "thresholds": [
+            {
+              "subject": "압력비",
+              "operator": "ge",
+              "value": "4",
+              "unit": "",
+              "quote": "압력비 4 : 1 이상으로 동작",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.3 다 연료용 연료분사 시스템",
+          "thresholds": [
+            {
+              "subject": "1회 분사량(실린더 당)",
+              "operator": "gt",
+              "value": "230",
+              "unit": "mm3",
+              "quote": "1회 분사시 실린더 당 230 mm3 을 초과",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g. 고온 윤활 고출력 디젤엔진",
+          "thresholds": [
+            {
+              "subject": "실린더 벽 온도",
+              "operator": "ge",
+              "value": "450",
+              "unit": "°C",
+              "quote": "실린더 벽 온도가 450°C (723 K) 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h. FADEC 기술",
+          "thresholds": [],
+          "text": "가스터빈엔진 \"통합 디지털 전자 엔진제어시스템\" (\"FADEC Systems\")을 위한 \"기술\""
+        },
+        {
+          "label": "i. 조정 가능한 유동통로 시스템 기술",
+          "thresholds": [],
+          "text": "가스터빈 엔진의 조정 가능한 유동통로 시스템에 관한 \"기술\""
+        },
+        {
+          "label": "j. 날개 접는 시스템",
+          "thresholds": [],
+          "text": "가스 터빈 엔진으로 작동되는 고정익 \"항공기\"의 날개 접는 시스템(wing-folding system)의 \"개발\"을 위해 \"필요한\" \"기술\""
+        },
+        {
+          "label": "k. 초음속 순항 항공기용 가스터빈 엔진 구성품·시스템",
+          "thresholds": [
+            {
+              "subject": "운항 속도",
+              "operator": "ge",
+              "value": "1",
+              "unit": "Mach",
+              "quote": "Mach 1 이상의 운항 속도",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "순항 시간",
+              "operator": "gt",
+              "value": "30",
+              "unit": "분",
+              "quote": "30분을 초과하여 순항하기 위한",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1,000°C (1,273 K) 온도와 200 MPa 의 응력 하에서",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9E003.c에 명시된 매개변수(parameters)를 충족하는 구멍(holes)을 가진 라이너",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9E003.c는 구성품의 외부표면에 입구와 출구가 수직으로 뚫리는 일정한 반경을 갖는 실린더 구멍의 제작을 위한 \"기술\"은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "질량유동이 30 - 130 kg/min",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "압축기 또는 터빈 단면 내 유동 면적의 가변 능력",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9E003.h는 하나 혹은 그 이상의 바세나르체제 회원국의 민간항공당국들에 의해 일반적인 항공사 사용",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "9E003.i는 다음의 \"기술\"은 통제하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1260 @@
+{
+  "scope": {
+    "families": [
+      "dual_use"
+    ],
+    "code_prefixes": [
+      "0"
+    ]
+  },
+  "items": [
+    {
+      "clause_id": "dual_use:control:0A001",
+      "title": "\"원자로\" 및 그 용도로 특별히 설계 또는 준비된 장비와 부품",
+      "branches": [
+        {
+          "label": "f. 핵연료 피복관",
+          "thresholds": [
+            {
+              "subject": "지르코늄 금속·합금 수출량",
+              "operator": "gt",
+              "value": "10",
+              "unit": "kg",
+              "quote": "10 kg을 초과하여 수출되는 양",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.~e., g.~k. 원자로 및 전용 장비",
+          "thresholds": [],
+          "text": "\"원자로\" 및 그 용도로 특별히 설계 또는 준비된 장비와 부품으로서 다음의 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "핵분열 연쇄반응을 스스로 제어․유지하는 운전능력을 갖는 원자로",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "여기서 핵융합로는 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "단, 비상냉각계통이나 잔열 제거계통과 같이 원자로의 보조계통의 열교환기는 통제 대상에서 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "압력관은 연료채널의 일부로써, 종종 5MPa 초과 압력에서 운전하도록 설계된다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "원자로 내․외부노심 중성자속을 측정할 수 있는 계측의 범위는 104 neutrons/sec․cm2 이상을 말한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B001",
+      "title": "\"천연우라늄\", \"감손우라늄\", 그리고 \"특수 핵분열성물질\"의 동위원소 분리공장",
+      "branches": [
+        {
+          "label": "b.3 회전자관",
+          "thresholds": [
+            {
+              "subject": "회전자관 두께",
+              "operator": "le",
+              "value": "12",
+              "unit": "mm",
+              "quote": "두께 12mm이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.4 벨로우즈",
+          "thresholds": [
+            {
+              "subject": "벨로우즈 벽두께",
+              "operator": "le",
+              "value": "3",
+              "unit": "㎜",
+              "quote": "벨로우즈는 벽두께 3㎜ 이하",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.6 주) 고 강도/밀도비 재질 - 마레이징강",
+          "thresholds": [
+            {
+              "subject": "마레이징강 극한 인장강도",
+              "operator": "ge",
+              "value": "1.95",
+              "unit": "GPa",
+              "quote": "1.95 GPa 이상의 극한 인장강도를 가지는 마레이징강",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.6 주) 고 강도/밀도비 재질 - 알루미늄합금",
+          "thresholds": [
+            {
+              "subject": "알루미늄합금 극한 인장강도",
+              "operator": "ge",
+              "value": "0.46",
+              "unit": "GPa",
+              "quote": "0.46 GPa이상의 극한 인장강도를 가지는 알루미늄합금",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.1 자기 지지 베어링 자석(초기 투과성)",
+          "thresholds": [
+            {
+              "subject": "자석 초기 투과성",
+              "operator": "ge",
+              "value": "0.15",
+              "unit": "H/m",
+              "quote": "0.15H/m 이상의 초기 투과성",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.1 자기 지지 베어링 자석(잔류 자기)",
+          "thresholds": [
+            {
+              "subject": "자석 잔류 자기",
+              "operator": "ge",
+              "value": "98.5",
+              "unit": "%",
+              "quote": "98.5% 이상의 잔류 자기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.1 자기 지지 베어링 자석(에너지)",
+          "thresholds": [
+            {
+              "subject": "자석 에너지",
+              "operator": "ge",
+              "value": "80",
+              "unit": "kJ/㎥",
+              "quote": "80kJ/㎥ 이상의 에너지",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.1 자기 지지 베어링 자석(자기축 편위)",
+          "thresholds": [
+            {
+              "subject": "자기축 편위",
+              "operator": "lt",
+              "value": "0.1",
+              "unit": "mm",
+              "quote": "0.1mm 미만의 자기축 편위",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.2 능동형 자기 베어링(회전자 회전수)",
+          "thresholds": [
+            {
+              "subject": "회전자 회전수",
+              "operator": "ge",
+              "value": "600",
+              "unit": "Hz",
+              "quote": "600 Hz 이상으로 회전하는 회전자",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.7.2 능동형 자기 베어링(전원 유지 시간)",
+          "thresholds": [
+            {
+              "subject": "안정적 전기공급 작동 시간",
+              "operator": "ge",
+              "value": "1",
+              "unit": "시간",
+              "quote": "1시간 이상 작동하기 위한 안정적인 전기공급",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.9 분자 펌프",
+          "thresholds": [
+            {
+              "subject": "실린더 벽 두께",
+              "operator": "ge",
+              "value": "10",
+              "unit": "㎜",
+              "quote": "벽 두께 10㎜이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "나선형 홈 깊이",
+              "operator": "ge",
+              "value": "2",
+              "unit": "㎜",
+              "quote": "깊이 2㎜ 이상인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.10 모터 고정자",
+          "thresholds": [
+            {
+              "subject": "모터 주파수",
+              "operator": "ge",
+              "value": "600",
+              "unit": "㎐",
+              "quote": "주파수 600㎐ 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "피상출력",
+              "operator": "ge",
+              "value": "40",
+              "unit": "VA",
+              "quote": "피상출력 40VA 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11 주) 원심분리기 하우징(벽 두께)",
+          "thresholds": [
+            {
+              "subject": "하우징 벽 두께",
+              "operator": "le",
+              "value": "30",
+              "unit": "mm",
+              "quote": "벽 두께가 30mm 이하인 견고한 실린더 벽",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.11 주) 원심분리기 하우징(양단 수직도)",
+          "thresholds": [
+            {
+              "subject": "가공 양단 수직도",
+              "operator": "le",
+              "value": "0.05",
+              "unit": "°",
+              "quote": "실린더의 세로축에 0.05° 이하의 범위 내에서 수직을 이룬다",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.13 주파수 변환기",
+          "thresholds": [
+            {
+              "subject": "다상출력 주파수",
+              "operator": "ge",
+              "value": "600",
+              "unit": "Hz",
+              "quote": "600Hz 이상의 다상출력",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "주파수 제어 범위",
+              "operator": "lt",
+              "value": "0.2",
+              "unit": "%",
+              "quote": "주파수 제어 범위가 0.2% 보다 낮은 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 가스확산 막(두께)",
+          "thresholds": [
+            {
+              "subject": "다공성 필터 두께",
+              "operator": "le",
+              "value": "5",
+              "unit": "mm",
+              "quote": "두께 5mm 이하이며",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 가스확산 막(관 형태 직경)",
+          "thresholds": [
+            {
+              "subject": "관 형태 필터 직경",
+              "operator": "le",
+              "value": "25",
+              "unit": "mm",
+              "quote": "직경 25mm 이하의 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 필터 제조용 분말(니켈합금)",
+          "thresholds": [
+            {
+              "subject": "니켈 함량",
+              "operator": "ge",
+              "value": "60",
+              "unit": "%",
+              "quote": "60%이상의 니켈합금이나 니켈",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.1 필터 제조용 불소화 탄화수소 중합체",
+          "thresholds": [
+            {
+              "subject": "순도(중량비)",
+              "operator": "ge",
+              "value": "99",
+              "unit": "%",
+              "quote": "순도 99% 중량비 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "입자크기",
+              "operator": "lt",
+              "value": "10",
+              "unit": "μm",
+              "quote": "입자크기 10μm 미만",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.3 압축기 및 가스송풍기",
+          "thresholds": [
+            {
+              "subject": "방출 압력",
+              "operator": "le",
+              "value": "500",
+              "unit": "kPa",
+              "quote": "500 kPa (100psi) 이하의 방출 압력을 갖고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "흡입능력",
+              "operator": "ge",
+              "value": "1",
+              "unit": "㎥/min",
+              "quote": "1㎥/min 이상의 흡입능력을 갖도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.4 주) 회전축 밀봉 장치",
+          "thresholds": [
+            {
+              "subject": "가스 누설율",
+              "operator": "lt",
+              "value": "1000",
+              "unit": "㎤/min",
+              "quote": "가스 누설율은 1000㎤/min 미만이 되도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "c.5 UF6 냉각 열교환기",
+          "thresholds": [
+            {
+              "subject": "누설 압력 변화율",
+              "operator": "lt",
+              "value": "10",
+              "unit": "Pa/hr",
+              "quote": "누설 압력 변화율이 10Pa/hr 미만이 되도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.1 주) 분리 노즐",
+          "thresholds": [
+            {
+              "subject": "틈새 곡율반경",
+              "operator": "lt",
+              "value": "1",
+              "unit": "mm",
+              "quote": "1mm미만의 곡율반경을 갖는",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.7 특수차단 및 제어 밸브",
+          "thresholds": [
+            {
+              "subject": "밸브 직경",
+              "operator": "ge",
+              "value": "40",
+              "unit": "mm",
+              "quote": "직경 40mm 이상의 bellows-sealed 밸브",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "d.8 주) UF6/운반가스 분리 장치",
+          "thresholds": [
+            {
+              "subject": "운반 가스 중 UF6 함유량",
+              "operator": "le",
+              "value": "1",
+              "unit": "ppm",
+              "quote": "UF6 함유량을 1 ppm 이하로 줄일 수 있고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.1 액체-액체 교환 탑",
+          "thresholds": [
+            {
+              "subject": "단별 체류시간",
+              "operator": "le",
+              "value": "30",
+              "unit": "초",
+              "quote": "탑 각 단에서의 체류시간은 주로 30초 이하로 설계된다",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.2 액체-액체 원심접촉기",
+          "thresholds": [
+            {
+              "subject": "단별 체류시간",
+              "operator": "le",
+              "value": "30",
+              "unit": "초",
+              "quote": "원심접촉기 각 단에서의 체류시간은 30초 이하로 설계된다",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.1 고속반응 이온교환 수지/흡착제",
+          "thresholds": [
+            {
+              "subject": "수지/흡착제 직경",
+              "operator": "le",
+              "value": "0.2",
+              "unit": "mm",
+              "quote": "이온교환수지/흡착제의 직경은 0.2mm 이하이며",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "교환율 하프타임",
+              "operator": "lt",
+              "value": "10",
+              "unit": "초",
+              "quote": "10초 미만의 교환율 하프타임",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "f.2 이온교환탑",
+          "thresholds": [
+            {
+              "subject": "탑 직경",
+              "operator": "gt",
+              "value": "1000",
+              "unit": "mm",
+              "quote": "직경이 1000mm를 넘는 실린더형",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "운전 압력",
+              "operator": "ge",
+              "value": "0.7",
+              "unit": "MPa",
+              "quote": "0.7MPa 이상의 압력에서 운전될 수 있어야 한다",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g.1 주) 우라늄 증기화계통",
+          "thresholds": [
+            {
+              "subject": "목표물 전달 출력",
+              "operator": "ge",
+              "value": "1",
+              "unit": "kW",
+              "quote": "목표물에 대한 전달 출력이 1kW 이상이 되도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "h.1 초음속 팽창 노즐",
+          "thresholds": [
+            {
+              "subject": "혼합물 냉각 온도",
+              "operator": "le",
+              "value": "150",
+              "unit": "K",
+              "quote": "150K (-123°C) 이하까지 UF6 와 운반가스의 혼합물을 냉각하기 위해",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.1 마이크로파 에너지원 및 안테나",
+          "thresholds": [
+            {
+              "subject": "이온생산 주파수",
+              "operator": "ge",
+              "value": "30",
+              "unit": "GHz",
+              "quote": "주파수가 30GHz 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균출력",
+              "operator": "ge",
+              "value": "50",
+              "unit": "kW",
+              "quote": "평균출력 50kW 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "i.2 이온 여기화 코일",
+          "thresholds": [
+            {
+              "subject": "무선주파수",
+              "operator": "ge",
+              "value": "100",
+              "unit": "kHz",
+              "quote": "무선주파수 100kHz 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "평균출력",
+              "operator": "ge",
+              "value": "40",
+              "unit": "kW",
+              "quote": "평균출력 40kW 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.1 이온 소스",
+          "thresholds": [
+            {
+              "subject": "이온빔 전류 합계",
+              "operator": "ge",
+              "value": "50",
+              "unit": "mA",
+              "quote": "합계 50mA 이상의 이온빔 전류",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.3 진공 하우징",
+          "thresholds": [
+            {
+              "subject": "견딤 압력",
+              "operator": "le",
+              "value": "0.1",
+              "unit": "Pa",
+              "quote": "0.1Pa 이하의 압력에서 견디도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.4 자극 편",
+          "thresholds": [
+            {
+              "subject": "자극 부품 지름",
+              "operator": "ge",
+              "value": "2",
+              "unit": "m",
+              "quote": "지름 2m 이상의 자극 부품",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.5 고압 전원공급장치",
+          "thresholds": [
+            {
+              "subject": "전압",
+              "operator": "ge",
+              "value": "20000",
+              "unit": "V",
+              "quote": "전압 20,000V 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전류",
+              "operator": "ge",
+              "value": "1",
+              "unit": "A",
+              "quote": "전류 1A 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "연속 운전 시간",
+              "operator": "ge",
+              "value": "8",
+              "unit": "시간",
+              "quote": "8시간 이상에서 전압 변동율",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전압 변동율",
+              "operator": "le",
+              "value": "0.01",
+              "unit": "%",
+              "quote": "전압 변동율이 0.01% 이하 인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "j.6 자기력 공급장치",
+          "thresholds": [
+            {
+              "subject": "전압",
+              "operator": "ge",
+              "value": "100",
+              "unit": "V",
+              "quote": "100V이상의 전압에서",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전류",
+              "operator": "ge",
+              "value": "500",
+              "unit": "A",
+              "quote": "500A이상의 전류를 연속적으로 발생할 수 있고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "연속 운전 시간",
+              "operator": "ge",
+              "value": "8",
+              "unit": "시간",
+              "quote": "8시간 이상에서 전류 또는 전압 변동율",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "전류 또는 전압 변동율",
+              "operator": "lt",
+              "value": "0.01",
+              "unit": "%",
+              "quote": "전압 변동율이 0.01% 미만인 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. 동위원소 분리 공장",
+          "thresholds": [],
+          "text": "\"천연우라늄\", \"감손우라늄\", \"특수 핵분열성물질\"의 동위원소 분리를 위해 전용 설계된 공장으로 다음의 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "동위원소 분리공장 및 그 용도로 전용 설계 또는 준비된 시설과 장비(단, 분석기기 제외)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "일반적으로 가스원심분리기는 진공상태에서 운전되는 직경 75 ~ 650㎜, 수직 중심축을 갖고 300㎧ec 이상의 고속 원주 속도로 회전하는 얇은 벽의 실린더들로 이루어진다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "3.18×106m 이상의 특정 계수, 7.62×104m  이상의 특정 극한 인장강도를 가지며, 복합구조물에 사용하기 적합한 필라멘트재료",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "외경:내경비가 1.6:1 이하인 링 형태일 수도 있다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "내부 직경 10～160mm이며, UF6 내부식성 물질로 보호되거나 만들어진",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "얇은 다공성 필터로서 기공 크기 10 ~ 100 nm",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "압축기나 가스 송풍기의 압축률은 10:1 이하이고",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "벨로우즈 밸브는 직경 40 ~ 1,500mm 이며, UF6 에 대한 내부식성 재질로 제조 혹은 보강된다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "-153K(-120°C) 이하에서도 작동 가능한 극저온 열교환기 또는 극저온 분리기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "373K(100°C) ~ 473(200°C) 사이의 온도에서 운전될 수 있는 것이다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "니켈 중량비 60%이상의 니켈합금 및 불화 탄화수소중합체 등이 있다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B002",
+      "title": "UF6 내부식성 물질로 보호되거나 만들어진 0B001에 지정된 동위 원소 분리 플랜트를 위한 보조시스템",
+      "branches": [
+        {
+          "label": "f. 진공계통 및 펌프",
+          "thresholds": [
+            {
+              "subject": "흡입 능력",
+              "operator": "ge",
+              "value": "5",
+              "unit": "㎥/min",
+              "quote": "5㎥/min 이상의 흡입 능력을 갖고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "g. UF6 질량분석기/이온 소스",
+          "thresholds": [
+            {
+              "subject": "측정 가능 이온 단위질량",
+              "operator": "ge",
+              "value": "320",
+              "unit": "",
+              "quote": "320 단위질량 이상의 이온을 측정할 수 있고",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a.~e. 급송·회수·저장·헤더파이핑 계통",
+          "thresholds": [],
+          "text": "UF6 내부식성 물질로 보호되거나 만들어진 0B001에 지정된 동위 원소 분리 플랜트를 위해 특수하게 설계 또는 준비된 보조시스템, 장비 및 구성품"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "1/320보다 높은 해상도를 가진 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "니켈, 니켈-크롬 합금, 니켈의 중량비가 60% 이상인 니켈-동 합금으로 제조되거나 보강된 이온원",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "전자 충돌식 이온화 소스",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "동위원소 분석을 위한 수집 시스템을 갖는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "UF6에 내부식성을 갖는 재질에는 동, 동합금, 스테인레스강, 알루미늄, 산화알루미늄, 알루미늄합금, 니켈, 또는 60%이상의 니켈합금 및 불화 탄화수소중합체 등이 있다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B003",
+      "title": "우라늄 변환공장 및 그 용도로 특별히 설계되거나 준비된 계통",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "우라늄 변환공장 및 그 용도로 특별히 설계되거나 준비된 계통",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "우라늄 변환용으로 특별히 설계되지 않는 개별 장비들이 우라늄 변환용으로 특별히 설계되거나 준비된 시스템의 일부로 조립될 수 있다는 점도 각별히 유의해야할 사항이다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B004",
+      "title": "중수, 중수소 및 중수소 화합물을 생산 또는 농축하기 위한 공장 및 전용 장비",
+      "branches": [
+        {
+          "label": "b.1 물-황화수소 교환탑",
+          "thresholds": [
+            {
+              "subject": "교환탑 직경",
+              "operator": "ge",
+              "value": "1.5",
+              "unit": "m",
+              "quote": "직경 1.5m 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "운전 압력",
+              "operator": "ge",
+              "value": "2",
+              "unit": "MPa",
+              "quote": "2MPa 이상의 압력에서 운전가능한",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.2 송풍기 및 압축기",
+          "thresholds": [
+            {
+              "subject": "황화수소 함량",
+              "operator": "ge",
+              "value": "70",
+              "unit": "%",
+              "quote": "황화 수소가스(70% 이상의 황화수소)",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "흡인 압력",
+              "operator": "ge",
+              "value": "1.8",
+              "unit": "MPa",
+              "quote": "흡인력이 1.8MPa 이상인 압력",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "유량",
+              "operator": "ge",
+              "value": "5",
+              "unit": "㎥/sec",
+              "quote": "5㎥/sec 이상의 유량을 갖는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.3 암모니아-수소 교환탑",
+          "thresholds": [
+            {
+              "subject": "가동 압력",
+              "operator": "ge",
+              "value": "15",
+              "unit": "MPa",
+              "quote": "15MPa 이상의 압력에서 가동할 수 있고",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "교환탑 직경",
+              "operator": "ge",
+              "value": "1.5",
+              "unit": "",
+              "quote": "직경 1.5 이상",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "교환탑 높이",
+              "operator": "ge",
+              "value": "35",
+              "unit": "m",
+              "quote": "높이 35m 이상",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.5 암모니아 분해장치",
+          "thresholds": [
+            {
+              "subject": "가동 압력",
+              "operator": "ge",
+              "value": "3",
+              "unit": "MPa",
+              "quote": "3MPa 이상의 압력에서 가동할 수 있도록",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "b.8 중수 고순도화 장치 또는 탑",
+          "thresholds": [
+            {
+              "subject": "장치·탑 직경",
+              "operator": "ge",
+              "value": "0.1",
+              "unit": "m",
+              "quote": "직경 0.1 m 이상의 중수 고순도화 장치",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "a. 중수 생산 공장",
+          "thresholds": [],
+          "text": "중수, 중수소 및 중수소 화합물을 생산하기 위한 공장으로 다음의 것"
+        },
+        {
+          "label": "b.4, b.7, b.9, b.10 전용 장비",
+          "thresholds": [],
+          "text": "수소 동위원소 교환을 위해 특별히 설계되거나 준비된 완전한      탑의 완성품으로서 다음의 특성을 모두 가진 것"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "황화 수소가스(70% 이상의 황화수소)순환을 위한 저압력(0.2MPa) 원심분리 송풍기 또는 압축기",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "무작위 또는 규칙형 방수 백금 촉매가 충전된 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0.1 MPa에서 4 MPa 범위의 압력에서 운전이 가능한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "293 K(20℃)에서 473 K(200℃) 범위의 온도에서 운전이 가능한 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "중수 생산 공정에서 제1단 촉매탑은 통상적으로 직경 0.5 m 초과, 높이 10 m 초과한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B005",
+      "title": "핵연료 가공공장과 그 용도로 특별히 설계 또는 준비된 장비",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "핵연료 가공공장과 그 용도로 특별히 설계 또는 준비된 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "핵물질의 생산 공정과 직접 접하거나, 직접 가공 또는 제어하는 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "피복재 내에 핵물질을 밀봉하는 장비",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "원자로 핵연료를 조립하는 장비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B006",
+      "title": "조사후 핵연료의 재처리공장 및 그 용도로 특별히 설계 또는 준비된 장비",
+      "branches": [
+        {
+          "label": "e.(2) 화학약품 취급용기(실린더형)",
+          "thresholds": [
+            {
+              "subject": "실린더형 용기 직경",
+              "operator": "le",
+              "value": "175",
+              "unit": "mm",
+              "quote": "직경이 175mm(7in)이하인 실린더형 용기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.(3) 화학약품 취급용기(판상형·환상형)",
+          "thresholds": [
+            {
+              "subject": "용기 최대폭",
+              "operator": "le",
+              "value": "75",
+              "unit": "mm",
+              "quote": "최대폭이 75mm(3in)이하 판상형(slab) 또는 환상(annular)형 용기",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        },
+        {
+          "label": "e.(1) 화학약품 취급용기(붕소 등가 벽)",
+          "thresholds": [],
+          "text": "최소한 2%의 붕소 등가(치)를 갖는 벽 또는 내부 구조물"
+        },
+        {
+          "label": "a.~d. 재처리 공장·탈피복기·용해조·용매추출기",
+          "thresholds": [],
+          "text": "조사후 핵연료의 재처리공장 및 그 용도로 특별히 설계 또는 준비된 장비"
+        }
+      ],
+      "checks": [
+        {
+          "quote": "조사후 핵연료, 주요 핵물질, 그리고 핵분열생성물의 처리공정과 직접 접하거나 이를 직접 제어하는 장비 및 부품을 포함함",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "질산에 대한 내부식성을 갖고, 저탄소 스테인레스강, 티타늄이나 지르코늄, 또는 다른 우수한 재질로 제작되고, 원격조작으로 유지보수를 할 수 있도록 설계되고, 핵임계 제어를 위해 다음의 특성을 갖는 것",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "이 항목의 범위는 핵물질의 계량과 안전조치 혹은 조사후 핵연료의 재처리공장 내 자동공정제어계통에 통합 및 사용과 무관한 다른 용도로 설계된 중성자 검출 및 측정기기를 포함하지 않는다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0B007",
+      "title": "플루토늄 변환공장 및 그 용도로 특별히 설계되거나 준비된 계통",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "플루토늄 변환공장 및 그 용도로 특별히 설계되거나 준비된 계통",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "플루토늄 질산염을 플루토늄 산화물로 변환시키기 위해 특별히 설계되거나 준비된 계통",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "금속 플루토늄 생산을 위해 특별히 설계되거나 준비된 설비",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0C001",
+      "title": "핵원료 물질",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "천연동위원소의 혼합물을 함유하고 있는 우라늄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "동위원소 235가 감손된 우라늄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "토륨(thorium)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "국제원자력기구(IAEA) 이사회가 정하는 농축도로 상기 물질 중 하나 이상을 함유하는 기타물질",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0C002",
+      "title": "특수 핵분열성물질",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "플루토늄 239",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "우라늄 233",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "우라늄 235 또는 233으로 농축된 우라늄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "0C001 및 0C002 중 다음 a, b에 해당하는 물질은 통제하지 않는다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "플루토늄 238의 동위원소 농도가 80%를 초과하는 플루토늄",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "계측기에 내장된 수g 이하의 특수 핵분열성물질",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "특수 핵분열성물질 50g정량, 천연우라늄 500kg, 감손우라늄 1,000kg, 토륨 1,000kg 이하의 양이 연력 1년(1월1일부터 12월 31일) 동안에 단일 최종사용국에 수출된다고 허가권자가 인정할 경우",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0C003",
+      "title": "중수소 및 중수",
+      "branches": [
+        {
+          "label": "",
+          "thresholds": [
+            {
+              "subject": "연간 단일 국가 중수소 원자 총 수출량",
+              "operator": "gt",
+              "value": "200",
+              "unit": "kg",
+              "quote": "중수소 원자의 총 수출량이 200kg을 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0A001.a에서 정의된 원자로에 사용되는 중수소 또는 중수 또는 중수소화합물(중수소대 수소의 원자비가 1 : 5,000을 초과 하는 것)",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "연력 1년(1월1일부터 12월 31일) 동안 단일 국가에 대한 중수소 원자의 총 수출량",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0C004",
+      "title": "원자로급 흑연",
+      "branches": [
+        {
+          "label": "",
+          "thresholds": [
+            {
+              "subject": "붕소 등가치",
+              "operator": "lt",
+              "value": "5",
+              "unit": "ppm",
+              "quote": "붕소 등가치가 5ppm 미만",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "밀도",
+              "operator": "gt",
+              "value": "1.50",
+              "unit": "g/㎤",
+              "quote": "밀도 1.50g/㎤, 1kg 을 초과하는 것",
+              "quote_source": "항목 본문"
+            },
+            {
+              "subject": "수량",
+              "operator": "gt",
+              "value": "1",
+              "unit": "kg",
+              "quote": "밀도 1.50g/㎤, 1kg 을 초과하는 것",
+              "quote_source": "항목 본문"
+            }
+          ],
+          "text": ""
+        }
+      ],
+      "checks": [
+        {
+          "quote": "0A001.a에서 정의한 원자로에 사용되는 흑연",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "붕소 등가치(BE)는 실험적으로 결정되거나 붕소를 포함한 불순물의 BEz의 합으로 아래식에 따라 계산된다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0D001",
+      "title": "0D001 소프트웨어",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "통제목록에 있는 물품의 \"개발\", \"생산\", \"사용\"을 위해 특별히 설계되거나 준비된 \"소프트웨어\"",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"소프트웨어\"이전 지침 이행을 목적으로 공급국은 \"기술\"이전과 동일한 원칙을 적용해야 한다",
+          "source": "항목 본문"
+        }
+      ]
+    },
+    {
+      "clause_id": "dual_use:control:0E001",
+      "title": "\"기술\"은 통제목록에 포함된 모든 품목의 \"개발\", \"생산\"또는 \"사용\"에 필요한 특정 정보",
+      "branches": [],
+      "checks": [
+        {
+          "quote": "\"기술\"은 통제목록에 포함된 모든 품목의 \"개발\", \"생산\"또는 \"사용\"에 필요한 특정 정보를 의미한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "\"기술\"에 대한 통제시 서적․정기 간행물의 형태로 \"일반 공개 되는 자료(in the public domain)\", 아무런 제약없이 입수 가능한 자료 및 기초과학연구에 대한 정보는 제외한다",
+          "source": "항목 본문"
+        },
+        {
+          "quote": "핵비확산을 이유로 기술의 수출을 통제할 때는, 핵테러 공격의 위험도 고려하여 원자력전용품목 관련 시설의 설계, 건설 및 운전관련 기술을 최대한 보호하여야 한다",
+          "source": "항목 본문"
+        }
+      ]
+    }
+  ]
+}
